@@ -189,6 +189,32 @@ foreach ($pkg in $allCfg) {
     }
 }
 
+# --- 3d. v2: AST 级签名比对（可选增强，需 node + ast-diff/node_modules）--------
+$astDir = Join-Path $repoRoot 'ast-diff'
+$astJson = Join-Path $OutDir 'ast-findings.json'
+$astOk = $false
+if ((Get-Command node -ErrorAction SilentlyContinue) -and (Test-Path (Join-Path $astDir 'node_modules\typescript'))) {
+    Write-Host "[3.5/4] AST 签名比对（v2）..."
+    & node (Join-Path $astDir 'index.mjs') $Repo $From $To $astJson 2>&1 | ForEach-Object { Write-Verbose "$_" }
+    if ($LASTEXITCODE -eq 0 -and (Test-Path $astJson)) {
+        $astOk = $true
+        # AST 成功时，移除与其重叠的正则层（export 增删、config 字段增删），避免重复计数
+        $overlap = @('export-removed', 'export-added', 'config-field-removed', 'config-field-added')
+        $kept = @($findings | Where-Object { $_.kind -notin $overlap })
+        $dropped = $findings.Count - $kept.Count
+        $findings.Clear()
+        foreach ($f in $kept) { $findings.Add($f) }
+        foreach ($f in (Get-Content $astJson -Raw | ConvertFrom-Json)) {
+            $findings.Add([pscustomobject]@{ severity = $f.severity; kind = $f.kind; path = $f.path; detail = $f.detail; relevant = (Test-Relevant $f.path $f.detail) })
+        }
+        Write-Host "  AST 合并完成：新增 $($findings.Count - $kept.Count) 条，替换正则层 $dropped 条"
+    } else {
+        Write-Warning "AST 比对失败（exit $LASTEXITCODE），回退纯正则模式"
+    }
+} else {
+    Write-Host "  （未检测到 node/typescript，跳过 AST 签名比对，仅正则模式）"
+}
+
 # --- 4. 产物 ----------------------------------------------------------------
 Write-Host "[3/4] 汇总 $($findings.Count) 条 findings..."
 $relBreak = @($findings | Where-Object { $_.relevant -and $_.severity -in 'breaking','warning' })
