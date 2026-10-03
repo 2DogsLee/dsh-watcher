@@ -13,8 +13,12 @@ diff 脚本比对的范围以本文件为准。**修改范围必须同时更新 
 | 顶层文档 | `docs/*.md`（architecture / capability-seams / config-catalog 等） | 全局架构与能力接缝说明 |
 
 > 2026-10-03 实测发现：官方 checkout 存在 `docs/upgrade-guide/<version>/` 逐版本目录，
-> 这是比启发式更强的破坏性信号，已在 v0 纳入（新增文档=info；后续 v1 将把 upgrade-guide
-> 的目录名直接解析为版本，与 tag 对齐）。
+> 这是比启发式更强的破坏性信号，已在 v0 纳入（新增文档=warning）。
+>
+> **v2 起**：环境里有 node + `ast-diff/node_modules` 时，导出符号层与 config 字段层
+> 自动升级为 AST 级（含 re-export 闭包与类型指纹），并新增签名变化（ast-signature-changed）
+> 与字段类型变化（config-field-type-changed）检测；无 node 时退回正则模式
+> （丢失类型级信号，但删除/新增仍覆盖）。
 
 ## 明确不在范围内（v0）
 
