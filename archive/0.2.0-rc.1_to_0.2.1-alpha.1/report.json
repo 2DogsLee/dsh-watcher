@@ -1,0 +1,458 @@
+{
+  "tool": "dsh-api-watch v0",
+  "repo": "_dsh",
+  "from": "dsh-v0.2.0-rc.1",
+  "to": "dsh-v0.2.1-alpha.1",
+  "generated": "2026-10-03T06:47:01.3154161Z",
+  "counts": {
+    "warning": 54,
+    "breaking": 5,
+    "info": 15
+  },
+  "findings": [
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/client/hmr/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/client/modules/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/client/ui-renderer/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/compaction/compaction/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/context/time-context/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/core/agent/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/core/agent-loop/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/core/scope/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/core/session/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/core/system-prompt/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/core/tools/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/credentials/authorization/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/credentials/credentials/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/experimental/agent-team/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "info",
+      "kind": "package-added",
+      "path": "packages/experimental/claude-code-mods",
+      "detail": "新增包"
+    },
+    {
+      "severity": "info",
+      "kind": "package-added",
+      "path": "packages/experimental/client-ui-claude-code-mods",
+      "detail": "新增包"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/experimental/inspector/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "info",
+      "kind": "package-added",
+      "path": "packages/experimental/inspector-profile",
+      "detail": "新增包"
+    },
+    {
+      "severity": "breaking",
+      "kind": "package-removed",
+      "path": "packages/experimental/schedule-bundle",
+      "detail": "包被移除或不再是独立包"
+    },
+    {
+      "severity": "info",
+      "kind": "package-added",
+      "path": "packages/experimental/session-inspector",
+      "detail": "新增包"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/fs/fs/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/goal/goal/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/goal/goal-round-driver/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/hooks/hook-protocol/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/interaction/commands/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/interaction/permission-presets/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/interaction/user-approval/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/interaction/user-questions/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/jobs/jobs/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/llm/llm/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/llm/llm-retry/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/plan/plan-mode/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/preset/agent-preset-registry/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "breaking",
+      "kind": "package-removed",
+      "path": "packages/runtime-diagnostics/invariants",
+      "detail": "包被移除或不再是独立包"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/sandbox/sandbox-policy/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/schedule/schedule/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "info",
+      "kind": "package-added",
+      "path": "packages/schedule/tool-schedule",
+      "detail": "新增包"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/session/session-log-deepseek/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/session/session-title/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/storage/storage-domain/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/subagent/subagent/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/subagent/tool-subagent/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/todo/tool-todo/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/webhook/webhook/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/workflow/tool-workflow/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/workflow/workflow/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/workspace/workspace/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "info",
+      "kind": "doc-added",
+      "path": "docs/persistence-changes/2026-09-21-user-question-reply.md",
+      "detail": "新增文档"
+    },
+    {
+      "severity": "info",
+      "kind": "doc-added",
+      "path": "docs/persistence-changes/2026-09-21-user-question-reply.zh.md",
+      "detail": "新增文档"
+    },
+    {
+      "severity": "info",
+      "kind": "doc-added",
+      "path": "docs/subsystems/claude-code-mods.md",
+      "detail": "新增文档"
+    },
+    {
+      "severity": "info",
+      "kind": "doc-added",
+      "path": "docs/subsystems/claude-code-mods.zh.md",
+      "detail": "新增文档"
+    },
+    {
+      "severity": "breaking",
+      "kind": "doc-removed",
+      "path": "docs/subsystems/invariants.md",
+      "detail": "契约文档被删除/改名"
+    },
+    {
+      "severity": "breaking",
+      "kind": "doc-removed",
+      "path": "docs/subsystems/invariants.zh.md",
+      "detail": "契约文档被删除/改名"
+    },
+    {
+      "severity": "warning",
+      "kind": "doc-major-rewrite",
+      "path": "docs/subsystems/user-questions.md",
+      "detail": "行数 141 -> 250（77%），可能存在行为级变更，建议人工复核"
+    },
+    {
+      "severity": "warning",
+      "kind": "doc-major-rewrite",
+      "path": "docs/subsystems/user-questions.zh.md",
+      "detail": "行数 141 -> 250（77%），可能存在行为级变更，建议人工复核"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.1.7-rc.2/schedule-optional-bundle/guide.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.1.7-rc.2/schedule-optional-bundle/guide.zh.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.1.7-rc.2/transcript-view-legacy-normal/guide.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.1.7-rc.2/transcript-view-legacy-normal/guide.zh.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.2.0-rc.2/account-sign-in-errors/guide.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.2.0-rc.2/account-sign-in-errors/guide.zh.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.2.0-rc.2/remove-runtime-invariants/guide.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.2.0-rc.2/remove-runtime-invariants/guide.zh.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.2.0-rc.2/schedule-bundle-retired/guide.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.2.0-rc.2/schedule-bundle-retired/guide.zh.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.2.0-rc.2/subpath-plugin-display-manifest/guide.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.2.0-rc.2/subpath-plugin-display-manifest/guide.zh.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "info",
+      "kind": "doc-added",
+      "path": "docs/user/guide/public-deployments.md",
+      "detail": "新增文档"
+    },
+    {
+      "severity": "info",
+      "kind": "doc-added",
+      "path": "docs/user/guide/public-deployments.zh.md",
+      "detail": "新增文档"
+    },
+    {
+      "severity": "info",
+      "kind": "config-field-added",
+      "path": "config:@deepseek-ai/dsh-cordis-host-runner",
+      "detail": "新增配置字段: clientInspectTimeoutMs"
+    },
+    {
+      "severity": "info",
+      "kind": "config-scope-added",
+      "path": "config:@deepseek-ai/dsh-experimental-claude-code-mods",
+      "detail": "新增可配置包"
+    },
+    {
+      "severity": "breaking",
+      "kind": "config-scope-removed",
+      "path": "config:@deepseek-ai/dsh-invariants",
+      "detail": "该包从配置目录移除，其 cordis.yml config 块不再可用"
+    },
+    {
+      "severity": "info",
+      "kind": "config-scope-added",
+      "path": "config:@deepseek-ai/dsh-tool-ask-user",
+      "detail": "新增可配置包"
+    },
+    {
+      "severity": "info",
+      "kind": "config-field-added",
+      "path": "config:@deepseek-ai/dsh-web-app",
+      "detail": "新增配置字段: publicUrl"
+    }
+  ]
+}
