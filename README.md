@@ -1,5 +1,9 @@
 # dsh-api-watch
 
+[![watch-dsh-releases](https://github.com/2DogsLee/dsh-watcher/actions/workflows/watch.yml/badge.svg)](https://github.com/2DogsLee/dsh-watcher/actions/workflows/watch.yml)
+[![Latest release](https://img.shields.io/github/v/release/2DogsLee/dsh-watcher?filter=*-api-watch&label=latest%20report)](https://github.com/2DogsLee/dsh-watcher/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 > DSH（DeepSeek Harness）插件 API 面的自动化比对引擎 + 变更档案 + Agent Skill。
 > 目标：让第三方插件开发者在升级 DSH 之前，一条命令看清「我依赖的 API 变了没有、坏在哪里、怎么改」。
 
