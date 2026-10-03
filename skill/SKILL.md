@@ -16,8 +16,13 @@ description: 在升级 DeepSeek Harness（DSH）之前或插件报接口错误�
 
 ## 前置条件
 
-- 官方 checkout 目录名（环境变量 `DSH_CHECKOUT`，或询问用户）；
 - 本仓库（dsh-api-watch）的本地路径，下称 `$TOOL`；
+  **自举**：若本地没有本仓库，先 clone 再继续：
+  ```powershell
+  git clone https://github.com/2DogsLee/dsh-watcher.git "$env:USERPROFILE\.dsh\tools\dsh-watcher"
+  ```
+  该路径即 `$TOOL`（后续升级在本目录 `git pull` 即可）。
+- 官方 checkout 目录名（环境变量 `DSH_CHECKOUT`，或询问用户；用户本地没有官方 checkout 时，clone 官方仓库到 `$TOOL` 同级的 `deepseek-harness-checkout` 目录并 `fetch --tags`）；
 - 用户插件目录；若用户有多个插件，逐个扫。
 
 ## 操作步骤
