@@ -35,7 +35,15 @@ dsh-api-watch/
 └── .github/workflows/watch.yml  # 定期盯官方 repo，出新 tag 自动生成报告并提交
 ```
 
-## 安装 skill
+## 安装
+
+作为 DSH 插件安装（主进程入口会把随包的 dsh-api-watch skill 注册到 `ctx.skills`）：
+
+```bash
+dsh plugin --profile web add github:2DogsLee/dsh-watcher
+```
+
+### 仅安装 skill
 
 手动安装（复制目录）：
 

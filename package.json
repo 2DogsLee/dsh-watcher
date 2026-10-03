@@ -1,0 +1,33 @@
+{
+  "name": "dsh-api-watch",
+  "version": "0.2.0",
+  "description": "DeepSeek Harness plugin API surface watch: AST-level breaking-change diff, plugin impact analysis, and a daily feedback radar. Ships the dsh-api-watch agent skill.",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "skill",
+    "api-compatibility",
+    "breaking-changes"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2DogsLee/dsh-watcher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/2DogsLee/dsh-watcher/issues"
+  }
+}
