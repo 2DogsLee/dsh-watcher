@@ -1,0 +1,122 @@
+{
+  "tool": "dsh-api-watch v0",
+  "repo": "D:\\projects\\deepseek harness",
+  "from": "dsh-v0.1.7-rc.2",
+  "to": "dsh-v0.2.0-rc.2",
+  "generated": "2026-10-03T04:18:00.1170903Z",
+  "counts": {
+    "info": 8,
+    "breaking": 0,
+    "warning": 10
+  },
+  "findings": [
+    {
+      "severity": "info",
+      "kind": "package-added",
+      "path": "packages/client/product-analytics",
+      "detail": "新增包"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/client/ui-schedule/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "info",
+      "kind": "package-added",
+      "path": "packages/client/ui-settings-session-log",
+      "detail": "新增包"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/context/time-context/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "info",
+      "kind": "package-added",
+      "path": "packages/experimental/schedule-bundle",
+      "detail": "新增包"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/interaction/user-questions/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "warning",
+      "kind": "exports-map-changed",
+      "path": "packages/schedule/schedule/package.json",
+      "detail": "package.json exports 字段变化，请人工确认入口路径"
+    },
+    {
+      "severity": "info",
+      "kind": "package-added",
+      "path": "packages/telemetry/otel",
+      "detail": "新增包"
+    },
+    {
+      "severity": "info",
+      "kind": "doc-added",
+      "path": "docs/persistence-changes/2026-09-21-user-question-reply.md",
+      "detail": "新增文档"
+    },
+    {
+      "severity": "info",
+      "kind": "doc-added",
+      "path": "docs/persistence-changes/2026-09-21-user-question-reply.zh.md",
+      "detail": "新增文档"
+    },
+    {
+      "severity": "info",
+      "kind": "doc-added",
+      "path": "docs/subsystems/otel.md",
+      "detail": "新增文档"
+    },
+    {
+      "severity": "info",
+      "kind": "doc-added",
+      "path": "docs/subsystems/otel.zh.md",
+      "detail": "新增文档"
+    },
+    {
+      "severity": "warning",
+      "kind": "doc-major-rewrite",
+      "path": "docs/subsystems/user-questions.md",
+      "detail": "行数 141 -> 250（77%），可能存在行为级变更，建议人工复核"
+    },
+    {
+      "severity": "warning",
+      "kind": "doc-major-rewrite",
+      "path": "docs/subsystems/user-questions.zh.md",
+      "detail": "行数 141 -> 250（77%），可能存在行为级变更，建议人工复核"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.1.7-rc.2/schedule-optional-bundle/guide.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.1.7-rc.2/schedule-optional-bundle/guide.zh.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.1.7-rc.2/transcript-view-legacy-normal/guide.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.1.7-rc.2/transcript-view-legacy-normal/guide.zh.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+name: watch-dsh-releases
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # 每日 03:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  watch:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone upstream DSH checkout
+        shell: pwsh
+        run: |
+          git clone --filter=blob:none https://github.com/${{ env.UPSTREAM || 'deepseek-ai/deepseek-harness' }}.git _dsh
+          git -C _dsh fetch --tags --force
+
+      - name: Determine tag pair (last archived -> newest)
+        id: pair
+        shell: pwsh
+        run: |
+          $tags = git -C _dsh tag --sort=-creatordate | Where-Object { $_ -match '^dsh-v\d' }
+          $archived = if (Test-Path archive) { Get-ChildItem archive -Directory | ForEach-Object { ($_.Name -split '_to_')[1] } } else { @() }
+          $from = $null; $to = $tags[0]
+          foreach ($t in $tags[1..($tags.Count-1)]) { if ($archived -notcontains ($t -replace '^dsh-v','')) { $from = $t; break } }
+          if (-not $from) { Write-Host "无新版本需要归档"; "skip=true" >> $env:GITHUB_OUTPUT; return }
+          "from=$from" >> $env:GITHUB_OUTPUT
+          "to=$to" >> $env:GITHUB_OUTPUT
+
+      - name: Run diff
+        if: steps.pair.outputs.skip != 'true'
+        shell: pwsh
+        run: ./scripts/diff-api.ps1 -Repo _dsh -From ${{ steps.pair.outputs.from }} -To ${{ steps.pair.outputs.to }}
+
+      - name: Commit archive + release
+        if: steps.pair.outputs.skip != 'true'
+        shell: pwsh
+        env:
+          FROM: ${{ steps.pair.outputs.from }}
+          TO: ${{ steps.pair.outputs.to }}
+        run: |
+          $dir = "archive/$(($env:FROM -replace '^dsh-v',''))_to_$(($env:TO -replace '^dsh-v',''))"
+          git add archive
+          git -c user.name=dsh-api-watch-bot -c user.email=bot@users.noreply.github.com commit -m "archive: $env:FROM -> $env:TO"
+          git push
+          $body = Get-Content "$dir/report.md" -Raw
+          gh release create "$env:TO-api-watch" "$dir/report.json" --title "DSH $env:TO 插件 API 面报告" --notes $body
+        env:
+          GH_TOKEN: ${{ github.token }}
