@@ -23,7 +23,7 @@ jobs:
       - name: Commit digest
         shell: bash
         run: |
-          if git diff --quiet archive/radar; then
+          if [ -z "$(git status --porcelain archive/radar)" ]; then
             echo "雷达无变化，跳过提交"
           else
             git add archive/radar
