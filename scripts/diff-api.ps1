@@ -51,7 +51,7 @@ $surfacePaths = @(
 
 # --- 2. 收集两个 ref 的 API 面清单 -------------------------------------------
 function Get-SurfaceSnapshot([string]$ref) {
-    $snap = @{ Packages = @{}; Docs = @{} }
+    $snap = @{ Packages = @{}; Docs = @{}; Config = @{} }
     # 2a. 包：以「存在的 src/index.ts」为准（嵌套结构），读取同级 package.json 的 exports
     $idxFiles = GitArgs @('ls-tree', '-r', '--name-only', $ref, 'packages') |
         Where-Object { $_ -match '/src/index\.ts$' -and $_ -notmatch 'node_modules|/fixtures/|/tests?/' }
@@ -77,6 +77,20 @@ function Get-SurfaceSnapshot([string]$ref) {
     foreach ($d in $docFiles) {
         $lineCount = (GitArgs @('show', "${ref}:$d") | Measure-Object -Line).Lines
         $snap.Docs[$d] = $lineCount
+    }
+    # 2c. 插件配置字段面：从 docs/config-catalog.md（生成物，运行时 schema 权威契约）提取
+    #     每个包的 config 字段集合。字段定义在 native 或深层源码里也能被覆盖。
+    $catalog = GitArgs @('show', "${ref}:docs/config-catalog.md")
+    if ($catalog) {
+        $currentPkg = $null
+        foreach ($line in $catalog) {
+            if ($line -match '^## `(@[^`]+)`') { $currentPkg = $Matches[1]; if (-not $snap.Config.ContainsKey($currentPkg)) { $snap.Config[$currentPkg] = @() }; continue }
+            if ($null -eq $currentPkg) { continue }
+            if ($line -match '^\s+([A-Za-z_][A-Za-z0-9_]*)\??:') {
+                $f = $Matches[1]
+                if ($f -notin $snap.Config[$currentPkg]) { $snap.Config[$currentPkg] += $f }
+            }
+        }
     }
     return $snap
 }
@@ -126,6 +140,24 @@ foreach ($d in $allDocs) {
     if ($o -gt 0) {
         $change = [math]::Abs($n - $o) / $o
         if ($change -ge 0.3) { Add-Finding 'warning' 'doc-major-rewrite' $d ("行数 {0} -> {1}（{2:P0}），可能存在行为级变更，建议人工复核" -f $o, $n, $change) }
+    }
+}
+
+# 3c. 配置字段级（插件 cordis.yml 可写的 config，即用户「直接改 settings 内容」的面）
+$allCfg = @($old.Config.Keys + $new.Config.Keys | Sort-Object -Unique)
+foreach ($pkg in $allCfg) {
+    $hadOld = $old.Config.ContainsKey($pkg); $hasNew = $new.Config.ContainsKey($pkg)
+    if ($hadOld -and -not $hasNew) { Add-Finding 'breaking' 'config-scope-removed' "config:$pkg" '该包从配置目录移除，其 cordis.yml config 块不再可用'; continue }
+    if (-not $hadOld -and $hasNew) { Add-Finding 'info' 'config-scope-added' "config:$pkg" '新增可配置包'; continue }
+
+    $o = $old.Config[$pkg]; $n = $new.Config[$pkg]
+    $removedFields = @($o | Where-Object { $_ -notin $n })
+    $addedFields   = @($n | Where-Object { $_ -notin $o })
+    if ($removedFields.Count -gt 0) {
+        Add-Finding 'breaking' 'config-field-removed' "config:$pkg" "配置字段被删除: $($removedFields -join ', ')（cordis.yml 里写这些字段将失效）"
+    }
+    if ($addedFields.Count -gt 0) {
+        Add-Finding 'info' 'config-field-added' "config:$pkg" "新增配置字段: $($addedFields -join ', ')"
     }
 }
 
