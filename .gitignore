@@ -1,0 +1,4 @@
+*.tmp
+_zsh*/
+_dsh/
+.DS_Store

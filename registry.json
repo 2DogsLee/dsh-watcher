@@ -1,0 +1,15 @@
+{
+  "_comment": "dsh-api-watch 插件注册表（v1 功能预留）。把你的插件声明在这里，报告将按 'uses' 过滤出与你相关的条目。",
+  "version": 1,
+  "plugins": [
+    {
+      "name": "example-my-plugin",
+      "repo": "https://github.com/you/my-plugin",
+      "uses": {
+        "packages": ["packages/sdk", "packages/skill"],
+        "docs": ["docs/cordis-api/registry.md", "docs/subsystems/approval.md"],
+        "settingsFields": ["permission.defaultPreset"]
+      }
+    }
+  ]
+}
