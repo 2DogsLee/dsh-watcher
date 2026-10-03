@@ -2,3 +2,5 @@
 _zsh*/
 _dsh/
 .DS_Store
+_radar_test/
+_radar*
