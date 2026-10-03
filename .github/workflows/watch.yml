@@ -76,6 +76,8 @@ jobs:
           git -c user.name=dsh-api-watch-bot -c user.email=bot@users.noreply.github.com commit -m "archive: $env:FROM -> $env:TO"
           git push
           $body = Get-Content "$dir/report.md" -Raw
+          Set-Content -Encoding UTF8 "$dir/notes.md" $body
+          # 注意：报告大时 --notes 传参会超 Windows 命令行长度限制，必须用 --notes-file
           # 注意：对 gh 等!原生命令不要用 2>$null（PowerShell StandardErrorEncoding bug）
-          gh release create "$env:TO-api-watch" "$dir/report.json" --title "DSH $env:TO 插件 API 面报告" --notes $body
+          gh release create "$env:TO-api-watch" "$dir/report.json" --title "DSH $env:TO 插件 API 面报告" --notes-file "$dir/notes.md"
           if ($LASTEXITCODE -ne 0) { gh release upload "$env:TO-api-watch" "$dir/report.json" --clobber }
