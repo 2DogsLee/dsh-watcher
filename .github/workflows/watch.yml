@@ -35,7 +35,14 @@ jobs:
       - name: Run diff
         if: steps.pair.outputs.skip != 'true'
         shell: pwsh
-        run: ./scripts/diff-api.ps1 -Repo _dsh -From ${{ steps.pair.outputs.from }} -To ${{ steps.pair.outputs.to }}
+        run: |
+          ./scripts/diff-api.ps1 -Repo _dsh -From ${{ steps.pair.outputs.from }} -To ${{ steps.pair.outputs.to }}
+          if ($LASTEXITCODE -eq 2) {
+            # exit 2 = 发现 breaking 条目，这是本流水线的正常产物而非错误
+            Write-Host "发现 breaking 条目，归档后随报告发布"
+            exit 0
+          }
+          exit $LASTEXITCODE
 
       - name: Commit archive + release
         if: steps.pair.outputs.skip != 'true'
