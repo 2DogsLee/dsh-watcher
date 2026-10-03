@@ -35,6 +35,30 @@ dsh-api-watch/
 └── .github/workflows/watch.yml  # 定期盯官方 repo，出新 tag 自动生成报告并提交
 ```
 
+## 安装 skill
+
+手动安装（复制目录）：
+
+```powershell
+git clone https://github.com/2DogsLee/dsh-watcher.git
+Copy-Item dsh-watcher/skill "$env:USERPROFILE\.dsh\skills\dsh-api-watch" -Recurse
+```
+
+或一键拉取单个 SKILL.md：
+
+```powershell
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.dsh\skills\dsh-api-watch" | Out-Null
+irm https://raw.githubusercontent.com/2DogsLee/dsh-watcher/main/skill/SKILL.md -OutFile "$env:USERPROFILE\.dsh\skills\dsh-api-watch\SKILL.md"
+```
+
+安装后重启 DSH，说「升级 DSH 前帮我做升级影响分析」即触发规程。
+注意：比对与扫描需要本地有官方 checkout 和本仓库脚本，skill 只含规程——建议整个仓库 clone 后使用，并让 Agent 知道 `$TOOL` 路径。
+
+## 每日情报
+
+- **逐版本插件 API 面报告**：[Releases](https://github.com/2DogsLee/dsh-watcher/releases)（随官方新 tag 自动发布）
+- **每日反馈雷达**（官方 Discussions + 全站 issues/PR，★ 为通用插件相关条目）：[archive/radar/digest.md](archive/radar/digest.md)
+
 ## 快速使用
 
 ```powershell
