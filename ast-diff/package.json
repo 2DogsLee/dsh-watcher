@@ -1,0 +1,14 @@
+{
+  "name": "dsh-api-watch-ast-diff",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AST-level signature diff for dsh-api-watch (v2): exported symbol signatures incl. re-exports, and config-catalog field types.",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "typescript": "^5.5.0"
+  }
+}

@@ -3,7 +3,14 @@ name: watch-dsh-releases
 on:
   schedule:
     - cron: '0 3 * * *' # 每日 03:00 UTC
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      from:
+        description: '强制起版 tag（如 dsh-v0.2.0-rc.1），留空=自动发现'
+        required: false
+      to:
+        description: '强制止版 tag（如 dsh-v0.2.1-alpha.1），留空=最新'
+        required: false
 
 permissions:
   contents: write
@@ -25,12 +32,24 @@ jobs:
         shell: pwsh
         run: |
           $tags = git -C _dsh tag --sort=-creatordate | Where-Object { $_ -match '^dsh-v\d' }
+          $inFrom = '${{ inputs.from }}'; $inTo = '${{ inputs.to }}'
+          if ($inFrom -and $inTo) {
+            "from=$inFrom" >> $env:GITHUB_OUTPUT
+            "to=$inTo" >> $env:GITHUB_OUTPUT
+            return
+          }
           $archived = if (Test-Path archive) { Get-ChildItem archive -Directory | ForEach-Object { ($_.Name -split '_to_')[1] } } else { @() }
           $from = $null; $to = $tags[0]
           foreach ($t in $tags[1..($tags.Count-1)]) { if ($archived -notcontains ($t -replace '^dsh-v','')) { $from = $t; break } }
           if (-not $from) { Write-Host "无新版本需要归档"; "skip=true" >> $env:GITHUB_OUTPUT; return }
           "from=$from" >> $env:GITHUB_OUTPUT
           "to=$to" >> $env:GITHUB_OUTPUT
+
+      - name: Install AST deps
+        if: steps.pair.outputs.skip != 'true'
+        shell: bash
+        working-directory: ast-diff
+        run: npm install --no-audit --no-fund
 
       - name: Run diff
         if: steps.pair.outputs.skip != 'true'
@@ -57,4 +76,5 @@ jobs:
           git -c user.name=dsh-api-watch-bot -c user.email=bot@users.noreply.github.com commit -m "archive: $env:FROM -> $env:TO"
           git push
           $body = Get-Content "$dir/report.md" -Raw
-          gh release create "$env:TO-api-watch" "$dir/report.json" --title "DSH $env:TO 插件 API 面报告" --notes $body
+          gh release create "$env:TO-api-watch" "$dir/report.json" --title "DSH $env:TO 插件 API 面报告" --notes $body 2>$null
+          if ($LASTEXITCODE -ne 0) { gh release upload "$env:TO-api-watch" "$dir/report.json" --clobber }

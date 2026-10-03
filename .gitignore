@@ -5,3 +5,7 @@ _dsh/
 _radar_test/
 _radar*
 _fake*
+ast-diff/node_modules/
+ast-diff/_ast*
+_v2test/
+_rt/
