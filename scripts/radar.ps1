@@ -105,6 +105,27 @@ $digest = [pscustomobject]@{
 }
 $digest | ConvertTo-Json -Depth 5 | Set-Content -Encoding UTF8 (Join-Path $OutDir 'digest.json')
 
+# --- v3 深化：标题里的版本号 ↔ 已归档 API 报告 自动关联 ------------------------
+# 归档目录形如 0.1.7-rc.2_to_0.2.0-rc.2；条目标题提到某版本时链到对应报告
+$archiveDir = Join-Path (Split-Path $ToolRoot -Parent) 'archive'
+$pairs = if (Test-Path $archiveDir) { Get-ChildItem $archiveDir -Directory | Where-Object Name -like '*_to_*' } else { @() }
+function MatchSide([string]$side, [string]$v) {
+    ($side -eq $v) -or ($v -notmatch '-' -and $side -like "$v-*")
+}
+function Get-ReportLink([string]$title) {
+    $found = @()
+    $ms = [regex]::Matches($title, '\b(\d+\.\d+\.\d+(?:-[A-Za-z0-9.]+)?)\b')
+    foreach ($m in $ms) {
+        $v = $m.Groups[1].Value
+        foreach ($pair in $pairs) {
+            $fromV, $toV = $pair.Name -split '_to_'
+            if ((MatchSide $fromV $v -or MatchSide $toV $v) -and ($pair.Name -notin $found)) { $found += $pair.Name }
+        }
+    }
+    if ($found.Count -eq 0) { return '' }
+    return ' → 📄 ' + (($found | Select-Object -First 2 | ForEach-Object { "[API 报告](../$_/report.md)" }) -join ' · ')
+}
+
 $md = New-Object System.Collections.Generic.List[string]
 $md.Add('# DSH 反馈雷达摘要')
 $md.Add('')
@@ -117,7 +138,7 @@ foreach ($src in @('discussion', 'issue', 'pr')) {
     $md.Add("## $label（★ 与我相关置顶，组内按热度）"); $md.Add('')
     foreach ($r in $rows) {
         $star = if ($r.relevant) { '★' } else { '' }
-        $md.Add("- $star[$($r.upvotes)🔺 $($r.comments)💬] [$($r.title)]($($r.url)) — ``$($r.repo)``（更新 $((([datetime]$r.updated).ToString('yyyy-MM-dd'))))")
+        $md.Add("- $star[$($r.upvotes)🔺 $($r.comments)💬] [$($r.title)]($($r.url)) — ``$($r.repo)``（更新 $((([datetime]$r.updated).ToString('yyyy-MM-dd'))))$(Get-ReportLink $r.title)")
     }
     $md.Add('')
 }
