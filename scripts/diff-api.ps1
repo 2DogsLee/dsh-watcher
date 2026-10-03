@@ -6,7 +6,7 @@
   API 面范围见 docs/api-surface.md。产出 archive/<From>_to_<To>/report.{json,md}。
   启发式保守：可能多报 warning，不应漏报 breaking。误报请记录 issue 收紧规则。
 .EXAMPLE
-  ./scripts/diff-api.ps1 -Repo "D:\projects\deepseek harness" -From dsh-v0.1.7-rc.2 -To dsh-v0.2.0-rc.2
+  ./scripts/diff-api.ps1 -Repo <官方checkout路径> -From dsh-v0.1.7-rc.2 -To dsh-v0.2.0-rc.2
 #>
 [CmdletBinding()]
 param(
@@ -165,7 +165,7 @@ foreach ($pkg in $allCfg) {
 Write-Host "[3/4] 汇总 $($findings.Count) 条 findings..."
 $report = [pscustomobject]@{
     tool      = 'dsh-api-watch v0'
-    repo      = $Repo
+    repo      = Split-Path $Repo -Leaf   # 只记目录名，不泄露本地绝对路径
     from      = $From
     to        = $To
     generated = (Get-Date).ToUniversalTime().ToString('o')

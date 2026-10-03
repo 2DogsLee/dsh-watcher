@@ -13,7 +13,7 @@ description: 在升级 DeepSeek Harness（DSH）之前或插件报接口错误�
 
 ## 前置条件
 
-- 官方 checkout 路径（环境变量 `DSH_CHECKOUT`，或询问用户；常见 `D:\projects\deepseek harness`）；
+- 官方 checkout 路径（环境变量 `DSH_CHECKOUT`，或询问用户；本地 checkout 的目录名，如 `deepseek harness`）；
 - 本仓库（dsh-api-watch）的本地路径，下称 `$TOOL`。
 
 ## 操作步骤
