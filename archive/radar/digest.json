@@ -1,11 +1,11 @@
 {
   "tool": "dsh-api-watch radar v0",
-  "generated": "2026-10-03T07:16:05.0377190Z",
+  "generated": "2026-10-03T07:26:02.5890061Z",
   "upstream": "deepseek-ai/deepseek-harness",
   "counts": {
-    "discussion": 87,
+    "pr": 30,
     "issue": 30,
-    "pr": 30
+    "discussion": 87
   },
   "items": [
     {
@@ -15,7 +15,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8617",
       "upvotes": 1,
       "comments": 2,
-      "updated": "2026-10-02T18:07:16Z"
+      "updated": "2026-10-02T18:07:16Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -24,7 +25,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6890",
       "upvotes": 2,
       "comments": 0,
-      "updated": "2026-09-16T23:09:49Z"
+      "updated": "2026-09-16T23:09:49Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -33,7 +35,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7810",
       "upvotes": 2,
       "comments": 3,
-      "updated": "2026-09-27T02:43:25Z"
+      "updated": "2026-09-27T02:43:25Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -42,7 +45,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7327",
       "upvotes": 2,
       "comments": 0,
-      "updated": "2026-09-21T03:13:27Z"
+      "updated": "2026-09-21T03:13:27Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -51,7 +55,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8125",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-28T10:01:34Z"
+      "updated": "2026-09-28T10:01:34Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -60,7 +65,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5753",
       "upvotes": 1,
       "comments": 2,
-      "updated": "2026-09-05T18:18:43Z"
+      "updated": "2026-09-05T18:18:43Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -69,7 +75,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6862",
       "upvotes": 3,
       "comments": 2,
-      "updated": "2026-09-24T13:16:23Z"
+      "updated": "2026-09-24T13:16:23Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -78,7 +85,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/4845",
       "upvotes": 1,
       "comments": 4,
-      "updated": "2026-08-28T08:31:26Z"
+      "updated": "2026-08-28T08:31:26Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -87,7 +95,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6686",
       "upvotes": 1,
       "comments": 3,
-      "updated": "2026-09-15T05:42:00Z"
+      "updated": "2026-09-15T05:42:00Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -96,7 +105,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6484",
       "upvotes": 1,
       "comments": 5,
-      "updated": "2026-09-13T15:41:28Z"
+      "updated": "2026-09-13T15:41:28Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -105,7 +115,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7995",
       "upvotes": 2,
       "comments": 9,
-      "updated": "2026-09-29T08:16:57Z"
+      "updated": "2026-09-29T08:16:57Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -114,7 +125,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8037",
       "upvotes": 1,
       "comments": 0,
-      "updated": "2026-09-27T09:49:17Z"
+      "updated": "2026-09-27T09:49:17Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -123,7 +135,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8036",
       "upvotes": 1,
       "comments": 0,
-      "updated": "2026-09-27T09:49:16Z"
+      "updated": "2026-09-27T09:49:16Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -132,7 +145,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8460",
       "upvotes": 1,
       "comments": 0,
-      "updated": "2026-09-30T11:54:29Z"
+      "updated": "2026-09-30T11:54:29Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -141,7 +155,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7133",
       "upvotes": 2,
       "comments": 1,
-      "updated": "2026-09-19T09:02:00Z"
+      "updated": "2026-09-19T09:02:00Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -150,7 +165,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/4487",
       "upvotes": 2,
       "comments": 4,
-      "updated": "2026-08-26T10:57:09Z"
+      "updated": "2026-08-26T10:57:09Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -159,7 +175,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8578",
       "upvotes": 2,
       "comments": 0,
-      "updated": "2026-10-01T15:25:13Z"
+      "updated": "2026-10-01T15:25:13Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -168,7 +185,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7445",
       "upvotes": 2,
       "comments": 1,
-      "updated": "2026-09-25T15:26:48Z"
+      "updated": "2026-09-25T15:26:48Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -177,7 +195,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7889",
       "upvotes": 1,
       "comments": 2,
-      "updated": "2026-09-27T06:56:38Z"
+      "updated": "2026-09-27T06:56:38Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -186,7 +205,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8028",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-30T09:21:58Z"
+      "updated": "2026-09-30T09:21:58Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -195,7 +215,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/1518",
       "upvotes": 1,
       "comments": 2,
-      "updated": "2026-08-14T20:18:44Z"
+      "updated": "2026-08-14T20:18:44Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -204,7 +225,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7373",
       "upvotes": 1,
       "comments": 0,
-      "updated": "2026-09-21T13:04:42Z"
+      "updated": "2026-09-21T13:04:42Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -213,7 +235,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6355",
       "upvotes": 2,
       "comments": 2,
-      "updated": "2026-09-15T17:06:12Z"
+      "updated": "2026-09-15T17:06:12Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -222,7 +245,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7637",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-24T05:09:00Z"
+      "updated": "2026-09-24T05:09:00Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -231,7 +255,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5892",
       "upvotes": 1,
       "comments": 2,
-      "updated": "2026-09-08T02:42:44Z"
+      "updated": "2026-09-08T02:42:44Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -240,7 +265,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7617",
       "upvotes": 2,
       "comments": 5,
-      "updated": "2026-09-27T16:37:20Z"
+      "updated": "2026-09-27T16:37:20Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -249,7 +275,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7291",
       "upvotes": 2,
       "comments": 1,
-      "updated": "2026-09-20T17:38:12Z"
+      "updated": "2026-09-20T17:38:12Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -258,7 +285,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/1711",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-08-25T05:48:21Z"
+      "updated": "2026-08-25T05:48:21Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -267,7 +295,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7576",
       "upvotes": 3,
       "comments": 3,
-      "updated": "2026-09-24T06:28:25Z"
+      "updated": "2026-09-24T06:28:25Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -276,7 +305,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/2536",
       "upvotes": 1,
       "comments": 0,
-      "updated": "2026-08-16T16:42:42Z"
+      "updated": "2026-08-16T16:42:42Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -285,7 +315,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7953",
       "upvotes": 4,
       "comments": 0,
-      "updated": "2026-09-26T11:29:45Z"
+      "updated": "2026-09-26T11:29:45Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -294,7 +325,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5564",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-10-01T05:20:18Z"
+      "updated": "2026-10-01T05:20:18Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -303,7 +335,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8693",
       "upvotes": 1,
       "comments": 0,
-      "updated": "2026-10-02T16:49:21Z"
+      "updated": "2026-10-02T16:49:21Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -312,7 +345,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7162",
       "upvotes": 2,
       "comments": 1,
-      "updated": "2026-09-30T09:21:28Z"
+      "updated": "2026-09-30T09:21:28Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -321,7 +355,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8008",
       "upvotes": 4,
       "comments": 2,
-      "updated": "2026-09-29T02:12:33Z"
+      "updated": "2026-09-29T02:12:33Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -330,7 +365,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6040",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-29T04:00:02Z"
+      "updated": "2026-09-29T04:00:02Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -339,7 +375,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5348",
       "upvotes": 1,
       "comments": 3,
-      "updated": "2026-09-02T01:53:24Z"
+      "updated": "2026-09-02T01:53:24Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -348,7 +385,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7701",
       "upvotes": 2,
       "comments": 1,
-      "updated": "2026-09-24T13:35:32Z"
+      "updated": "2026-09-24T13:35:32Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -357,7 +395,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8265",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-29T12:50:59Z"
+      "updated": "2026-09-29T12:50:59Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -366,7 +405,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6329",
       "upvotes": 2,
       "comments": 2,
-      "updated": "2026-09-29T04:00:06Z"
+      "updated": "2026-09-29T04:00:06Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -375,7 +415,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5372",
       "upvotes": 2,
       "comments": 1,
-      "updated": "2026-09-02T03:24:46Z"
+      "updated": "2026-09-02T03:24:46Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -384,7 +425,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6797",
       "upvotes": 2,
       "comments": 1,
-      "updated": "2026-09-16T13:12:12Z"
+      "updated": "2026-09-16T13:12:12Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -393,7 +435,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7681",
       "upvotes": 1,
       "comments": 0,
-      "updated": "2026-09-24T05:29:59Z"
+      "updated": "2026-09-24T05:29:59Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -402,7 +445,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7139",
       "upvotes": 2,
       "comments": 0,
-      "updated": "2026-09-19T05:51:03Z"
+      "updated": "2026-09-19T05:51:03Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -411,7 +455,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8269",
       "upvotes": 4,
       "comments": 1,
-      "updated": "2026-09-29T13:52:43Z"
+      "updated": "2026-09-29T13:52:43Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -420,7 +465,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7334",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-21T16:15:39Z"
+      "updated": "2026-09-21T16:15:39Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -429,7 +475,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6558",
       "upvotes": 3,
       "comments": 4,
-      "updated": "2026-10-01T11:21:25Z"
+      "updated": "2026-10-01T11:21:25Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -438,7 +485,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6895",
       "upvotes": 2,
       "comments": 0,
-      "updated": "2026-09-17T00:37:08Z"
+      "updated": "2026-09-17T00:37:08Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -447,7 +495,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8669",
       "upvotes": 1,
       "comments": 7,
-      "updated": "2026-10-02T17:29:12Z"
+      "updated": "2026-10-02T17:29:12Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -456,7 +505,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8206",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-29T09:24:36Z"
+      "updated": "2026-09-29T09:24:36Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -465,7 +515,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8432",
       "upvotes": 2,
       "comments": 1,
-      "updated": "2026-10-01T16:30:06Z"
+      "updated": "2026-10-01T16:30:06Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -474,7 +525,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5319",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-07T12:49:08Z"
+      "updated": "2026-09-07T12:49:08Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -483,7 +535,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5397",
       "upvotes": 3,
       "comments": 5,
-      "updated": "2026-09-04T02:57:55Z"
+      "updated": "2026-09-04T02:57:55Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -492,7 +545,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/665",
       "upvotes": 1,
       "comments": 0,
-      "updated": "2026-08-14T02:07:46Z"
+      "updated": "2026-08-14T02:07:46Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -501,7 +555,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7740",
       "upvotes": 3,
       "comments": 5,
-      "updated": "2026-10-01T13:29:02Z"
+      "updated": "2026-10-01T13:29:02Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -510,7 +565,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/3496",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-08-20T03:36:29Z"
+      "updated": "2026-08-20T03:36:29Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -519,7 +575,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5858",
       "upvotes": 4,
       "comments": 2,
-      "updated": "2026-09-12T04:31:41Z"
+      "updated": "2026-09-12T04:31:41Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -528,7 +585,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/1177",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-04T07:30:01Z"
+      "updated": "2026-09-04T07:30:01Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -537,7 +595,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/1861",
       "upvotes": 2,
       "comments": 4,
-      "updated": "2026-08-30T14:11:08Z"
+      "updated": "2026-08-30T14:11:08Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -546,7 +605,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6313",
       "upvotes": 2,
       "comments": 4,
-      "updated": "2026-09-20T17:17:07Z"
+      "updated": "2026-09-20T17:17:07Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -555,7 +615,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7492",
       "upvotes": 3,
       "comments": 1,
-      "updated": "2026-09-22T11:30:54Z"
+      "updated": "2026-09-22T11:30:54Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -564,7 +625,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5771",
       "upvotes": 2,
       "comments": 1,
-      "updated": "2026-09-06T12:05:57Z"
+      "updated": "2026-09-06T12:05:57Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -573,7 +635,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8438",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-10-03T04:06:57Z"
+      "updated": "2026-10-03T04:06:57Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -582,7 +645,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8251",
       "upvotes": 1,
       "comments": 2,
-      "updated": "2026-09-29T10:43:23Z"
+      "updated": "2026-09-29T10:43:23Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -591,7 +655,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7801",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-26T07:07:28Z"
+      "updated": "2026-09-26T07:07:28Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -600,7 +665,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8353",
       "upvotes": 1,
       "comments": 0,
-      "updated": "2026-09-30T14:47:49Z"
+      "updated": "2026-09-30T14:47:49Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -609,7 +675,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7764",
       "upvotes": 1,
       "comments": 0,
-      "updated": "2026-09-24T15:46:20Z"
+      "updated": "2026-09-24T15:46:20Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -618,7 +685,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6390",
       "upvotes": 2,
       "comments": 1,
-      "updated": "2026-09-12T14:44:50Z"
+      "updated": "2026-09-12T14:44:50Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -627,7 +695,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6415",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-12T09:03:11Z"
+      "updated": "2026-09-12T09:03:11Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -636,7 +705,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5579",
       "upvotes": 3,
       "comments": 3,
-      "updated": "2026-09-08T09:38:57Z"
+      "updated": "2026-09-08T09:38:57Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -645,7 +715,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5915",
       "upvotes": 2,
       "comments": 2,
-      "updated": "2026-09-08T06:11:26Z"
+      "updated": "2026-09-08T06:11:26Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -654,7 +725,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6358",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-11T18:11:41Z"
+      "updated": "2026-09-11T18:11:41Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -663,7 +735,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7453",
       "upvotes": 1,
       "comments": 2,
-      "updated": "2026-09-22T10:47:54Z"
+      "updated": "2026-09-22T10:47:54Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -672,7 +745,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7873",
       "upvotes": 1,
       "comments": 2,
-      "updated": "2026-09-29T07:59:17Z"
+      "updated": "2026-09-29T07:59:17Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -681,7 +755,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/4592",
       "upvotes": 4,
       "comments": 8,
-      "updated": "2026-09-28T04:36:52Z"
+      "updated": "2026-09-28T04:36:52Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -690,7 +765,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7443",
       "upvotes": 25,
       "comments": 24,
-      "updated": "2026-09-28T05:10:45Z"
+      "updated": "2026-09-28T05:10:45Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -699,7 +775,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6232",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-09-11T01:38:15Z"
+      "updated": "2026-09-11T01:38:15Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -708,7 +785,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/1328",
       "upvotes": 6,
       "comments": 4,
-      "updated": "2026-09-22T02:03:04Z"
+      "updated": "2026-09-22T02:03:04Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -717,7 +795,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5160",
       "upvotes": 1,
       "comments": 6,
-      "updated": "2026-09-08T05:07:13Z"
+      "updated": "2026-09-08T05:07:13Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -726,7 +805,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6185",
       "upvotes": 4,
       "comments": 3,
-      "updated": "2026-09-14T11:19:22Z"
+      "updated": "2026-09-14T11:19:22Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -735,7 +815,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5445",
       "upvotes": 2,
       "comments": 4,
-      "updated": "2026-09-21T15:20:41Z"
+      "updated": "2026-09-21T15:20:41Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -744,7 +825,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6723",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-15T08:57:40Z"
+      "updated": "2026-09-15T08:57:40Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -753,7 +835,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8484",
       "upvotes": 1,
       "comments": 1,
-      "updated": "2026-09-30T18:53:05Z"
+      "updated": "2026-09-30T18:53:05Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -762,7 +845,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7462",
       "upvotes": 4,
       "comments": 1,
-      "updated": "2026-09-22T09:14:36Z"
+      "updated": "2026-09-22T09:14:36Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -771,7 +855,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6947",
       "upvotes": 1,
       "comments": 8,
-      "updated": "2026-09-30T02:35:16Z"
+      "updated": "2026-09-30T02:35:16Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -780,7 +865,8 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/4870",
       "upvotes": 3,
       "comments": 1,
-      "updated": "2026-08-28T12:15:24Z"
+      "updated": "2026-08-28T12:15:24Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -789,106 +875,28 @@
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5283",
       "upvotes": 2,
       "comments": 4,
-      "updated": "2026-09-01T03:58:40Z"
+      "updated": "2026-09-01T03:58:40Z",
+      "relevant": false
     },
     {
       "source": "issue",
-      "repo": "sgl-project/sglang",
-      "title": "[Tracking] CI Test Failures and Fixes",
-      "url": "https://github.com/sgl-project/sglang/issues/17050",
-      "upvotes": 10,
-      "comments": 14,
-      "updated": "2026-10-03T07:15:07Z"
-    },
-    {
-      "source": "issue",
-      "repo": "weijunswj/ai-agent-toolkit",
-      "title": "[ PARENT THREAD ] Toolkit — Delivery and Operational Assurance",
-      "url": "https://github.com/weijunswj/ai-agent-toolkit/issues/421",
+      "repo": "ThefloorMiner/mira-lang",
+      "title": "Harness DeepSeek en Mira, comparé au même en Python",
+      "url": "https://github.com/ThefloorMiner/mira-lang/issues/5",
       "upvotes": 0,
-      "comments": 233,
-      "updated": "2026-10-03T07:13:30Z"
+      "comments": 1,
+      "updated": "2026-10-03T07:25:37Z",
+      "relevant": false
     },
     {
       "source": "issue",
-      "repo": "magda-io/magda",
-      "title": "[Epic] Magda v8 AI Agent Platform",
-      "url": "https://github.com/magda-io/magda/issues/3810",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T07:09:34Z"
-    },
-    {
-      "source": "issue",
-      "repo": "YuJunZhiXue/dsh-purge",
-      "title": "[dsh-plugin.org | dsh-plugin-hub] plugin install failed: yujunzhixue/dsh-purge",
-      "url": "https://github.com/YuJunZhiXue/dsh-purge/issues/62",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T07:09:04Z"
-    },
-    {
-      "source": "issue",
-      "repo": "dddd2024/Nerelan",
-      "title": "Research-integrated continuous improvement audit: paper ↔ project novelty loop",
-      "url": "https://github.com/dddd2024/Nerelan/issues/612",
-      "upvotes": 0,
-      "comments": 637,
-      "updated": "2026-10-03T07:06:06Z"
-    },
-    {
-      "source": "issue",
-      "repo": "mastermindx-market-intelligence/Mastermind",
-      "title": "[ASTRA HANDOFF][DSH/ACP] Complete governed DeepSeek Harness integration end-to-end",
-      "url": "https://github.com/mastermindx-market-intelligence/Mastermind/issues/1142",
-      "upvotes": 0,
-      "comments": 12,
-      "updated": "2026-10-03T07:02:00Z"
-    },
-    {
-      "source": "issue",
-      "repo": "EpiLogos/O-I",
-      "title": "[CAW-W0] Lock the continuous-work acceptance and make end-to-end governance operative",
-      "url": "https://github.com/EpiLogos/O-I/issues/220",
-      "upvotes": 0,
-      "comments": 123,
-      "updated": "2026-10-03T06:55:53Z"
-    },
-    {
-      "source": "issue",
-      "repo": "yanzwzz/dsh-whale-girl-pet",
-      "title": "Add dsh-whale-girl-pet to awesome-ai-plugins?",
-      "url": "https://github.com/yanzwzz/dsh-whale-girl-pet/issues/7",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T06:54:26Z"
-    },
-    {
-      "source": "issue",
-      "repo": "szl-holdings/.github",
-      "title": "Estate operator board",
-      "url": "https://github.com/szl-holdings/.github/issues/795",
+      "repo": "LiPu-jpg/Openwrite",
+      "title": "[桌面端/Windows Electron | 0.2.0-rc.2] 工作台四个问题汇总：作品目录无法使用 · UI 不能加载 · 视图静默不激活 · 模型配置不生效（含定位与修复）",
+      "url": "https://github.com/LiPu-jpg/Openwrite/issues/49",
       "upvotes": 0,
       "comments": 2,
-      "updated": "2026-10-03T06:48:42Z"
-    },
-    {
-      "source": "issue",
-      "repo": "saifeezibrahim/deepseek-harness-docker-devops-ai",
-      "title": "chore: upgrade the pinned DSH release",
-      "url": "https://github.com/saifeezibrahim/deepseek-harness-docker-devops-ai/issues/1",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T06:38:21Z"
-    },
-    {
-      "source": "issue",
-      "repo": "tppc-linksc/deepseek-harness-NEXA",
-      "title": "同步官方 Harness dsh-v0.2.1-alpha.1",
-      "url": "https://github.com/tppc-linksc/deepseek-harness-NEXA/issues/17",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T06:36:40Z"
+      "updated": "2026-10-03T07:23:28Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -897,7 +905,128 @@
       "url": "https://github.com/makecindy/cindy/issues/5402",
       "upvotes": 0,
       "comments": 3,
-      "updated": "2026-10-03T06:31:25Z"
+      "updated": "2026-10-03T07:21:26Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "ThefloorMiner/mira-lang",
+      "title": "Feuille de route : syntaxe minimale en tokens et harness DeepSeek en Mira",
+      "url": "https://github.com/ThefloorMiner/mira-lang/issues/2",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T07:18:21Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "weijunswj/ai-agent-toolkit",
+      "title": "[ PARENT THREAD ] Toolkit — Delivery and Operational Assurance",
+      "url": "https://github.com/weijunswj/ai-agent-toolkit/issues/421",
+      "upvotes": 0,
+      "comments": 233,
+      "updated": "2026-10-03T07:16:09Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "sgl-project/sglang",
+      "title": "[Tracking] CI Test Failures and Fixes",
+      "url": "https://github.com/sgl-project/sglang/issues/17050",
+      "upvotes": 10,
+      "comments": 14,
+      "updated": "2026-10-03T07:15:07Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "magda-io/magda",
+      "title": "[Epic] Magda v8 AI Agent Platform",
+      "url": "https://github.com/magda-io/magda/issues/3810",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T07:09:34Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "YuJunZhiXue/dsh-purge",
+      "title": "[dsh-plugin.org | dsh-plugin-hub] plugin install failed: yujunzhixue/dsh-purge",
+      "url": "https://github.com/YuJunZhiXue/dsh-purge/issues/62",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T07:09:04Z",
+      "relevant": true
+    },
+    {
+      "source": "issue",
+      "repo": "dddd2024/Nerelan",
+      "title": "Research-integrated continuous improvement audit: paper ↔ project novelty loop",
+      "url": "https://github.com/dddd2024/Nerelan/issues/612",
+      "upvotes": 0,
+      "comments": 637,
+      "updated": "2026-10-03T07:06:06Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "mastermindx-market-intelligence/Mastermind",
+      "title": "[ASTRA HANDOFF][DSH/ACP] Complete governed DeepSeek Harness integration end-to-end",
+      "url": "https://github.com/mastermindx-market-intelligence/Mastermind/issues/1142",
+      "upvotes": 0,
+      "comments": 12,
+      "updated": "2026-10-03T07:02:00Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "EpiLogos/O-I",
+      "title": "[CAW-W0] Lock the continuous-work acceptance and make end-to-end governance operative",
+      "url": "https://github.com/EpiLogos/O-I/issues/220",
+      "upvotes": 0,
+      "comments": 123,
+      "updated": "2026-10-03T06:55:53Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "yanzwzz/dsh-whale-girl-pet",
+      "title": "Add dsh-whale-girl-pet to awesome-ai-plugins?",
+      "url": "https://github.com/yanzwzz/dsh-whale-girl-pet/issues/7",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T06:54:26Z",
+      "relevant": true
+    },
+    {
+      "source": "issue",
+      "repo": "szl-holdings/.github",
+      "title": "Estate operator board",
+      "url": "https://github.com/szl-holdings/.github/issues/795",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-10-03T06:48:42Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "saifeezibrahim/deepseek-harness-docker-devops-ai",
+      "title": "chore: upgrade the pinned DSH release",
+      "url": "https://github.com/saifeezibrahim/deepseek-harness-docker-devops-ai/issues/1",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T06:38:21Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "tppc-linksc/deepseek-harness-NEXA",
+      "title": "同步官方 Harness dsh-v0.2.1-alpha.1",
+      "url": "https://github.com/tppc-linksc/deepseek-harness-NEXA/issues/17",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T06:36:40Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -906,7 +1035,8 @@
       "url": "https://github.com/makecindy/cindy/issues/5403",
       "upvotes": 0,
       "comments": 5,
-      "updated": "2026-10-03T06:30:26Z"
+      "updated": "2026-10-03T06:30:26Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -915,7 +1045,8 @@
       "url": "https://github.com/yjh051108/dsh-routing-suite/issues/176",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-03T06:26:05Z"
+      "updated": "2026-10-03T06:26:05Z",
+      "relevant": true
     },
     {
       "source": "issue",
@@ -924,7 +1055,8 @@
       "url": "https://github.com/lilyco-42/new-api/issues/24",
       "upvotes": 0,
       "comments": 1,
-      "updated": "2026-10-03T06:12:50Z"
+      "updated": "2026-10-03T06:12:50Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -933,7 +1065,8 @@
       "url": "https://github.com/deepseek-ai/DeepSeek-V3/issues/1687",
       "upvotes": 6,
       "comments": 7,
-      "updated": "2026-10-03T06:08:40Z"
+      "updated": "2026-10-03T06:08:40Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -942,7 +1075,8 @@
       "url": "https://github.com/NVlabs/SoL-Pi/issues/96",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-03T06:01:20Z"
+      "updated": "2026-10-03T06:01:20Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -951,7 +1085,8 @@
       "url": "https://github.com/aumara-xyz/aukora-prime/issues/2",
       "upvotes": 0,
       "comments": 11,
-      "updated": "2026-10-03T05:56:11Z"
+      "updated": "2026-10-03T05:56:11Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -960,7 +1095,8 @@
       "url": "https://github.com/mryk814/tasuken/issues/629",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-03T05:53:31Z"
+      "updated": "2026-10-03T05:53:31Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -969,7 +1105,8 @@
       "url": "https://github.com/dream-num/dsh-univer-office/issues/114",
       "upvotes": 0,
       "comments": 3,
-      "updated": "2026-10-03T05:53:11Z"
+      "updated": "2026-10-03T05:53:11Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -978,7 +1115,8 @@
       "url": "https://github.com/AI-Scarlett/DSH-Store/issues/148",
       "upvotes": 0,
       "comments": 277,
-      "updated": "2026-10-03T05:51:23Z"
+      "updated": "2026-10-03T05:51:23Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -987,7 +1125,8 @@
       "url": "https://github.com/wample0105/apo-cunnian/issues/1",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-03T05:50:09Z"
+      "updated": "2026-10-03T05:50:09Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -996,7 +1135,8 @@
       "url": "https://github.com/Han-1413141/dsh-cost-meter/issues/226",
       "upvotes": 0,
       "comments": 1,
-      "updated": "2026-10-03T05:48:14Z"
+      "updated": "2026-10-03T05:48:14Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -1005,7 +1145,8 @@
       "url": "https://github.com/flashinfer-ai/flashinfer/issues/4254",
       "upvotes": 26,
       "comments": 8,
-      "updated": "2026-10-03T05:43:52Z"
+      "updated": "2026-10-03T05:43:52Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -1014,7 +1155,8 @@
       "url": "https://github.com/liyupi/github-claw/issues/215",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-03T05:35:58Z"
+      "updated": "2026-10-03T05:35:58Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -1023,7 +1165,8 @@
       "url": "https://github.com/yexi-by/dsh-unrestricted/issues/2",
       "upvotes": 0,
       "comments": 1,
-      "updated": "2026-10-03T05:22:16Z"
+      "updated": "2026-10-03T05:22:16Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -1032,259 +1175,8 @@
       "url": "https://github.com/fuad-daoud/relevo/issues/882",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-03T05:21:26Z"
-    },
-    {
-      "source": "issue",
-      "repo": "GoldVelen/DuraSH",
-      "title": "Upstream sync blocked by merge conflicts",
-      "url": "https://github.com/GoldVelen/DuraSH/issues/14",
-      "upvotes": 0,
-      "comments": 6,
-      "updated": "2026-10-03T05:18:45Z"
-    },
-    {
-      "source": "issue",
-      "repo": "datnguyenquy94/news-radar",
-      "title": "📊 AI CLI Tools Digest 2026-10-03",
-      "url": "https://github.com/datnguyenquy94/news-radar/issues/677",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T05:17:25Z"
-    },
-    {
-      "source": "issue",
-      "repo": "grauzone-dev/sandboxed-agents",
-      "title": "[Epic] sandboxed-agents v1",
-      "url": "https://github.com/grauzone-dev/sandboxed-agents/issues/1",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T05:16:14Z"
-    },
-    {
-      "source": "pr",
-      "repo": "tinyhumansai/openhuman",
-      "title": "fix(agent): keep DeepSeek tool-call markup out of summaries and tool-less answers",
-      "url": "https://github.com/tinyhumansai/openhuman/pull/6946",
-      "upvotes": 0,
-      "comments": 2,
-      "updated": "2026-10-03T07:14:50Z"
-    },
-    {
-      "source": "pr",
-      "repo": "Tencent/teamai-cli",
-      "title": "fix(rules): deliver team rules through each tool's own channel",
-      "url": "https://github.com/Tencent/teamai-cli/pull/957",
-      "upvotes": 0,
-      "comments": 2,
-      "updated": "2026-10-03T07:14:45Z"
-    },
-    {
-      "source": "pr",
-      "repo": "kenryu42/cc-safety-net",
-      "title": "feat(gate): give every deny a fixed rule id",
-      "url": "https://github.com/kenryu42/cc-safety-net/pull/193",
-      "upvotes": 1,
-      "comments": 3,
-      "updated": "2026-10-03T07:14:40Z"
-    },
-    {
-      "source": "pr",
-      "repo": "The-Vibe-Company/armada",
-      "title": "feat(cli): offer local runtime prerequisite installs",
-      "url": "https://github.com/The-Vibe-Company/armada/pull/138",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-10-03T07:14:39Z"
-    },
-    {
-      "source": "pr",
-      "repo": "WSL043/DSH-Portable",
-      "title": "Keep verified DSH dependencies current",
-      "url": "https://github.com/WSL043/DSH-Portable/pull/157",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T07:13:43Z"
-    },
-    {
-      "source": "pr",
-      "repo": "SergeyTo95/deepalpha-bot",
-      "title": "feat: VELIA Desktop developer preview using DeepSeek Harness",
-      "url": "https://github.com/SergeyTo95/deepalpha-bot/pull/577",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-10-03T07:13:08Z"
-    },
-    {
-      "source": "pr",
-      "repo": "arul28/ADE",
-      "title": "fix(ios): compact Codex startup diagnostics, fix new-chat width, and add Custom harnesses",
-      "url": "https://github.com/arul28/ADE/pull/1438",
-      "upvotes": 0,
-      "comments": 4,
-      "updated": "2026-10-03T07:12:57Z"
-    },
-    {
-      "source": "pr",
-      "repo": "memorax-ai/memorax-code",
-      "title": "test: avoid stale Windows child PIDs during native CI cleanup",
-      "url": "https://github.com/memorax-ai/memorax-code/pull/207",
-      "upvotes": 1,
-      "comments": 1,
-      "updated": "2026-10-03T07:09:55Z"
-    },
-    {
-      "source": "pr",
-      "repo": "s3s-project/s3s",
-      "title": "docs: show per-crate coverage in the crate table",
-      "url": "https://github.com/s3s-project/s3s/pull/907",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-10-03T07:09:42Z"
-    },
-    {
-      "source": "pr",
-      "repo": "sy220284/777",
-      "title": "优化上下文投影与工具按需暴露，降低 Token 消耗",
-      "url": "https://github.com/sy220284/777/pull/397",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T07:08:47Z"
-    },
-    {
-      "source": "pr",
-      "repo": "damianvtran/local-operator-ui",
-      "title": "fix(chat): /team and /agent set a new chat's identity before the first send",
-      "url": "https://github.com/damianvtran/local-operator-ui/pull/800",
-      "upvotes": 0,
-      "comments": 3,
-      "updated": "2026-10-03T07:08:07Z"
-    },
-    {
-      "source": "pr",
-      "repo": "edneycaleb-droid/hermes-ai-knowledge-ops",
-      "title": "chore: refresh review-gated knowledge proposals",
-      "url": "https://github.com/edneycaleb-droid/hermes-ai-knowledge-ops/pull/10",
-      "upvotes": 0,
-      "comments": 746,
-      "updated": "2026-10-03T07:03:53Z"
-    },
-    {
-      "source": "pr",
-      "repo": "Robee99/PersonalJarvis",
-      "title": "feat: local-first Qwen with voice, Hermes Agent, camera, pointing arrow, Armoury Crate, HOLO and the HUD",
-      "url": "https://github.com/Robee99/PersonalJarvis/pull/1",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-10-03T07:03:02Z"
-    },
-    {
-      "source": "pr",
-      "repo": "vllm-project/vllm",
-      "title": "[Feature] Release the CUDA graph pool on sleep",
-      "url": "https://github.com/vllm-project/vllm/pull/59160",
-      "upvotes": 0,
-      "comments": 5,
-      "updated": "2026-10-03T07:02:07Z"
-    },
-    {
-      "source": "pr",
-      "repo": "awesome-dsh-plugin/awesome-dsh-plugin",
-      "title": "Add qgynisc/dsh-inline-pastes",
-      "url": "https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/6460",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T07:00:58Z"
-    },
-    {
-      "source": "pr",
-      "repo": "kenryu42/cc-safety-net",
-      "title": "feat(gate): allow find -delete under a workspace subdirectory",
-      "url": "https://github.com/kenryu42/cc-safety-net/pull/192",
-      "upvotes": 2,
-      "comments": 4,
-      "updated": "2026-10-03T06:52:28Z"
-    },
-    {
-      "source": "pr",
-      "repo": "Untrivial-ai/agent-orchestrator",
-      "title": "feat(modelcatalog): order Claude models newest-first by family",
-      "url": "https://github.com/Untrivial-ai/agent-orchestrator/pull/6028",
-      "upvotes": 0,
-      "comments": 2,
-      "updated": "2026-10-03T06:42:11Z"
-    },
-    {
-      "source": "pr",
-      "repo": "forhetale/tatin-studio",
-      "title": "同步上游 v0.7.26，移除付费与推广入口，推送只走 Bark",
-      "url": "https://github.com/forhetale/tatin-studio/pull/1",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T06:35:36Z"
-    },
-    {
-      "source": "pr",
-      "repo": "AgiFlow/doompi",
-      "title": "chore(root): bump the production-minor-and-patch group across 1 directory with 22 updates",
-      "url": "https://github.com/AgiFlow/doompi/pull/273",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T06:31:28Z"
-    },
-    {
-      "source": "pr",
-      "repo": "kenryu42/cc-safety-net",
-      "title": "fix(gate): judge rm -r targets the way rm -rf targets are judged",
-      "url": "https://github.com/kenryu42/cc-safety-net/pull/191",
-      "upvotes": 1,
-      "comments": 3,
-      "updated": "2026-10-03T06:23:14Z"
-    },
-    {
-      "source": "pr",
-      "repo": "dsh-tauri/deepseek-harness-desktop",
-      "title": "feat(desktop): add desktop and official feedback links",
-      "url": "https://github.com/dsh-tauri/deepseek-harness-desktop/pull/872",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-10-03T06:21:18Z"
-    },
-    {
-      "source": "pr",
-      "repo": "eg-bole/dsh-web-brand",
-      "title": "chore(deps-dev): bump the dev group across 1 directory with 6 updates",
-      "url": "https://github.com/eg-bole/dsh-web-brand/pull/6",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T06:14:29Z"
-    },
-    {
-      "source": "pr",
-      "repo": "Kyi101/site-dossier",
-      "title": "Add verification and packaging CI",
-      "url": "https://github.com/Kyi101/site-dossier/pull/3",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T06:14:28Z"
-    },
-    {
-      "source": "pr",
-      "repo": "zszz3/AgentRecall",
-      "title": "fix(dsh): 支持 macOS 桌面版并导入 headless 默认模型",
-      "url": "https://github.com/zszz3/AgentRecall/pull/599",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T06:12:01Z"
-    },
-    {
-      "source": "pr",
-      "repo": "sjoerd2025/gh-aw",
-      "title": "MERGE ",
-      "url": "https://github.com/sjoerd2025/gh-aw/pull/1310",
-      "upvotes": 1,
-      "comments": 2,
-      "updated": "2026-10-03T06:11:28Z"
+      "updated": "2026-10-03T05:21:26Z",
+      "relevant": false
     },
     {
       "source": "pr",
@@ -1293,7 +1185,278 @@
       "url": "https://github.com/arvinhanye/SmartSketch/pull/317",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-03T06:07:13Z"
+      "updated": "2026-10-03T07:24:25Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "cloga/dsh-github-copilot",
+      "title": "fix: explain unavailable completed-turn Usage (alpha.82)",
+      "url": "https://github.com/cloga/dsh-github-copilot/pull/261",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T07:23:12Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "sy220284/777",
+      "title": "优化上下文投影与工具按需暴露，降低 Token 消耗",
+      "url": "https://github.com/sy220284/777/pull/397",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T07:23:05Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "arul28/ADE",
+      "title": "fix(ios): compact Codex startup diagnostics, fix new-chat width, and add Custom harnesses",
+      "url": "https://github.com/arul28/ADE/pull/1438",
+      "upvotes": 0,
+      "comments": 4,
+      "updated": "2026-10-03T07:23:00Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "tinyhumansai/openhuman",
+      "title": "fix(agent): keep DeepSeek tool-call markup out of summaries and tool-less answers",
+      "url": "https://github.com/tinyhumansai/openhuman/pull/6946",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-10-03T07:23:14Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "Simple-With-Us/BotFleet",
+      "title": "Update MiniMax catalog and Harness integration",
+      "url": "https://github.com/Simple-With-Us/BotFleet/pull/742",
+      "upvotes": 2,
+      "comments": 12,
+      "updated": "2026-10-03T07:21:15Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "dsh-tauri/deepseek-harness-desktop",
+      "title": "feat(desktop): add feedback links and copy fallback",
+      "url": "https://github.com/dsh-tauri/deepseek-harness-desktop/pull/872",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-03T07:21:55Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "kenryu42/cc-safety-net",
+      "title": "feat(gate): give every deny a fixed rule id",
+      "url": "https://github.com/kenryu42/cc-safety-net/pull/193",
+      "upvotes": 1,
+      "comments": 3,
+      "updated": "2026-10-03T07:20:32Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "anywhere-labs/dsh-desktop",
+      "title": "新增计划评论与单卡修正交互",
+      "url": "https://github.com/anywhere-labs/dsh-desktop/pull/1304",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T07:18:23Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "Tencent/teamai-cli",
+      "title": "fix(rules): deliver team rules through each tool's own channel",
+      "url": "https://github.com/Tencent/teamai-cli/pull/957",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-10-03T07:26:01Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "The-Vibe-Company/armada",
+      "title": "feat(cli): offer local runtime prerequisite installs",
+      "url": "https://github.com/The-Vibe-Company/armada/pull/138",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-03T07:14:39Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "WSL043/DSH-Portable",
+      "title": "Keep verified DSH dependencies current",
+      "url": "https://github.com/WSL043/DSH-Portable/pull/157",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T07:13:43Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "SergeyTo95/deepalpha-bot",
+      "title": "feat: VELIA Desktop developer preview using DeepSeek Harness",
+      "url": "https://github.com/SergeyTo95/deepalpha-bot/pull/577",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-03T07:13:08Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "s3s-project/s3s",
+      "title": "docs: show per-crate coverage in the crate table",
+      "url": "https://github.com/s3s-project/s3s/pull/907",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-03T07:09:42Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "damianvtran/local-operator-ui",
+      "title": "fix(chat): /team and /agent set a new chat's identity before the first send",
+      "url": "https://github.com/damianvtran/local-operator-ui/pull/800",
+      "upvotes": 0,
+      "comments": 3,
+      "updated": "2026-10-03T07:08:07Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "edneycaleb-droid/hermes-ai-knowledge-ops",
+      "title": "chore: refresh review-gated knowledge proposals",
+      "url": "https://github.com/edneycaleb-droid/hermes-ai-knowledge-ops/pull/10",
+      "upvotes": 0,
+      "comments": 746,
+      "updated": "2026-10-03T07:03:53Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "Robee99/PersonalJarvis",
+      "title": "feat: local-first Qwen with voice, Hermes Agent, camera, pointing arrow, Armoury Crate, HOLO and the HUD",
+      "url": "https://github.com/Robee99/PersonalJarvis/pull/1",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-03T07:03:02Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "vllm-project/vllm",
+      "title": "[Feature] Release the CUDA graph pool on sleep",
+      "url": "https://github.com/vllm-project/vllm/pull/59160",
+      "upvotes": 0,
+      "comments": 5,
+      "updated": "2026-10-03T07:02:07Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "awesome-dsh-plugin/awesome-dsh-plugin",
+      "title": "Add qgynisc/dsh-inline-pastes",
+      "url": "https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/6460",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T07:00:58Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "kenryu42/cc-safety-net",
+      "title": "feat(gate): allow find -delete under a workspace subdirectory",
+      "url": "https://github.com/kenryu42/cc-safety-net/pull/192",
+      "upvotes": 2,
+      "comments": 4,
+      "updated": "2026-10-03T06:52:28Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "Untrivial-ai/agent-orchestrator",
+      "title": "feat(modelcatalog): order Claude models newest-first by family",
+      "url": "https://github.com/Untrivial-ai/agent-orchestrator/pull/6028",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-10-03T06:42:11Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "forhetale/tatin-studio",
+      "title": "同步上游 v0.7.26，移除付费与推广入口，推送只走 Bark",
+      "url": "https://github.com/forhetale/tatin-studio/pull/1",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T06:35:36Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "AgiFlow/doompi",
+      "title": "chore(root): bump the production-minor-and-patch group across 1 directory with 22 updates",
+      "url": "https://github.com/AgiFlow/doompi/pull/273",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T06:31:28Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "kenryu42/cc-safety-net",
+      "title": "fix(gate): judge rm -r targets the way rm -rf targets are judged",
+      "url": "https://github.com/kenryu42/cc-safety-net/pull/191",
+      "upvotes": 1,
+      "comments": 3,
+      "updated": "2026-10-03T06:23:14Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "eg-bole/dsh-web-brand",
+      "title": "chore(deps-dev): bump the dev group across 1 directory with 6 updates",
+      "url": "https://github.com/eg-bole/dsh-web-brand/pull/6",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T06:14:29Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "Kyi101/site-dossier",
+      "title": "Add verification and packaging CI",
+      "url": "https://github.com/Kyi101/site-dossier/pull/3",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T06:14:28Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "zszz3/AgentRecall",
+      "title": "fix(dsh): 支持 macOS 桌面版并导入 headless 默认模型",
+      "url": "https://github.com/zszz3/AgentRecall/pull/599",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-03T06:12:01Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "sjoerd2025/gh-aw",
+      "title": "MERGE ",
+      "url": "https://github.com/sjoerd2025/gh-aw/pull/1310",
+      "upvotes": 1,
+      "comments": 2,
+      "updated": "2026-10-03T06:11:28Z",
+      "relevant": false
     },
     {
       "source": "pr",
@@ -1302,7 +1465,8 @@
       "url": "https://github.com/lennney/stop-that-shit/pull/71",
       "upvotes": 0,
       "comments": 1,
-      "updated": "2026-10-03T06:06:25Z"
+      "updated": "2026-10-03T06:06:25Z",
+      "relevant": false
     },
     {
       "source": "pr",
@@ -1311,25 +1475,8 @@
       "url": "https://github.com/kenryu42/cc-safety-net/pull/190",
       "upvotes": 2,
       "comments": 5,
-      "updated": "2026-10-03T06:04:25Z"
-    },
-    {
-      "source": "pr",
-      "repo": "vllm-project/vllm",
-      "title": "[CI][Do not merge] Runtime sharding staging for model-executor",
-      "url": "https://github.com/vllm-project/vllm/pull/59326",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-10-03T06:02:46Z"
-    },
-    {
-      "source": "pr",
-      "repo": "mastermindx-market-intelligence/Mastermind",
-      "title": "Isolate ACP native startup configuration in its existing run",
-      "url": "https://github.com/mastermindx-market-intelligence/Mastermind/pull/1154",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-03T05:56:49Z"
+      "updated": "2026-10-03T06:04:25Z",
+      "relevant": false
     }
   ]
 }
