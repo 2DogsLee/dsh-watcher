@@ -24,8 +24,10 @@ dsh-api-watch/
 ├── skill/SKILL.md            # Agent Skill 入口：升级前比对的规程
 ├── scripts/
 │   ├── diff-api.ps1          # 核心：对比两个 dsh ref 的插件 API 面，产出 json + md 报告
-│   └── detect-breaking.ps1   # 启发式破坏性判定（供 diff-api 内部调用，也可单独跑）
-├── registry.json             # 你的插件 → 依赖的 API 面 声明清单
+│   ├── scan-plugin.ps1       # 拿报告扫你的插件源码，产出「改动点/风险点」影响分析
+│   └── detect-breaking.ps1   # CI 门禁：读 report.json，按严重级别给退出码
+├── scripts/radar.ps1         # 反馈雷达：官方 Discussions + 全站 issues/PR 每日摘要
+├── registry.json             # 你的插件 → 依赖的 API 面 声明清单（v1 过滤 + 扫描共用）
 ├── archive/                  # CI 自动维护：每版本对一份 impact report
 ├── docs/
 │   ├── architecture.md       # 架构与方案（必读）
