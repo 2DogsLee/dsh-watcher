@@ -1,14 +1,16 @@
 {
-  "_comment": "dsh-api-watch 插件注册表（v1 功能预留）。把你的插件声明在这里，报告将按 'uses' 过滤出与你相关的条目。",
+  "_comment": "dsh-api-watch 插件注册表（v1 生效）。watch 报告与雷达摘要按 uses 过滤出『与我相关』条目。packages/docs 按路径前缀匹配（finding.path 以此开头即相关）；config 填 config-catalog 里的包名（匹配 config:<名称> 前缀）；keywords 用于雷达标题匹配（不区分大小写，子串）。",
   "version": 1,
   "plugins": [
     {
       "name": "example-my-plugin",
       "repo": "https://github.com/you/my-plugin",
       "uses": {
-        "packages": ["packages/sdk", "packages/skill"],
+        "packages": ["packages/sdk", "packages/skill", "packages/experimental/schedule-bundle"],
         "docs": ["docs/cordis-api/registry.md", "docs/subsystems/approval.md"],
-        "settingsFields": ["permission.defaultPreset"]
+        "config": ["@deepseek-ai/dsh-settings"],
+        "settingsFields": ["permission.defaultPreset"],
+        "keywords": ["plugin", "breaking", "migration"]
       }
     }
   ]
