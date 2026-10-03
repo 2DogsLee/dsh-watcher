@@ -61,8 +61,10 @@ foreach ($f in $json.findings) {
 }
 
 # --- 2. 扫插件源码 -------------------------------------------------------------
+# 排除上次生成的 impact 报告与输出文件自身，避免「报告自命中」假阳性
 $allFiles = Get-ChildItem $PluginRepo -Recurse -File -Include $Include |
-    Where-Object { $p = $_.FullName; -not ($ExcludeDir | Where-Object { $p -like "*\$_\*" }) }
+    Where-Object { $p = $_.FullName; -not ($ExcludeDir | Where-Object { $p -like "*\$_\*" }) -and
+        ($_.Name -notlike 'impact-*.md') -and ($_.FullName -ne ((Resolve-Path -LiteralPath $OutFile -ErrorAction SilentlyContinue).Path)) }
 $hits = New-Object System.Collections.Generic.List[object]
 foreach ($pr in $probes) {
     if (-not $pr.signal -or $pr.signal.Length -lt 3) { continue }
@@ -78,17 +80,58 @@ foreach ($pr in $probes) {
     }
 }
 
+# --- 2b. 插件 DSH 依赖面 + 动态访问点（自动复核依据）---------------------------
+$depSurface = New-Object System.Collections.Generic.List[string]   # @deepseek-ai/* 模块名 + inject 服务名
+$dynamicPoints = New-Object System.Collections.Generic.List[object] # ctx[...] 动态访问
+foreach ($file in $allFiles) {
+    $lines = Get-Content $file.FullName -ErrorAction SilentlyContinue
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        $t = $lines[$i]
+        foreach ($m in [regex]::Matches($t, "@deepseek-ai/([A-Za-z0-9/_-]+)")) {
+            $depSurface.Add($m.Value)
+            foreach ($seg in ($m.Groups[1].Value -split '/')) { if ($seg.Length -ge 3) { $depSurface.Add($seg) } }
+        }
+        foreach ($m in [regex]::Matches($t, "inject\s*=\s*\[([^\]]*)\]")) {
+            # inject 数组单双引号都可能出现（["invariants"] / ['invariants']）
+            foreach ($s in [regex]::Matches($m.Groups[1].Value, "[""']([^""']+)[""']")) { $depSurface.Add($s.Groups[1].Value) }
+        }
+        if ($t -match 'ctx\s*\[' -or $t -match '\[["'']invariants["'']\]') {
+            $dynamicPoints.Add([pscustomobject]@{ file = (Resolve-Path -Relative $file.FullName); line = $i + 1; text = $t.Trim() })
+        }
+    }
+}
+$depSet = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+foreach ($d in $depSurface) { $null = $depSet.Add($d) }
+
+# 未命中 finding 的路径片段是否出现在依赖面（标识符再按 - 分词，如 dsh-invariants -> invariants）
+function Test-InDepSurface([string]$path) {
+    $core = $path -replace '^config:@deepseek-ai/', '' -replace '^packages/', '' -replace '^docs/', ''
+    foreach ($seg in ($core -split '[/]')) {
+        if ($seg.Length -ge 3 -and $depSet.Contains($seg)) { return $true }
+        foreach ($tok in ($seg -split '-')) {
+            if ($tok.Length -ge 5 -and $depSet.Contains($tok)) { return $true }
+        }
+    }
+    foreach ($seg in ($path -split '[/]')) {
+        if ($seg.Length -ge 4 -and $depSet.Contains($seg)) { return $true }
+    }
+    return $false
+}
+
 # --- 3. 产物 ----------------------------------------------------------------
 $breakingHits  = @($hits | Where-Object { $_.probe.finding.severity -eq 'breaking' })
 $warningHits   = @($hits | Where-Object { $_.probe.finding.severity -eq 'warning' })
 $touchedFindingPaths = @($hits | ForEach-Object { $_.probe.finding.path } | Sort-Object -Unique)
 $untouchedBreaking = @($json.findings | Where-Object { $_.severity -eq 'breaking' -and $_.path -notin $touchedFindingPaths })
+# 提前计算复核分组（结论行需要）
+$verified = @($untouchedBreaking | Where-Object { -not (Test-InDepSurface $_.path) })
+$needsHuman = @($untouchedBreaking | Where-Object { Test-InDepSurface $_.path })
 
 $md = New-Object System.Collections.Generic.List[string]
 $md.Add("# 插件升级影响分析：$($(Split-Path $PluginRepo -Leaf)) × DSH ``$($json.from)`` → ``$($json.to)``")
 $md.Add('')
 $md.Add("> 基于 report.json（$($json.generated)）扫描 ``$PluginRepo``（$($allFiles.Count) 个文件）")
-$md.Add('> 结论：**改动点 ' + $breakingHits.Count + ' 处 · 风险点 ' + $warningHits.Count + ' 处 · 未命中 breaking ' + $untouchedBreaking.Count + ' 条**')
+$md.Add('> 结论：**改动点 ' + $breakingHits.Count + ' 处 · 风险点 ' + $warningHits.Count + ' 处 · 未命中 breaking ' + $untouchedBreaking.Count + ' 条（其中自动复核通过 ' + $verified.Count + ' 条）**')
 $md.Add('')
 
 if ($breakingHits.Count -gt 0) {
@@ -116,10 +159,32 @@ if ($warningHits.Count -gt 0) {
     $md.Add('## 二、风险点'); $md.Add(''); $md.Add('warning 级条目在你的代码中零命中。'); $md.Add('')
 }
 
+# 未命中 breaking 自动复核：依赖面零交集 → ✅；有交集但未定位到行 → ⚠️ 留人工
+$verified = @($untouchedBreaking | Where-Object { -not (Test-InDepSurface $_.path) })
+$needsHuman = @($untouchedBreaking | Where-Object { Test-InDepSurface $_.path })
+
 if ($untouchedBreaking.Count -gt 0) {
-    $md.Add('## 三、未命中的 breaking（供确认，不是「没事」的证据）'); $md.Add('')
-    $md.Add('以下 breaking 在扫描中未命中。**注意**：这只说明源码文本里没有直接引用，若你的插件通过间接方式（运行时字符串、转发依赖）使用，仍需复核：'); $md.Add('')
-    foreach ($f in $untouchedBreaking) { $md.Add("- **[$($f.kind)]** ``$($f.path)`` — $($f.detail)") }
+    $md.Add('## 三、未命中 breaking 的自动复核'); $md.Add('')
+    $md.Add("复核依据：插件 DSH 依赖面（import 模块 + inject 服务名，共 $($depSet.Count) 个标识）与各 breaking 条目的路径片段求交集。")
+    $md.Add('')
+    if ($verified.Count -gt 0) {
+        $md.Add("### ✅ 自动复核通过（依赖面零交集，$($verified.Count) 条）"); $md.Add('')
+        $md.Add('以下条目涉及的包/文档/配置在你的依赖面中**完全没有出现**，且全文文本扫描零引用，可判定与本插件无关：'); $md.Add('')
+        foreach ($f in $verified) { $md.Add("- ✅ **[$($f.kind)]** ``$($f.path)``") }
+        $md.Add('')
+    }
+    if ($needsHuman.Count -gt 0) {
+        $md.Add("### ⚠️ 需人工确认（依赖面有交集但未定位到具体行，$($needsHuman.Count) 条）"); $md.Add('')
+        $md.Add('以下条目涉及的包名/服务名出现在你的依赖面中（可能只是同名词），但源码里没有直接引用行——请对照确认：'); $md.Add('')
+        foreach ($f in $needsHuman) { $md.Add("- ⚠️ **[$($f.kind)]** ``$($f.path)`` — $($f.detail)") }
+        $md.Add('')
+    }
+}
+
+if ($dynamicPoints.Count -gt 0) {
+    $md.Add('### 动态访问点（文本扫描无法兜底的位置）'); $md.Add('')
+    $md.Add('以下代码通过运行时字符串/动态索引访问 ctx，静态扫描无法判定是否触及被删 API：'); $md.Add('')
+    foreach ($d in $dynamicPoints) { $md.Add("- ``$($d.file):$($d.line)``：``$($d.text)``") }
     $md.Add('')
 }
 
@@ -134,4 +199,4 @@ if ($breakingHits.Count -gt 0) {
 $md.Add('3. 行为级变化（文档大改/升级指南）无法靠文本扫描兜底，按「风险点」提示人工读对应文档。')
 
 $md | Set-Content -Encoding UTF8 $OutFile
-Write-Host "scan: 改动点=$($breakingHits.Count) 风险点=$($warningHits.Count) 未命中breaking=$($untouchedBreaking.Count) -> $OutFile"
+Write-Host "scan: 改动点=$($breakingHits.Count) 风险点=$($warningHits.Count) 未命中breaking=$($untouchedBreaking.Count)（自动复核通过=$($verified.Count) 待人工=$($needsHuman.Count)）动态访问点=$($dynamicPoints.Count) -> $OutFile"
