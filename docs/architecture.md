@@ -86,9 +86,7 @@
 
 ## 7. 演进路线
 
-1. **v0（当前）**：单机 PowerShell 脚本 + 手动跑 + CI watch。
-   已含**配置字段面**（第一期补齐）：从 `docs/config-catalog.md`（运行时 schema 生成的权威契约）逐包提取 config 字段集合做比对，覆盖「插件直接写 settings/cordis.yml 内容」这条路径的字段删除/包移除。
-   局限：字段**类型收紧**与默认值变化不在 v0（见 api-surface.md 边界说明）。
-2. **v1**：`registry.json` 生效——用户声明自家插件依赖哪些包/文档/配置字段，报告只呈现「与我相关」的条目（降噪）。
-3. **v2**：TS AST 解析替代正则提取导出符号，签名比对精确到参数类型；支持生成迁移建议草案（old → new 调用片段）。
-4. **v3（可选）**：聚合官方 Discussions 的破坏性变更帖，作为人工信号源与启发式结果交叉验证。
+1. **v0 + 第一期 + v1（当前）**：单机 PowerShell 脚本 + 手动跑 + CI watch；配置字段面比对（config-catalog 提取）；**registry 驱动的「与我相关」过滤**（v1，2026-10-03）——`registry.json` 声明插件依赖的 packages/docs/config 前缀与 keywords，watch 报告对相关条目打 ★ 并生成「优先关注」区块，雷达摘要对命中关键词的条目 ★ 置顶。
+   局限：settings 字段**类型收紧**与默认值变化不在覆盖内（见 api-surface.md 边界说明）。
+2. **v2**：TS AST 解析替代正则提取导出符号，签名比对精确到参数类型；settings 字段类型收紧检测；支持生成迁移建议草案（old → new 调用片段）。
+3. **v3（雷达已上线，待深化）**：反馈雷达（官方 Discussions + 全站 issues/PR 每日摘要）已作为独立 workflow（radar.yml）运行；深化方向：雷达命中版本号 ↔ 该版本报告 breaking 条目自动关联、digest 增量去重、README「每日雷达」区块。

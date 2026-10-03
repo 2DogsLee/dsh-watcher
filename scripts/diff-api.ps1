@@ -27,6 +27,31 @@ $toShort   = $To   -replace '^dsh-v', ''
 if (-not $OutDir) { $OutDir = Join-Path (Split-Path $ToolRoot -Parent) "archive/$fromShort`_to_$toShort" }
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 
+# --- v1: registry（『与我相关』过滤）------------------------------------------
+$repoRoot = Split-Path $ToolRoot -Parent
+$registryPath = Join-Path $repoRoot 'registry.json'
+$registry = $null
+if (Test-Path $registryPath) {
+    $registry = (Get-Content $registryPath -Raw | ConvertFrom-Json).plugins
+    Write-Host "registry: 已加载 $($registry.Count) 个插件声明（相关条目将标记 ★）"
+}
+function Test-Relevant([string]$path, [string]$detail) {
+    if (-not $registry) { return $false }
+    foreach ($p in $registry) {
+        $u = $p.uses
+        foreach ($pref in @($u.packages) + @($u.docs)) {
+            if ($pref -and ($path -like "$pref*")) { return $true }
+        }
+        foreach ($cfg in @($u.config)) {
+            if ($cfg -and ($path -like "config:$cfg*")) { return $true }
+        }
+        foreach ($sf in @($u.settingsFields)) {
+            if ($sf -and (($path -like "*$sf*") -or ($detail -like "*$sf*"))) { return $true }
+        }
+    }
+    return $false
+}
+
 function GitArgs([string[]]$Args_) {
     # 在指定 repo 上执行 git，返回 stdout 行数组
     & git -C $Repo @Args_ 2>&1 | ForEach-Object { "$_" }
@@ -103,7 +128,10 @@ $new = Get-SurfaceSnapshot $To
 # --- 3. 逐项对比 -------------------------------------------------------------
 $findings = New-Object System.Collections.Generic.List[object]
 function Add-Finding([string]$severity, [string]$kind, [string]$path, [string]$detail) {
-    $findings.Add([pscustomobject]@{ severity = $severity; kind = $kind; path = $path; detail = $detail })
+    $findings.Add([pscustomobject]@{
+        severity = $severity; kind = $kind; path = $path; detail = $detail
+        relevant = Test-Relevant $path $detail
+    })
 }
 
 # 3a. 包级
@@ -163,8 +191,9 @@ foreach ($pkg in $allCfg) {
 
 # --- 4. 产物 ----------------------------------------------------------------
 Write-Host "[3/4] 汇总 $($findings.Count) 条 findings..."
+$relBreak = @($findings | Where-Object { $_.relevant -and $_.severity -in 'breaking','warning' })
 $report = [pscustomobject]@{
-    tool      = 'dsh-api-watch v0'
+    tool      = 'dsh-api-watch v1'
     repo      = Split-Path $Repo -Leaf   # 只记目录名，不泄露本地绝对路径
     from      = $From
     to        = $To
@@ -173,6 +202,7 @@ $report = [pscustomobject]@{
         breaking = @($findings | Where-Object severity -eq 'breaking').Count
         warning  = @($findings | Where-Object severity -eq 'warning').Count
         info     = @($findings | Where-Object severity -eq 'info').Count
+        relevant = @($findings | Where-Object relevant).Count
     }
     findings  = $findings
 }
@@ -182,19 +212,29 @@ $report | ConvertTo-Json -Depth 5 | Set-Content -Encoding UTF8 $jsonPath
 $md = New-Object System.Collections.Generic.List[string]
 $md.Add("# DSH 插件 API 面比对：``$From`` → ``$To``")
 $md.Add("")
-$md.Add("> 生成于 $($report.generated) · 工具 dsh-api-watch v0（启发式， breaking 结论建议复核 diff）")
+$md.Add("> 生成于 $($report.generated) · 工具 dsh-api-watch v1（启发式， breaking 结论建议复核 diff）")
 $md.Add("")
 $md.Add("| 级别 | 数量 |")
 $md.Add("|---|---|")
 $md.Add("| breaking | $($report.counts.breaking) |")
 $md.Add("| warning | $($report.counts.warning) |")
 $md.Add("| info | $($report.counts.info) |")
+$md.Add("| ★ 与我相关 | $($report.counts.relevant) |")
+if ($registry -and $relBreak.Count -gt 0) {
+    $md.Add("")
+    $md.Add("## ★ 优先关注：与你插件相关的 breaking / warning")
+    $md.Add("")
+    foreach ($f in $relBreak) {
+        $md.Add("- **[$($f.kind)]** ``$($f.path)`` — $($f.detail)")
+    }
+}
 foreach ($sev in @('breaking', 'warning', 'info')) {
     $items = @($findings | Where-Object severity -eq $sev)
     if ($items.Count -eq 0) { continue }
     $md.Add(""); $md.Add("## $sev"); $md.Add("")
     foreach ($f in $items) {
-        $md.Add("- **[$($f.kind)]** ``$($f.path)`` — $($f.detail)")
+        $star = if ($f.relevant) { '★ ' } else { '' }
+        $md.Add("- $star**[$($f.kind)]** ``$($f.path)`` — $($f.detail)")
     }
 }
 $mdPath = Join-Path $OutDir 'report.md'

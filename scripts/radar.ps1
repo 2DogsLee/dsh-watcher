@@ -25,6 +25,21 @@ New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 $h = @{ Authorization = "Bearer $($env:GH_TOKEN)"; 'User-Agent' = 'dsh-api-watch'; Accept = 'application/vnd.github+json' }
 $items = New-Object System.Collections.Generic.List[object]
 
+# --- v1: registry（『与我相关』标记）------------------------------------------
+$repoRoot = Split-Path $ToolRoot -Parent
+$registryPath = Join-Path $repoRoot 'registry.json'
+$myKeywords = @()
+if (Test-Path $registryPath) {
+    foreach ($p in (Get-Content $registryPath -Raw | ConvertFrom-Json).plugins) {
+        $myKeywords += @($p.uses.keywords | Where-Object { $_ })
+    }
+    if ($myKeywords.Count -gt 0) { Write-Host "registry: 雷达将标记命中 $($myKeywords.Count) 个关键词的条目（★ 置顶）" }
+}
+function Test-MyItem([string]$title) {
+    foreach ($k in $myKeywords) { if ($title -like "*$k*") { return $true } }
+    return $false
+}
+
 # --- 1. 官方 Discussions（GraphQL search，按更新时间）------------------------
 # GitHub 搜索的 OR 链超过 3 个词会静默返回 0 条，必须分批查询后去重
 $keywords = @('breaking', 'migration', 'migrate', 'plugin', 'compatible', '适配', '破坏性', '迁移')
@@ -57,6 +72,7 @@ query($q: String!) {
             title = $d.title; url = $d.url
             upvotes = $d.upvoteCount; comments = $d.comments.totalCount
             updated = $d.updatedAt
+            relevant = Test-MyItem $d.title
         })
     }
 }
@@ -72,6 +88,7 @@ foreach ($kind in @('issue', 'pr')) {
             title = $i.title; url = $i.html_url
             upvotes = $i.reactions.total_count; comments = $i.comments
             updated = $i.updated_at
+            relevant = Test-MyItem $i.title
         })
     }
 }
@@ -94,12 +111,13 @@ $md.Add('')
 $md.Add("> 生成于 $($digest.generated) · 官方 Discussions $($digest.counts.discussion) 条命中 · 全站开放 issues $($digest.counts.issue) 条 · PR $($digest.counts.pr) 条")
 $md.Add('')
 foreach ($src in @('discussion', 'issue', 'pr')) {
-    $rows = @($items | Where-Object source -eq $src | Sort-Object upvotes -Descending)
+    $rows = @($items | Where-Object source -eq $src | Sort-Object -Property @{Expression='relevant';Descending=$true}, @{Expression='upvotes';Descending=$true})
     if ($rows.Count -eq 0) { continue }
     $label = switch ($src) { 'discussion' { '官方 Discussions' } 'issue' { '全站开放 Issues' } 'pr' { '全站 PRs' } }
-    $md.Add("## $label（按热度）"); $md.Add('')
+    $md.Add("## $label（★ 与我相关置顶，组内按热度）"); $md.Add('')
     foreach ($r in $rows) {
-        $md.Add("- [$($r.upvotes)🔺 $($r.comments)💬] [$($r.title)]($($r.url)) — ``$($r.repo)``（更新 $((([datetime]$r.updated).ToString('yyyy-MM-dd'))))")
+        $star = if ($r.relevant) { '★' } else { '' }
+        $md.Add("- $star[$($r.upvotes)🔺 $($r.comments)💬] [$($r.title)]($($r.url)) — ``$($r.repo)``（更新 $((([datetime]$r.updated).ToString('yyyy-MM-dd'))))")
     }
     $md.Add('')
 }
