@@ -1,12 +1,12 @@
 # DSH 插件 API 面比对：`dsh-v0.1.7-rc.2` → `dsh-v0.2.0-rc.2`
 
-> 生成于 2026-10-03T04:18:00.1170903Z · 工具 dsh-api-watch v0（启发式， breaking 结论建议复核 diff）
+> 生成于 2026-10-03T04:52:48.3023696Z · 工具 dsh-api-watch v0（启发式， breaking 结论建议复核 diff）
 
 | 级别 | 数量 |
 |---|---|
 | breaking | 0 |
 | warning | 10 |
-| info | 8 |
+| info | 13 |
 
 ## warning
 
@@ -31,3 +31,8 @@
 - **[doc-added]** `docs/persistence-changes/2026-09-21-user-question-reply.zh.md` — 新增文档
 - **[doc-added]** `docs/subsystems/otel.md` — 新增文档
 - **[doc-added]** `docs/subsystems/otel.zh.md` — 新增文档
+- **[config-scope-added]** `config:@deepseek-ai/dsh-client-product-analytics` — 新增可配置包
+- **[config-field-added]** `config:@deepseek-ai/dsh-cordis-host-runner` — 新增配置字段: clientInspectTimeoutMs
+- **[config-field-added]** `config:@deepseek-ai/dsh-session-telemetry-otel` — 新增配置字段: maxRequestBytes
+- **[config-field-added]** `config:@deepseek-ai/dsh-terminal-bash` — 新增配置字段: promptTailGraceMs
+- **[config-scope-added]** `config:@deepseek-ai/dsh-tool-ask-user` — 新增可配置包

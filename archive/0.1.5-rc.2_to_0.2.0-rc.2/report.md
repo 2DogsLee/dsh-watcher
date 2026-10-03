@@ -1,0 +1,322 @@
+# DSH 插件 API 面比对：`dsh-v0.1.5-rc.2` → `dsh-v0.2.0-rc.2`
+
+> 生成于 2026-10-03T04:54:40.4935920Z · 工具 dsh-api-watch v0（启发式， breaking 结论建议复核 diff）
+
+| 级别 | 数量 |
+|---|---|
+| breaking | 22 |
+| warning | 64 |
+| info | 218 |
+
+## breaking
+
+- **[package-removed]** `packages/code-runtime/code-runtime` — 包被移除或不再是独立包
+- **[package-removed]** `packages/code-runtime/code-runtime-worker-thread` — 包被移除或不再是独立包
+- **[package-removed]** `packages/e2b/e2b` — 包被移除或不再是独立包
+- **[package-removed]** `packages/e2b/fs-e2b` — 包被移除或不再是独立包
+- **[package-removed]** `packages/e2b/subprocess-e2b` — 包被移除或不再是独立包
+- **[package-removed]** `packages/experimental/agent-team-web-profile` — 包被移除或不再是独立包
+- **[package-removed]** `packages/experimental/code-runtime-python` — 包被移除或不再是独立包
+- **[package-removed]** `packages/fs/tool-present` — 包被移除或不再是独立包
+- **[package-removed]** `packages/preset/agent-presets` — 包被移除或不再是独立包
+- **[package-removed]** `packages/settings/settings-file` — 包被移除或不再是独立包
+- **[package-removed]** `packages/workflow/workflow-worker-thread` — 包被移除或不再是独立包
+- **[doc-removed]** `docs/subsystems/code-runtime.md` — 契约文档被删除/改名
+- **[doc-removed]** `docs/subsystems/code-runtime.zh.md` — 契约文档被删除/改名
+- **[config-scope-removed]** `config:@deepseek-ai/dsh-agent-presets` — 该包从配置目录移除，其 cordis.yml config 块不再可用
+- **[config-scope-removed]** `config:@deepseek-ai/dsh-code-runtime-worker-thread` — 该包从配置目录移除，其 cordis.yml config 块不再可用
+- **[config-scope-removed]** `config:@deepseek-ai/dsh-e2b` — 该包从配置目录移除，其 cordis.yml config 块不再可用
+- **[config-scope-removed]** `config:@deepseek-ai/dsh-experimental-code-runtime-python` — 该包从配置目录移除，其 cordis.yml config 块不再可用
+- **[config-scope-removed]** `config:@deepseek-ai/dsh-llm-deepseek` — 该包从配置目录移除，其 cordis.yml config 块不再可用
+- **[config-scope-removed]** `config:@deepseek-ai/dsh-settings-file` — 该包从配置目录移除，其 cordis.yml config 块不再可用
+- **[config-field-removed]** `config:@deepseek-ai/dsh-spill-policy` — 配置字段被删除: maxInlineBytes（cordis.yml 里写这些字段将失效）
+- **[config-scope-removed]** `config:@deepseek-ai/dsh-subprocess-e2b` — 该包从配置目录移除，其 cordis.yml config 块不再可用
+- **[config-scope-removed]** `config:@deepseek-ai/dsh-workflow-worker-thread` — 该包从配置目录移除，其 cordis.yml config 块不再可用
+
+## warning
+
+- **[exports-map-changed]** `packages/api/gateway/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/api/workspace-controller/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/boot/app-boot/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/bundle/web-app/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/client/ui-schedule/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/client/ui-settings-general/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/client/ui-theme/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/client/web/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/context/time-context/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/core/session/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/experimental/agent-team/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/experimental/agent-team-profile/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/experimental/client-ui-agent-team/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/experimental/inspector/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/experimental/tool-agent-team/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/extensions/tool-cordis/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/interaction/permission-presets/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/interaction/user-questions/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/jobs/jobs/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/llm/token-meter/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/schedule/schedule/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/session/session-format-catalog/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/settings/settings/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/subprocess/subprocess/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/subprocess/subprocess-local/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/util/native-command/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[doc-major-rewrite]** `docs/config-catalog.md` — 行数 2976 -> 3889（31%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/config-catalog.zh.md` — 行数 2977 -> 3890（31%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/cookbook/adding-a-package.md` — 行数 80 -> 117（46%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/cookbook/adding-a-package.zh.md` — 行数 81 -> 117（44%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/cookbook/adding-a-session-format-version.md` — 行数 69 -> 94（36%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/cookbook/adding-a-session-format-version.zh.md` — 行数 69 -> 94（36%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/cookbook/adding-a-settings-card.md` — 行数 74 -> 50（32%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/cookbook/adding-a-settings-card.zh.md` — 行数 74 -> 50（32%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/cordis-tutorial/05-config.md` — 行数 58 -> 77（33%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/cordis-tutorial/05-config.zh.md` — 行数 58 -> 77（33%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/persistence-catalog.md` — 行数 870 -> 5564（540%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/persistence-catalog.zh.md` — 行数 871 -> 5565（539%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/session-format-status.md` — 行数 30 -> 40（33%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/session-format-status.zh.md` — 行数 30 -> 40（33%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/credentials.md` — 行数 261 -> 387（48%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/credentials.zh.md` — 行数 261 -> 387（48%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/jobs.md` — 行数 252 -> 441（75%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/jobs.zh.md` — 行数 252 -> 441（75%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/schedule.md` — 行数 151 -> 442（193%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/schedule.zh.md` — 行数 151 -> 442（193%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/settings.md` — 行数 341 -> 118（65%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/settings.zh.md` — 行数 341 -> 118（65%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/typert.md` — 行数 294 -> 432（47%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/typert.zh.md` — 行数 294 -> 432（47%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/user-questions.md` — 行数 139 -> 250（80%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/user-questions.zh.md` — 行数 139 -> 250（80%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/web-server.md` — 行数 119 -> 175（47%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/web-server.zh.md` — 行数 119 -> 175（47%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/workspace.md` — 行数 325 -> 541（66%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/workspace.zh.md` — 行数 325 -> 541（66%），可能存在行为级变更，建议人工复核
+- **[upgrade-guide-added]** `docs/upgrade-guide/v0.1.7-rc.2/schedule-optional-bundle/guide.md` — 官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读
+- **[upgrade-guide-added]** `docs/upgrade-guide/v0.1.7-rc.2/schedule-optional-bundle/guide.zh.md` — 官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读
+- **[upgrade-guide-added]** `docs/upgrade-guide/v0.1.7-rc.2/transcript-view-legacy-normal/guide.md` — 官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读
+- **[upgrade-guide-added]** `docs/upgrade-guide/v0.1.7-rc.2/transcript-view-legacy-normal/guide.zh.md` — 官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读
+- **[doc-major-rewrite]** `docs/user/guide/schedule.md` — 行数 12 -> 45（275%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/user/guide/schedule.zh.md` — 行数 12 -> 45（275%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/web-styling.md` — 行数 21 -> 28（33%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/web-styling.zh.md` — 行数 21 -> 28（33%），可能存在行为级变更，建议人工复核
+
+## info
+
+- **[package-added]** `packages/api/account-controller` — 新增包
+- **[package-added]** `packages/api/job-controller` — 新增包
+- **[package-added]** `packages/api/terminal-controller` — 新增包
+- **[package-added]** `packages/boot/config-editor` — 新增包
+- **[package-added]** `packages/boot/hmr` — 新增包
+- **[package-added]** `packages/boot/plugin-manager` — 新增包
+- **[package-added]** `packages/browser-use/browser-use` — 新增包
+- **[package-added]** `packages/client/product-analytics` — 新增包
+- **[package-added]** `packages/client/shortcuts` — 新增包
+- **[package-added]** `packages/client/ui-plugin-manager` — 新增包
+- **[package-added]** `packages/client/ui-settings-account` — 新增包
+- **[package-added]** `packages/client/ui-settings-agent-loop` — 新增包
+- **[package-added]** `packages/client/ui-settings-session-log` — 新增包
+- **[package-added]** `packages/client/ui-settings-shell` — 新增包
+- **[package-added]** `packages/client/ui-settings-subagent` — 新增包
+- **[package-added]** `packages/client/ui-settings-web-search` — 新增包
+- **[package-added]** `packages/client/ui-shortcuts` — 新增包
+- **[package-added]** `packages/client/ui-sidebar-browser` — 新增包
+- **[package-added]** `packages/client/ui-sidebar-terminal` — 新增包
+- **[package-added]** `packages/compaction/compaction-image-offload` — 新增包
+- **[package-added]** `packages/computer-use/computer-use` — 新增包
+- **[package-added]** `packages/credentials/deepseek-account` — 新增包
+- **[package-added]** `packages/credentials/deepseek-account-platform` — 新增包
+- **[package-added]** `packages/deliverables/tool-present` — 新增包
+- **[package-added]** `packages/deliverables/workspace-changes` — 新增包
+- **[package-added]** `packages/document/office-to-pdf` — 新增包
+- **[package-added]** `packages/experimental/api-speech-to-text` — 新增包
+- **[package-added]** `packages/experimental/auto-review` — 新增包
+- **[package-added]** `packages/experimental/browser-use-chrome-devtools-mcp` — 新增包
+- **[package-added]** `packages/experimental/browser-use-playwright-mcp` — 新增包
+- **[package-added]** `packages/experimental/browser-use-runtime` — 新增包
+- **[package-added]** `packages/experimental/browser-use-stagehand-native` — 新增包
+- **[package-added]** `packages/experimental/client-ui-voice-input` — 新增包
+- **[package-added]** `packages/experimental/computer-use-cua-driver-mcp` — 新增包
+- **[package-added]** `packages/experimental/computer-use-cua-driver-native` — 新增包
+- **[package-added]** `packages/experimental/ptc-runtime-python` — 新增包
+- **[package-added]** `packages/experimental/schedule-bundle` — 新增包
+- **[package-added]** `packages/experimental/speech-to-text` — 新增包
+- **[package-added]** `packages/experimental/speech-to-text-sensevoice` — 新增包
+- **[package-added]** `packages/experimental/voice-input-bundle` — 新增包
+- **[package-added]** `packages/host/product-telemetry-otel` — 新增包
+- **[package-added]** `packages/llm/llm-deepseek-account` — 新增包
+- **[package-added]** `packages/llm/llm-deepseek-api-key` — 新增包
+- **[package-added]** `packages/mcp/mcp-resources` — 新增包
+- **[package-added]** `packages/preset/agent-preset` — 新增包
+- **[package-added]** `packages/preset/agent-preset-registry` — 新增包
+- **[package-added]** `packages/ptc-runtime/ptc-runtime` — 新增包
+- **[package-added]** `packages/ptc-runtime/ptc-runtime-node` — 新增包
+- **[package-added]** `packages/session/session-format-v3-to-v4` — 新增包
+- **[package-added]** `packages/skill/skill-office` — 新增包
+- **[package-added]** `packages/skill/tool-workspace-dependencies` — 新增包
+- **[package-added]** `packages/ssh/fs-ssh` — 新增包
+- **[package-added]** `packages/ssh/sandbox-ssh` — 新增包
+- **[package-added]** `packages/ssh/ssh` — 新增包
+- **[package-added]** `packages/ssh/subprocess-ssh` — 新增包
+- **[package-added]** `packages/telemetry/otel` — 新增包
+- **[package-added]** `packages/test-support/remote-mock` — 新增包
+- **[package-added]** `packages/util/code-language` — 新增包
+- **[package-added]** `packages/util/lazy-require` — 新增包
+- **[package-added]** `packages/workflow/workflow-ptc` — 新增包
+- **[doc-added]** `docs/cookbook/reviewing-persistence-type-changes.md` — 新增文档
+- **[doc-added]** `docs/cookbook/reviewing-persistence-type-changes.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-11-initial.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-11-initial.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-12-auto-review-error-metadata.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-12-auto-review-error-metadata.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-14-image-offload.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-14-image-offload.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-14-workspace-changes-event.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-14-workspace-changes-event.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-16-session-format-v4.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-16-session-format-v4.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-18-schedule-optional-title.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-18-schedule-optional-title.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-20-unknown-child-catalog.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-20-unknown-child-catalog.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-21-user-question-reply.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/2026-09-21-user-question-reply.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/historical-formats/README.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/historical-formats/README.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/historical-formats/v0.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/historical-formats/v0.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/historical-formats/v1.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/historical-formats/v1.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/historical-formats/v2.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/historical-formats/v2.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/historical-formats/v3.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/historical-formats/v3.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/README.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/README.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.0.1-rc.1.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.0.1-rc.1.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.0.1-rc.2.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.0.1-rc.2.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.0.1-rc.3.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.0.1-rc.3.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.0.1-rc.4.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.0.1-rc.4.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.0.1-rc.5.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.0.1-rc.5.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.1.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.1.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.2.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.2.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.3.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.3.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.5.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.5.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.6.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.6.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.7.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.7.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.8.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.0-rc.8.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.1-rc.1.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.1-rc.1.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.1-rc.2.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.1-rc.2.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-alpha.1.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-alpha.1.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-alpha.2.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-alpha.2.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-alpha.3.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-alpha.3.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-alpha.4.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-alpha.4.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-alpha.5.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-alpha.5.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-rc.1.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.2-rc.1.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.3-alpha.1.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.3-alpha.1.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.3-alpha.2.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.3-alpha.2.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.5-alpha.1.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.5-alpha.1.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.5-alpha.2.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.5-alpha.2.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.5-rc.1.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.5-rc.1.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.5-rc.2.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/dsh-v0.1.5-rc.2.zh.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/README.md` — 新增文档
+- **[doc-added]** `docs/persistence-changes/releases/README.zh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/boot.md` — 新增文档
+- **[doc-added]** `docs/subsystems/boot.zh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/browser-use.md` — 新增文档
+- **[doc-added]** `docs/subsystems/browser-use.zh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/computer-use.md` — 新增文档
+- **[doc-added]** `docs/subsystems/computer-use.zh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/deliverables.md` — 新增文档
+- **[doc-added]** `docs/subsystems/deliverables.zh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/mcp.md` — 新增文档
+- **[doc-added]** `docs/subsystems/mcp.zh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/office-to-pdf.md` — 新增文档
+- **[doc-added]** `docs/subsystems/office-to-pdf.zh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/otel.md` — 新增文档
+- **[doc-added]** `docs/subsystems/otel.zh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/product-telemetry.md` — 新增文档
+- **[doc-added]** `docs/subsystems/product-telemetry.zh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/ptc-runtime.md` — 新增文档
+- **[doc-added]** `docs/subsystems/ptc-runtime.zh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/ssh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/ssh.zh.md` — 新增文档
+- **[doc-added]** `docs/subsystems/voice-input.md` — 新增文档
+- **[doc-added]** `docs/subsystems/voice-input.zh.md` — 新增文档
+- **[doc-added]** `docs/ui-radius.md` — 新增文档
+- **[doc-added]** `docs/ui-radius.zh.md` — 新增文档
+- **[config-field-added]** `config:@deepseek-ai/dsh-agent-default-model` — 新增配置字段: reasoningEffort
+- **[config-scope-added]** `config:@deepseek-ai/dsh-agent-preset` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-agent-preset-registry` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-api-job-controller` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-api-terminal-controller` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-api-workspace-controller` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-client-product-analytics` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-client-shortcuts` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-client-ui-plugin-manager` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-client-ui-settings-account` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-client-ui-settings-models` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-client-ui-sidebar-documentpreview` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-client-ui-theme` — 新增可配置包
+- **[config-field-added]** `config:@deepseek-ai/dsh-compaction-basic` — 新增配置字段: headroomTokens
+- **[config-field-added]** `config:@deepseek-ai/dsh-cordis-host-runner` — 新增配置字段: clientInspectTimeoutMs
+- **[config-scope-added]** `config:@deepseek-ai/dsh-deepseek-account-platform` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-experimental-api-speech-to-text` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-experimental-browser-use-chrome-devtools-mcp` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-experimental-browser-use-playwright-mcp` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-experimental-browser-use-stagehand-native` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-experimental-computer-use-cua-driver-mcp` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-experimental-ptc-runtime-python` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-experimental-speech-to-text` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-experimental-speech-to-text-sensevoice` — 新增可配置包
+- **[config-field-added]** `config:@deepseek-ai/dsh-headless` — 新增配置字段: sessionId, json
+- **[config-scope-added]** `config:@deepseek-ai/dsh-hmr` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-host-product-telemetry-otel` — 新增可配置包
+- **[config-field-added]** `config:@deepseek-ai/dsh-jobs-local` — 新增配置字段: retainBytes, settledRetainBytes, pumpPollMs
+- **[config-scope-added]** `config:@deepseek-ai/dsh-llm-deepseek-account` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-llm-deepseek-api-key` — 新增可配置包
+- **[config-field-added]** `config:@deepseek-ai/dsh-llm-replay` — 新增配置字段: toolUpdate
+- **[config-field-added]** `config:@deepseek-ai/dsh-mcp-client` — 新增配置字段: maxInstructionBytes
+- **[config-scope-added]** `config:@deepseek-ai/dsh-office-to-pdf` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-plugin-manager` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-ptc-runtime-node` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-schedule` — 新增可配置包
+- **[config-field-added]** `config:@deepseek-ai/dsh-session-log-deepseek` — 新增配置字段: maxBytes
+- **[config-field-added]** `config:@deepseek-ai/dsh-session-telemetry-otel` — 新增配置字段: maxRequestBytes
+- **[config-scope-added]** `config:@deepseek-ai/dsh-skill-office` — 新增可配置包
+- **[config-field-added]** `config:@deepseek-ai/dsh-spill-policy` — 新增配置字段: maxInlineTokens
+- **[config-scope-added]** `config:@deepseek-ai/dsh-ssh` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-subagent` — 新增可配置包
+- **[config-field-added]** `config:@deepseek-ai/dsh-terminal-bash` — 新增配置字段: promptTailGraceMs
+- **[config-scope-added]** `config:@deepseek-ai/dsh-tool-ask-user` — 新增可配置包
+- **[config-field-added]** `config:@deepseek-ai/dsh-tool-bash` — 新增配置字段: promoteOnTimeout
+- **[config-field-added]** `config:@deepseek-ai/dsh-tool-pwsh` — 新增配置字段: promoteOnTimeout
+- **[config-field-added]** `config:@deepseek-ai/dsh-tool-workflow` — 新增配置字段: enableRunInBackground
+- **[config-scope-added]** `config:@deepseek-ai/dsh-tool-workspace-dependencies` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-workflow-ptc` — 新增可配置包
+- **[config-scope-added]** `config:@deepseek-ai/dsh-workspace-changes` — 新增可配置包

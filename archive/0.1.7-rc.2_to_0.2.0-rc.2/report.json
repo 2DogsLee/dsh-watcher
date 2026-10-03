@@ -3,11 +3,11 @@
   "repo": "D:\\projects\\deepseek harness",
   "from": "dsh-v0.1.7-rc.2",
   "to": "dsh-v0.2.0-rc.2",
-  "generated": "2026-10-03T04:18:00.1170903Z",
+  "generated": "2026-10-03T04:52:48.3023696Z",
   "counts": {
-    "info": 8,
+    "warning": 10,
     "breaking": 0,
-    "warning": 10
+    "info": 13
   },
   "findings": [
     {
@@ -117,6 +117,36 @@
       "kind": "upgrade-guide-added",
       "path": "docs/upgrade-guide/v0.1.7-rc.2/transcript-view-legacy-normal/guide.zh.md",
       "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读"
+    },
+    {
+      "severity": "info",
+      "kind": "config-scope-added",
+      "path": "config:@deepseek-ai/dsh-client-product-analytics",
+      "detail": "新增可配置包"
+    },
+    {
+      "severity": "info",
+      "kind": "config-field-added",
+      "path": "config:@deepseek-ai/dsh-cordis-host-runner",
+      "detail": "新增配置字段: clientInspectTimeoutMs"
+    },
+    {
+      "severity": "info",
+      "kind": "config-field-added",
+      "path": "config:@deepseek-ai/dsh-session-telemetry-otel",
+      "detail": "新增配置字段: maxRequestBytes"
+    },
+    {
+      "severity": "info",
+      "kind": "config-field-added",
+      "path": "config:@deepseek-ai/dsh-terminal-bash",
+      "detail": "新增配置字段: promptTailGraceMs"
+    },
+    {
+      "severity": "info",
+      "kind": "config-scope-added",
+      "path": "config:@deepseek-ai/dsh-tool-ask-user",
+      "detail": "新增可配置包"
     }
   ]
 }
