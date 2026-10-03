@@ -43,6 +43,7 @@ jobs:
         env:
           FROM: ${{ steps.pair.outputs.from }}
           TO: ${{ steps.pair.outputs.to }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           $dir = "archive/$(($env:FROM -replace '^dsh-v',''))_to_$(($env:TO -replace '^dsh-v',''))"
           git add archive
@@ -50,5 +51,3 @@ jobs:
           git push
           $body = Get-Content "$dir/report.md" -Raw
           gh release create "$env:TO-api-watch" "$dir/report.json" --title "DSH $env:TO 插件 API 面报告" --notes $body
-        env:
-          GH_TOKEN: ${{ github.token }}
