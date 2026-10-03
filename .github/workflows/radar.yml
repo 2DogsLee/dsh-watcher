@@ -1,0 +1,32 @@
+name: feedback-radar
+
+on:
+  schedule:
+    - cron: '0 4 * * *' # 每日 04:00 UTC，错开 watch（03:00）
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run radar
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: ./scripts/radar.ps1
+
+      - name: Commit digest
+        shell: bash
+        run: |
+          if git diff --quiet archive/radar; then
+            echo "雷达无变化，跳过提交"
+          else
+            git add archive/radar
+            git -c user.name=radar-bot -c user.email=bot@users.noreply.github.com commit -m "radar: 每日反馈摘要 $(date -u +%F)"
+            git push
+          fi
