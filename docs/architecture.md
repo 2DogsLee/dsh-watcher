@@ -86,7 +86,6 @@
 
 ## 7. 演进路线
 
-1. **v0 + 第一期 + v1（当前）**：单机 PowerShell 脚本 + 手动跑 + CI watch；配置字段面比对（config-catalog 提取）；**registry 驱动的「与我相关」过滤**（v1，2026-10-03）——`registry.json` 声明插件依赖的 packages/docs/config 前缀与 keywords，watch 报告对相关条目打 ★ 并生成「优先关注」区块，雷达摘要对命中关键词的条目 ★ 置顶。
-   局限：settings 字段**类型收紧**与默认值变化不在覆盖内（见 api-surface.md 边界说明）。
-2. **v2**：TS AST 解析替代正则提取导出符号，签名比对精确到参数类型；settings 字段类型收紧检测；支持生成迁移建议草案（old → new 调用片段）。
-3. **v3（雷达已上线，待深化）**：反馈雷达（官方 Discussions + 全站 issues/PR 每日摘要）已作为独立 workflow（radar.yml）运行；深化方向：雷达命中版本号 ↔ 该版本报告 breaking 条目自动关联、digest 增量去重、README「每日雷达」区块。
+1. **v0～v1 + 第一期（当前）**：单机 PowerShell 脚本 + 手动跑 + CI watch；配置字段面比对；registry 驱动的「与我相关」过滤；反馈雷达（官方 Discussions + 全站 issues/PR）+ 雷达↔报告版本关联；升级影响分析闭环（scan-plugin + SKILL 规程）。
+2. **v2（2026-10-03）**：**AST 级签名比对**——`ast-diff/`（Node + TypeScript compiler）解析 index.ts 及 re-export 闭包（限深 2），按符号生成签名指纹（函数参数类型/接口成员/class 构造/类型别名全文），diff 出删除/新增/签名变化；config-catalog 字段类型与可选性变化（可选→必填报 breaking）。diff-api.ps1 检测到 node+typescript 时自动启用并替换重叠的正则层，失败回退纯正则。实测 0.2.0-rc.1→0.2.1-alpha.1：35 条签名变化（如 RemoteEventClient 新增 `signal: AbortSignal`）、18 条 re-export 删除。
+3. **待办**：迁移建议草案自动生成（old → new 调用片段，基于签名 diff）；雷达命中与 breaking 条目的语义级关联（当前仅版本号匹配）。

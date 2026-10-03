@@ -76,5 +76,6 @@ jobs:
           git -c user.name=dsh-api-watch-bot -c user.email=bot@users.noreply.github.com commit -m "archive: $env:FROM -> $env:TO"
           git push
           $body = Get-Content "$dir/report.md" -Raw
-          gh release create "$env:TO-api-watch" "$dir/report.json" --title "DSH $env:TO 插件 API 面报告" --notes $body 2>$null
+          # 注意：对 gh 等!原生命令不要用 2>$null（PowerShell StandardErrorEncoding bug）
+          gh release create "$env:TO-api-watch" "$dir/report.json" --title "DSH $env:TO 插件 API 面报告" --notes $body
           if ($LASTEXITCODE -ne 0) { gh release upload "$env:TO-api-watch" "$dir/report.json" --clobber }
