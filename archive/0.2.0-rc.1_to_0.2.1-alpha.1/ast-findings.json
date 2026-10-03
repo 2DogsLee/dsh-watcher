@@ -1,0 +1,1928 @@
+[
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/schedule/tool-schedule",
+    "detail": "签名变化: internalError\n    旧: function(detail:string)\n    新: function()"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/api/gateway",
+    "detail": "签名变化: RemoteEventClient\n    旧: interface RemoteEventClient { readonly id: RemoteEventClientId readonly queue: RemoteEventQueue readonly deliveries: Map<RemoteEventId, PendingRemoteEvent> }\n    新: interface RemoteEventClient { readonly id: RemoteEventClientId readonly queue: RemoteEventQueue readonly signal: AbortSignal readonly deliveries: Map<RemoteEventId, PendingRemoteEvent> }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/boot/hmr",
+    "detail": "签名变化: Reload\n    旧: export interface Reload { filename: string runtime?: Plugin.Runtime | undefined }\n    新: export interface Reload { filename: string /** Original namespaces and URLs of all entry modules participating in this runtime replacement. */ modules: ReloadModules runtime?: Plugin.Runtime | undefined }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/boot/hmr",
+    "detail": "签名变化: attempts\n    旧: var:Array<(typeof generations)[number] & { replacement: Plugin }>\n    新: var:ReloadAttempt[]"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/boot/hmr",
+    "detail": "导出（含 re-export）删除: activated（原声明于 packages/boot/hmr/src/index.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/boot/hmr",
+    "detail": "导出（含 re-export）删除: replacementRuntime（原声明于 packages/boot/hmr/src/index.ts）"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/boot/hmr",
+    "detail": "签名变化: callbacks\n    旧: var:SessionCallback[] | undefined\n    新: var"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/credentials/authorization",
+    "detail": "导出（含 re-export）删除: invariantFailure（原声明于 packages/credentials/authorization/src/index.ts）"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "签名变化: submitted\n    旧: var\n    新: var:PromptSubmitResult"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "签名变化: registrations\n    旧: var:AdapterRegistration[]\n    新: var"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/plugin-package-inventory-deepseek",
+    "detail": "签名变化: ActiveEntry\n    旧: interface ActiveEntry { readonly entry: Entry /** Bare-package base used by the Loader path that activated this entry. */ readonly bareBaseUrl?: string }\n    新: interface ActiveEntry { readonly moduleName: string readonly baseUrl?: string /** Bare-package base used by the Loader path that activated this entry. */ readonly bareBaseUrl?: string }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/plugin-package-inventory-deepseek",
+    "detail": "签名变化: activeEntries\n    旧: function(tree:EntryTree,?rootBareBaseUrl:string)\n    新: function(tree:EntryTree)"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/llm/plugin-package-inventory-deepseek",
+    "detail": "导出（含 re-export）删除: presetTree（原声明于 packages/llm/plugin-package-inventory-deepseek/src/index.ts）"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/subagent/tool-subagent",
+    "detail": "签名变化: mounted\n    旧: var\n    新: var:{ subagentProvider: SubagentProvider; disposeTool: () => void } | undefined"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/interaction/user-questions",
+    "detail": "签名变化: reply\n    旧: var:unknown\n    新: var"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/runtime-diagnostics/invariants",
+    "detail": "导出（含 re-export）删除: InvariantFailure（原声明于 packages/runtime-diagnostics/invariants/src/index.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/runtime-diagnostics/invariants",
+    "detail": "导出（含 re-export）删除: InvariantInstaller（原声明于 packages/runtime-diagnostics/invariants/src/index.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/runtime-diagnostics/invariants",
+    "detail": "导出（含 re-export）删除: PendingInvariantRegistration（原声明于 packages/runtime-diagnostics/invariants/src/index.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/runtime-diagnostics/invariants",
+    "detail": "导出（含 re-export）删除: InvariantError（原声明于 packages/runtime-diagnostics/invariants/src/index.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/runtime-diagnostics/invariants",
+    "detail": "导出（含 re-export）删除: compilePatterns（原声明于 packages/runtime-diagnostics/invariants/src/index.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/runtime-diagnostics/invariants",
+    "detail": "导出（含 re-export）删除: InvariantRegistry（原声明于 packages/runtime-diagnostics/invariants/src/index.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/runtime-diagnostics/invariants",
+    "detail": "导出（含 re-export）删除: installInvariant（原声明于 packages/runtime-diagnostics/invariants/src/index.ts）"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/api/gateway/src/types.ts",
+    "detail": "签名变化: TypertGateway\n    旧: export interface TypertGateway { /** Carrier adapter shared by WebSocket and in-process transports. */ readonly wireStream: TypertGatewayWireStream /** * Register the application-selected forwarded-event source. * @param source - stream factory installed by the Remote assembly. * @param host - stable Host facts included in each Client generation's opening frame. * @returns disposer removing this exact source and cancelling its active streams. */ registerRemoteEvents( source: TypertRemoteEventSource, host: RemoteEventHostInfo, ): () => Promise<void> /** * Invoke one live Remote method without assuming a carrier or response envelope. * @param request - decoded endpoint and named wire arguments. * @returns the business result without output decoding. * @throws {@link TypertGatewayError} for dispatch, provider, or boundary failures; lookup-policy and business errors retain identity. */ invoke(request: InvokeRemoteRequest): Promise<unknown> /** * Open one live stream Remote method without assuming a physical carrier. * @param request - decoded endpoint, named wire arguments, and the Client uplink when the carrier has one. * @returns a cancellation-aware iterable over the business results. */ stream(request: InvokeRemoteRequest): Promise<AsyncIterable<unknown>> }\n    新: export interface TypertGateway { /** Carrier adapter shared by WebSocket and in-process transports. */ readonly wireStream: TypertGatewayWireStream /** * Check for an active Client event stream. * @returns whether a stream is open and has not been cancelled. */ hasLiveClient(): boolean /** * Register the application-selected forwarded-event source. * @param source - stream factory installed by the Remote assembly. * @param host - stable Host facts included in each Client generation's opening frame. * @returns disposer removing this exact source and cancelling its active streams. */ registerRemoteEvents( source: TypertRemoteEventSource, host: RemoteEventHostInfo, ): () => Promise<void> /** * Invoke one live Remote method without assuming a carrier or response envelope. * @param request - decoded endpoint and named wire arguments. * @returns the business result without output decoding. * @throws {@link TypertGatewayError} for dispatch, provider, or boundary failures; lookup-policy and business errors retain identity. */ invoke(request: InvokeRemoteRequest): Promise<unknown> /** * Open one live stream Remote method without assuming a physical carrier. * @param request - decoded endpoint, named wire arguments, and the Client uplink when the carrier has one. * @returns a cancellation-aware iterable over the business results. */ stream(request: InvokeRemoteRequest): Promise<AsyncIterable<unknown>> }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "签名变化: textOf\n    旧: function(value:unknown,path:string)\n    新: function(blocks:readonly ContentBlock[])"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/boot/plugin-manager/src/types.ts",
+    "detail": "签名变化: BundleInfo\n    旧: export interface BundleInfo { name: string version?: string /** Local display text with available translations or literal fallbacks, or a metadata diagnostic. */ meta?: PluginLocalizedMeta /** Untranslated `description` of this bundle's package manifest. */ description?: string /** Selected in the profile manifest; a load error means its layer was skipped. */ enabled: boolean /** Whether the profile's own dependencies hold the package; false for a bundle the dsh installation supplies. */ installed: boolean /** * Whether the installation ships the bundle for the person to switch on: named by the launcher's `OPTIONAL_BUNDLES`, * held by the installation's dependencies, selected by no shipped template, and never removable. */ optional: boolean removable: boolean readOnlyReason?: ReadOnlyReason error?: ManagementError /** The rows the bundle's patch inserts, in declaration order; empty when the patch cannot be read. */ rows: BundleRowInfo[] /** Ids of rows the bundle's patch changes without declaring them: the built-in rows it configures or disables. */ overrides: string[] }\n    新: export interface BundleInfo { name: string version?: string /** Local display text with available translations or literal fallbacks, or a metadata diagnostic. */ meta?: PluginLocalizedMeta /** Untranslated `description` of this bundle's package manifest. */ description?: string /** Selected in the profile manifest; a load error means its layer was skipped. */ enabled: boolean /** Whether the profile's own dependencies hold the package; false for a bundle the dsh installation supplies. */ installed: boolean /** * Present for a profile dependency the installation does not also supply: the spec `pnpm add` accepts, with local * paths made absolute and the user information of an http(s) URL removed. */ source?: string /** * Whether the installation ships the bundle for the person to switch on: named by the launcher's `OPTIONAL_BUNDLES`, * held by the installation's dependencies, selected by no shipped template, and never removable. */ optional: boolean removable: boolean readOnlyReason?: ReadOnlyReason error?: ManagementError /** The rows the bundle's patch inserts, in declaration order; empty when the patch cannot be read. */ rows: BundleRowInfo[] /** Ids of rows the bundle's patch changes without declaring them: the built-in rows it configures or disables. */ overrides: string[] }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/boot/plugin-manager/src/types.ts",
+    "detail": "签名变化: ChangeResult\n    旧: export interface ChangeResult { changed: boolean /** `cancelled` is an installation the caller stopped, its files restored. */ application: 'applied' | 'restart-required' | 'overridden' | 'failed' | 'cancelled' /** Last attempted step; successful installation can proceed to enablement. */ stage: 'install' | 'enable' | 'remove' target: string enabled?: boolean error?: ManagementError /** Pre-existing inactive entries the operation left as they were. */ warnings?: string[] packageResult?: PackageResult /** The bundle an installation added, once pnpm and the bundle check accepted it. */ bundle?: string /** Exact package names awaiting explicit script approval in the profile's pnpm settings, read after a failed run. */ pendingBuilds?: string[] /** Package script permissions saved before this installation attempt. */ approvedBuilds?: string[] /** The registries the installation asked, in order; `packageResult` is the last one's run. */ registries?: Registry[] /** * What the last failed run could not reach or get an answer from: the registry it asked, or the host a git or * tarball spec is fetched from, which no registry stands in for; absent for a failure neither explains. */ failedAt?: 'registry' | 'spec-host' }\n    新: export interface ChangeResult { changed: boolean /** `cancelled` is an installation the caller stopped, its files restored. */ application: 'applied' | 'restart-required' | 'overridden' | 'failed' | 'cancelled' /** Last attempted step; successful installation can proceed to enablement. */ stage: 'install' | 'enable' | 'remove' target: string enabled?: boolean error?: ManagementError /** Pre-existing inactive entries the operation left as they were. */ warnings?: string[] packageResult?: PackageResult /** The bundle an installation added, once pnpm and the bundle check accepted it. */ bundle?: string /** The installed bundle's manifest version, when declared; pnpm's `minimumReleaseAge` can make it older than the newest release. */ version?: string /** Exact package names awaiting explicit script approval in the profile's pnpm settings, read after a failed run. */ pendingBuilds?: string[] /** Package script permissions saved before this installation attempt. */ approvedBuilds?: string[] /** The registries the installation asked, in order; `packageResult` is the last one's run. */ registries?: Registry[] /** * What the last failed run could not reach or get an answer from: the registry it asked, or the host a git or * tarball spec is fetched from, which no registry stands in for; absent for a failure neither explains. */ failedAt?: 'registry' | 'spec-host' }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/schedule/tool-schedule",
+    "detail": "签名变化: invalid\n    旧: function(spec:string,reason:string)\n    新: var"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "签名变化: ops\n    旧: var:LayoutOp[]\n    新: var"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/Input.tsx",
+    "detail": "签名变化: Input\n    旧: function({ icon, className, ...rest }:{ icon?: ReactNode className?: string } & InputHTMLAttributes<HTMLInputElement>)\n    新: var"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/core/agent/src/runtime-types.ts",
+    "detail": "签名变化: Agent\n    旧: interface Agent { /** The provider route and model this agent's requests use. */ readonly options: AgentOptions /** The live session this agent drives; its log is the durable source of truth. */ readonly session: Session /** Agent-owned access to durable pending work. */ readonly inbox: Inbox /** The current lifecycle state, mirrored on every `agent/status` transition. */ readonly status: AgentStatus /** Agent-scoped context; its contributions are agent-local, unwind on disposal, and reject registration afterward. */ readonly ctx: Context /** * Clear queued and steering work — unless `keepInbox` — and abort the active * turn or between-turn task. The first cause wins for that activity. With no * active activity, cancellation is a no-op and does not arm later work. * @param cause - the stable caller intent carried by the active operation signal. * @param options - cancellation options; `keepInbox` preserves pending work. */ cancel(cause: AgentCancelCause, options?: CancelOptions): void /** * Resolve after the current whole-agent activity reaches quiescence. This * follows replacement work started before the observed driver retires, * but does not identify the settlement of any particular message. * @returns fulfillment after no active driver or maintenance task remains. */ whenIdle(): Promise<void> /** * Run one non-turn maintenance task from the true idle phase. The task starts * synchronously after claiming that phase; later waking input remains in the * inbox until the task settles, while public status stays `idle`. * `whenIdle()` follows both the task and any waking work released behind it. * @param task - operation whose fulfillment or rejection is preserved, with a signal aborted by {@link cancel}. * @throws synchronously when turn-driving or another maintenance task already owns the agent. * @returns the task promise. */ runMaintenance<T>(task: (signal: AbortSignal) => Promise<T>): Promise<T> /** * Route identified input to an inbox boundary and optionally wake the driver. * Waking input submitted after active cancellation is queued for the next * turn and runs when the aborted activity converges to idle; a `disposed` * cancel leaves it parked. A wake submitted while already idle always opens * its turn boundary, even when its message is cleared before the driver * claims ([cancel-convergence wake latch](../../../../.agents/notes/implemented/bug-fix/2026-08-07-cancel-convergence-wake-latch.md)). * @param message - identified content and the source that supplied it. * @param target - the preferred next-turn or next-step inbox boundary. * @param wakeup - whether delivery may wake the driver. */ send(message: UserMessage, target: InboxTarget, wakeup: boolean): void /** * Queue an ordinary follow-up turn and wake the driver. The item becomes the * sole ordinary message of its own turn. * @param message - identified prompt content and the source that supplied it. */ followup(message: UserMessage): void /** * Submit steering for the nearest step. An idle driver starts a turn; * a running driver consumes it at its next step boundary. * A rejected step leaves steering parked in the inbox until the next * wake; cancellation or disposal may discard pending steering. * @param message - identified steering content and the source that supplied it. */ steer(message: UserMessage): void /** * Queue model-facing context for the next pre-step without waking the * driver. A running driver claims it at the nearest later step boundary; * idle drivers leave it pending until follow-up or steering * wakes them. It may miss a request whose pre-step already claimed its * batch. Cancellation or disposal may discard pending context. * @param message - identified injected context and the source that supplied it. */ inject(message: UserMessage): void }\n    新: interface Agent { /** The provider route and model this agent's requests use. */ readonly options: AgentOptions /** The live session this agent drives; its log is the durable source of truth. */ readonly session: Session /** Agent-owned access to durable pending work. */ readonly inbox: Inbox /** The current lifecycle state, mirrored on every `agent/status` transition. */ readonly status: AgentStatus /** Agent-scoped context; its contributions are agent-local, unwind on disposal, and reject registration afterward. */ readonly ctx: Context /** * Clear queued and steering work — unless `keepInbox` — and abort the active * turn or between-turn task. The first cause wins for that activity. With no * active activity, cancellation is a no-op and does not arm later work. * @param cause - the stable caller intent carried by the active operation signal. * @param options - cancellation options; `keepInbox` preserves pending work. */ cancel(cause: AgentCancelCause, options?: CancelOptions): void /** * Resolve after the current whole-agent activity reaches quiescence. This * follows replacement work started before the observed driver retires, * but does not identify the settlement of any particular message. * @returns fulfillment after no active driver or maintenance task remains. */ whenIdle(): Promise<void> /** * Run one non-turn maintenance task from the true idle phase. The task starts * synchronously after claiming that phase; later waking input remains in the * inbox until the task settles, while public status stays `idle`. * `whenIdle()` follows both the task and any waking work released behind it. * @param task - operation whose fulfillment or rejection is preserved, with a signal aborted by {@link cancel}. * @throws synchronously when turn-driving or another maintenance task already owns the agent. * @returns the task promise. */ runMaintenance<T>(task: (signal: AbortSignal) => Promise<T>): Promise<T> /** * Route identified input to an inbox boundary and optionally wake the driver. * Waking input submitted after active cancellation is queued for the next * turn and runs when the aborted activity converges to idle; a `disposed` * cancel leaves it parked. A wake submitted while already idle always opens * its turn boundary, even when its message is cleared before the driver * claims ([driver wake convergence](../../agent-loop/src/agent.ts)). * @param message - identified content and the source that supplied it. * @param target - the preferred next-turn or next-step inbox boundary. * @param wakeup - whether delivery may wake the driver. */ send(message: UserMessage, target: InboxTarget, wakeup: boolean): void /** * Queue an ordinary follow-up turn and wake the driver. The item becomes the * sole ordinary message of its own turn. * @param message - identified prompt content and the source that supplied it. */ followup(message: UserMessage): void /** * Submit steering for the nearest step. An idle driver starts a turn; * a running driver consumes it at its next step boundary. * A rejected step leaves steering parked in the inbox until the next * wake; cancellation or disposal may discard pending steering. * @param message - identified steering content and the source that supplied it. */ steer(message: UserMessage): void /** * Queue model-facing context for the next pre-step without waking the * driver. A running driver claims it at the nearest later step boundary; * idle drivers leave it pending until follow-up or steering * wakes them. It may miss a request whose pre-step already claimed its * batch. Cancellation or disposal may discard pending context. * @param message - identified injected context and the source that supplied it. */ inject(message: UserMessage): void }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/schedule/tool-schedule",
+    "detail": "签名变化: renderValue\n    旧: function(value:JsonValue)\n    新: function(_args:unknown,value:unknown)"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/credentials/deepseek-account/src/types.ts",
+    "detail": "签名变化: SignInErrorCode\n    旧: export type SignInErrorCode = 'network' | 'protocol' | 'expired' | 'storage'\n    新: export type SignInErrorCode = 'no-response' | 'network' | 'protocol' | 'expired' | 'storage'"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/experimental/inspector/src/host/plugin.ts",
+    "detail": "导出（含 re-export）删除: disposeInspector（原声明于 packages/experimental/inspector/src/host/plugin.ts）"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "签名变化: sizeOf\n    旧: var\n    新: function(info:{ size?: number } | undefined)"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/extensions/cordis-host-runner/src/types.ts",
+    "detail": "签名变化: CordisInspectResolveAck\n    旧: export interface CordisInspectResolveAck { /** False for unknown, cancelled, stale, or late answers. */ accepted: boolean }\n    新: export interface CordisInspectResolveAck { /** * True only for a valid success that settles the query; * false for retained failures and unknown, timed out, cancelled, or late answers. */ accepted: boolean }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/extensions/cordis-host-runner/src/inspect-registry.ts",
+    "detail": "签名变化: PendingClientQuery\n    旧: interface PendingClientQuery { request: CordisInspectQueryRequest method: CordisInspectMethodManifest settle(resolution: CordisInspectQueryResolution): void }\n    新: interface PendingClientQuery { request: CordisInspectQueryRequest method: CordisInspectMethodManifest failure?: string settle(resolution: CordisInspectQueryResolution): void }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/extensions/cordis-host-runner/src/inspect-registry.ts",
+    "detail": "签名变化: CordisInspectRegistryService\n    旧: class(ctx:Context)\n    新: class(ctx:Context,clientQueryTimeoutMs:number)"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "签名变化: DetachedRuns\n    旧: export interface DetachedRuns { /** * The abort signal every tracked run must hand to {@link runHook} (via its * `signal` option). {@link drain} fires it so a still-running hook process is * killed rather than awaited out to its timeout (default 10 minutes). */ readonly signal: AbortSignal /** * Register one detached run until it settles. Pass the FULL chain — the hook * run and its continuation/error handler — so {@link drain} waits for the * side effects (an inject, a warn), not just the process exit. A rejected * chain is absorbed here (settlement bookkeeping only), but rejection * handling is still the caller's job: an untracked `.catch` is what turns a * failure into a logged warning instead of silence. * @param run - the detached run chain to hold until settled. */ track(run: Promise<unknown>): void /** * Abort {@link signal}, then resolve once every tracked chain has settled — * including chains tracked while the drain is in progress. The bridge * registers this as its effect disposer; cordis awaits it, so * `fiber.dispose()` resolving means the bridge's detached work is quiescent. * A run tracked AFTER drain resolves is not awaited by anyone — by then the * bridge's listeners are disposed, so nothing can start one. * @returns resolves when all tracked runs have settled. */ drain(): Promise<void> }\n    新: class"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/interaction/user-questions/src/types.ts",
+    "detail": "签名变化: AskUserQuestionRequestEvent\n    旧: export interface AskUserQuestionRequestEvent { /** Questions to display. */ questions: AskUserQuestionItem[] /** Agent identity projected to the corresponding Client Context in transit. */ agent?: Agent /** Cancellation lifetime of the pending request. */ signal?: AbortSignal }\n    新: export interface AskUserQuestionRequestEvent { /** Questions to display. */ questions: AskUserQuestionItem[] /** Agent identity projected to the corresponding Client Context in transit. */ agent?: Agent /** Cancellation lifetime of the pending request. */ signal?: AbortSignal /** * Tool call the Client card is keyed by. Timed answerers attach to the * business wait stream before starting their local countdown. */ wait?: { /** Tool call the Client card is keyed by. */ callId: ToolCallId /** True for a foreground wait that requires a Client claim; absent for indefinite waits. */ timed?: boolean } }"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/preset/agent-preset-registry/src/mount.ts",
+    "detail": "导出（含 re-export）删除: livePresetMounts（原声明于 packages/preset/agent-preset-registry/src/mount.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/preset/agent-preset-registry/src/mount.ts",
+    "detail": "导出（含 re-export）删除: JoinedPresetMount（原声明于 packages/preset/agent-preset-registry/src/mount.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/preset/agent-preset-registry/src/mount.ts",
+    "detail": "导出（含 re-export）删除: standingMountFor（原声明于 packages/preset/agent-preset-registry/src/mount.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/preset/agent-preset-registry/src/mount.ts",
+    "detail": "导出（含 re-export）删除: agentKey（原声明于 packages/preset/agent-preset-registry/src/mount.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/preset/agent-preset-registry/src/mount.ts",
+    "detail": "导出（含 re-export）删除: standingKey（原声明于 packages/preset/agent-preset-registry/src/mount.ts）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/preset/agent-preset-registry/src/mount.ts",
+    "detail": "导出（含 re-export）删除: serviceForAgent（原声明于 packages/preset/agent-preset-registry/src/mount.ts）"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/schedule/schedule/src/types.ts",
+    "detail": "签名变化: ScheduleToolError\n    旧: export type ScheduleToolError = | InvalidPromptError | InvalidSelectorError | InvalidRuleError | InvalidTimeZoneError | NotFutureError | TimeOutOfRangeError | FrequencyTooHighError | InternalScheduleError\n    新: export type ScheduleToolError = | InvalidPromptError | InvalidSelectorError | InvalidRuleError | InvalidTimeZoneError | NotFutureError | TimeOutOfRangeError | FrequencyTooHighError | SubagentSessionError | InternalScheduleError"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/schedule/tool-schedule",
+    "detail": "签名变化: registerScheduleTools\n    旧: function(rootCtx:Context,toolCtx:Context,agent:Agent)\n    新: function(ctx:Context)"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/schedule/schedule/src/domain.ts",
+    "detail": "签名变化: ScheduleInputError\n    旧: class(code:| 'invalid_prompt' | 'invalid_selector' | 'invalid_rule' | 'invalid_time_zone' | 'not_future' | 'time_out_of_range' | 'frequency_too_high',message:string,?options:ErrorOptions)\n    新: class(code:| 'invalid_prompt' | 'invalid_selector' | 'invalid_rule' | 'invalid_time_zone' | 'not_future' | 'time_out_of_range' | 'frequency_too_high' | 'subagent_session',message:string,?options:ErrorOptions)"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/schedule/schedule",
+    "detail": "签名变化: refusal\n    旧: function(message:string)\n    新: var"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/util/package-manifest/src/types.ts",
+    "detail": "签名变化: PluginLocalizedMeta\n    旧: export interface PluginLocalizedMeta { /** Display title; omission preserves the consumer's technical-name fallback. */ readonly title?: LocalizedText /** Display introduction after locale and package-field fallback. */ readonly description?: LocalizedText /** Base64 image data URL read from the manifest's icon file; render as an image, not inline markup. */ readonly icon?: string /** Unmodified local metadata diagnostic; the plugin remains manageable. */ readonly error?: string }\n    新: export interface PluginLocalizedMeta { /** Display title; omission preserves the consumer's technical-name fallback. */ readonly title?: LocalizedText /** Display introduction after locale and package-field fallback. */ readonly description?: LocalizedText /** Base64 image data URL from a package root's manifest icon or an exported `<specifier>/icon`; render as an image, not inline markup. */ readonly icon?: string /** Unmodified local metadata diagnostic; the plugin remains manageable. */ readonly error?: string }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/llm-pi-ai/src/catalog.ts",
+    "detail": "签名变化: OfferedCompatField\n    旧: type OfferedCompatField = | OfferedIn<typeof COMPLETIONS_COMPAT_GATE> | OfferedIn<typeof RESPONSES_COMPAT_GATE> | OfferedIn<typeof ANTHROPIC_COMPAT_GATE> | OfferedIn<typeof BEDROCK_COMPAT_GATE>\n    新: type OfferedCompatField = | OfferedIn<typeof COMPLETIONS_COMPAT_GATE> | OfferedIn<typeof RESPONSES_COMPAT_GATE> | OfferedIn<typeof ANTHROPIC_COMPAT_GATE> | OfferedIn<typeof BEDROCK_COMPAT_GATE> // oxlint-disable-next-line typescript/no-redundant-type-constituents -- Include gates whose current offering is empty. | OfferedIn<typeof MISTRAL_COMPAT_GATE>"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/llm-pi-ai/src/catalog.ts",
+    "detail": "签名变化: UpstreamCompat\n    旧: type UpstreamCompat = OpenAICompletionsCompat & OpenAIResponsesCompat & AnthropicMessagesCompat & BedrockCompat\n    新: type UpstreamCompat = OpenAICompletionsCompat & OpenAIResponsesCompat & AnthropicMessagesCompat & BedrockCompat & MistralConversationsCompat"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/llm-pi-ai/src/catalog.ts",
+    "detail": "签名变化: ModelCompat\n    旧: type ModelCompat = OpenAICompletionsCompat | OpenAIResponsesCompat | AnthropicMessagesCompat | BedrockCompat\n    新: type ModelCompat = OpenAICompletionsCompat | OpenAIResponsesCompat | AnthropicMessagesCompat | BedrockCompat | MistralConversationsCompat"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/hmr",
+    "detail": "新增导出: EntryNamespaces"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/hmr",
+    "detail": "新增导出: moduleUrls"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/hmr",
+    "detail": "新增导出: namespaces"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/hmr",
+    "detail": "新增导出: ReloadFiber"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/hmr",
+    "detail": "新增导出: ReloadModule"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/hmr",
+    "detail": "新增导出: ReloadModules"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/hmr",
+    "detail": "新增导出: moduleNamespace"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/hmr",
+    "detail": "新增导出: implementations"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/hmr",
+    "detail": "新增导出: isManifest"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/hmr",
+    "detail": "新增导出: ReloadAttempt"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/plugin-manager",
+    "detail": "新增导出: shipped"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/plugin-manager",
+    "detail": "新增导出: sourceOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/bundle/web-app",
+    "detail": "新增导出: appRootUrl"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/bundle/web-app",
+    "detail": "新增导出: publicUrl"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: SERVED_EVENTS"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: REWRITE_NOTE"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: assertPositive"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: promptMessages"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: rewritePromptText"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: appendContext"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: acceptPromptSubmit"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: TurnRecord"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: foldAssistantMessage"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: jsonValueOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: modAnswered"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: ClaudeCodeMods"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: callOrigins"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: modCommands"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: modTools"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: agentOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: surfaces"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: redraw"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: modSubmissions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: engine"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: isRoot"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: startedRoots"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: agentIdOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: turns"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: startedTurns"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: submitter"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: raisedBy"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: modName"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: beneath"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: turnRecord"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: mod"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods",
+    "detail": "新增导出: unserved"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions",
+    "detail": "新增导出: TimedUserQuestionResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions",
+    "detail": "新增导出: QueuedReply"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions",
+    "detail": "新增导出: question"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions",
+    "detail": "新增导出: answered"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions",
+    "detail": "新增导出: wait"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/schedule/tool-schedule",
+    "detail": "新增导出: subagentCallerRefusal"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/app-boot/src/package-meta.ts",
+    "detail": "新增导出: assertPackageOwned"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/app-boot/src/profile.ts",
+    "detail": "新增导出: RETIRED_BUNDLES"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/app-boot/src/profile.ts",
+    "detail": "新增导出: ResolutionSource"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/app-boot/src/profile.ts",
+    "detail": "新增导出: ProfileRuntimeResolution"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/app-boot/src/profile.ts",
+    "detail": "新增导出: withBundles"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/app-boot/src/profile.ts",
+    "detail": "新增导出: dropRetiredBundles"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/plugin-manager/src/install-spec.ts",
+    "detail": "新增导出: NON_REGISTRY_VALUE"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/plugin-manager/src/install-spec.ts",
+    "detail": "新增导出: HTTP_USER_INFO"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/plugin-manager/src/install-spec.ts",
+    "detail": "新增导出: dependencySpec"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/StateDot.tsx",
+    "detail": "新增导出: pinSpinner"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/InlineEditor.tsx",
+    "detail": "新增导出: InlineEditor"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: MenuGroup"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: headingId"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: observeStickyMenuGroups"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: heading"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: stripObserver"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: viewportHeight"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: stuck"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: startObserver"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: sizeObserver"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: PluginOptionValue"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: PluginOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ModTier"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: HookOrigin"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: HookFailure"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: HookBudget"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: HookNext"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ModHook"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: AnyHook"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: HookRegistration"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: MatcherValue"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: HookMatcher"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ModEvents"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ModOn"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ModRegister"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ModDefinition"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: SerializedElement"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: SerializedNode"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: SurfaceSnapshot"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: UiRenderInput"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: UiRenderResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: PromptOrigin"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: SessionStartInput"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: SessionStartResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: SessionEndInput"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: SessionEndResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: PromptSubmitInput"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: PromptSubmitResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: TurnStartInput"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: TurnStartResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: TurnUsage"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: TurnCompleteInput"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: TurnCompleteResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ToolCallInput"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ToolCallResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: CommandRunInput"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: CommandRunResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: OpResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: CommandSpec"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: CommandInfo"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ToolSpec"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ToolInfo"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: SessionMessage"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ToolUseSummary"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: SessionUsage"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: SessionVersion"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: AskOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: UiLogOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ToastOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: PaneOpenArgs"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: PaneOpenResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: StateRef"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ModTimer"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: FsEntry"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: FsStat"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ProcessRunInit"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ProcessRunResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: HttpInit"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: HttpResponse"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: PromptSubmitArgs"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/types.ts",
+    "detail": "新增导出: ModsApi"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: UiElement"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: UiNode"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: BoxProps"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: TextProps"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: UiElements"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: scalarProps"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: scalars"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: elementBrand"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: isUiElement"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: uiElements"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: childrenOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: treeProblem"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: serializeTree"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: onPress"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: TreePattern"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: textMatches"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: findAll"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: matchesType"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: matchesText"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/elements.ts",
+    "detail": "新增导出: matchesLabel"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/define-mod.ts",
+    "detail": "新增导出: ModConfig"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/define-mod.ts",
+    "detail": "新增导出: ModSpec"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/define-mod.ts",
+    "detail": "新增导出: ModPlugin"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/define-mod.ts",
+    "detail": "新增导出: optionValue"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/define-mod.ts",
+    "detail": "新增导出: defineMod"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/define-mod.ts",
+    "detail": "新增导出: userConfig"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/tool-names.ts",
+    "detail": "新增导出: DEFAULT_TOOL_ALIASES"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/tool-names.ts",
+    "detail": "新增导出: ToolNameAliases"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/tool-names.ts",
+    "detail": "新增导出: createToolNameAliases"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/matcher.ts",
+    "detail": "新增导出: ENGINE_EVENTS"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/matcher.ts",
+    "detail": "新增导出: KNOWN_EVENTS"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/matcher.ts",
+    "detail": "新增导出: isEventPattern"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/matcher.ts",
+    "detail": "新增导出: eventMatches"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/matcher.ts",
+    "detail": "新增导出: valueMatches"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/matcher.ts",
+    "detail": "新增导出: matcherMatches"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/matcher.ts",
+    "detail": "新增导出: describeMatcher"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: AgentBinding"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: MODS_API_VERSION"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: FS_MAX_BYTES"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: STORE_MAX_BYTES"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: PROCESS_OUTPUT_MAX_BYTES"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: HTTP_MAX_BYTES"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: modToolName"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: REGISTERED_NAME"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: storeDomainSpec"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: HostOpsOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: toolCallResultOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: argumentsOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: sessionMessages"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: toolUses"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: kindOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: readOutput"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: createHostOps"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: storeDomain"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: domains"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: storeWrites"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: serializeStore"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: questions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: choices"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: inputSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: fullName"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: pressure"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: tokens"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/claude-code-mods/src/host-ops.ts",
+    "detail": "新增导出: followed"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/inspector/src/host/plugin.ts",
+    "detail": "新增导出: DEVTOOLS_PATH"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/inspector/src/host/plugin.ts",
+    "detail": "新增导出: assets"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/extensions/cordis-host-runner/src/inspect-registry.ts",
+    "detail": "新增导出: gateway"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/types.ts",
+    "detail": "新增导出: UserQuestionState"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/types.ts",
+    "detail": "新增导出: PendingUserQuestion"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/types.ts",
+    "detail": "新增导出: SettledUserQuestion"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/types.ts",
+    "detail": "新增导出: UserQuestionProjectionView"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: UserQuestionFold"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: UserQuestionProjectionState"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: ASK_USER_QUESTION_TOOL"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: TIMED_WAIT_PARAMETER"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: toolOptionSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: toolQuestionSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: toolArgumentsSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: optionSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: questionSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: pendingQuestionsSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: answerSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: settledQuestionsSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: projectionViewSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: answerBatchSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: emptyView"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: initialFold"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: isTimedAskUserQuestionSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: questionsOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: isPendingResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: answerBatchOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: settleQuestion"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: applyUserQuestionEvent"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: answers"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: foldUserQuestions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: userQuestionProjectionDefinition"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/mount.ts",
+    "detail": "新增导出: serviceForMount"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: CompositionRowEnablement"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: DisabledExpressionEvaluator"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: AgentPresetCompositionRow"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: AgentPresetComposition"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: AgentPresetInspection"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: activeCompositionModules"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: ownerTree"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: disabledContribution"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: combineDisabled"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: RawRow"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: flattenRows"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: definitionComposition"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/preset/agent-preset-registry/src/composition-inventory.ts",
+    "detail": "新增导出: mountedCompositionRows"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/schedule/schedule/src/types.ts",
+    "detail": "新增导出: SubagentSessionError"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/schedule/schedule/src/domain.ts",
+    "detail": "新增导出: SCHEDULED_MESSAGE_FRAMING"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: LengthReadOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: StringRead"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: ReadKind"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: Read"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: SIMPLE_ESCAPES"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: CONTENT_ESCAPE"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: isWhitespace"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: isHex"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: PartialArguments"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: completions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: prefixes"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/util/values/src/partial-json.ts",
+    "detail": "新增导出: slashStart"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-pi-ai/src/catalog.ts",
+    "detail": "新增导出: MISTRAL_COMPAT_GATE"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-cordis-host-runner",
+    "detail": "新增配置字段: clientInspectTimeoutMs"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-experimental-claude-code-mods",
+    "detail": "新增配置字段: hookTimeoutMs"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-experimental-claude-code-mods",
+    "detail": "新增配置字段: catchTimeoutMs"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-experimental-claude-code-mods",
+    "detail": "新增配置字段: processTimeoutMs"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-experimental-claude-code-mods",
+    "detail": "新增配置字段: toolAliases"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-experimental-claude-code-mods",
+    "detail": "新增配置字段: bandColumns"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-experimental-claude-code-mods",
+    "detail": "新增配置字段: bandRows"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-tool-ask-user",
+    "detail": "新增配置字段: mode"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-tool-ask-user",
+    "detail": "新增配置字段: timeout"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-web-app",
+    "detail": "新增配置字段: publicUrl"
+  }
+]
