@@ -125,6 +125,21 @@ $old = Get-SurfaceSnapshot $From
 Write-Host "[2/4] 采集 $To 快照..."
 $new = Get-SurfaceSnapshot $To
 
+# --- 2.5 快照健全性闸门（防「官方重构 → 假报告」）-----------------------------
+# API 面路径假设失效时快照会静默变空，产出满屏假 breaking。宁可硬失败。
+foreach ($side in @(@('旧', $old, $From), @('新', $new, $To))) {
+    $label = $side[0]; $snap = $side[1]; $ref = $side[2]
+    if ($snap.Packages.Count -eq 0) {
+        throw "快照健全性失败：$label ref $ref 提取到 0 个包入口（packages/**/src/index.ts）。" +
+              "官方很可能重构了仓库结构，请按 docs/api-surface.md 更新路径假设后再比对。" +
+              "（本闸门防止产出「全部包被删除」的假报告）"
+    }
+    if ($snap.Config.Count -eq 0) {
+        Write-Warning "$label ref $ref 的 config-catalog 字段提取为空——docs/config-catalog.md 可能改名/改格式，配置字段层本轮无覆盖（其余层继续）。"
+    }
+}
+Write-Host "  快照健全性 OK：包=$($new.Packages.Count) config包=$($new.Config.Count) 文档=$($new.Docs.Count)"
+
 # --- 3. 逐项对比 -------------------------------------------------------------
 $findings = New-Object System.Collections.Generic.List[object]
 function Add-Finding([string]$severity, [string]$kind, [string]$path, [string]$detail) {
