@@ -75,9 +75,14 @@ jobs:
           git add archive
           git -c user.name=dsh-api-watch-bot -c user.email=bot@users.noreply.github.com commit -m "archive: $env:FROM -> $env:TO"
           git push
-          $body = Get-Content "$dir/report.md" -Raw
-          Set-Content -Encoding UTF8 "$dir/notes.md" $body
-          # 注意：报告大时 --notes 传参会超 Windows 命令行长度限制，必须用 --notes-file
+          # Release 正文上限 125000 字符：AST 模式下 report.md 可能超限。
+          # 摘要版 = 头部 + 计数表 + breaking 段；完整报告看仓库 archive/。
+          $lines = Get-Content "$dir/report.md"
+          $cut = ($lines | Select-String -Pattern '^## warning' | Select-Object -First 1).LineNumber
+          if ($cut) { $summary = ($lines[0..([Math]::Max($cut-2, 0))]) -join "`n" } else { $summary = ($lines -join "`n") }
+          $summary += "`n`n> 完整报告（warning/info 全量）见仓库 archive/$dir/report.md"
+          if ($summary.Length -gt 120000) { $summary = $summary.Substring(0, 120000) + "`n…（超长截断，完整内容见仓库）" }
+          Set-Content -Encoding UTF8 "$dir/notes.md" $summary
           # 注意：对 gh 等!原生命令不要用 2>$null（PowerShell StandardErrorEncoding bug）
           gh release create "$env:TO-api-watch" "$dir/report.json" --title "DSH $env:TO 插件 API 面报告" --notes-file "$dir/notes.md"
           if ($LASTEXITCODE -ne 0) { gh release upload "$env:TO-api-watch" "$dir/report.json" --clobber }
