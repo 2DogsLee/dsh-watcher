@@ -1,0 +1,740 @@
+[
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/api/gateway",
+    "detail": "签名变化: RemoteEventClient\n    旧: interface RemoteEventClient { readonly id: RemoteEventClientId readonly queue: RemoteEventQueue readonly deliveries: Map<RemoteEventId, PendingRemoteEvent> }\n    新: interface RemoteEventClient { readonly id: RemoteEventClientId readonly queue: RemoteEventQueue readonly signal: AbortSignal readonly deliveries: Map<RemoteEventId, PendingRemoteEvent> }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/host/product-telemetry-otel",
+    "detail": "签名变化: ProductTelemetryScalar\n    旧: export type ProductTelemetryScalar = string | number | boolean\n    新: export type ProductTelemetryScalar = OTelEventScalar"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-signature-changed",
+    "path": "packages/host/product-telemetry-otel",
+    "detail": "签名变化: ProductTelemetryRecord\n    旧: export interface ProductTelemetryRecord { /** Product/DA-owned event name. */ eventName: string /** Human-readable summary; never a prompt, response, credential, or file contents. */ body: string /** Event occurrence time in Unix milliseconds. Observation time is assigned on enqueue. */ timestamp: number /** OTel severity; omitted values use INFO. */ severityNumber?: SeverityNumber /** Business fields selected by the caller; no automatic device or account identity. */ attributes?: Record<string, ProductTelemetryScalar | Record<string, ProductTelemetryScalar>> }\n    新: export type ProductTelemetryRecord = OTelEventRecord"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/ptc-runtime/ptc-runtime-node",
+    "detail": "签名变化: transport\n    旧: var\n    新: var:JsonChannel"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/experimental/webworker-runtime/src/worker-host.ts",
+    "detail": "签名变化: exporter\n    旧: var\n    新: var:LogExporter"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/interaction/user-questions",
+    "detail": "签名变化: reply\n    旧: var:unknown\n    新: var"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/session/session-telemetry-otel",
+    "detail": "签名变化: SEVERITY\n    旧: var:Record<SessionTelemetrySeverity, { severityNumber: SeverityNumber; severityText: string }>\n    新: var:Record<SessionTelemetrySeverity, SeverityNumber>"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/session/session-telemetry-otel",
+    "detail": "导出（含 re-export）删除: ledger（原声明于 packages/session/session-telemetry-otel/src/index.ts）"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/session/session-telemetry",
+    "detail": "签名变化: SessionTelemetryRecord\n    旧: export interface SessionTelemetryRecord { /** Ledger (session-log mirror) or ops (operational signal) channel; backends keep the two under separate instrumentation scopes. */ channel: 'ledger' | 'ops' /** Unix epoch milliseconds — the source event's append time for ledger records, the emission time for ops records. */ time: number /** Pre-mapped alerting severity; see {@link SessionTelemetrySeverity}. */ severity: SessionTelemetrySeverity /** * Identity attributes, deliberately minimal: ledger records carry * `session.id`, `session.format_version`, `event.type`, `event.seq`, plus optional * `session.cwd` / `session.parent_id`; a seeded Session also carries * `session.seed_length` from its exact inherited event count; * ops records carry `telemetry.op`, `session.id`, and (for `agent-error`) * `agent.id`, `turn`, `step`, `error.name`. Anything recoverable from the * body is intentionally NOT duplicated here. */ attributes: Record<string, string | number> /** * The complete payload: a deep copy of the session event's `data` for * ledger records (JSON-serializable by `Session.append`'s own * validation), or the op payload for ops records. Never mutated after * handoff. */ body: unknown }\n    新: export interface SessionTelemetryRecord { /** Canonical envelope without data; body carries the separately redacted payload. Absent for operational records. */ sourceEvent?: { sessionId: SessionId; envelope: Omit<SessionEvent, 'data'> } /** Ledger (session-log mirror) or ops (operational signal) channel; backends keep the two under separate instrumentation scopes. */ channel: 'ledger' | 'ops' /** Unix epoch milliseconds — the source event's append time for ledger records, the emission time for ops records. */ time: number /** Pre-mapped alerting severity; see {@link SessionTelemetrySeverity}. */ severity: SessionTelemetrySeverity /** * Identity attributes, deliberately minimal: ledger records carry * `session.id`, `session.format_version`, `event.type`, `event.seq`, plus optional * `session.cwd` / `session.parent_id`; a seeded Session also carries * `session.seed_length` from its exact inherited event count; * ops records carry `telemetry.op`, `session.id`, and (for `agent-error`) * `agent.id`, `turn`, `step`, `error.name`. Anything recoverable from the * body is intentionally NOT duplicated here. */ attributes: Record<string, string | number> /** * The complete payload: a deep copy of the session event's `data` for * ledger records (JSON-serializable by `Session.append`'s own * validation), or the op payload for ops records. Never mutated after * handoff. */ body: unknown }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/api/gateway/src/types.ts",
+    "detail": "签名变化: TypertGateway\n    旧: export interface TypertGateway { /** Carrier adapter shared by WebSocket and in-process transports. */ readonly wireStream: TypertGatewayWireStream /** * Register the application-selected forwarded-event source. * @param source - stream factory installed by the Remote assembly. * @param host - stable Host facts included in each Client generation's opening frame. * @returns disposer removing this exact source and cancelling its active streams. */ registerRemoteEvents( source: TypertRemoteEventSource, host: RemoteEventHostInfo, ): () => Promise<void> /** * Invoke one live Remote method without assuming a carrier or response envelope. * @param request - decoded endpoint and named wire arguments. * @returns the business result without output decoding. * @throws {@link TypertGatewayError} for dispatch, provider, or boundary failures; lookup-policy and business errors retain identity. */ invoke(request: InvokeRemoteRequest): Promise<unknown> /** * Open one live stream Remote method without assuming a physical carrier. * @param request - decoded endpoint, named wire arguments, and the Client uplink when the carrier has one. * @returns a cancellation-aware iterable over the business results. */ stream(request: InvokeRemoteRequest): Promise<AsyncIterable<unknown>> }\n    新: export interface TypertGateway { /** Carrier adapter shared by WebSocket and in-process transports. */ readonly wireStream: TypertGatewayWireStream /** * Check for an active Client event stream. * @returns whether a stream is open and has not been cancelled. */ hasLiveClient(): boolean /** * Register the application-selected forwarded-event source. * @param source - stream factory installed by the Remote assembly. * @param host - stable Host facts included in each Client generation's opening frame. * @returns disposer removing this exact source and cancelling its active streams. */ registerRemoteEvents( source: TypertRemoteEventSource, host: RemoteEventHostInfo, ): () => Promise<void> /** * Invoke one live Remote method without assuming a carrier or response envelope. * @param request - decoded endpoint and named wire arguments. * @returns the business result without output decoding. * @throws {@link TypertGatewayError} for dispatch, provider, or boundary failures; lookup-policy and business errors retain identity. */ invoke(request: InvokeRemoteRequest): Promise<unknown> /** * Open one live stream Remote method without assuming a physical carrier. * @param request - decoded endpoint, named wire arguments, and the Client uplink when the carrier has one. * @returns a cancellation-aware iterable over the business results. */ stream(request: InvokeRemoteRequest): Promise<AsyncIterable<unknown>> }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-chat/src/chat-settings.ts",
+    "detail": "签名变化: ChatSettings\n    旧: export interface ChatSettings { /** Work-details preference; legacy values are accepted only from existing saved settings. */ transcriptView: TranscriptViewMode | typeof LEGACY_TRANSCRIPT_VIEW_MODE | typeof LEGACY_EXPANDED_TRANSCRIPT_VIEW_MODE /** Detail level for composer statistics and completed-Turn usage. */ performanceUsage: PerformanceUsageMode /** Default destination for Chat HTTP(S) links. */ linkOpening: LinkOpening }\n    新: export interface ChatSettings { /** Work-details preference; absence uses the client default, and legacy saved values remain accepted. */ transcriptView?: TranscriptViewMode | typeof LEGACY_TRANSCRIPT_VIEW_MODE | typeof LEGACY_EXPANDED_TRANSCRIPT_VIEW_MODE | null /** Detail level for composer statistics and completed-Turn usage. */ performanceUsage: PerformanceUsageMode /** Default destination for Chat HTTP(S) links. */ linkOpening: LinkOpening }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/DisclosureRow.tsx",
+    "detail": "签名变化: DisclosureRowProps\n    旧: export interface DisclosureRowProps { icon: ReactNode title: string open: boolean expandable: boolean onToggle: () => void /** Animate the title while its owning operation is running. */ running?: boolean | undefined /** Makes the complete title row the disclosure target. */ expandOnRowClick?: boolean | undefined /** Replaces the collapsed icon with a chevron while the row is hovered. */ previewChevron?: boolean | undefined /** Keeps `collapsedContent` inline while open. */ keepContentWhenOpen?: boolean | undefined collapsedContent?: ReactNode children?: ReactNode className?: string | undefined rowClassName?: string | undefined leadingClassName?: string | undefined chevronClassName?: string | undefined titleClassName?: string | undefined }\n    新: export interface DisclosureRowProps { icon: ReactNode title: string open: boolean expandable: boolean onToggle: () => void /** Animate the complete header while its owning operation is running. */ running?: boolean | undefined /** Makes the complete title row the disclosure target. */ expandOnRowClick?: boolean | undefined /** Replaces the collapsed icon with a chevron while the row is hovered. */ previewChevron?: boolean | undefined /** Keeps `collapsedContent` inline while open. */ keepContentWhenOpen?: boolean | undefined collapsedContent?: ReactNode children?: ReactNode className?: string | undefined rowClassName?: string | undefined /** Sizing class for the header text area, beside the leading icon. */ contentClassName?: string | undefined /** Layout class shared by the header text and its decorative copy. */ contentLayoutClassName?: string | undefined leadingClassName?: string | undefined chevronClassName?: string | undefined titleClassName?: string | undefined }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/TextShimmer.tsx",
+    "detail": "签名变化: TextShimmerProps\n    旧: export interface TextShimmerProps { children: string active: boolean className?: string | undefined }\n    新: export interface TextShimmerProps { /** Text or presentational children with text in nested TextShimmer instances. No effects or element ids. */ children: ReactNode /** Whether to animate; nested instances share the containing row's activity. */ active?: boolean | undefined className?: string | undefined /** Layout class applied equally to the base and decorative content. */ contentClassName?: string | undefined }"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/Input.tsx",
+    "detail": "签名变化: Input\n    旧: function({ icon, className, ...rest }:{ icon?: ReactNode className?: string } & InputHTMLAttributes<HTMLInputElement>)\n    新: var"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/useAnchoredPosition.ts",
+    "detail": "签名变化: AnchoredPositionOptions\n    旧: export interface AnchoredPositionOptions { /** Whether the floating element is mounted and should track its anchor. */ open: boolean /** The element the panel is placed from. */ anchorRef: RefObject<HTMLElement | null> /** The floating element, measured so the clamp uses real dimensions. */ panelRef: RefObject<HTMLElement | null> /** Which anchor edge the panel hangs from: below it (`bottom`, the default) or above it (`top`). */ side?: 'top' | 'bottom' /** Which anchor edge the panel lines up with: its left edge (`start`, the default) or its right edge (`end`). */ align?: 'start' | 'end' /** Distance kept between the anchor edge named by `side` and the panel. */ gap: number /** Distance kept between the panel and each viewport edge. */ margin: number }\n    新: export interface AnchoredPositionOptions { /** Whether the floating element is mounted and should track its anchor. */ open: boolean /** The element the panel is placed from. */ anchorRef: RefObject<HTMLElement | null> /** The floating element, measured so the clamp uses real dimensions. */ panelRef: RefObject<HTMLElement | null> /** Which anchor edge the panel hangs from: below it (`bottom`, the default) or above it (`top`). */ side?: 'top' | 'bottom' /** Which anchor edge the panel lines up with: its left edge (`start`, the default) or its right edge (`end`). */ align?: 'start' | 'end' /** Distance kept between the anchor edge named by `side` and the panel. */ gap: number /** Distance kept between the panel and each viewport edge; the frame's overlay inset widens the top margin. */ margin: number }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "签名变化: AnchorProps\n    旧: interface AnchorProps { ref?: Ref<HTMLElement> | undefined onMouseEnter?: MouseEventHandler | undefined onMouseLeave?: MouseEventHandler | undefined onClick?: MouseEventHandler | undefined onFocus?: FocusEventHandler | undefined onBlur?: FocusEventHandler | undefined }\n    新: interface AnchorProps { 'aria-describedby'?: string | undefined ref?: Ref<HTMLElement> | undefined onMouseEnter?: MouseEventHandler | undefined onMouseLeave?: MouseEventHandler | undefined onClick?: MouseEventHandler | undefined onFocus?: FocusEventHandler | undefined onBlur?: FocusEventHandler | undefined }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "签名变化: Tooltip\n    旧: function({ label, shortcutKeys, side = 'right', align = 'center', delayMs = 0, gap = 8, disabled = false, portal = false, maxWidth, children }:{ label: TooltipLabel; shortcutKeys?: readonly string[] | undefined; side?: TooltipSide; align?: 'center' | 'end'; delayMs?: number; gap?: number; disabled?: boolean; portal?: boolean; maxWidth?: number; children: ReactElement<AnchorProps> })\n    新: function({ label, shortcutKeys, side = 'right', align = 'center', delayMs = 0, focusDelayMs = 0, gap = 8, disabled = false, portal = false, maxWidth, openOnClick = false, children }:{ label: TooltipLabel; shortcutKeys?: readonly string[] | undefined; side?: TooltipSide; align?: 'center' | 'end'; delayMs?: number; focusDelayMs?: number; gap?: number; disabled?: boolean; portal?: boolean; maxWidth?: number; openOnClick?: boolean; children: ReactElement<AnchorProps> })"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "导出（含 re-export）删除: showAfterHoverDelay（原声明于 packages/client/ui-primitives/src/Tooltip.tsx）"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/experimental/webworker-runtime/src/transport/frames.ts",
+    "detail": "签名变化: TunnelOutboundFrame\n    旧: export type TunnelOutboundFrame = | TunnelResponseFrame | TunnelResponseHeadFrame | TunnelResponseChunkFrame | TunnelResponseEndFrame | TunnelResponseErrorFrame | TunnelStreamItemFrame | TunnelStreamEndFrame | TunnelStreamErrorFrame\n    新: export type TunnelOutboundFrame = | TunnelViewTextFrame | TunnelResponseFrame | TunnelResponseHeadFrame | TunnelResponseChunkFrame | TunnelResponseEndFrame | TunnelResponseErrorFrame | TunnelStreamItemFrame | TunnelStreamEndFrame | TunnelStreamErrorFrame"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/experimental/webworker-runtime/src/node/globals/process.ts",
+    "detail": "签名变化: ProcessShimOptions\n    旧: export interface ProcessShimOptions { /** Virtual root reported by `cwd()`. */ readonly cwd: string /** Environment the tree reads; `DSH_HOME` belongs here. */ readonly env: Readonly<Record<string, string>> /** Argument vector reported to the tree. */ readonly argv?: readonly string[] }\n    新: export interface ProcessShimOptions { /** Virtual root reported by `cwd()`. */ readonly cwd: string /** Environment the tree reads; `DSH_HOME` belongs here. */ readonly env: Readonly<Record<string, string>> /** Argument vector reported to the tree; defaults to the executable alone, since no entry script exists. */ readonly argv?: readonly string[] }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/extensions/cordis-host-runner/src/types.ts",
+    "detail": "签名变化: CordisInspectResolveAck\n    旧: export interface CordisInspectResolveAck { /** False for unknown, cancelled, stale, or late answers. */ accepted: boolean }\n    新: export interface CordisInspectResolveAck { /** * True only for a valid success that settles the query; * false for retained failures and unknown, timed out, cancelled, or late answers. */ accepted: boolean }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/extensions/cordis-host-runner/src/inspect-registry.ts",
+    "detail": "签名变化: PendingClientQuery\n    旧: interface PendingClientQuery { request: CordisInspectQueryRequest method: CordisInspectMethodManifest settle(resolution: CordisInspectQueryResolution): void }\n    新: interface PendingClientQuery { request: CordisInspectQueryRequest method: CordisInspectMethodManifest failure?: string settle(resolution: CordisInspectQueryResolution): void }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/extensions/cordis-host-runner/src/inspect-registry.ts",
+    "detail": "签名变化: CordisInspectRegistryService\n    旧: class(ctx:Context)\n    新: class(ctx:Context,clientQueryTimeoutMs:number)"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/interaction/user-questions/src/types.ts",
+    "detail": "签名变化: AskUserQuestionRequestEvent\n    旧: export interface AskUserQuestionRequestEvent { /** Questions to display. */ questions: AskUserQuestionItem[] /** Agent identity projected to the corresponding Client Context in transit. */ agent?: Agent /** Cancellation lifetime of the pending request. */ signal?: AbortSignal }\n    新: export interface AskUserQuestionRequestEvent { /** Questions to display. */ questions: AskUserQuestionItem[] /** Agent identity projected to the corresponding Client Context in transit. */ agent?: Agent /** Cancellation lifetime of the pending request. */ signal?: AbortSignal /** * Tool call the Client card is keyed by. Timed answerers attach to the * business wait stream before starting their local countdown. */ wait?: { /** Tool call the Client card is keyed by. */ callId: ToolCallId /** True for a foreground wait that requires a Client claim; absent for indefinite waits. */ timed?: boolean } }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/input-modality.ts",
+    "detail": "签名变化: pointer\n    旧: function(location:SourceLocation)\n    新: var"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/util/native-command/src/runner.ts",
+    "detail": "签名变化: NativeCommandRunner\n    旧: export type NativeCommandRunner = ( command: string, args: readonly string[], signal: AbortSignal, ) => Promise<{ stdout: string; stderr: string }>\n    新: export type NativeCommandRunner = ( command: string, args: readonly string[], signal: AbortSignal, window: 'hidden' | 'visible', ) => Promise<{ stdout: string; stderr: string }>"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/web/web-search-deepseek/src/provider.ts",
+    "detail": "签名变化: DeepSeekSearchProviderOptions\n    旧: export interface DeepSeekSearchProviderOptions { /** Literal DeepSeek API key; when present it wins over {@link resolveApiKey}. */ apiKey?: string /** Resolve the current DeepSeek API key for one search operation. */ resolveApiKey?: () => Promise<string | undefined> /** Credential reference named by missing-credential diagnostics. */ apiKeyEnv?: CredentialRef /** Endpoint base; `/messages` is appended. */ baseURL: string /** Anthropic-format model name. */ model: string /** `anthropic-version` header value. */ apiVersion: string /** Upper bound on generated tokens for the Messages request. */ maxTokens: number /** Maximum `web_search` server-tool uses per request. */ maxUses: number /** * Record the exact secret-free request immediately before dispatch. A throw * prevents dispatch so model-visible auxiliary input cannot escape logging. */ recordRequest?: (request: DeepSeekSearchLlmRequest) => void }\n    新: export interface DeepSeekSearchProviderOptions { /** * Resolve the DeepSeek account token for one search endpoint. A token takes * precedence over every API key and is sent only as `x-dsh-auth-token`; * `undefined` selects API-key authentication. */ resolveAccountToken?: (endpoint: string) => Promise<string | undefined> /** Literal DeepSeek API key; when present it wins over {@link resolveApiKey}. */ apiKey?: string /** Resolve the current DeepSeek API key for one search operation. */ resolveApiKey?: () => Promise<string | undefined> /** Credential reference named by missing-credential diagnostics. */ apiKeyEnv?: CredentialRef /** Endpoint base; `/messages` is appended. */ baseURL: string /** Anthropic-format model name. */ model: string /** `anthropic-version` header value. */ apiVersion: string /** Upper bound on generated tokens for the Messages request. */ maxTokens: number /** Maximum `web_search` server-tool uses per request. */ maxUses: number /** * Record the exact secret-free request immediately before dispatch. A throw * prevents dispatch so model-visible auxiliary input cannot escape logging. */ recordRequest?: (request: DeepSeekSearchLlmRequest) => void }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/llm-pi-ai/src/catalog.ts",
+    "detail": "签名变化: OfferedCompatField\n    旧: type OfferedCompatField = | OfferedIn<typeof COMPLETIONS_COMPAT_GATE> | OfferedIn<typeof RESPONSES_COMPAT_GATE> | OfferedIn<typeof ANTHROPIC_COMPAT_GATE> | OfferedIn<typeof BEDROCK_COMPAT_GATE>\n    新: type OfferedCompatField = | OfferedIn<typeof COMPLETIONS_COMPAT_GATE> | OfferedIn<typeof RESPONSES_COMPAT_GATE> | OfferedIn<typeof ANTHROPIC_COMPAT_GATE> | OfferedIn<typeof BEDROCK_COMPAT_GATE> // oxlint-disable-next-line typescript/no-redundant-type-constituents -- Include gates whose current offering is empty. | OfferedIn<typeof MISTRAL_COMPAT_GATE>"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/llm-pi-ai/src/catalog.ts",
+    "detail": "签名变化: UpstreamCompat\n    旧: type UpstreamCompat = OpenAICompletionsCompat & OpenAIResponsesCompat & AnthropicMessagesCompat & BedrockCompat\n    新: type UpstreamCompat = OpenAICompletionsCompat & OpenAIResponsesCompat & AnthropicMessagesCompat & BedrockCompat & MistralConversationsCompat"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/llm-pi-ai/src/catalog.ts",
+    "detail": "签名变化: ModelCompat\n    旧: type ModelCompat = OpenAICompletionsCompat | OpenAIResponsesCompat | AnthropicMessagesCompat | BedrockCompat\n    新: type ModelCompat = OpenAICompletionsCompat | OpenAIResponsesCompat | AnthropicMessagesCompat | BedrockCompat | MistralConversationsCompat"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/boot/config-editor",
+    "detail": "新增导出: overridden"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/product-analytics",
+    "detail": "新增导出: ProductAnalytics"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/credentials/deepseek-account-platform",
+    "detail": "新增导出: deviceOsVersion"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/host/product-telemetry-otel",
+    "detail": "新增导出: reporter"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions",
+    "detail": "新增导出: TimedUserQuestionResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions",
+    "detail": "新增导出: QueuedReply"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions",
+    "detail": "新增导出: question"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions",
+    "detail": "新增导出: answered"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions",
+    "detail": "新增导出: wait"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/telemetry/otel",
+    "detail": "新增导出: OTel"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-search-deepseek",
+    "detail": "新增导出: ACCOUNT_PROVIDER"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-dockkit/src/components/FloatLayer.tsx",
+    "detail": "新增导出: caption"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/TextShimmer.tsx",
+    "detail": "新增导出: DecorativeCopy"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/TextShimmer.tsx",
+    "detail": "新增导出: TextContent"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/TextShimmer.tsx",
+    "detail": "新增导出: decorative"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/TextShimmer.tsx",
+    "detail": "新增导出: generated"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: MenuGroup"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: headingId"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: observeStickyMenuGroups"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: heading"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: stripObserver"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: viewportHeight"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: stuck"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: startObserver"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/MenuGroup.tsx",
+    "detail": "新增导出: sizeObserver"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "新增导出: showAfterDelay"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/input-modality.ts",
+    "detail": "新增导出: INPUT_MODALITY"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/input-modality.ts",
+    "detail": "新增导出: INPUT_MODALITY_ATTRIBUTE"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/input-modality.ts",
+    "detail": "新增导出: FOCUS_NAVIGATION"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/input-modality.ts",
+    "detail": "新增导出: pointerOwnsFocus"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/input-modality.ts",
+    "detail": "新增导出: keyFocusOrigin"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/input-modality.ts",
+    "detail": "新增导出: pointerModality"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/core/session/src/repair.ts",
+    "detail": "新增导出: ToolCallRecovery"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/webworker-runtime/src/transport/frames.ts",
+    "detail": "新增导出: TunnelViewTextFrame"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/experimental/webworker-runtime/src/node/globals/process.ts",
+    "detail": "新增导出: EXEC_PATH"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/extensions/cordis-host-runner/src/inspect-registry.ts",
+    "detail": "新增导出: gateway"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/types.ts",
+    "detail": "新增导出: UserQuestionState"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/types.ts",
+    "detail": "新增导出: PendingUserQuestion"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/types.ts",
+    "detail": "新增导出: SettledUserQuestion"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/types.ts",
+    "detail": "新增导出: UserQuestionProjectionView"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: UserQuestionFold"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: UserQuestionProjectionState"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: ASK_USER_QUESTION_TOOL"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: TIMED_WAIT_PARAMETER"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: toolOptionSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: toolQuestionSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: toolArgumentsSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: optionSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: questionSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: pendingQuestionsSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: answerSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: settledQuestionsSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: projectionViewSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: answerBatchSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: emptyView"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: initialFold"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: isTimedAskUserQuestionSchema"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: questionsOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: isPendingResult"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: answerBatchOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: settleQuestion"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: applyUserQuestionEvent"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: questions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: answers"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: foldUserQuestions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/interaction/user-questions/src/projection.ts",
+    "detail": "新增导出: userQuestionProjectionDefinition"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/upload-index.ts",
+    "detail": "新增导出: invalidated"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/sandbox/sandbox-windows-acl/src/acl-skill.ts",
+    "detail": "新增导出: ACL_DIAGNOSIS_SKILL"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/sandbox/sandbox-windows-acl/src/acl-skill.ts",
+    "detail": "新增导出: registerAclDiagnosisSkill"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/schedule/schedule/src/domain.ts",
+    "detail": "新增导出: SCHEDULED_MESSAGE_FRAMING"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/telemetry/otel/src/event-log.ts",
+    "detail": "新增导出: OTelEventScalar"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/telemetry/otel/src/event-log.ts",
+    "detail": "新增导出: OTelEventRecord"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/telemetry/otel/src/event-log.ts",
+    "detail": "新增导出: EventLogOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/telemetry/otel/src/event-log.ts",
+    "detail": "新增导出: EventLogReporter"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/telemetry/otel/src/session-log.ts",
+    "detail": "新增导出: SESSION_LOG_MAX_REQUEST_BYTES"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/telemetry/otel/src/session-log.ts",
+    "detail": "新增导出: SessionLogRecord"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/telemetry/otel/src/session-log.ts",
+    "detail": "新增导出: SessionLogOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/telemetry/otel/src/session-log.ts",
+    "detail": "新增导出: resolveSessionLogLimits"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/telemetry/otel/src/session-log.ts",
+    "detail": "新增导出: SessionLogProcessor"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/telemetry/otel/src/session-log.ts",
+    "detail": "新增导出: SessionLogReporter"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-search-deepseek/src/provider.ts",
+    "detail": "新增导出: SearchAuth"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-search-deepseek/src/provider.ts",
+    "detail": "新增导出: resolveCredential"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-search-deepseek/src/provider.ts",
+    "detail": "新增导出: accountRejectedError"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-pi-ai/src/catalog.ts",
+    "detail": "新增导出: MISTRAL_COMPAT_GATE"
+  },
+  {
+    "severity": "breaking",
+    "kind": "config-field-type-changed",
+    "path": "config:@deepseek-ai/dsh-session-log-deepseek",
+    "detail": "配置字段类型变化: enabled: ?boolean -> Volatile<boolean>"
+  },
+  {
+    "severity": "breaking",
+    "kind": "config-field-type-changed",
+    "path": "config:@deepseek-ai/dsh-session-log-deepseek",
+    "detail": "配置字段类型变化: maxBytes: ?number -> number"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-client-product-analytics",
+    "detail": "新增配置字段: enabled"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-client-product-analytics",
+    "detail": "新增配置字段: appVersion"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-cordis-host-runner",
+    "detail": "新增配置字段: clientInspectTimeoutMs"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-session-telemetry-otel",
+    "detail": "新增配置字段: maxRequestBytes"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-terminal-bash",
+    "detail": "新增配置字段: promptTailGraceMs"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-tool-ask-user",
+    "detail": "新增配置字段: mode"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-tool-ask-user",
+    "detail": "新增配置字段: timeout"
+  }
+]
