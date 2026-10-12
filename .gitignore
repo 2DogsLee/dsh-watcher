@@ -1,0 +1,14 @@
+*.tmp
+_zsh*/
+_dsh/
+.DS_Store
+_radar_test/
+_radar*
+_fake*
+ast-diff/node_modules/
+ast-diff/_ast*
+_v2test/
+_rt/
+docs/marketplace/
+docs/submission-checklist.md
+

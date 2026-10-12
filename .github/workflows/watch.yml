@@ -1,0 +1,88 @@
+name: watch-dsh-releases
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # 每日 03:00 UTC
+  workflow_dispatch:
+    inputs:
+      from:
+        description: '强制起版 tag（如 dsh-v0.2.0-rc.1），留空=自动发现'
+        required: false
+      to:
+        description: '强制止版 tag（如 dsh-v0.2.1-alpha.1），留空=最新'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  watch:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone upstream DSH checkout
+        shell: pwsh
+        run: |
+          git clone --filter=blob:none https://github.com/${{ env.UPSTREAM || 'deepseek-ai/deepseek-harness' }}.git _dsh
+          git -C _dsh fetch --tags --force
+
+      - name: Determine tag pair (last archived -> newest)
+        id: pair
+        shell: pwsh
+        run: |
+          $tags = git -C _dsh tag --sort=-creatordate | Where-Object { $_ -match '^dsh-v\d' }
+          $inFrom = '${{ inputs.from }}'; $inTo = '${{ inputs.to }}'
+          if ($inFrom -and $inTo) {
+            "from=$inFrom" >> $env:GITHUB_OUTPUT
+            "to=$inTo" >> $env:GITHUB_OUTPUT
+            return
+          }
+          $archived = if (Test-Path archive) { Get-ChildItem archive -Directory | ForEach-Object { ($_.Name -split '_to_')[1] } } else { @() }
+          $from = $null; $to = $tags[0]
+          foreach ($t in $tags[1..($tags.Count-1)]) { if ($archived -notcontains ($t -replace '^dsh-v','')) { $from = $t; break } }
+          if (-not $from) { Write-Host "无新版本需要归档"; "skip=true" >> $env:GITHUB_OUTPUT; return }
+          "from=$from" >> $env:GITHUB_OUTPUT
+          "to=$to" >> $env:GITHUB_OUTPUT
+
+      - name: Install AST deps
+        if: steps.pair.outputs.skip != 'true'
+        shell: bash
+        working-directory: ast-diff
+        run: npm install --no-audit --no-fund
+
+      - name: Run diff
+        if: steps.pair.outputs.skip != 'true'
+        shell: pwsh
+        run: |
+          ./scripts/diff-api.ps1 -Repo _dsh -From ${{ steps.pair.outputs.from }} -To ${{ steps.pair.outputs.to }}
+          if ($LASTEXITCODE -eq 2) {
+            # exit 2 = 发现 breaking 条目，这是本流水线的正常产物而非错误
+            Write-Host "发现 breaking 条目，归档后随报告发布"
+            exit 0
+          }
+          exit $LASTEXITCODE
+
+      - name: Commit archive + release
+        if: steps.pair.outputs.skip != 'true'
+        shell: pwsh
+        env:
+          FROM: ${{ steps.pair.outputs.from }}
+          TO: ${{ steps.pair.outputs.to }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $dir = "archive/$(($env:FROM -replace '^dsh-v',''))_to_$(($env:TO -replace '^dsh-v',''))"
+          git add archive
+          git -c user.name=dsh-api-watch-bot -c user.email=bot@users.noreply.github.com commit -m "archive: $env:FROM -> $env:TO"
+          git push
+          # Release 正文上限 125000 字符：AST 模式下 report.md 可能超限。
+          # 摘要版 = 头部 + 计数表 + breaking 段；完整报告看仓库 archive/。
+          $lines = Get-Content "$dir/report.md"
+          $cut = ($lines | Select-String -Pattern '^## warning' | Select-Object -First 1).LineNumber
+          if ($cut) { $summary = ($lines[0..([Math]::Max($cut-2, 0))]) -join "`n" } else { $summary = ($lines -join "`n") }
+          $summary += "`n`n> 完整报告（warning/info 全量）见仓库 archive/$dir/report.md"
+          if ($summary.Length -gt 120000) { $summary = $summary.Substring(0, 120000) + "`n…（超长截断，完整内容见仓库）" }
+          Set-Content -Encoding UTF8 "$dir/notes.md" $summary
+          # 注意：对 gh 等!原生命令不要用 2>$null（PowerShell StandardErrorEncoding bug）
+          gh release create "$env:TO-api-watch" "$dir/report.json" --title "DSH $env:TO 插件 API 面报告" --notes-file "$dir/notes.md"
+          if ($LASTEXITCODE -ne 0) { gh release upload "$env:TO-api-watch" "$dir/report.json" --clobber }
