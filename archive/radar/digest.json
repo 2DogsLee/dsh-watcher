@@ -1,11 +1,11 @@
 {
   "tool": "dsh-api-watch radar v0",
-  "generated": "2026-10-14T09:11:38.3499272Z",
+  "generated": "2026-10-15T08:44:35.2769410Z",
   "upstream": "deepseek-ai/deepseek-harness",
   "counts": {
-    "discussion": 89,
     "issue": 30,
-    "pr": 30
+    "pr": 30,
+    "discussion": 89
   },
   "items": [
     {
@@ -334,18 +334,8 @@
       "title": "Bug: dsh-llm-deepseek 偶发把工具参数拼成非法 JSON ⇒ MALFORMED_RESPONSE 硬终止（无重试、无原文）",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/9402",
       "upvotes": 1,
-      "comments": 9,
-      "updated": "2026-10-12T08:46:01Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
-      "title": "希望增加官方 Linux 桌面客户端支持（AppImage /deb/rpm），并适配信创环境",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/9659",
-      "upvotes": 2,
-      "comments": 0,
-      "updated": "2026-10-14T05:53:22Z",
+      "comments": 10,
+      "updated": "2026-10-15T02:54:30Z",
       "relevant": false
     },
     {
@@ -357,6 +347,16 @@
       "comments": 1,
       "updated": "2026-10-01T05:20:18Z",
       "relevant": true
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "希望增加官方 Linux 桌面客户端支持（AppImage /deb/rpm），并适配信创环境",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/9659",
+      "upvotes": 2,
+      "comments": 0,
+      "updated": "2026-10-14T05:53:22Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -451,22 +451,22 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "bug : The OpenCode ZEN provider is not working.",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8329",
-      "upvotes": 2,
-      "comments": 2,
-      "updated": "2026-10-05T21:43:54Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
       "title": "Alpha.3 Web profile cannot load rc.8-era plugins",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5348",
       "upvotes": 1,
       "comments": 3,
       "updated": "2026-09-02T01:53:24Z",
       "relevant": true
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "bug : The OpenCode ZEN provider is not working.",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8329",
+      "upvotes": 2,
+      "comments": 2,
+      "updated": "2026-10-05T21:43:54Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -501,6 +501,16 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
+      "title": "DSH | dsh-hold-to-talk | Hold the mouse on the composer and speak — local voice-to-text (微信电脑版同款长按说话)",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6329",
+      "upvotes": 2,
+      "comments": 2,
+      "updated": "2026-09-29T04:00:06Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
       "title": "解决一下这个,自定义提供商默认不能设置思考等级",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6558",
       "upvotes": 3,
@@ -516,16 +526,6 @@
       "upvotes": 1,
       "comments": 1,
       "updated": "2026-09-29T12:50:59Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
-      "title": "DSH | dsh-hold-to-talk | Hold the mouse on the composer and speak — local voice-to-text (微信电脑版同款长按说话)",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6329",
-      "upvotes": 2,
-      "comments": 2,
-      "updated": "2026-09-29T04:00:06Z",
       "relevant": false
     },
     {
@@ -571,6 +571,16 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
+      "title": "DSH｜dsh-comfyui-web｜在对话里使用 ComfyUI，AI 操作与实时预览",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/9742",
+      "upvotes": 2,
+      "comments": 0,
+      "updated": "2026-10-15T04:58:58Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
       "title": "强烈需要revert 功能",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8269",
       "upvotes": 5,
@@ -596,16 +606,6 @@
       "upvotes": 1,
       "comments": 0,
       "updated": "2026-09-24T05:29:59Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
-      "title": "[Desktop] GUI 进程没有用户 shell PATH:插件调用用户环境工具(node/pnpm)的官方推荐姿势?",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7334",
-      "upvotes": 1,
-      "comments": 1,
-      "updated": "2026-09-21T16:15:39Z",
       "relevant": false
     },
     {
@@ -761,6 +761,16 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
+      "title": "DSH｜dsh-rewind｜同窗口原地回退，把对话退回到任意一条消息（Claude Code /rewind 语义）",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/4592",
+      "upvotes": 4,
+      "comments": 9,
+      "updated": "2026-10-08T06:27:14Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
       "title": "DSH Bug 反馈:会话日志迁移在 exFAT 等\"无硬链接\"文件系统上失败(ENOTSUP);且迁移会就地改写数据文件导致无法回滚",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6358",
       "upvotes": 1,
@@ -791,11 +801,11 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "DSH｜dsh-rewind｜同窗口原地回退，把对话退回到任意一条消息（Claude Code /rewind 语义）",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/4592",
-      "upvotes": 4,
-      "comments": 9,
-      "updated": "2026-10-08T06:27:14Z",
+      "title": "会话数据迁移问题，web和desktop会话互转",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/9319",
+      "upvotes": 1,
+      "comments": 2,
+      "updated": "2026-10-14T15:11:22Z",
       "relevant": false
     },
     {
@@ -806,16 +816,6 @@
       "upvotes": 1,
       "comments": 0,
       "updated": "2026-10-13T17:20:25Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
-      "title": "会话数据迁移问题，web和desktop会话互转",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/9319",
-      "upvotes": 1,
-      "comments": 2,
-      "updated": "2026-10-11T05:45:49Z",
       "relevant": false
     },
     {
@@ -851,21 +851,21 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "长会话触发 Content Exists Risk / INVALID_REQUEST，整个会话被 400 拒绝，能否恢复？(dsh + DeepSeek API)",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5445",
-      "upvotes": 2,
-      "comments": 4,
-      "updated": "2026-09-21T15:20:41Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
       "title": "dsh-hmr 的默认 ignored 会把「同盘、profile 之外」的监视根静默忽略（附 picomatch 实测）",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8859",
       "upvotes": 2,
       "comments": 3,
       "updated": "2026-10-05T10:30:10Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "长会话触发 Content Exists Risk / INVALID_REQUEST，整个会话被 400 拒绝，能否恢复？(dsh + DeepSeek API)",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5445",
+      "upvotes": 2,
+      "comments": 4,
+      "updated": "2026-09-21T15:20:41Z",
       "relevant": false
     },
     {
@@ -900,13 +900,33 @@
     },
     {
       "source": "issue",
-      "repo": "CherryHQ/cherry-studio",
-      "title": "[Bug]: PDF translation always fails — NodeProxyController hardcodes \"[::1]\" into NO_PROXY, breaking BabelDOC's OpenAI/httpx client",
-      "url": "https://github.com/CherryHQ/cherry-studio/issues/21541",
-      "upvotes": 1,
-      "comments": 3,
-      "updated": "2026-10-14T09:10:54Z",
-      "relevant": true
+      "repo": "opencharly/opencharly",
+      "title": "Umbrella pin sync (leg 13 of #481): advance the wave's seven gitlinks, path-scoped, against the sync verb's three filed conditions",
+      "url": "https://github.com/opencharly/opencharly/issues/489",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-15T08:44:09Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "opencharly/opencharly",
+      "title": "Adopt BuildKit as charly's ONE image builder — 13 legs, retiring the podman/buildah + docker/buildx build drivers",
+      "url": "https://github.com/opencharly/opencharly/issues/481",
+      "upvotes": 0,
+      "comments": 56,
+      "updated": "2026-10-15T08:43:59Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "opencharly/plugin-kube",
+      "title": "kube: a bed's own k3s VM is invisible to its probes — complete exported kubeconfig, yet 'no kubeconfig context selected (no cluster/context resolved)'",
+      "url": "https://github.com/opencharly/plugin-kube/issues/22",
+      "upvotes": 0,
+      "comments": 15,
+      "updated": "2026-10-15T08:43:55Z",
+      "relevant": false
     },
     {
       "source": "issue",
@@ -914,8 +934,118 @@
       "title": "[aw] Detection Runs",
       "url": "https://github.com/Pranali0709/Addition/issues/16",
       "upvotes": 0,
-      "comments": 1560,
-      "updated": "2026-10-14T09:07:53Z",
+      "comments": 1624,
+      "updated": "2026-10-15T08:40:16Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "opencharly/charly",
+      "title": "TestIdleBoundedContext_TripsOnlyWhenIdle is load-sensitive: a 50ms toucher vs a 150ms idle window (3x) trips on a CPU-starved runner and red-blocks unrelated PRs",
+      "url": "https://github.com/opencharly/charly/issues/913",
+      "upvotes": 0,
+      "comments": 5,
+      "updated": "2026-10-15T08:38:24Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "aimod-cc/agent2api",
+      "title": "[Bug] OfficeAce（华为 AgentArts /v2）：流式响应缺终止帧 finish_reason，严格 OpenAI 客户端报 Stream ended without finish_reason",
+      "url": "https://github.com/aimod-cc/agent2api/issues/258",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-15T08:38:01Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "lynote-ai/dsh-humanizer",
+      "title": "[dsh-plugin.org | dsh-plugin-hub] plugin install failed: lynote-ai/dsh-humanizer",
+      "url": "https://github.com/lynote-ai/dsh-humanizer/issues/1",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:37:40Z",
+      "relevant": true
+    },
+    {
+      "source": "issue",
+      "repo": "Pranali0709/Addition",
+      "title": "[aw] Daily failure issue cap exceeded",
+      "url": "https://github.com/Pranali0709/Addition/issues/108",
+      "upvotes": 0,
+      "comments": 1934,
+      "updated": "2026-10-15T08:36:49Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "opencharly/opencharly",
+      "title": "umbrella leg of the pin-contract cutover — rename the superseded `policy-b` task surface (70 non-CHANGELOG surfaces), rewrite Part II #3, and re-derive the pin wave under the `currency` gate, never `task verify`",
+      "url": "https://github.com/opencharly/opencharly/issues/490",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-15T08:36:33Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "opencharly/charly",
+      "title": "box/* gitlinks: nothing in charly owns them, so Policy B pins five of six distro-* to stale values and the umbrella can never reach currency (consistency ≠ currency)",
+      "url": "https://github.com/opencharly/charly/issues/936",
+      "upvotes": 0,
+      "comments": 4,
+      "updated": "2026-10-15T08:36:31Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "mayf3/dsh-agent-core",
+      "title": "[GOAL] CONTINUOUS_BACKLOG_DELIVERY_V1 — continuously ship #382 through MRDP",
+      "url": "https://github.com/mayf3/dsh-agent-core/issues/386",
+      "upvotes": 0,
+      "comments": 571,
+      "updated": "2026-10-15T08:36:10Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "opencharly/plugin-kube",
+      "title": "kubernetes: honour the cluster template's kubeconfig file (deploy apply + the kube: verb)",
+      "url": "https://github.com/opencharly/plugin-kube/issues/23",
+      "upvotes": 0,
+      "comments": 5,
+      "updated": "2026-10-15T08:33:23Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "opencharly/charly",
+      "title": "charly's own charly.yml still ships the retired podman_jobs / podman_jobs_cap keys, and validate accepts them silently",
+      "url": "https://github.com/opencharly/charly/issues/938",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-15T08:32:24Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "opencharly/plugin-build",
+      "title": "Does `charly box build --no-cache` invalidate INTERMEDIATE scratch stages under the BuildKit drive? (the podman-era answer is deleted)",
+      "url": "https://github.com/opencharly/plugin-build/issues/31",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-15T08:32:23Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "opencharly/plugin-kubevirt",
+      "title": "fix(kubevirt): deploy onto an externally-managed cluster — explicit guest identity + the cluster template's kubeconfig",
+      "url": "https://github.com/opencharly/plugin-kubevirt/issues/24",
+      "upvotes": 0,
+      "comments": 6,
+      "updated": "2026-10-15T08:29:41Z",
       "relevant": false
     },
     {
@@ -924,18 +1054,18 @@
       "title": "[Roadmap] UOR-R4 — path to a native conversation and memory alpha",
       "url": "https://github.com/UOR-Foundation/uor-r4/issues/2028",
       "upvotes": 0,
-      "comments": 197,
-      "updated": "2026-10-14T09:05:51Z",
+      "comments": 265,
+      "updated": "2026-10-15T08:27:51Z",
       "relevant": false
     },
     {
       "source": "issue",
-      "repo": "A8Chann/dsh-pet-live2d",
-      "title": "【0.2.0-rc.2 桌面端】打开右键面板后，面板和宠物一起持续闪烁",
-      "url": "https://github.com/A8Chann/dsh-pet-live2d/issues/3",
+      "repo": "m11s-io/docker-images",
+      "title": "Dependency Dashboard",
+      "url": "https://github.com/m11s-io/docker-images/issues/53",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-14T09:04:26Z",
+      "updated": "2026-10-15T08:22:32Z",
       "relevant": false
     },
     {
@@ -944,388 +1074,368 @@
       "title": "[M1] Language base: a geometric stack language model good enough to carry chat",
       "url": "https://github.com/UOR-Foundation/uor-r4/issues/2029",
       "upvotes": 0,
-      "comments": 358,
-      "updated": "2026-10-14T09:02:26Z",
+      "comments": 422,
+      "updated": "2026-10-15T08:21:12Z",
       "relevant": false
     },
     {
       "source": "issue",
-      "repo": "auguspp/decision-kernel",
-      "title": "Kernel 2.0｜#838/#839已交付；K2-63/#840原名恢复验证中（正文54为历史）",
-      "url": "https://github.com/auguspp/decision-kernel/issues/508",
-      "upvotes": 0,
-      "comments": 214,
-      "updated": "2026-10-14T09:01:50Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "GeometricAGI/vllm",
-      "title": "Optimize model: Geometric-AI/DeepSeek-V4.1-Flash-vLLM-B300 (8k in / 1k out)",
-      "url": "https://github.com/GeometricAGI/vllm/issues/33",
-      "upvotes": 0,
-      "comments": 9,
-      "updated": "2026-10-14T09:01:35Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "yjh051108/dsh-routing-suite",
-      "title": "[dsh-plugin.org | dsh-plugin-hub] plugin distribution incomplete: yjh051108/dsh-routing-suite",
-      "url": "https://github.com/yjh051108/dsh-routing-suite/issues/238",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:57:13Z",
-      "relevant": true
-    },
-    {
-      "source": "issue",
-      "repo": "1Panel-dev/appstore",
-      "title": "Dependency Dashboard",
-      "url": "https://github.com/1Panel-dev/appstore/issues/108",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T09:11:31Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "burncloud/burncloud",
-      "title": "ARCH-TEST-003：platform / node / server 测试补齐（P1）",
-      "url": "https://github.com/burncloud/burncloud/issues/635",
-      "upvotes": 0,
-      "comments": 94,
-      "updated": "2026-10-14T08:51:36Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "Ebony-Vinyl/dsh-our-free-model",
-      "title": "免费模型不可用，附D老师给的解决方法，自测恢复，望修复",
-      "url": "https://github.com/Ebony-Vinyl/dsh-our-free-model/issues/310",
-      "upvotes": 2,
-      "comments": 3,
-      "updated": "2026-10-14T08:48:57Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.15.0",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/163",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:52Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.14.1",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/161",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:51Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.14.0",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/160",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:50Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.13.0",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/157",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:48Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.12.0",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/154",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:47Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.11.2",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/153",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:46Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.11.1",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/150",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:45Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.11.0",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/149",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:43Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.10.2",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/142",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:42Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.10.1",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/140",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:41Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.10.0",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/135",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:40Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.10.0-beta.4",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/127",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:39Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.10.0-beta.5",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/131",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:39Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.10.0-beta.3",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/126",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:37Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.10.0-beta.2",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/124",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:37Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.10.0-beta.1",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/123",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:36Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "PlutoKeating/dsh-lark-bot",
-      "title": "chore(upstream): review dsh-tui 0.9.3",
-      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/117",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:45:35Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "ml8s/liki",
-      "title": "[feedback:conflict] engine 的 tools/list 为 23 个工具声明 outputSchema，但 tools/call 只返回…",
-      "url": "https://github.com/ml8s/liki/issues/127",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:44:58Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "BryanHarrisScripts/PlotPickle",
-      "title": "[OSS RADAR] October 2026",
-      "url": "https://github.com/BryanHarrisScripts/PlotPickle/issues/2620",
-      "upvotes": 0,
-      "comments": 14,
-      "updated": "2026-10-14T08:43:34Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "albert-zen/zen",
-      "title": "fix(zenx): keep transcript at live edge through final layout",
-      "url": "https://github.com/albert-zen/zen/pull/352",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T09:11:21Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "lybym/LumiThink",
-      "title": "R1-09: 儿童数据生命周期 v0 — 记录开关、查看/导出/删除/重放与审计 (issue #21)",
-      "url": "https://github.com/lybym/LumiThink/pull/44",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T09:10:56Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "kipsilabs/Vio",
-      "title": "fix(web): mark legacy inventory poll exhaustion as failure",
-      "url": "https://github.com/kipsilabs/Vio/pull/317",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T09:09:54Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "miryamgduque/penpot",
-      "title": ":sparkles: Run the agent server-side, with recipes, packs and models",
-      "url": "https://github.com/miryamgduque/penpot/pull/169",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T09:08:40Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "Qomicex-Public/Qomicex.Tauri",
-      "title": "fix(resource): 快捷安装不再删除已安装的前置（issue #249）",
-      "url": "https://github.com/Qomicex-Public/Qomicex.Tauri/pull/250",
-      "upvotes": 0,
-      "comments": 3,
-      "updated": "2026-10-14T09:07:19Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "kagent-dev/kagent",
-      "title": "feat: add DeepSeek Harness BYO integration",
-      "url": "https://github.com/kagent-dev/kagent/pull/3195",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T09:06:39Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "tuantran00541-spec/manga-translator",
-      "title": "Agent mode: coding agent harness with plugin kernel, MCP in and out, skills and rate-limit pacing",
-      "url": "https://github.com/tuantran00541-spec/manga-translator/pull/85",
+      "repo": "makecindy/cindy",
+      "title": "模型输出中插话：输入框已聚焦时 cmd+enter 无反应，无法把消息加入排队",
+      "url": "https://github.com/makecindy/cindy/issues/6113",
       "upvotes": 0,
       "comments": 1,
-      "updated": "2026-10-14T09:04:21Z",
+      "updated": "2026-10-15T08:21:00Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "nearai/inference-sdk",
+      "title": "Design: DeepSeek Harness provider plugin with verified, E2EE inference",
+      "url": "https://github.com/nearai/inference-sdk/issues/108",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:20:29Z",
       "relevant": true
     },
     {
-      "source": "pr",
-      "repo": "aiandlabs/aiand-cli",
-      "title": "feat: add the DeepSeek Harness (dsh) coding agent adapter",
-      "url": "https://github.com/aiandlabs/aiand-cli/pull/21",
+      "source": "issue",
+      "repo": "PlutoKeating/dsh-lark-bot",
+      "title": "chore(upstream): review dsh 0.2.1-alpha.3",
+      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/164",
       "upvotes": 0,
-      "comments": 10,
-      "updated": "2026-10-14T09:03:15Z",
+      "comments": 0,
+      "updated": "2026-10-15T08:20:22Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "PlutoKeating/dsh-lark-bot",
+      "title": "chore(upstream): review dsh 0.2.1-alpha.2",
+      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/162",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:20:21Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "PlutoKeating/dsh-lark-bot",
+      "title": "chore(upstream): review dsh 0.2.1-alpha.1",
+      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/155",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:20:20Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "PlutoKeating/dsh-lark-bot",
+      "title": "chore(upstream): review dsh 0.2.0-rc.2",
+      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/152",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:20:19Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "PlutoKeating/dsh-lark-bot",
+      "title": "chore(upstream): review dsh 0.2.0-rc.1",
+      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/151",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:20:18Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "PlutoKeating/dsh-lark-bot",
+      "title": "chore(upstream): review dsh 0.1.7-rc.2",
+      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/148",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-15T08:20:17Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "PlutoKeating/dsh-lark-bot",
+      "title": "chore(upstream): review dsh 0.1.7-rc.1",
+      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/147",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:20:16Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "PlutoKeating/dsh-lark-bot",
+      "title": "chore(upstream): review dsh 0.1.7-alpha.2",
+      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/146",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:20:15Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "PlutoKeating/dsh-lark-bot",
+      "title": "chore(upstream): review dsh 0.1.7-alpha.1",
+      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/145",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:20:14Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "PlutoKeating/dsh-lark-bot",
+      "title": "chore(upstream): review dsh 0.1.6-alpha.2",
+      "url": "https://github.com/PlutoKeating/dsh-lark-bot/issues/143",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:20:13Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "ccch1mneyyy/dsh-TUI",
-      "title": "feat(plugin): install plugin bundles from the terminal (/plugin install + the first-party feed) / 在终端里装插件：/plugin install 与随包嫡系清单",
-      "url": "https://github.com/ccch1mneyyy/dsh-TUI/pull/1528",
+      "repo": "phase-rs/phase",
+      "title": "Add \"Starting intensity N\": 12 cards unlocked, Ribald Shanty fixed",
+      "url": "https://github.com/phase-rs/phase/pull/9978",
+      "upvotes": 0,
+      "comments": 3,
+      "updated": "2026-10-15T08:43:48Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "yantrikos/yantrik-os",
+      "title": "[SECURITY-SENSITIVE] Taint lasts for the person's conversation, not the bridge process",
+      "url": "https://github.com/yantrikos/yantrik-os/pull/817",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:43:36Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "devockr/deepseek-harness",
+      "title": "Upgrade to alpha 0.2.1-alpha.3; move the API key out of the environment; pass DSH_PUBLIC_URL through",
+      "url": "https://github.com/devockr/deepseek-harness/pull/20",
+      "upvotes": 0,
+      "comments": 7,
+      "updated": "2026-10-15T08:42:59Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "mastermindx-market-intelligence/Mastermind",
+      "title": "[PLAN][Fable continuation] Native-harness orchestration parity through existing Executive owners",
+      "url": "https://github.com/mastermindx-market-intelligence/Mastermind/pull/600",
+      "upvotes": 0,
+      "comments": 633,
+      "updated": "2026-10-15T08:42:41Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "MilkSU-Official/milksu",
+      "title": "重写运行时：砍 CTF/NYU，Desktop JSONL 改走 TypeScript",
+      "url": "https://github.com/MilkSU-Official/milksu/pull/227",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:41:58Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "tt-a1i/archify",
+      "title": "fix(dsh): retain default skill roots",
+      "url": "https://github.com/tt-a1i/archify/pull/919",
+      "upvotes": 1,
+      "comments": 2,
+      "updated": "2026-10-15T08:40:22Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "NanmiCoder/cc-haha",
+      "title": "fix(provider): list DeepSeek account models from the account catalog",
+      "url": "https://github.com/NanmiCoder/cc-haha/pull/1578",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-15T08:40:14Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "ai-dynamo/snapshot",
+      "title": "feat(examples): update recipes to include multi-GPU deployments via cuInterpose",
+      "url": "https://github.com/ai-dynamo/snapshot/pull/456",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-10-15T08:38:41Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "divinevideo/divine-mobile",
+      "title": "chore(zapstore): resolve the listing from the release, not the Play Store",
+      "url": "https://github.com/divinevideo/divine-mobile/pull/10167",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-10-15T08:38:29Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "SingularityKChen/harness-projects",
+      "title": "feat(apps): stream the workspace watch from the host into the client store",
+      "url": "https://github.com/SingularityKChen/harness-projects/pull/345",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:38:06Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "SingularityKChen/harness-projects",
+      "title": "feat(apps): compose the host from stored provider bindings",
+      "url": "https://github.com/SingularityKChen/harness-projects/pull/344",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:38:02Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "OrchestratorInc/agent-orchestrator",
+      "title": "feat: switch agents mid-session in chat and terminal",
+      "url": "https://github.com/OrchestratorInc/agent-orchestrator/pull/6588",
+      "upvotes": 0,
+      "comments": 10,
+      "updated": "2026-10-15T08:37:41Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "CherryHQ/cherry-studio",
+      "title": "feat(provider-settings): add per-model API key routing",
+      "url": "https://github.com/CherryHQ/cherry-studio/pull/21114",
       "upvotes": 0,
       "comments": 4,
-      "updated": "2026-10-14T09:02:47Z",
-      "relevant": true
+      "updated": "2026-10-15T08:36:06Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "Vinix24/vnx-orchestration",
+      "title": "feat(intelligence): tagger, scout, classifier, analyzer and dream honor the provider switch; dream honors the content boundary (provider-schakelaar E)",
+      "url": "https://github.com/Vinix24/vnx-orchestration/pull/2057",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:36:03Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "verl-project/uni-agent",
+      "title": "[agents, examples] feat: add DeepSeek Harness blackbox SWE recipe",
+      "url": "https://github.com/verl-project/uni-agent/pull/259",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-10-15T08:35:44Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "PerryLink/dsh-emergency-plan",
+      "title": "chore(deps-dev): bump @deepseek-ai/dsh-package-manifest from 0.2.1-alpha.1 to 0.2.1-alpha.2",
+      "url": "https://github.com/PerryLink/dsh-emergency-plan/pull/9",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:35:24Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "PerryLink/dsh-demurrage-ledger",
+      "title": "chore(deps-dev): bump @deepseek-ai/dsh-tools from 0.2.1-alpha.1 to 0.2.1-alpha.2",
+      "url": "https://github.com/PerryLink/dsh-demurrage-ledger/pull/6",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-10-15T08:35:00Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "cnkang/skills",
+      "title": "feat(qdrant-memory): support DSH and WorkBuddy skill guidance",
+      "url": "https://github.com/cnkang/skills/pull/21",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-10-15T08:34:43Z",
+      "relevant": false
     },
     {
       "source": "pr",
       "repo": "kipsilabs/Vio",
-      "title": "fix(virtuallibrary): trim provider whitespace before virtual media registration",
-      "url": "https://github.com/kipsilabs/Vio/pull/316",
+      "title": "fix(playback): reuse validated source evidence for cold-start track and seek replans",
+      "url": "https://github.com/kipsilabs/Vio/pull/321",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-14T09:02:37Z",
+      "updated": "2026-10-15T08:34:09Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "Alex-Yanggg/DSH-Player2",
-      "title": "P2-0021: B line goal-driven companion (body protocol, goal lane, persona knobs)",
-      "url": "https://github.com/Alex-Yanggg/DSH-Player2/pull/15",
+      "repo": "apache/flink",
+      "title": "[FLINK-38783][runtime] Make TieredStorageResourceRegistry thread-safe",
+      "url": "https://github.com/apache/flink/pull/29488",
       "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T09:02:20Z",
+      "comments": 2,
+      "updated": "2026-10-15T08:33:27Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "kirodotdev/KiroCrew",
-      "title": "feat(side-chat): run read-only tools on the DeepSeek Harness backend",
-      "url": "https://github.com/kirodotdev/KiroCrew/pull/19745",
+      "repo": "CherryHQ/cherry-studio",
+      "title": "fix(message-list): show a no-response error for empty assistant turns",
+      "url": "https://github.com/CherryHQ/cherry-studio/pull/18151",
       "upvotes": 0,
-      "comments": 39,
-      "updated": "2026-10-14T09:01:53Z",
+      "comments": 15,
+      "updated": "2026-10-15T08:30:52Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "openJiuwen-ai/jiuwenswarm",
-      "title": "feat(reasoning): map reasoning_level to real provider knobs",
-      "url": "https://github.com/openJiuwen-ai/jiuwenswarm/pull/2711",
+      "repo": "opencharly/plugin-kubevirt",
+      "title": "fix(kubevirt): deploy onto an externally-managed cluster — explicit guest identity + the cluster template's kubeconfig",
+      "url": "https://github.com/opencharly/plugin-kubevirt/pull/34",
       "upvotes": 0,
-      "comments": 5,
-      "updated": "2026-10-14T09:01:04Z",
+      "comments": 6,
+      "updated": "2026-10-15T08:29:39Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "opencharly/plugin-kube",
+      "title": "refactor(kube): call the shared cluster resolver, delete the local copy (R3)",
+      "url": "https://github.com/opencharly/plugin-kube/pull/21",
+      "upvotes": 0,
+      "comments": 4,
+      "updated": "2026-10-15T08:29:26Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "arul28/ADE",
+      "title": "fix(chat): a compaction's clock counts once, and a cancelled one says so",
+      "url": "https://github.com/arul28/ADE/pull/1637",
+      "upvotes": 0,
+      "comments": 3,
+      "updated": "2026-10-15T08:27:21Z",
       "relevant": false
     },
     {
@@ -1335,167 +1445,57 @@
       "url": "https://github.com/openJiuwen-ai/jiuwenswarm/pull/3405",
       "upvotes": 0,
       "comments": 8,
-      "updated": "2026-10-14T09:01:03Z",
+      "updated": "2026-10-15T08:25:54Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "kipsilabs/Vio",
-      "title": "fix(web): stop polling a playback session that no longer exists",
-      "url": "https://github.com/kipsilabs/Vio/pull/315",
+      "repo": "openJiuwen-ai/jiuwenswarm",
+      "title": "feat(reasoning): map reasoning_level to real provider knobs",
+      "url": "https://github.com/openJiuwen-ai/jiuwenswarm/pull/2711",
+      "upvotes": 0,
+      "comments": 5,
+      "updated": "2026-10-15T08:25:54Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "iflytek/skillhub",
+      "title": "feat(dsh): add native SkillHub browsing and skill lifecycle plugin",
+      "url": "https://github.com/iflytek/skillhub/pull/956",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-14T09:00:56Z",
-      "relevant": false
+      "updated": "2026-10-15T08:25:52Z",
+      "relevant": true
     },
     {
       "source": "pr",
-      "repo": "hw-native-sys/pypto-lib",
-      "title": "Add: complete V4.1 packed prefill layer contract",
-      "url": "https://github.com/hw-native-sys/pypto-lib/pull/1445",
-      "upvotes": 1,
-      "comments": 6,
-      "updated": "2026-10-14T08:58:14Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "jimoto-no-llm/rustdsh",
-      "title": "feat(desktop): 公式SDK取り込み・rdsh更新先・ファイル整理の整備",
-      "url": "https://github.com/jimoto-no-llm/rustdsh/pull/447",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-10-14T08:56:30Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "kipsilabs/Vio",
-      "title": "fix(playback): match partial explicit audio signatures and stop terminating on absence",
-      "url": "https://github.com/kipsilabs/Vio/pull/314",
+      "repo": "PerryLink/dsh-medrec-qc",
+      "title": "chore(deps-dev): bump @deepseek-ai/dsh-tools from 0.2.1-alpha.1 to 0.2.1-alpha.2",
+      "url": "https://github.com/PerryLink/dsh-medrec-qc/pull/9",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-14T08:56:12Z",
+      "updated": "2026-10-15T08:25:29Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "Ebony-Vinyl/dsh-our-free-model",
-      "title": "fix: mint time-encoded request IDs and strip harness version from User-Agent",
-      "url": "https://github.com/Ebony-Vinyl/dsh-our-free-model/pull/300",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-10-14T08:49:35Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "MLGBJDLW/Nexa",
-      "title": "feat(runtime): unify external usage and recover long-running agents",
-      "url": "https://github.com/MLGBJDLW/Nexa/pull/474",
-      "upvotes": 0,
-      "comments": 4,
-      "updated": "2026-10-14T08:49:20Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "excitedjs/dreamux",
-      "title": "Enable owner-scoped member messaging and native reports",
-      "url": "https://github.com/excitedjs/dreamux/pull/475",
+      "repo": "PerryLink/dsh-warranty-calc",
+      "title": "chore(deps-dev): bump @deepseek-ai/dsh-tools from 0.2.1-alpha.1 to 0.2.1-alpha.2",
+      "url": "https://github.com/PerryLink/dsh-warranty-calc/pull/7",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-14T08:48:07Z",
+      "updated": "2026-10-15T08:24:54Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "preloop/preloop",
-      "title": "feat(agents): notes behind a counted tab, no note box for MCP-only agents",
-      "url": "https://github.com/preloop/preloop/pull/1704",
-      "upvotes": 1,
-      "comments": 1,
-      "updated": "2026-10-14T08:46:31Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "nexu-io/open-design",
-      "title": "feat(od-next): open registered agents and CLI BYOK",
-      "url": "https://github.com/nexu-io/open-design/pull/8702",
-      "upvotes": 2,
-      "comments": 2,
-      "updated": "2026-10-14T08:44:13Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "ollygarden/opentelemetry-agent-skills",
-      "title": "feat(otel-telemetry-emissions): add latest versions and update model",
-      "url": "https://github.com/ollygarden/opentelemetry-agent-skills/pull/269",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-10-14T08:44:02Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "chanyuenpang/claw-kit",
-      "title": "docs: make the GitHub README easier to scan",
-      "url": "https://github.com/chanyuenpang/claw-kit/pull/4",
+      "repo": "PerryLink/dsh-power-ticket-check",
+      "title": "chore(deps-dev): bump @deepseek-ai/dsh-tools from 0.2.1-alpha.1 to 0.2.1-alpha.2",
+      "url": "https://github.com/PerryLink/dsh-power-ticket-check/pull/6",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-10-14T08:43:26Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "CherryHQ/cherry-studio",
-      "title": "feat(provider-settings): add per-model API key routing",
-      "url": "https://github.com/CherryHQ/cherry-studio/pull/21114",
-      "upvotes": 0,
-      "comments": 3,
-      "updated": "2026-10-14T08:43:18Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "jimoto-no-llm/rustdsh",
-      "title": "feat(provider): HAI・自宅LLMサーバー・Sarashinaをdshのルートとして登録する（rdsh provider）",
-      "url": "https://github.com/jimoto-no-llm/rustdsh/pull/474",
-      "upvotes": 0,
-      "comments": 6,
-      "updated": "2026-10-14T08:40:20Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "huangdi97/morn",
-      "title": "v11.5 control-plane convergence: semantic resources, reconciliation, profiles",
-      "url": "https://github.com/huangdi97/morn/pull/1",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-10-14T08:40:21Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "TH060419/gatherthread",
-      "title": "fix(dsh): move the reviewed DeepSeek Harness pin to 0.1.7-rc.2",
-      "url": "https://github.com/TH060419/gatherthread/pull/95",
-      "upvotes": 0,
-      "comments": 2,
-      "updated": "2026-10-14T08:37:39Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "antirez/ds4",
-      "title": "Key tool-conversation KV checkpoints by the client-visible transcript",
-      "url": "https://github.com/antirez/ds4/pull/1058",
-      "upvotes": 0,
-      "comments": 6,
-      "updated": "2026-10-14T08:37:32Z",
+      "updated": "2026-10-15T08:24:44Z",
       "relevant": false
     }
   ]
