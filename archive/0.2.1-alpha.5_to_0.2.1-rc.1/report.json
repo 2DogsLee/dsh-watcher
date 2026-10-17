@@ -1,0 +1,14 @@
+{
+  "tool": "dsh-api-watch v1",
+  "repo": "_dsh",
+  "from": "dsh-v0.2.1-alpha.5",
+  "to": "dsh-v0.2.1-rc.1",
+  "generated": "2026-10-17T07:41:13.6857757Z",
+  "counts": {
+    "breaking": 0,
+    "info": 0,
+    "warning": 0,
+    "relevant": 0
+  },
+  "findings": []
+}
