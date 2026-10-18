@@ -1,0 +1,122 @@
+[
+  {
+    "severity": "breaking",
+    "kind": "ast-signature-changed",
+    "path": "packages/web/web",
+    "detail": "签名变化: WebRuntimeConfig\n    旧: export interface WebRuntimeConfig { /** Explicit search provider id. Omitted = auto-select when exactly one usable. */ readonly searchProvider?: string /** Explicit fetch provider id. Omitted = auto-select when exactly one usable. */ readonly fetchProvider?: string }\n    新: export interface WebRuntimeConfig { /** Explicit search provider id. Omitted = auto-select when exactly one usable. */ readonly searchProvider: Volatile<string | undefined> /** Explicit fetch provider id. Omitted = auto-select when exactly one usable. */ readonly fetchProvider: Volatile<string | undefined> }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/web/web-search-deepseek/src/provider.ts",
+    "detail": "签名变化: DeepSeekSearchLlmRequest\n    旧: export interface DeepSeekSearchLlmRequest { /** Fully resolved Messages endpoint. */ readonly endpoint: string /** `anthropic-version` header value. */ readonly apiVersion: string /** Exact JSON body sent to the provider. */ readonly body: { readonly model: string readonly max_tokens: number readonly messages: readonly [{ readonly role: 'user' readonly content: readonly [{ readonly type: 'text' readonly text: string }] }] readonly tools: readonly [{ readonly type: 'web_search_20250305' readonly name: 'web_search' readonly max_uses: number }] } }\n    新: export interface DeepSeekSearchLlmRequest { /** Fully resolved Messages endpoint. */ readonly endpoint: string /** `anthropic-version` header value. */ readonly apiVersion: string /** Exact JSON body sent to the provider. */ readonly body: { readonly model: string readonly max_tokens: number readonly messages: readonly [{ readonly role: 'user' readonly content: readonly [{ readonly type: 'text' readonly text: string }] }] readonly tools: readonly [{ readonly type: 'web_search_20250305' readonly name: 'web_search' readonly max_uses: number }] /** * Thinking mode for the auxiliary turn. The provider always sends * `disabled`: it discards the generated text, so reasoning tokens have no * consumer. Absent means the request omitted the field and the provider * applied its default. */ readonly thinking?: { readonly type: 'disabled' } } }"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api",
+    "detail": "新增导出: latestUserQuestion"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/fetch.ts",
+    "detail": "新增导出: DEEPSEEK_FETCH_API_PROVIDER_ID"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/fetch.ts",
+    "detail": "新增导出: DeepSeekFetchApiOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/fetch.ts",
+    "detail": "新增导出: DeepSeekFetchApiProvider"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DEEPSEEK_SEARCH_API_PROVIDER_ID"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DEEPSEEK_WEB_API_BASE_URL"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DEEPSEEK_DEFAULT_COUNT"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: ORIGINAL_QUESTION_MAX_CHARS"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DEEPSEEK_WEB_API_GUIDANCE"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DeepSeekSearchApiOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: mapSearchResponse"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DeepSeekSearchApiProvider"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: boundedQuestion"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-web-deepseek-api",
+    "detail": "新增配置字段: apiKey"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-web-deepseek-api",
+    "detail": "新增配置字段: apiKeyEnv"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-web-deepseek-api",
+    "detail": "新增配置字段: baseURL"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-web-deepseek-api",
+    "detail": "新增配置字段: count"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-web-deepseek-api",
+    "detail": "新增配置字段: sendOriginalQuestion"
+  }
+]
