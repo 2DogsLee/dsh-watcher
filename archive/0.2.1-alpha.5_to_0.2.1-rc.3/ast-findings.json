@@ -1,0 +1,632 @@
+[
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/llm-deepseek-account",
+    "detail": "签名变化: AccountConnection\n    旧: interface AccountConnection extends ResolvedDeepSeekOptions { readonly catalog: AccountCatalog }\n    新: interface AccountConnection extends ResolvedDeepSeekOptions { readonly catalog: ListedCatalog }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/experimental/webworker-runtime/src/storage/image-gzip.ts",
+    "detail": "签名变化: refuse\n    旧: function(model:string,refusal:CatalogRefusal | undefined)\n    新: var"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-signature-changed",
+    "path": "packages/web/web",
+    "detail": "签名变化: WebRuntimeConfig\n    旧: export interface WebRuntimeConfig { /** Explicit search provider id. Omitted = auto-select when exactly one usable. */ readonly searchProvider?: string /** Explicit fetch provider id. Omitted = auto-select when exactly one usable. */ readonly fetchProvider?: string }\n    新: export interface WebRuntimeConfig { /** Explicit search provider id. Omitted = auto-select when exactly one usable. */ readonly searchProvider: Volatile<string | undefined> /** Explicit fetch provider id. Omitted = auto-select when exactly one usable. */ readonly fetchProvider: Volatile<string | undefined> }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/Menu.tsx",
+    "detail": "签名变化: MenuItemButtonProps\n    旧: export interface MenuItemButtonProps { /** Visible row label. */ children: ReactNode /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: MenuItem['shortcut'] /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Whether the row cannot be activated. */ disabled?: boolean /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** * Start a new group: a hairline above this row, the same one a * `{ type: 'separator' }` data entry draws. It comes and goes with the row, * so a row that renders nothing leaves no stray line; a data separator * directly before it draws no second line, and the list's first row draws none. */ separatorBefore?: boolean /** Row activation (click, Enter, or Tab on the focused row). */ onSelect: () => void }\n    新: export interface MenuItemButtonProps { /** Visible row label. */ children: ReactNode /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: MenuItem['shortcut'] /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Whether this row identifies the currently displayed page or view. */ current?: boolean /** Whether the row cannot be activated. */ disabled?: boolean /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** * Start a new group: a hairline above this row, the same one a * `{ type: 'separator' }` data entry draws. It comes and goes with the row, * so a row that renders nothing leaves no stray line; a data separator * directly before it draws no second line, and the list's first row draws none. */ separatorBefore?: boolean /** Row activation (click, Enter, or Tab on the focused row). */ onSelect: () => void }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/Menu.tsx",
+    "detail": "签名变化: MenuItemButton\n    旧: function({\n  children, shortcut, icon, disabled = false, danger = false, separatorBefore = false, onSelect,\n}:MenuItemButtonProps)\n    新: function({\n  children, shortcut, icon, current, disabled = false, danger = false, separatorBefore = false, onSelect,\n}:MenuItemButtonProps)"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/Menu.tsx",
+    "detail": "签名变化: Menu\n    旧: function({ open, anchor, items = [], children, selectedId, selectedIds, onSelect, onClose, align = 'start', side = 'bottom', portal = false, closeOnPointerLeave = false, dense = false, compact = false, autoFocus = false, selection = 'check', getAnchorRect, footer, className, listClassName }:{ open: boolean autoFocus?: boolean anchor: ReactNode items?: readonly MenuEntry[] children?: ReactNode footer?: readonly MenuEntry[] selectedId?: string | undefined selectedIds?: readonly string[] | undefined onSelect?: (id: string) => void onClose: () => void align?: 'start' | 'end' side?: 'bottom' | 'top' | 'right' portal?: boolean closeOnPointerLeave?: boolean dense?: boolean compact?: boolean selection?: 'check' | 'fill' getAnchorRect?: () => DOMRect | null className?: string | undefined listClassName?: string | undefined })\n    新: function({ open, anchor, items = [], children, selectedId, selectedIds, onSelect, onClose, align = 'start', side = 'bottom', portal = false, closeOnPointerLeave = false, dense = false, compact = false, autoFocus = false, selection = 'check', getAnchorRect, minWidthFromAnchor = false, footer, className, listClassName }:{ open: boolean autoFocus?: boolean anchor: ReactNode items?: readonly MenuEntry[] children?: ReactNode footer?: readonly MenuEntry[] selectedId?: string | undefined selectedIds?: readonly string[] | undefined onSelect?: (id: string) => void onClose: () => void align?: 'start' | 'end' side?: 'bottom' | 'top' | 'right' portal?: boolean closeOnPointerLeave?: boolean dense?: boolean compact?: boolean selection?: 'check' | 'fill' getAnchorRect?: () => DOMRect | null minWidthFromAnchor?: boolean className?: string | undefined listClassName?: string | undefined })"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/client/ui-primitives/src/tooltip-placement.ts",
+    "detail": "签名变化: TooltipSide\n    旧: export type TooltipSide = 'right' | 'bottom' | 'top'\n    新: export type TooltipSide = 'right' | 'left' | 'bottom' | 'top'"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "导出（含 re-export）删除: edgeMargin（原声明于 packages/client/ui-primitives/src/Tooltip.tsx）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "导出（含 re-export）删除: fitsBelow（原声明于 packages/client/ui-primitives/src/Tooltip.tsx）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "导出（含 re-export）删除: fitsAbove（原声明于 packages/client/ui-primitives/src/Tooltip.tsx）"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/llm-deepseek-account/src/config.ts",
+    "detail": "签名变化: AccountOptions\n    旧: export type AccountOptions = Omit<ProtocolOptions, 'models'> & { modelsTimeoutMs?: number modelsMaxAgeMs?: number modelOverrides?: Record<string, ModelOverride> }\n    新: export type AccountOptions = Omit<ProtocolOptions, 'models'> & ModelListingOptions & { modelOverrides?: Record<string, ModelOverride> }"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/llm/llm-deepseek-account/src/config.ts",
+    "detail": "导出（含 re-export）删除: CatalogSettings（原声明于 packages/llm/llm-deepseek-account/src/config.ts）"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/llm-deepseek-account/src/config.ts",
+    "detail": "签名变化: ResolvedAccountOptions\n    旧: export interface ResolvedAccountOptions { /** Messages settings; request resolution replaces `models` with the resolved account catalog. */ readonly protocol: ResolvedDeepSeekOptions /** Listing endpoint and cache timing. */ readonly catalog: CatalogSettings /** Overrides by model id, holding only the fields each one declares. */ readonly modelOverrides: Readonly<Record<string, ModelOverride>> }\n    新: export interface ResolvedAccountOptions { /** Messages settings; request resolution replaces `models` with the resolved account catalog. */ readonly protocol: ResolvedDeepSeekOptions /** Listing endpoint and cache timing. */ readonly catalog: ListingSettings /** Overrides by model id, holding only the fields each one declares. */ readonly modelOverrides: Readonly<Record<string, ModelOverride>> }"
+  },
+  {
+    "severity": "breaking",
+    "kind": "ast-export-removed",
+    "path": "packages/llm/llm-deepseek-account/src/config.ts",
+    "detail": "导出（含 re-export）删除: listingEndpoint（原声明于 packages/llm/llm-deepseek-account/src/config.ts）"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/llm-deepseek-api-key/src/config.ts",
+    "detail": "签名变化: Options\n    旧: export type Options = ProtocolOptions & { apiKeyEnv?: string }\n    新: export type Options = ProtocolOptions & ModelListingOptions & { apiKeyEnv?: string }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/llm/llm-deepseek-api-key/src/config.ts",
+    "detail": "签名变化: ResolvedDeepSeekOptions\n    旧: export interface ResolvedDeepSeekOptions extends DeepSeekConnectionOptions { /** Credential reference used only for this connection snapshot. */ apiKeyEnv: CredentialRef }\n    新: export interface ResolvedDeepSeekOptions extends DeepSeekConnectionOptions { /** Credential reference used only for this connection snapshot. */ apiKeyEnv: CredentialRef /** * The official `/models` listing this generation follows; absent when `models` * differs from the built-in catalog or the endpoint is not the official API. */ listing?: ListingSettings }"
+  },
+  {
+    "severity": "warning",
+    "kind": "ast-signature-changed",
+    "path": "packages/web/web-search-deepseek/src/provider.ts",
+    "detail": "签名变化: DeepSeekSearchLlmRequest\n    旧: export interface DeepSeekSearchLlmRequest { /** Fully resolved Messages endpoint. */ readonly endpoint: string /** `anthropic-version` header value. */ readonly apiVersion: string /** Exact JSON body sent to the provider. */ readonly body: { readonly model: string readonly max_tokens: number readonly messages: readonly [{ readonly role: 'user' readonly content: readonly [{ readonly type: 'text' readonly text: string }] }] readonly tools: readonly [{ readonly type: 'web_search_20250305' readonly name: 'web_search' readonly max_uses: number }] } }\n    新: export interface DeepSeekSearchLlmRequest { /** Fully resolved Messages endpoint. */ readonly endpoint: string /** `anthropic-version` header value. */ readonly apiVersion: string /** Exact JSON body sent to the provider. */ readonly body: { readonly model: string readonly max_tokens: number readonly messages: readonly [{ readonly role: 'user' readonly content: readonly [{ readonly type: 'text' readonly text: string }] }] readonly tools: readonly [{ readonly type: 'web_search_20250305' readonly name: 'web_search' readonly max_uses: number }] /** * Thinking mode for the auxiliary turn. The provider always sends * `disabled`: it discards the generated text, so reasoning tokens have no * consumer. Absent means the request omitted the field and the provider * applied its default. */ readonly thinking?: { readonly type: 'disabled' } } }"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek-api-key",
+    "detail": "新增导出: OfficialConnection"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek-api-key",
+    "detail": "新增导出: presentApiKey"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek-api-key",
+    "detail": "新增导出: listings"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek-api-key",
+    "detail": "新增导出: reportedListing"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek-api-key",
+    "detail": "新增导出: following"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api",
+    "detail": "新增导出: latestUserQuestion"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "新增导出: anchorRect"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "新增导出: horizontal"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "新增导出: offsetX"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "新增导出: offsetY"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/Tooltip.tsx",
+    "detail": "新增导出: onResize"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/icons/index.tsx",
+    "detail": "新增导出: AppsAddIconProps"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/icons/index.tsx",
+    "detail": "新增导出: IconAppsAddOutlineArtwork"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/icons/index.tsx",
+    "detail": "新增导出: near"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/icons/index.tsx",
+    "detail": "新增导出: far"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/icons/index.tsx",
+    "detail": "新增导出: plusX"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/icons/index.tsx",
+    "detail": "新增导出: plusY"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/icons/index.tsx",
+    "detail": "新增导出: IconAppsAddOutlineRegular"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/icons/index.tsx",
+    "detail": "新增导出: IconAppsAddOutlineMedium"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek-account/src/config.ts",
+    "detail": "新增导出: timing"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek-api-key/src/config.ts",
+    "detail": "新增导出: OFFICIAL_ORIGIN"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/config.ts",
+    "detail": "新增导出: isBuiltInCatalog"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: LISTED_MODALITIES"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: LISTING_TIMEOUT"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: modelListingURL"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: ClientRequirement"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: ListedFacts"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: ListedCapabilities"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: ListingEntry"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: ModelListing"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: Fields"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: fieldsOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: knownModalities"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: requirementOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: capabilitiesOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: maxOutputTokens"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: promptUpdate"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: parseModelListing"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing.ts",
+    "detail": "新增导出: requestModelListing"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing-config.ts",
+    "detail": "新增导出: ModelListingConfig"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing-config.ts",
+    "detail": "新增导出: modelListingConfigFields"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing-config.ts",
+    "detail": "新增导出: ModelListingOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing-config.ts",
+    "detail": "新增导出: ListingTiming"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing-config.ts",
+    "detail": "新增导出: ListingSettings"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing-config.ts",
+    "detail": "新增导出: resolveListingTiming"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing-cache.ts",
+    "detail": "新增导出: ListingCacheDependencies"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing-cache.ts",
+    "detail": "新增导出: ListingView"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing-cache.ts",
+    "detail": "新增导出: abandonable"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing-cache.ts",
+    "detail": "新增导出: ModelListingCache"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listing-cache.ts",
+    "detail": "新增导出: credential"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: CatalogRefusal"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: ListedCatalogInput"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: ListedCatalog"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: layered"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: gateOf"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: resolveListedCatalog"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: overrideErrors"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: withOverride"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: refusals"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: offeredIds"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: listedIds"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/llm/llm-deepseek/src/listed-catalog.ts",
+    "detail": "新增导出: refuseListedModel"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/fetch.ts",
+    "detail": "新增导出: DEEPSEEK_FETCH_API_PROVIDER_ID"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/fetch.ts",
+    "detail": "新增导出: DeepSeekFetchApiOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/fetch.ts",
+    "detail": "新增导出: DeepSeekFetchApiProvider"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DEEPSEEK_SEARCH_API_PROVIDER_ID"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DEEPSEEK_WEB_API_BASE_URL"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DEEPSEEK_DEFAULT_COUNT"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: ORIGINAL_QUESTION_MAX_CHARS"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DEEPSEEK_WEB_API_GUIDANCE"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DeepSeekSearchApiOptions"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: mapSearchResponse"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: DeepSeekSearchApiProvider"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/web/web-deepseek-api/src/search.ts",
+    "detail": "新增导出: boundedQuestion"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/tooltip-placement.ts",
+    "detail": "新增导出: PlacementInput"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/tooltip-placement.ts",
+    "detail": "新增导出: TooltipPlacement"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/tooltip-placement.ts",
+    "detail": "新增导出: placeTooltip"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/tooltip-placement.ts",
+    "detail": "新增导出: margin"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/tooltip-placement.ts",
+    "detail": "新增导出: maxWidth"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/tooltip-placement.ts",
+    "detail": "新增导出: clampX"
+  },
+  {
+    "severity": "info",
+    "kind": "ast-export-added",
+    "path": "packages/client/ui-primitives/src/tooltip-placement.ts",
+    "detail": "新增导出: clampY"
+  },
+  {
+    "severity": "breaking",
+    "kind": "config-field-removed",
+    "path": "config:@deepseek-ai/dsh-llm-deepseek-account",
+    "detail": "配置字段被删除: modelsTimeoutMs（cordis.yml 里写这些字段将失效）"
+  },
+  {
+    "severity": "breaking",
+    "kind": "config-field-removed",
+    "path": "config:@deepseek-ai/dsh-llm-deepseek-account",
+    "detail": "配置字段被删除: modelsMaxAgeMs（cordis.yml 里写这些字段将失效）"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-web-deepseek-api",
+    "detail": "新增配置字段: apiKey"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-web-deepseek-api",
+    "detail": "新增配置字段: apiKeyEnv"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-web-deepseek-api",
+    "detail": "新增配置字段: baseURL"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-web-deepseek-api",
+    "detail": "新增配置字段: count"
+  },
+  {
+    "severity": "info",
+    "kind": "config-field-added",
+    "path": "config:@deepseek-ai/dsh-web-deepseek-api",
+    "detail": "新增配置字段: sendOriginalQuestion"
+  }
+]
