@@ -3,12 +3,12 @@
   "repo": "_dsh",
   "from": "dsh-v0.2.1-rc.4",
   "to": "dsh-v0.2.2-alpha.2",
-  "generated": "2026-10-28T09:40:47.1718046Z",
+  "generated": "2026-10-29T09:45:40.0967461Z",
   "counts": {
     "info": 1000,
-    "breaking": 301,
+    "warning": 316,
     "relevant": 24,
-    "warning": 316
+    "breaking": 301
   },
   "findings": [
     {
