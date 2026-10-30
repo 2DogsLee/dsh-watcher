@@ -1,0 +1,29 @@
+{
+  "tool": "dsh-api-watch v1",
+  "repo": "_dsh",
+  "from": "dsh-v0.2.1-rc.4",
+  "to": "dsh-v0.2.1-rc.5",
+  "generated": "2026-10-30T10:06:14.1197341Z",
+  "counts": {
+    "relevant": 0,
+    "info": 0,
+    "warning": 2,
+    "breaking": 0
+  },
+  "findings": [
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.2.1-rc.4/reasoning-body-props/guide.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读",
+      "relevant": false
+    },
+    {
+      "severity": "warning",
+      "kind": "upgrade-guide-added",
+      "path": "docs/upgrade-guide/v0.2.1-rc.4/reasoning-body-props/guide.zh.md",
+      "detail": "官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读",
+      "relevant": false
+    }
+  ]
+}
