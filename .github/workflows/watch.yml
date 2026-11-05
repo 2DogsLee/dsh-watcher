@@ -113,7 +113,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { gh release upload "$env:TO-api-watch" @assets --clobber }
 
       - name: Open upgrade-preview issue (有相关 breaking 时)
-        if: steps.pair.outputs.skip != 'true' && int(steps.impact.outputs.relevant) > 0
+        if: steps.pair.outputs.skip != 'true' && steps.impact.outputs.relevant != '0' && steps.impact.outputs.relevant != ''
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
