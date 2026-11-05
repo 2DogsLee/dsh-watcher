@@ -12,6 +12,8 @@ _rt/
 docs/marketplace/
 docs/submission-checklist.md
 
-
 .state/
 archive/local-audit/
+
+registry.local.json
+

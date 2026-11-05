@@ -38,8 +38,9 @@ const flag = (name) => argv.includes('--' + name)
 
 const cfg = {
   dshHome: opt('dsh-home', process.env.DSH_HOME ?? join(homedir(), '.dsh')),
-  runtime: opt('runtime', process.env.DSH_RUNTIME ??
-    ''),
+  // 运行时目录因安装方式而异（Desktop 安装目录、npm 全局、服务器部署…），
+  // 不做任何硬编码猜测：用 --runtime 或 DSH_RUNTIME 指定。
+  runtime: opt('runtime', process.env.DSH_RUNTIME ?? ''),
   profiles: (opt('profiles', 'web,desktop,cli') ?? '').split(',').map((s) => s.trim()).filter(Boolean),
   bundleRoots: argv.reduce((acc, cur, i) => {
     if (cur === '--bundle-root' && argv[i + 1]) acc.push(resolve(argv[i + 1]))
@@ -47,7 +48,7 @@ const cfg = {
   }, []),
   stateDir: opt('state', join(REPO, '.state')),
   report: opt('report', null),
-  registry: opt('registry', join(REPO, 'registry.json')),
+  registry: opt('registry', ['registry.local.json', 'registry.json'].map((f) => join(REPO, f)).find((f) => existsSync(f)) ?? join(REPO, 'registry.json')),
   json: flag('json'),
   out: opt('out', null),
 }
@@ -358,6 +359,10 @@ function checkReportAgainstRegistry(referenced) {
 
 /* ---------------- 运行 ---------------- */
 
+if (!cfg.runtime) {
+  add('error', 'ENV', '未指定运行时目录：需要 --runtime 或环境变量 DSH_RUNTIME',
+    '指向 DSH 的安装目录（其中含 node_modules/@deepseek-ai）。例：--runtime "C:\\Program Files\\dsh\\resources\\dsh-runtime"')
+}
 if (!existsSync(cfg.dshHome)) add('error', 'ENV', `DSH_HOME 不存在: ${cfg.dshHome}`)
 
 const bundles = discoverBundles()

@@ -131,7 +131,8 @@ watch.yml 每 6 小时探一次上游新 tag；发现新版后自动生成三样
 本地手动生成：
 
 ```powershell
-node scripts/prepare-impact.mjs --report archive/<from>_to_<to>/report.json --registry registry.json --out archive/<from>_to_<to>/impact-plan.md
+node scripts/prepare-impact.mjs --report archive/<from>_to_<to>/report.json --out archive/<from>_to_<to>/impact-plan.md
+#   默认优先读 registry.local.json（私有，.gitignore），回退 registry.json 示例
 # 或 PowerShell 包装
 pwsh -File scripts/prepare-impact.ps1 -Report archive/<from>_to_<to>/report.json
 ```

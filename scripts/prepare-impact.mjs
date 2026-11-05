@@ -30,7 +30,9 @@ if (!reportPath || !existsSync(reportPath)) {
   process.exit(1)
 }
 const report = JSON.parse(readFileSync(reportPath, 'utf8'))
-const registryPath = opt('registry', join(REPO, 'registry.json'))
+// 默认优先读本地私有配置 registry.local.json（.gitignore），否则用仓库示例 registry.json
+const defaultRegistry = ['registry.local.json', 'registry.json'].map((f) => join(REPO, f)).find((f) => existsSync(f)) ?? join(REPO, 'registry.json')
+const registryPath = opt('registry', defaultRegistry)
 let registry = null
 if (existsSync(registryPath)) registry = JSON.parse(readFileSync(registryPath, 'utf8'))
 

@@ -74,8 +74,8 @@ node $TOOL/scripts/audit-local.mjs          # 期望 EXIT=0（或 2=仅 warning�
 默认读 `$env:USERPROFILE\.dsh` 与内置运行时路径；非默认布局用参数或环境变量：
 
 ```powershell
-node $TOOL/scripts/audit-local.mjs --dsh-home D:\dsh-home --runtime D:\dsh\resources\dsh-runtime
-# 或 $env:DSH_HOME / $env:DSH_RUNTIME
+node $TOOL/scripts/audit-local.mjs --dsh-home <你的 DSH_HOME> --runtime <DSH 安装目录>\resources\dsh-runtime
+# 或 $env:DSH_HOME / $env:DSH_RUNTIME（runtime 不做默认猜测，必须显式给）
 ```
 
 首次运行会在 `$TOOL/.state/runtime-packages.json` 写包清单快照（C6 的基线）。
@@ -92,7 +92,7 @@ node $TOOL/scripts/audit-local.mjs --dsh-home D:\dsh-home --runtime D:\dsh\resou
 
 ### 方式 B：写进 dsh-cron 的 tasks.json
 
-在 `<dsh-cron 数据目录>/tasks.json`（或你的 dsh-cron 数据目录）的 `tasks` 数组里加一条，
+在你的 dsh-cron 数据目录（如 `<dsh-cron 仓库>/tasks.json`，或 DSH 设置里该插件指向的路径）的 `tasks` 数组里加一条，
 字段：`id` / `name` / `enabled` / `cron` / `cwd` / `preset` / `prompt`。prompt 直接取
 [`examples/dsh-cron-upgrade-watch.md`](../examples/dsh-cron-upgrade-watch.md)，把 `$TOOL` 替换成本机路径。
 dsh-cron 30s 热重载，无需重启。
@@ -138,3 +138,15 @@ pwsh -NoProfile -Command "cd $TOOL; node scripts/prepare-impact.mjs --report <re
 - 云端报告依赖官方 tag（不是 release），GitHub Actions 每 6h 检查一次；
 - 影响计划的"必须处理"是**结构级**（删包/配置/入口/文档）；符号级变更需用
   `scan-plugin.ps1` 扫你的源码确认（任务 prompt 里已写明）。
+
+### 2c. 私有配置放 registry.local.json
+
+真实插件的 uses 可能带你的仓库名/内部包名。**推荐**：
+
+`powershell
+Copy-Item registry.json registry.local.json   # 先复制示例
+# 然后把 registry.local.json 改成你自己的内容
+`
+
+egistry.local.json 已在 .gitignore；prepare-impact / udit-local 默认优先读它，
+读不到才回退到仓库自带的 egistry.json 示例。CI 里的 watch 只用仓库示例，不涉及你的私有配置。
