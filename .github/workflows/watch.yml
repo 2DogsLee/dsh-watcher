@@ -3,6 +3,7 @@ name: watch-dsh-releases
 on:
   schedule:
     - cron: '0 3 * * *' # 每日 03:00 UTC
+    - cron: '0 */6 * * *' # 每 6 小时探一次新 tag（无新版本时秒退）
   workflow_dispatch:
     inputs:
       from:
@@ -14,6 +15,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   watch:
@@ -63,6 +65,20 @@ jobs:
           }
           exit $LASTEXITCODE
 
+      - name: Prepare impact plan (registry 视角的「我的影响 + 应对」)
+        if: steps.pair.outputs.skip != 'true'
+        id: impact
+        shell: pwsh
+        run: |
+          $from = '${{ steps.pair.outputs.from }}' -replace '^dsh-v',''
+          $to = '${{ steps.pair.outputs.to }}' -replace '^dsh-v',''
+          $dir = "archive/${from}_to_${to}"
+          node scripts/prepare-impact.mjs --report "$dir/report.json" --registry registry.json --out "$dir/impact-plan.md" 2>&1 | Tee-Object -Variable planOut
+          $m = [regex]::Match(($planOut -join "`n"), '相关 breaking=(\d+)')
+          $n = if ($m.Success) { $m.Groups[1].Value } else { '0' }
+          "relevant=$n" >> $env:GITHUB_OUTPUT
+          "dir=$dir" >> $env:GITHUB_OUTPUT
+
       - name: Commit archive + release
         if: steps.pair.outputs.skip != 'true'
         shell: pwsh
@@ -81,8 +97,42 @@ jobs:
           $cut = ($lines | Select-String -Pattern '^## warning' | Select-Object -First 1).LineNumber
           if ($cut) { $summary = ($lines[0..([Math]::Max($cut-2, 0))]) -join "`n" } else { $summary = ($lines -join "`n") }
           $summary += "`n`n> 完整报告（warning/info 全量）见仓库 archive/$dir/report.md"
+          if (Test-Path "$dir/impact-plan.md") {
+            $plan = Get-Content "$dir/impact-plan.md"
+            $planCut = ($plan | Select-String -Pattern '^## 升级演练' | Select-Object -First 1).LineNumber
+            $planSummary = if ($planCut) { ($plan[0..([Math]::Max($planCut-2,0))]) -join "`n" } else { ($plan -join "`n") }
+            if ($planSummary.Length -gt 30000) { $planSummary = $planSummary.Substring(0, 30000) + "`n…（截断）" }
+            $summary += "`n`n---`n`n# 我的影响与应对（registry 视角）`n`n$planSummary`n`n> 完整版见 archive/$dir/impact-plan.md"
+          }
           if ($summary.Length -gt 120000) { $summary = $summary.Substring(0, 120000) + "`n…（超长截断，完整内容见仓库）" }
           Set-Content -Encoding UTF8 "$dir/notes.md" $summary
           # 注意：对 gh 等!原生命令不要用 2>$null（PowerShell StandardErrorEncoding bug）
-          gh release create "$env:TO-api-watch" "$dir/report.json" --title "DSH $env:TO 插件 API 面报告" --notes-file "$dir/notes.md"
-          if ($LASTEXITCODE -ne 0) { gh release upload "$env:TO-api-watch" "$dir/report.json" --clobber }
+          $assets = @("$dir/report.json")
+          if (Test-Path "$dir/impact-plan.md") { $assets += "$dir/impact-plan.md" }
+          gh release create "$env:TO-api-watch" @assets --title "DSH $env:TO 插件 API 面报告" --notes-file "$dir/notes.md"
+          if ($LASTEXITCODE -ne 0) { gh release upload "$env:TO-api-watch" @assets --clobber }
+
+      - name: Open upgrade-preview issue (有相关 breaking 时)
+        if: steps.pair.outputs.skip != 'true' && int(steps.impact.outputs.relevant) > 0
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FROM: ${{ steps.pair.outputs.from }}
+          TO: ${{ steps.pair.outputs.to }}
+          RELEVANT: ${{ steps.impact.outputs.relevant }}
+          DIR: ${{ steps.impact.outputs.dir }}
+        run: |
+          $title = "升级预告：$env:TO 有 $env:RELEVANT 处与 registry 相关的 breaking"
+          # 去重：同一止版只开一次
+          $existing = gh issue list --search "升级预告 $env:TO" --state open --json number --jq '.[].number'
+          if ($existing) { Write-Host "已有 issue #$existing，跳过"; exit 0 }
+          $body = Get-Content "$env:DIR/impact-plan.md" -Raw
+          $body += "`n`n---`n> 自动由 watch.yml 生成；对应报告 archive/$env:DIR/report.md"
+          if ($body.Length -gt 60000) { $body = $body.Substring(0, 60000) + "`n…（截断）" }
+          $tmp = Join-Path $env:RUNNER_TEMP 'impact-issue.md'
+          Set-Content -Encoding UTF8 $tmp $body
+          gh issue create --title $title --body-file $tmp --label "upgrade-preview" 2>&1
+          if ($LASTEXITCODE -ne 0) {
+            # label 不存在时退回不带 label，避免整个流水线失败
+            gh issue create --title $title --body-file $tmp
+          }

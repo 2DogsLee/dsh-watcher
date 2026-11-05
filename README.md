@@ -95,6 +95,26 @@ DSH Agent 会在「升级 DSH / 插件报接口错误」时按规程先跑比对
 `.github/workflows/watch.yml` 每天（可配）拉官方 repo 的新 tag，自动生成上一稳定版 → 新版的
 报告并 commit 到 `archive/`，同时发 GitHub Release。**零人工维护**。
 
+## 升级预告（自动跟进 + 我的影响）
+
+watch.yml 每 6 小时探一次上游新 tag；发现新版后自动生成三样东西：
+
+1. `archive/<from>_to_<to>/report.{md,json}` —— 官方 API 面全量 diff（原有能力）
+2. `archive/<from>_to_<to>/impact-plan.md` —— **registry 视角的「我的影响 + 应对步骤」**
+3. 相关 breaking > 0 时自动开 issue（标题含止版 tag，`upgrade-preview` 去重）；Release 正文含影响计划摘要
+
+本地手动生成：
+
+```powershell
+node scripts/prepare-impact.mjs --report archive/<from>_to_<to>/report.json --registry registry.json --out archive/<from>_to_<to>/impact-plan.md
+# 或 PowerShell 包装
+pwsh -File scripts/prepare-impact.ps1 -Report archive/<from>_to_<to>/report.json
+```
+
+它做三件事：用 `registry.json` 的 `uses` 过滤相关条目 → 按变更类型给应对步骤（附对应体检项）→
+附上升级演练命令（audit-local 基线/复检）。替代 API 不猜测，要求以上游代码/文档为证据。
+详见 [docs/impact-plan.md](docs/impact-plan.md)。
+
 ## 本地环境体检（audit-local）
 
 `diff-api` 看的是「官方改了什么」；`audit-local` 看的是「**我这台机器**的插件声明还能不能挂上」。

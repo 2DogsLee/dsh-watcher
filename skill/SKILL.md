@@ -51,6 +51,16 @@ node "$TOOL/scripts/audit-local.mjs"
 
 报告落在 `$TOOL/archive/<旧>_to_<新>/report.{json,md}`。若该区间已有归档报告，直接复用。读 json 只关注 `severity: "breaking"` 与 `relevant: true` 条目。
 
+### 第 2.5 步：生成「我的影响 + 应对」计划
+
+```powershell
+node "$TOOL/scripts/prepare-impact.mjs" --report "$TOOL/archive/<旧>_to_<新>/report.json" --registry "$TOOL/registry.json" --out "$TOOL/archive/<旧>_to_<新>/impact-plan.md"
+```
+
+它把全量报告压成三块：相关项（按 registry 的 uses 过滤）／每条 breaking 的应对步骤（按 kind 模板，附体检项）／
+升级演练命令。**先看它的"一句话结论"**：无相关 breaking 也要继续做第 6 步的运行时体检；
+没配 registry 时它只会说"无法判断"——先把 registry 的 uses 补齐再下结论。
+
 ### 第 3 步：扫描用户插件，产出影响分析
 
 ```powershell
