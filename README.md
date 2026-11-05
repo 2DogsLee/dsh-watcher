@@ -25,13 +25,17 @@ dsh-api-watch/
 ├── scripts/
 │   ├── diff-api.ps1          # 核心：对比两个 dsh ref 的插件 API 面，产出 json + md 报告
 │   ├── scan-plugin.ps1       # 拿报告扫你的插件源码，产出「改动点/风险点」影响分析
+│   ├── audit-local.mjs       # 本地环境体检：manifest / 补丁层遮蔽 / 插件名解析 / workflow provider / 内核删包
+│   ├── audit-local.ps1       # 上述体检的 PowerShell 入口（报告归档到 archive/local-audit/）
+│   ├── audit-local.selftest.mjs  # 体检器自测：9 个注入故障用例
 │   └── detect-breaking.ps1   # CI 门禁：读 report.json，按严重级别给退出码
 ├── scripts/radar.ps1         # 反馈雷达：官方 Discussions + 全站 issues/PR 每日摘要
 ├── registry.json             # 你的插件 → 依赖的 API 面 声明清单（v1 过滤 + 扫描共用）
-├── archive/                  # CI 自动维护：每版本对一份 impact report
+├── archive/                  # CI 自动维护：每版本对一份 impact report；local-audit/ 存本地体检报告
 ├── docs/
 │   ├── architecture.md       # 架构与方案（必读）
-│   └── api-surface.md        # 「插件 API 面」的范围定义
+│   ├── api-surface.md        # 「插件 API 面」的范围定义
+│   └── runtime-audit.md      # 本地环境体检：为什么需要、检查项、局限
 └── .github/workflows/watch.yml  # 定期盯官方 repo，出新 tag 自动生成报告并提交
 ```
 
@@ -90,6 +94,30 @@ DSH Agent 会在「升级 DSH / 插件报接口错误」时按规程先跑比对
 
 `.github/workflows/watch.yml` 每天（可配）拉官方 repo 的新 tag，自动生成上一稳定版 → 新版的
 报告并 commit 到 `archive/`，同时发 GitHub Release。**零人工维护**。
+
+## 本地环境体检（audit-local）
+
+`diff-api` 看的是「官方改了什么」；`audit-local` 看的是「**我这台机器**的插件声明还能不能挂上」。
+两者缺一不可——2026-11 的 0.2.0-rc.2 → 0.2.2-rc.1 事故里，6 个 preset 全部失效，静态 API 报告
+一条都没命中，因为故障在本地配置形态层（旧目录不再读取、补丁层遮蔽、只热启用未持久化、
+插件名路径写法、内核删包后行仍在引用）。
+
+```powershell
+# 升级前存基线（同时记录 runtime 包清单）
+node scripts/audit-local.mjs
+
+# 升级后再跑：C6 自动 diff 出内核删了哪些包
+node scripts/audit-local.mjs --out audit-after.md
+
+# 与静态报告交叉（C7）
+node scripts/audit-local.mjs --report archive/<旧>_to_<新>/report.json --registry registry.json
+
+# PowerShell 入口，报告归档到 archive/local-audit/
+pwsh -File scripts/audit-local.ps1
+```
+
+退出码 `0/1/2`（通过/error/仅warning）。自测：`node scripts/audit-local.selftest.mjs`（9 个注入故障用例）。
+检查项与局限见 [docs/runtime-audit.md](docs/runtime-audit.md)。
 
 ## 破坏性判定（当前启发式）
 

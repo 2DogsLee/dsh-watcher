@@ -27,6 +27,18 @@ description: 在升级 DeepSeek Harness（DSH）之前或插件报接口错误�
 
 ## 操作步骤
 
+### 第 0 步：升级前存本地基线（必做）
+
+静态比对回答「官方改了什么」，回答不了「我这台机器上的配置还能不能挂上」。升级前先存基线：
+
+```powershell
+node "$TOOL/scripts/audit-local.mjs"
+```
+
+它会把当前 runtime 的 `@deepseek-ai/*` 包清单写入 `$TOOL/.state/runtime-packages.json`，
+并检查现有插件声明的挂载链路。**升级后第一次运行会自动 diff 出内核删了哪些包**——这是
+`package-removed` 之外更容易被忽略的一层（删包 + 我的声明仍在引用它）。
+
 ### 第 1 步：确定版本区间
 
 在官方 checkout 里 `git tag --sort=-creatordate`，确认当前版本（`git describe --tags`）与目标版本（用户指定，或最新 tag）。
@@ -61,6 +73,27 @@ description: 在升级 DeepSeek Harness（DSH）之前或插件报接口错误�
 - 引用 impact.md 路径；每条改动点附第 4 步的迁移建议；
 - 提醒：warning 与未命中条目不等于「没事」（详见报告内说明）。
 
+### 第 6 步：升级后跑本地体检（必做）
+
+```powershell
+node "$TOOL/scripts/audit-local.mjs" --report "$TOOL/archive/<旧>_to_<新>/report.json" --registry "$TOOL/registry.json"
+```
+
+退出码非 0 时**先修环境问题、再谈 API 迁移**。检查项：
+
+| 编号 | 检查 | 典型故障（2026-11 实测） |
+|---|---|---|
+| C1 | manifest 持久化 | 只热启用未写 profile manifest → 重启后插件消失 |
+| C2 | 补丁层遮蔽 | profile 补丁层残留旧 `preset-*` 声明 → 花名册不显示 |
+| C3 | 插件名可解析 | `./` 相对、裸 `D:/`、`file:` 单斜杠 → 行 never started；子路径已删 |
+| C4 | workflowEngine provider | 删包后没人提供服务 → `waiting for workflowEngine` |
+| C5 | 已知废弃清单 | 内核删包/改名 |
+| C6 | 内核包漂移 | 与基线快照 diff，自动发现"这次删了什么" |
+| C7 | 注册表交叉 | 官方 breaking 项 vs 你的 `uses.packages` / 声明行 |
+
+排查顺序：**C1/C2 环境态 → C3 名字解析 → C4 服务提供方 → C6 删包 → C7 交叉 → 最后才是 API 迁移**。
+经验：这类故障的数据都在磁盘上，先取证（会话/组合/清单文件）再改配置。
+
 ## 红线
 
 - **不要跳过比对与扫描直接改插件代码**——先证据后动手；
@@ -71,3 +104,4 @@ description: 在升级 DeepSeek Harness（DSH）之前或插件报接口错误�
 ## 边界
 
 - 本工具发现「签名/结构/文档层/配置字段层」变更；行为级破坏（签名不变语义变）只能间接提示（文档大改 warning），需人工复核或交叉查阅官方 Discussions（雷达 digest 里有每日汇总）。
+- **本地挂载链路**由 `scripts/audit-local.mjs` 覆盖（见 `docs/runtime-audit.md`）：manifest 半持久化、补丁层遮蔽、插件名路径写法、workflow 服务提供方、内核删包、注册表交叉。它不替代花名册诊断，只做静态预检。

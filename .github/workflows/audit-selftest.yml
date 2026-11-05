@@ -1,0 +1,40 @@
+name: audit-selftest
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit-local.mjs'
+      - 'scripts/audit-local.selftest.mjs'
+      - '.github/workflows/audit-selftest.yml'
+  pull_request:
+    paths:
+      - 'scripts/audit-local.mjs'
+      - 'scripts/audit-local.selftest.mjs'
+      - '.github/workflows/audit-selftest.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    # 体检器自身不能坏：9 个注入故障用例必须全部命中。
+    # 纯 Node、无外部依赖，不需要官方 checkout，因此不受 watch.yml 的 tag 节奏影响。
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run audit-local selftest
+        shell: pwsh
+        run: node scripts/audit-local.selftest.mjs
+
+      - name: Syntax check
+        shell: pwsh
+        run: |
+          node --check scripts/audit-local.mjs
+          node --check scripts/audit-local.selftest.mjs

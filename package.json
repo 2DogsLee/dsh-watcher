@@ -1,6 +1,6 @@
 {
   "name": "dsh-api-watch",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "DeepSeek Harness plugin API surface watch: AST-level breaking-change diff, plugin impact analysis, and a daily feedback radar. Ships the dsh-api-watch agent skill.",
   "license": "MIT",
   "type": "module",
@@ -29,5 +29,9 @@
   },
   "bugs": {
     "url": "https://github.com/2DogsLee/dsh-watcher/issues"
+  },
+  "scripts": {
+    "audit": "node scripts/audit-local.mjs",
+    "audit:test": "node scripts/audit-local.selftest.mjs"
   }
 }
