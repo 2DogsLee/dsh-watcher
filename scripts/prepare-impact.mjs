@@ -84,18 +84,35 @@ const CHECK_HINT = {
 /* ---------------- 相关性：registry 的 uses 匹配 ---------------- */
 
 const plugins = registry?.plugins ?? []
+// 每个 registry 插件可选 kind：
+//   declaration = 只依赖包名/导出入口（如 YAML 组合、preset bundle），内部导出变更多为噪声
+//   source      = 引用具体符号（如自己的 .cjs/.ts 代码），导出/签名变更都要看
+// 缺省按 source 处理（保守：不漏）。
+const kindOf = (p) => (p.kind === 'declaration' ? 'declaration' : 'source')
 const isRelevant = (f) => {
   for (const p of plugins) {
     const u = p.uses ?? {}
-    if ((u.packages ?? []).some((x) => f.path.startsWith(x))) return p.name
-    if ((u.config ?? []).some((x) => f.path === `config:${x}` || f.path.startsWith(`config:${x}`))) return p.name
-    if ((u.docs ?? []).some((x) => f.path === x || f.path.startsWith(x))) return p.name
+    if ((u.packages ?? []).some((x) => f.path.startsWith(x))) return p
+    if ((u.config ?? []).some((x) => f.path === `config:${x}` || f.path.startsWith(`config:${x}`))) return p
+    if ((u.docs ?? []).some((x) => f.path === x || f.path.startsWith(x))) return p
     const kw = u.keywords ?? []
-    if (kw.length && kw.some((k) => (f.detail ?? '').toLowerCase().includes(k.toLowerCase()))) return p.name
+    if (kw.length && kw.some((k) => (f.detail ?? '').toLowerCase().includes(k.toLowerCase()))) return p
   }
   return null
 }
+
+// 结构级变更：会直接打断"包名/配置/入口"层，任何插件都必须处理。
+// 符号级（ast-export-removed / ast-signature-changed）不在此列：
+// 声明型插件不直接引用导出符号；源码型插件应交给 scan-plugin.ps1 用真实源码 grep 确认，
+// 否则 packages 里成百上千的内部导出变更会把"必须处理"淹没。
+const STRUCTURAL_KINDS = new Set([
+  'package-removed', 'config-field-removed', 'config-field-type-changed',
+  'config-scope-removed', 'exports-map-changed', 'doc-removed', 'upgrade-guide-added',
+])
+
 const relevant = (report.findings ?? []).filter((f) => isRelevant(f))
+const mustFix = relevant.filter((f) => STRUCTURAL_KINDS.has(f.kind))
+const lowPriority = relevant.filter((f) => !STRUCTURAL_KINDS.has(f.kind))
 const relBreaking = relevant.filter((f) => f.severity === 'breaking')
 
 const md = []
@@ -107,31 +124,33 @@ const counts = report.counts ?? {}
 md.push('## 一句话结论', '')
 if (plugins.length === 0) {
   md.push('未配置 registry，无法判断"与你相关"。**这不等于没事**：先补 registry.json 的 uses 声明，再重跑。', '')
-} else if (relBreaking.length > 0) {
-  md.push(`**有 ${relBreaking.length} 处相关 breaking，升级前必须处理**（相关命中共 ${relevant.length} 条）。`, '')
+} else if (mustFix.length > 0) {
+  md.push(`**有 ${mustFix.length} 处必须处理**（相关命中 ${relevant.length} 条；另有 ${lowPriority.length} 条低优先/待复核）。`, '')
 } else if (relevant.length > 0) {
-  md.push(`没有相关 breaking；有 ${relevant.length} 条 warning/info 需要复核。`, '')
+  md.push(`没有必须处理的 breaking；有 ${lowPriority.length} 条相关条目待复核。`, '')
 } else {
   md.push('registry 视角未命中任何改动。仍需按下方"升级演练"跑一遍运行时体检——静态报告看不到挂载链路问题。', '')
 }
 md.push(`报告总计数：${Object.entries(counts).map(([k, v]) => `${k}=${v}`).join('，') || '（报告未带 counts）'}`, '')
 
-if (relBreaking.length > 0) {
-  md.push('## 相关 breaking 与应对', '')
+if (mustFix.length > 0) {
+  md.push('## 必须处理（相关 breaking 与应对）', '')
   md.push('| 影响面 | 变更 | 具体改动 | 应对步骤 | 体检项 |', '|---|---|---|---|---|')
-  for (const f of relBreaking) {
-    const who = isRelevant(f) ?? '-'
+  for (const f of mustFix.slice(0, 40)) {
+    const who = isRelevant(f)?.name ?? '-'
     const steps = (ADVICE[f.kind] ?? ['按报告 diff 位置人工确认']).map((s, i) => `${i + 1}. ${s}`).join(' ')
     md.push(`| ${who} | \`${f.kind}\` | \`${f.path}\` — ${(f.detail ?? '').replace(/\|/g, '\\|')} | ${steps.replace(/\|/g, '\\|')} | ${CHECK_HINT[f.kind] ?? '-'} |`)
   }
+  if (mustFix.length > 40) md.push(`| … | | 其余 ${mustFix.length - 40} 条见 report.md | | |`)
   md.push('')
 }
-if (relevant.length > relBreaking.length) {
-  md.push('## 相关 warning / info（复核用）', '')
-  for (const f of relevant.filter((x) => x.severity !== 'breaking').slice(0, 40)) {
+if (lowPriority.length > 0) {
+  md.push('## 符号级 / 待复核（用 scan-plugin.ps1 扫源码确认）', '')
+  md.push('声明型插件（kind=declaration）不直接引用内部导出，ast-* 类变更多为噪声；源码型插件需要逐条看源码扫描结果。', '')
+  for (const f of lowPriority.slice(0, 40)) {
     md.push(`- [${f.severity}] \`${f.kind}\` ${f.path}${f.detail ? ' — ' + f.detail : ''}`)
   }
-  if (relevant.filter((x) => x.severity !== 'breaking').length > 40) md.push('- …（截断，完整见 report.md）')
+  if (lowPriority.length > 40) md.push(`- …（其余 ${lowPriority.length - 40} 条见 report.md）`)
   md.push('')
 }
 
@@ -150,4 +169,4 @@ md.push('> 本文件由 `scripts/prepare-impact.mjs` 生成；应对步骤是启
 
 writeFileSync(outPath, md.join('\n') + '\n', 'utf8')
 console.log(`impact plan: ${outPath}`)
-console.log(`相关 breaking=${relBreaking.length}，相关命中=${relevant.length}，registry 插件=${plugins.length}`)
+console.log(`必须处理=${mustFix.length}，相关 breaking=${relBreaking.length}，相关命中=${relevant.length}，registry 插件=${plugins.length}`)

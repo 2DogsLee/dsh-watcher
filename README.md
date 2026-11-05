@@ -95,6 +95,31 @@ DSH Agent 会在「升级 DSH / 插件报接口错误」时按规程先跑比对
 `.github/workflows/watch.yml` 每天（可配）拉官方 repo 的新 tag，自动生成上一稳定版 → 新版的
 报告并 commit 到 `archive/`，同时发 GitHub Release。**零人工维护**。
 
+## 在本机启用定时巡检（dsh-cron 通知你）
+
+云端负责发现与出报告；本机定时任务负责"落到这台机器"并在 DSH 会话里提示你。完整步骤见
+[docs/local-setup.md](docs/local-setup.md)，可直接复制的任务 prompt 见
+[examples/dsh-cron-upgrade-watch.md](examples/dsh-cron-upgrade-watch.md)。
+
+最短路径：
+
+```powershell
+# 1) 初始化"已知最新版本"基线（例：当前官方最新 tag）
+Set-Content .state/latest-known-tag.txt 'dsh-v0.2.2-rc.1'
+
+# 2) 填 registry.json（决定"与我相关"是否准确）
+node scripts/build-registry.mjs --pkg-map <checkout 生成的 name→path.json> --bundle <你的bundle目录>... --out registry.json
+
+# 3) 确认本地体检可用
+node scripts/audit-local.mjs
+
+# 4) 对你的 DSH agent 说：
+#    「在 dsh-watcher 建一个每天 09:00 的定时任务，cwd=本仓库，按 examples/dsh-cron-upgrade-watch.md 的 prompt 执行」
+```
+
+任务约定：**无新版本只输出一行**；有新版本才给完整预告（云端必须处理 + 本机体检 + 升级前动作）。
+它不会自动升级、不改配置、不 push。
+
 ## 升级预告（自动跟进 + 我的影响）
 
 watch.yml 每 6 小时探一次上游新 tag；发现新版后自动生成三样东西：

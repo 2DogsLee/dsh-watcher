@@ -1,16 +1,164 @@
 {
-  "_comment": "dsh-api-watch 插件注册表（v1 生效）。watch 报告与雷达摘要按 uses 过滤出『与我相关』条目。packages/docs 按路径前缀匹配（finding.path 以此开头即相关）；config 填 config-catalog 里的包名（匹配 config:<名称> 前缀）；keywords 用于雷达标题匹配（不区分大小写，子串）。",
+  "_comment": "dsh-api-watch 插件注册表（v1 生效）。watch 报告与雷达摘要按 uses 过滤出『与我相关』条目。packages/docs 按路径前缀匹配（finding.path 以此开头即相关）；config 填 config-catalog 里的包名（匹配 config:<名称> 前缀）；keywords 用于雷达标题匹配（不区分大小写，子串）。uses.packages 必须是官方仓库路径（如 packages/preset/persona），不是 npm 包名——用 scripts/build-registry.mjs 从 bundle 补丁自动生成，写太宽（如 packages/client）会淹没在噪声里。",
   "version": 1,
   "plugins": [
     {
-      "name": "example-my-plugin",
-      "repo": "https://github.com/you/my-plugin",
+      "name": "my-agent-presets",
+      "repo": "local",
       "uses": {
-        "packages": ["packages/sdk", "packages/skill", "packages/experimental/schedule-bundle"],
-        "docs": ["docs/cordis-api/registry.md", "docs/subsystems/approval.md"],
-        "config": ["@deepseek-ai/dsh-settings"],
-        "settingsFields": ["permission.defaultPreset"],
-        "keywords": ["plugin", "breaking", "migration"]
+        "packages": [
+          "packages/compaction/command-compact",
+          "packages/compaction/compaction-basic",
+          "packages/compaction/compaction-tool-result-pruner",
+          "packages/context/agent-instructions",
+          "packages/deliverables/tool-present",
+          "packages/experimental/tool-ralph",
+          "packages/fs/tool-fs",
+          "packages/fs/tool-fs-search",
+          "packages/goal/command-goal",
+          "packages/goal/tool-goal",
+          "packages/interaction/tool-ask-user",
+          "packages/jobs/tool-jobs",
+          "packages/plan/plan-mode",
+          "packages/preset/agent-preset",
+          "packages/preset/persona",
+          "packages/shell/tool-bash",
+          "packages/shell/tool-pwsh",
+          "packages/skill/skill-filesystem",
+          "packages/skill/tool-skill",
+          "packages/subagent/tool-subagent",
+          "packages/subagent/tool-subagent-control",
+          "packages/todo/tool-todo",
+          "packages/web/tool-web",
+          "packages/workflow/tool-workflow",
+          "packages/workflow/workflow-ptc"
+        ],
+        "config": [
+          "@deepseek-ai/dsh-agent-instructions",
+          "@deepseek-ai/dsh-agent-preset",
+          "@deepseek-ai/dsh-compaction-tool-result-pruner",
+          "@deepseek-ai/dsh-persona",
+          "@deepseek-ai/dsh-plan-mode",
+          "@deepseek-ai/dsh-skill-filesystem",
+          "@deepseek-ai/dsh-tool-fs-search",
+          "@deepseek-ai/dsh-tool-ralph",
+          "@deepseek-ai/dsh-tool-subagent",
+          "@deepseek-ai/dsh-tool-todo",
+          "@deepseek-ai/dsh-tool-web"
+        ],
+        "docs": [
+          "docs/cordis-api",
+          "docs/subsystems"
+        ],
+        "keywords": [
+          "preset",
+          "persona",
+          "workflow",
+          "subagent",
+          "skill"
+        ]
+      },
+      "kind": "declaration"
+    },
+    {
+      "name": "example-my-preset",
+      "repo": "https://github.com/you/my-preset",
+      "uses": {
+        "packages": [
+          "packages/compaction/command-compact",
+          "packages/compaction/compaction-basic",
+          "packages/compaction/compaction-tool-result-pruner",
+          "packages/context/agent-instructions",
+          "packages/fs/tool-fs",
+          "packages/fs/tool-fs-search",
+          "packages/goal/tool-goal",
+          "packages/interaction/tool-ask-user",
+          "packages/jobs/tool-jobs",
+          "packages/plan/plan-mode",
+          "packages/preset/agent-preset",
+          "packages/preset/persona",
+          "packages/shell/tool-bash",
+          "packages/shell/tool-pwsh",
+          "packages/skill/tool-skill",
+          "packages/subagent/tool-subagent",
+          "packages/subagent/tool-subagent-control",
+          "packages/todo/tool-todo",
+          "packages/web/tool-web"
+        ],
+        "config": [
+          "@deepseek-ai/dsh-agent-instructions",
+          "@deepseek-ai/dsh-agent-preset",
+          "@deepseek-ai/dsh-compaction-tool-result-pruner",
+          "@deepseek-ai/dsh-persona",
+          "@deepseek-ai/dsh-plan-mode",
+          "@deepseek-ai/dsh-tool-fs-search",
+          "@deepseek-ai/dsh-tool-subagent",
+          "@deepseek-ai/dsh-tool-todo",
+          "@deepseek-ai/dsh-tool-web"
+        ],
+        "docs": [
+          "docs/cordis-api"
+        ],
+        "keywords": [
+          "design",
+          "logo",
+          "image",
+          "preset"
+        ]
+      },
+      "kind": "declaration"
+    },
+    {
+      "name": "dsh-cron",
+      "repo": "local",
+      "uses": {
+        "packages": [
+          "packages/api/session-controller",
+          "packages/settings",
+          "packages/host/webserver"
+        ],
+        "config": [],
+        "docs": [
+          "docs/subsystems/agent.md"
+        ],
+        "keywords": [
+          "session",
+          "cron",
+          "schedule"
+        ]
+      }
+    },
+    {
+      "name": "example-my-client-plugin",
+      "repo": "local",
+      "uses": {
+        "packages": [
+          "packages/client/ui-primitives",
+          "packages/client/modules"
+        ],
+        "config": [],
+        "docs": [],
+        "keywords": [
+          "client",
+          "markdown",
+          "plugin"
+        ]
+      }
+    },
+    {
+      "name": "example-my-host-plugin",
+      "repo": "local",
+      "uses": {
+        "packages": [
+          "vendor/schemastery"
+        ],
+        "config": [],
+        "docs": [],
+        "keywords": [
+          "plugin",
+          "client",
+          "settings"
+        ]
       }
     }
   ]

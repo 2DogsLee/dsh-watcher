@@ -74,7 +74,7 @@ jobs:
           $to = '${{ steps.pair.outputs.to }}' -replace '^dsh-v',''
           $dir = "archive/${from}_to_${to}"
           node scripts/prepare-impact.mjs --report "$dir/report.json" --registry registry.json --out "$dir/impact-plan.md" 2>&1 | Tee-Object -Variable planOut
-          $m = [regex]::Match(($planOut -join "`n"), '相关 breaking=(\d+)')
+          $m = [regex]::Match(($planOut -join "`n"), '必须处理=(\d+)')
           $n = if ($m.Success) { $m.Groups[1].Value } else { '0' }
           "relevant=$n" >> $env:GITHUB_OUTPUT
           "dir=$dir" >> $env:GITHUB_OUTPUT
@@ -122,7 +122,7 @@ jobs:
           RELEVANT: ${{ steps.impact.outputs.relevant }}
           DIR: ${{ steps.impact.outputs.dir }}
         run: |
-          $title = "升级预告：$env:TO 有 $env:RELEVANT 处与 registry 相关的 breaking"
+          $title = "升级预告：$env:TO 有 $env:RELEVANT 处必须处理的结构级变更"
           # 去重：同一止版只开一次
           $existing = gh issue list --search "升级预告 $env:TO" --state open --json number --jq '.[].number'
           if ($existing) { Write-Host "已有 issue #$existing，跳过"; exit 0 }
@@ -136,3 +136,4 @@ jobs:
             # label 不存在时退回不带 label，避免整个流水线失败
             gh issue create --title $title --body-file $tmp
           }
+
