@@ -46,7 +46,7 @@ Invoke-RestMethod "https://api.github.com/repos/<你的用户名>/dsh-watcher/is
 
 ## 步骤 4：跑本机体检
 
-pwsh 执行：`node scripts/audit-local.mjs`（记录退出码与 error/warning 文本；退出码 2=仅 warning 属正常）。
+pwsh 执行：`node scripts/audit-local.mjs --runtime "<DSH 安装目录>\resources\dsh-runtime"`（若已设环境变量 `DSH_RUNTIME` 可省略该参数）。记录退出码与 error/warning 文本；退出码 2=仅 warning 属正常，ENV 错误=未指定 runtime。
 目的：确认当前这台的挂载链路是健康的、可作升级前基线；若已有 error，先修再谈升级。
 
 ## 步骤 5：输出报告（固定格式，中文，结论先行）
