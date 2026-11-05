@@ -1,60 +1,271 @@
 # DSH 插件 API 面比对：`dsh-v0.2.1-rc.4` → `dsh-v0.2.2-rc.1`
 
-> 生成于 2026-11-05T10:48:58.2201655Z · 工具 dsh-api-watch v1（启发式， breaking 结论建议复核 diff）
+> 生成于 2026-11-05T15:58:00.3750250Z · 工具 dsh-api-watch v1（启发式， breaking 结论建议复核 diff）
 
 | 级别 | 数量 |
 |---|---|
 | breaking | 363 |
 | warning | 408 |
 | info | 1290 |
-| ★ 与我相关 | 37 |
+| ★ 与我相关 | 283 |
 
 ## ★ 优先关注：与你插件相关的 breaking / warning
 
-- **[exports-map-changed]** `packages/sdk/server/package.json` — package.json exports 字段变化，请人工确认入口路径
-- **[exports-map-changed]** `packages/skill/skill-office/package.json` — package.json exports 字段变化，请人工确认入口路径
-- **[exports-map-changed]** `packages/skill/tool-workspace-dependencies/package.json` — package.json exports 字段变化，请人工确认入口路径
-- **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: SkillCatalogSource
-    旧: export interface SkillCatalogSource { readonly kind: 'skill-catalog' readonly form: 'catalog' /** Marks a replacement catalog rather than this session's first publication. */ readonly update?: true /** Exactly the entries this message published, in catalog order. */ readonly entries: readonly { readonly name: string; readonly description: string }[] }
-    新: export interface SkillCatalogSource { readonly kind: 'skill-catalog' readonly form: 'catalog' /** Marks a replacement catalog rather than this session's first publication. */ readonly update?: true /** Some discovery failed; entries contain only skills found in this observation. Absence means complete. */ readonly incomplete?: true /** Exactly the entries this message published, in catalog order. */ readonly entries: readonly { readonly name: string; readonly description: string }[] }
-- **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: renderCatalogMessage
-    旧: function(entries:SkillCatalogSource['entries'])
-    新: function(entries:SkillCatalogSource['entries'],incomplete:boolean)
-- **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: renderCatalogUpdate
-    旧: function(entries:SkillCatalogSource['entries'])
-    新: function(entries:SkillCatalogSource['entries'],incomplete:boolean)
-- **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: digestCatalogEntries
-    旧: function(entries:SkillCatalogSource['entries'])
-    新: function(entries:SkillCatalogSource['entries'],incomplete:any)
-- **[ast-signature-changed]** `packages/sdk/client/src/api.ts` — 签名变化: RunOptions
-    旧: export interface RunOptions { /** Session id to run on; omitted mints a fresh session per call. */ sessionId?: string /** Observer invoked with every notification for this session tree, in wire order. */ onNotification?: (notification: HarnessNotification) => void }
-    新: export interface RunOptions { /** Session id to run on; omitted mints a fresh session per call. */ sessionId?: string /** * Observe the input's Session-tree activity in wire order until completion. * The interval can include overlapping work from other inputs. */ onNotification?: (notification: HarnessNotification) => void }
-- **[ast-export-removed]** `packages/sdk/client/src/api.ts` — 导出（含 re-export）删除: contentBlocks（原声明于 packages/sdk/client/src/api.ts）
-- **[ast-export-removed]** `packages/sdk/client/src/api.ts` — 导出（含 re-export）删除: notifications（原声明于 packages/sdk/client/src/api.ts）
-- **[ast-signature-changed]** `packages/sdk/client/src/types.ts` — 签名变化: HarnessClientOptions
-    旧: export interface HarnessClientOptions { /** Absolute or caller-relative dsh CLI module; omitted resolves this package's same-version dependency. */ dshBin?: string /** Named profile serving the SDK protocol (default `sdk`). */ profile?: string /** Ordered per-launch profile patches; relative paths resolve before spawn. */ patches?: string[] /** Explicit Harness home for this child; relative paths resolve before spawn. */ dshHome?: string /** Working directory for the dsh process itself. */ processCwd?: string /** * The complete child environment, read when {@link HarnessClient.start} * spawns. `undefined` reads the parent env at that time; passing an object * reads that object at spawn and replaces the parent environment entirely, so callers own * credential policy (see `scrubbedParentEnv` in `@deepseek-ai/dsh-subprocess` * for the shared scrub-then-merge base). */ env?: NodeJS.ProcessEnv /** Bound (ms) on the initial profile handshake (default 10000). */ initializeTimeoutMs?: number /** Per-request timeout (ms); `undefined` waits indefinitely (a turn can legitimately run long). */ requestTimeoutMs?: number /** Bound (ms) on the protocol `shutdown` exchange inside `close()` (default 1000). */ shutdownTimeoutMs?: number /** Grace (ms) for the runtime's stdin-EOF quiesce during `close()` (default 6000). */ disposeEofGraceMs?: number /** Termination confirmation window (ms) after SIGTERM/SIGKILL during `close()` (default 3000). */ disposeGraceMs?: number }
-    新: export interface HarnessClientOptions { /** Answer or dismiss runtime questions; observe the signal to release host work on runtime cancellation. */ onUserQuestion?: (request: SdkUserQuestionRequest, context: { signal: AbortSignal }) => Promise<SdkUserQuestionResult> /** Absolute or caller-relative dsh CLI module; omitted resolves this package's same-version dependency. */ dshBin?: string /** Named profile serving the SDK protocol (default `sdk`). */ profile?: string /** Ordered per-launch profile patches; relative paths resolve before spawn. */ patches?: string[] /** Explicit Harness home for this child; relative paths resolve before spawn. */ dshHome?: string /** Working directory for the dsh process itself. */ processCwd?: string /** * The complete child environment, read when {@link HarnessClient.start} * spawns. `undefined` reads the parent env at that time; passing an object * reads that object at spawn and replaces the parent environment entirely, so callers own * credential policy (see `scrubbedParentEnv` in `@deepseek-ai/dsh-subprocess` * for the shared scrub-then-merge base). */ env?: NodeJS.ProcessEnv /** Bound (ms) on the initial profile handshake (default 10000). */ initializeTimeoutMs?: number /** Per-request timeout (ms); `undefined` waits indefinitely (a turn can legitimately run long). */ requestTimeoutMs?: number /** Bound (ms) on the protocol `shutdown` exchange inside `close()` (default 1000). */ shutdownTimeoutMs?: number /** Grace (ms) for the runtime's stdin-EOF quiesce during `close()` (default 6000). */ disposeEofGraceMs?: number /** Termination confirmation window (ms) after SIGTERM/SIGKILL during `close()` (default 3000). */ disposeGraceMs?: number }
-- **[ast-signature-changed]** `packages/sdk/client/src/types.ts` — 签名变化: DeepSeekHarnessOptions
-    旧: export interface DeepSeekHarnessOptions extends HarnessClientOptions { /** Workspace cwd recorded on every SDK-created session (default: the process cwd, else `process.cwd()`). */ cwd?: string /** Provider route for SDK-created agents (default `deepseek-official`). */ provider?: string /** Model for SDK-created agents (default `deepseek-v4-flash`). */ model?: string /** Adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Maximum output tokens for each conversation-model request. */ maxTokens?: number }
-    新: export interface DeepSeekHarnessOptions extends HarnessClientOptions { /** Workspace cwd recorded on every SDK-created session (default: the process cwd, else `process.cwd()`). */ cwd?: string /** Provider route for SDK-created agents (default `deepseek-official`). */ provider?: string /** Model for SDK-created agents (default `deepseek-v4-flash`). */ model?: string /** Adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Maximum output tokens for each conversation-model request. */ maxTokens?: number /** Enable server approval requests; install client.onRequest() after client.start() and before harness.start(). */ approvalRequests?: boolean }
-- **[ast-signature-changed]** `packages/sdk/client/src/types.ts` — 签名变化: RunResult
-    旧: export interface RunResult { /** The session the activity ran on. */ sessionId: string /** Concatenated text of the interval's last assistant message (empty when none). */ finalResponse: string /** Every `session.event` payload for the root session, in wire order. */ events: SessionEvent[] /** Every notification for the root session and discovered descendants, in wire order. */ notifications: HarnessNotification[] }
-    新: export interface RunResult { /** The session the activity ran on. */ sessionId: string /** Final assistant text (empty when absent), native state-only result text, or a failure diagnostic. */ finalResponse: string /** Model turn ending or native operation outcome; null when no terminal reason was recorded. */ finishReason: string | null /** Every `session.event` payload for the root session, in wire order. */ events: SessionEvent[] /** Every notification for the root session and discovered descendants, in wire order. */ notifications: HarnessNotification[] }
-- **[ast-signature-changed]** `packages/sdk/protocol/src/transport.ts` — 签名变化: JsonRpcTransportPeer
-    旧: export interface JsonRpcTransportPeer { /** * Send a request and await its response. * @param method - the JSON-RPC method name. * @param params - the request parameters object. * @returns the result; rejects with {@link JsonRpcResponseError} on an error * response, and with a plain `Error` on a write failure or closure. */ request(method: string, params: object): Promise<unknown> /** * Send a notification; omitted params produce no `params` member. * @param method - the JSON-RPC method name. * @param params - the optional notification parameters object. */ notify(method: string, params?: object): void }
-    新: export interface JsonRpcTransportPeer { /** * Send a request and await its response. * @param method - the JSON-RPC method name. * @param params - the request parameters object. * @param signal - optional cancellation; removes the pending waiter, rejects on abort, and ignores late responses. * @returns the result; rejects with {@link JsonRpcResponseError} on an error * response, and with a plain `Error` on a write failure or closure. */ request(method: string, params: object, signal?: AbortSignal): Promise<unknown> /** * Send a notification; omitted params produce no `params` member. * @param method - the JSON-RPC method name. * @param params - the optional notification parameters object. */ notify(method: string, params?: object): void }
-- **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: InitializeParams
-    旧: export interface InitializeParams { /** Working directory recorded on every SDK-created session's header. */ cwd: string /** Provider route every SDK-created agent runs on. */ provider: string /** Model name every SDK-created agent runs on (the server may mount a fallback adapter; see `HarnessSdkJsonRpcServer.initialize`). */ model: string /** Optional adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Optional positive output-token cap inherited by SDK-created agents and their in-process descendants. */ maxTokens?: number }
-    新: export interface InitializeParams { /** Working directory recorded on every SDK-created session's header. */ cwd: string /** Enable server-to-client approval/request calls; omission leaves existing answerers in control. */ approvalRequests?: boolean /** Provider route every SDK-created agent runs on. */ provider: string /** Model name every SDK-created agent runs on (the server may mount a fallback adapter; see `HarnessSdkJsonRpcServer.initialize`). */ model: string /** Optional adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Optional positive output-token cap inherited by SDK-created agents and their in-process descendants. */ maxTokens?: number /** Host-provided capabilities; omission retains native in-process answerers. */ capabilities?: { userQuestions?: boolean } }
-- **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: SdkEncodedImageBlock
-    旧: export interface SdkEncodedImageBlock { type: 'image' /** Canonical base64-encoded raster bytes. */ data: string /** Declared raster MIME type, verified during admission. */ mimeType: 'image/png' | 'image/jpeg' | 'image/webp' | 'image/gif' }
-    新: export interface SdkEncodedImageBlock { type: 'image' /** Canonical base64-encoded raster bytes. */ data: string /** Declared raster MIME type, verified during admission. */ mimeType: 'image/png' | 'image/jpeg' | 'image/webp' | 'image/gif' /** Optional display name; never interpreted as a filesystem path. */ name?: string }
-- **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: HarnessSdkNotificationMap
-    旧: export interface HarnessSdkNotificationMap { 'session.event': SessionEventNotification 'session.status': SessionStatusNotification 'subagent.started': SubagentStartedNotification 'subagent.finished': SubagentFinishedNotification }
-    新: export interface HarnessSdkNotificationMap { 'user-question.cancelled': SdkUserQuestionCancelled 'session.event': SessionEventNotification 'session.status': SessionStatusNotification /** Completion of a command query, including model activity and automatic goal rounds it starts. */ 'session.query.completed': { sessionId: SessionId commandId: CommandExecution['commandId'] finalResponse: string finishReason: string } 'subagent.started': SubagentStartedNotification 'subagent.finished': SubagentFinishedNotification }
-- **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: HarnessSdkRequestMap
-    旧: export interface HarnessSdkRequestMap { 'initialize': { params: InitializeParams; result: InitializeResult } 'session/prompt': { params: SessionPromptParams; result: SessionPromptResult } 'session/resume': { params: SessionResumeParams; result: Record<string, never> } 'session/wait': { params: SessionWaitParams; result: Record<string, never> } 'session/working-directory/get': { params: SessionWorkingDirectoryParams; result: SessionWorkingDirectoryResult } 'session/working-directory/set': { params: SessionWorkingDirectorySetParams; result: SessionWorkingDirectoryResult } 'shutdown': { params: undefined; result: Record<string, never> } }
-    新: export interface HarnessSdkRequestMap { 'initialize': { params: InitializeParams; result: InitializeResult } 'session/prompt': { params: SessionPromptParams; result: SessionPromptResult } 'session/query': { params: SessionQueryParams; result: SessionQueryResult } 'session/resume': { params: SessionResumeParams; result: Record<string, never> } 'session/wait': { params: SessionWaitParams; result: Record<string, never> } 'session/working-directory/get': { params: SessionWorkingDirectoryParams; result: SessionWorkingDirectoryResult } 'session/working-directory/set': { params: SessionWorkingDirectorySetParams; result: SessionWorkingDirectoryResult } 'shutdown': { params: undefined; result: Record<string, never> } }
+- **[exports-map-changed]** `packages/subagent/tool-subagent-control/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[doc-major-rewrite]** `docs/subsystems/boot.md` — 行数 335 -> 474（41%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/boot.zh.md` — 行数 335 -> 474（41%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/computer-use.md` — 行数 36 -> 99（175%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/computer-use.zh.md` — 行数 36 -> 99（175%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/filesystem.md` — 行数 445 -> 590（33%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/filesystem.zh.md` — 行数 445 -> 590（33%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/schedule.md` — 行数 449 -> 227（49%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/schedule.zh.md` — 行数 449 -> 227（49%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/session-projection.md` — 行数 313 -> 438（40%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/session-projection.zh.md` — 行数 313 -> 438（40%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/token-meter.md` — 行数 86 -> 126（47%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/token-meter.zh.md` — 行数 86 -> 126（47%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/worktrees.md` — 行数 56 -> 103（84%），可能存在行为级变更，建议人工复核
+- **[doc-major-rewrite]** `docs/subsystems/worktrees.zh.md` — 行数 56 -> 103（84%），可能存在行为级变更，建议人工复核
+- **[ast-signature-changed]** `packages/client/modules` — 签名变化: PkgMeta
+    旧: interface PkgMeta extends WebBootRowFields { clientPath: string }
+    新: interface PkgMeta extends WebBootRowFields { clientPath: string /** The package's own manifest; package-asset requests resolve against it as a self-reference. */ manifestPath: string }
+- **[ast-signature-changed]** `packages/client/modules` — 签名变化: ClientPackageSource
+    旧: interface ClientPackageSource extends ResolvedPkgMeta { /** Loader specifier from the active row. */ loaderName: string /** Resolution base of the config tree that owns the row. */ baseUrl: string /** Stable cache and contribution key for this source. */ sourceKey: string }
+    新: interface ClientPackageSource extends ResolvedPkgMeta { /** Loader specifier from the active row. */ loaderName: string /** Resolution base of the config tree that owns the row. */ baseUrl: string /** Stable source identity and contribution key. */ sourceKey: string }
+- **[ast-export-removed]** `packages/client/modules` — 导出（含 re-export）删除: sourceKey（原声明于 packages/client/modules/src/index.ts）
+- **[ast-signature-changed]** `packages/client/modules` — 签名变化: headers
+    旧: var
+    新: var:Record<string, string>
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: modelSelectionCapable（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: choiceDescription（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: compositionScope（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: selectForSession（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: freshSession（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: allowedModels（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: scopedInstalls（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: installing（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: belongsToComposition（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: installScoped（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: removeScoped（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: reconcileComposedAgents（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- **[ast-signature-changed]** `packages/client/modules/src/client/manifest.ts` — 签名变化: ClientBundleRequire
+    旧: export interface ClientBundleRequire { /** Resolve a module-table dependency synchronously. */ (specifier: string): unknown /** Load and resolve a package-local dynamic chunk asynchronously. */ async(specifier: string): Promise<unknown> }
+    新: export interface ClientBundleRequire { /** Resolve a module-table dependency synchronously. */ (specifier: string): unknown /** Load and resolve a package-local dynamic chunk asynchronously. */ async(specifier: string): Promise<unknown> /** * Resolve a package-asset reference (`plugins/<package>/assets/<path>`) the * build compiled from an asset import or stylesheet `url()` to the URL the * page loads; the reference itself unless the carrier maps it. */ asset(reference: string): string }
+- **[ast-signature-changed]** `packages/client/modules/src/client/manifest.ts` — 签名变化: ClientModuleCreateOptions
+    旧: export interface ClientModuleCreateOptions { /** Raw Host-injected boot graph; the modules bundle owns validation and projection. */ boot: unknown /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> }
+    新: export interface ClientModuleCreateOptions { /** Raw Host-injected boot graph; the modules bundle owns validation and projection. */ boot: unknown /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> /** Package-asset reference hook behind {@link ClientBundleRequire.asset}. Defaults to returning the reference. */ resolveAsset?: (reference: string) => string }
+- **[ast-signature-changed]** `packages/client/modules/src/client/manifest.ts` — 签名变化: ClientModuleSystemOptions
+    旧: export interface ClientModuleSystemOptions { /** Boot graph validated by {@link parseBootManifest}, owned by the resulting module system. */ manifest: BootManifest /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Stable HTML-installed registration facade to switch from queue to live mode. */ registrationTarget: ClientModuleLoaderTarget /** Already-materialized modules bundle consumed while creating the system. */ bootstrapModule: ClientBootstrapModule /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> }
+    新: export interface ClientModuleSystemOptions { /** Boot graph validated by {@link parseBootManifest}, owned by the resulting module system. */ manifest: BootManifest /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Stable HTML-installed registration facade to switch from queue to live mode. */ registrationTarget: ClientModuleLoaderTarget /** Already-materialized modules bundle consumed while creating the system. */ bootstrapModule: ClientBootstrapModule /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> /** Package-asset reference hook behind {@link ClientBundleRequire.asset}. Defaults to returning the reference. */ resolveAsset?: (reference: string) => string }
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/SegmentedTabs.tsx` — 签名变化: SegmentedTabs
+    旧: function({ items, value, onChange, label, className }:{ items: readonly [SegmentedTab<Value>, ...SegmentedTab<Value>[]] value: Value onChange: (value: Value) => void label: string className?: string | undefined })
+    新: function({ items, value, onChange, label, className, size = 'md' }:{ items: readonly [SegmentedTab<Value>, ...SegmentedTab<Value>[]] value: Value onChange: (value: Value) => void label: string className?: string | undefined size?: 'sm' | 'md' | undefined })
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: MenuItem
+    旧: export interface MenuItem { id: string label: ReactNode disabled?: boolean /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: { keys: readonly string[]; aria?: string | undefined } /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** Nested card opened to the right on hover/focus. */ submenu?: readonly MenuItem[] }
+    新: export interface MenuItem { id: string label: ReactNode disabled?: boolean /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: { keys: readonly string[]; aria?: string | undefined } /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** Nested card opened to the right on hover/focus. */ submenu?: readonly MenuEntry[] }
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: MenuItemButtonProps
+    旧: export interface MenuItemButtonProps { /** Visible row label. */ children: ReactNode /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: MenuItem['shortcut'] /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Whether this row identifies the currently displayed page or view. */ current?: boolean /** Whether the row cannot be activated. */ disabled?: boolean /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** * Start a new group: a hairline above this row, the same one a * `{ type: 'separator' }` data entry draws. It comes and goes with the row, * so a row that renders nothing leaves no stray line; a data separator * directly before it draws no second line, and the list's first row draws none. */ separatorBefore?: boolean /** Row activation (click, Enter, or Tab on the focused row). */ onSelect: () => void }
+    新: export interface MenuItemButtonProps { /** Visible row label. */ children: ReactNode /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: MenuItem['shortcut'] /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Whether this row identifies the currently displayed page or view. */ current?: boolean /** Whether the row cannot be activated. */ disabled?: boolean /** * Why the disabled row cannot be activated. The row then stays hoverable and * focusable, shows the reason in a tooltip, and exposes it as the row's * description; an enabled row ignores it. */ disabledReason?: string | undefined /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** * Start a new group: a hairline above this row, the same one a * `{ type: 'separator' }` data entry draws. It comes and goes with the row, * so a row that renders nothing leaves no stray line; a data separator * directly before it draws no second line, and the list's first row draws none. */ separatorBefore?: boolean /** Row activation (click, Enter, or Tab on the focused row). */ onSelect: () => void }
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: MenuItemButton
+    旧: function({
+  children, shortcut, icon, current, disabled = false, danger = false, separatorBefore = false, onSelect,
+}:MenuItemButtonProps)
+    新: function({
+  children, shortcut, icon, current, disabled = false, disabledReason, danger = false, separatorBefore = false, onSelect,
+}:MenuItemButtonProps)
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: Menu
+    旧: function({ open, anchor, items = [], children, selectedId, selectedIds, onSelect, onClose, align = 'start', side = 'bottom', portal = false, closeOnPointerLeave = false, dense = false, compact = false, autoFocus = false, selection = 'check', getAnchorRect, minWidthFromAnchor = false, footer, className, listClassName }:{ open: boolean autoFocus?: boolean anchor: ReactNode items?: readonly MenuEntry[] children?: ReactNode footer?: readonly MenuEntry[] selectedId?: string | undefined selectedIds?: readonly string[] | undefined onSelect?: (id: string) => void onClose: () => void align?: 'start' | 'end' side?: 'bottom' | 'top' | 'right' portal?: boolean closeOnPointerLeave?: boolean dense?: boolean compact?: boolean selection?: 'check' | 'fill' getAnchorRect?: () => DOMRect | null minWidthFromAnchor?: boolean className?: string | undefined listClassName?: string | undefined })
+    新: function({ open, anchor, items = [], children, selectedId, selectedIds, onSelect, onClose, align = 'start', side = 'bottom', portal = false, closeOnPointerLeave = false, dense = false, compact = false, autoFocus = false, selection = 'check', getAnchorRect, minWidthFromAnchor = false, footer, className, listClassName, contextual = false, exiting, returnFocus }:{ open: boolean /** Pointer-positioned popup: cursor clearance, grouped icons, and context gestures. */ contextual?: boolean /** Resolve the original control for focus restoration and inert/hidden dismissal. */ returnFocus?: (() => HTMLElement | null) | undefined /** Retain a dismissed context popup during its short fade. */ exiting?: 'dismiss' | 'replace' | undefined autoFocus?: boolean anchor: ReactNode items?: readonly MenuEntry[] children?: ReactNode footer?: readonly MenuEntry[] selectedId?: string | undefined selectedIds?: readonly string[] | undefined onSelect?: (id: string) => void onClose: () => void align?: 'start' | 'end' side?: 'bottom' | 'top' | 'right' portal?: boolean closeOnPointerLeave?: boolean dense?: boolean compact?: boolean selection?: 'check' | 'fill' getAnchorRect?: () => DOMRect | null minWidthFromAnchor?: boolean className?: string | undefined listClassName?: string | undefined })
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/HoverCard.tsx` — 签名变化: r
+    旧: var:DOMRect | null
+    新: var
+- **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: vw（原声明于 packages/client/ui-primitives/src/Menu.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: vh（原声明于 packages/client/ui-primitives/src/Menu.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: listEl（原声明于 packages/client/ui-primitives/src/Menu.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: lw（原声明于 packages/client/ui-primitives/src/Menu.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: lh（原声明于 packages/client/ui-primitives/src/Menu.tsx）
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 签名变化: x
+    旧: var:number
+    新: var
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 签名变化: y
+    旧: var:number
+    新: var
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/MenuSurface.tsx` — 签名变化: MenuSurfaceProps
+    旧: export interface MenuSurfaceProps extends ComponentPropsWithoutRef<'div'> { /** Match the shared compact menu's smaller outer radius. */ compact?: boolean }
+    新: export interface MenuSurfaceProps extends ComponentPropsWithoutRef<'div'> { /** Match the shared compact menu's smaller outer radius. */ compact?: boolean /** Fade direct content, material, and native backing without isolating the material's backdrop. */ phase?: 'enter' | 'dismiss' | 'replace' | undefined }
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/MenuSurface.tsx` — 签名变化: anchorStyle
+    旧: var:CSSProperties & { '--dsh-menu-anchor': string }
+    新: var:CSSProperties & Record<`--dsh-menu-${string}`, string>
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 签名变化: AnchoredPositionOptions
+    旧: export interface AnchoredPositionOptions { /** Whether the floating element is mounted and should track its anchor. */ open: boolean /** The element the panel is placed from. */ anchorRef: RefObject<HTMLElement | null> /** The floating element, measured so the clamp uses real dimensions. */ panelRef: RefObject<HTMLElement | null> /** Which anchor edge the panel hangs from: below it (`bottom`, the default) or above it (`top`). */ side?: 'top' | 'bottom' /** Which anchor edge the panel lines up with: its left edge (`start`, the default) or its right edge (`end`). */ align?: 'start' | 'end' /** Distance kept between the anchor edge named by `side` and the panel. */ gap: number /** Distance kept between the panel and each viewport edge; the frame's overlay inset widens the top margin. */ margin: number }
+    新: export interface AnchoredPositionOptions { /** Whether the panel is mounted and should track its anchor. */ open: boolean /** Element whose viewport rect anchors the panel. */ anchorRef: RefObject<HTMLElement | null> /** Body-portaled, fixed-position panel; its ancestors must not establish a containing block. */ panelRef: RefObject<HTMLElement | null> /** Preferred anchor edge; right-side panels align their top edges. */ side?: 'top' | 'bottom' | 'right' /** Horizontal alignment for panels above or below the anchor. */ align?: 'start' | 'end' /** Distance from the preferred anchor edge, in CSS pixels. */ gap: number /** Minimum viewport inset; desktop frame clearance can increase the top inset. */ margin: number /** Reserve desktop frame clearance in addition to the margin; false keeps only the viewport margin. Defaults to true. */ frameClearance?: boolean /** Host-supplied client rect; null hides the panel until the anchor is available. */ getAnchorRect?: () => DOMRect | null /** Re-measure a committed content change before paint. */ layoutKey?: string | number /** Minimum panel width follows the anchor, bounded by the visible viewport. */ minWidthFromAnchor?: boolean }
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/HoverCard.tsx` — 签名变化: HoverCard
+    旧: function({
+  anchor, content, openDelayMs = 500, disabled = false, grouped = false,
+  copyText, copyLabel, copiedLabel, variant = 'compact', widthAnchorRef, inline = false,
+}:{ anchor: ReactNode /** Inline media preview using the shared menu material and keyboard focus. */ inline?: boolean content: ReactNode openDelayMs?: number disabled?: boolean grouped?: boolean variant?: 'compact' | 'preview' widthAnchorRef?: RefObject<HTMLElement | null> } & ({ copyText?: string | undefined; copyLabel: string; copiedLabel: string } | { copyText?: undefined copyLabel?: string copiedLabel?: string }))
+    新: function({
+  anchor, content, openDelayMs = 500, disabled = false, grouped = false,
+  copyText, copyLabel, copiedLabel, variant = 'compact', widthAnchorRef, inline = false, fitContent = false,
+}:{ anchor: ReactNode /** Inline media preview using the shared menu material and keyboard focus. */ inline?: boolean fitContent?: boolean content: ReactNode openDelayMs?: number disabled?: boolean grouped?: boolean variant?: 'compact' | 'preview' widthAnchorRef?: RefObject<HTMLElement | null> } & ({ copyText?: string | undefined; copyLabel: string; copiedLabel: string } | { copyText?: undefined copyLabel?: string copiedLabel?: string }))
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/HoverCardGroup.tsx` — 签名变化: HoverCardGroup
+    旧: function({ children, className }:{ children: ReactNode; className?: string })
+    新: function({ children, className, as: Container = 'div' }:{ children: ReactNode className?: string | undefined as?: 'div' | 'span' })
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/user-text.tsx` — 签名变化: ReferenceChipProps
+    旧: export interface ReferenceChipProps { readonly appearance: ReferenceIconKind | 'skill' | 'command' readonly label: string readonly title: string /** Absent for display-only references and previews. */ readonly onActivate?: () => void }
+    新: export interface ReferenceChipProps { readonly appearance: ReferenceIconKind | 'skill' | 'command' /** Explicit object-menu gesture bindings; absent for display-only references. */ readonly contextMenuProps?: Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'> readonly label: string readonly title: string /** Absent for display-only references and previews. */ readonly onActivate?: () => void }
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/user-text.tsx` — 签名变化: ReferenceChip
+    旧: function({ appearance, label, title, onActivate }:ReferenceChipProps)
+    新: function({
+  appearance, label, title, onActivate, contextMenuProps,
+}:ReferenceChipProps)
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/Tooltip.tsx` — 签名变化: AnchorProps
+    旧: interface AnchorProps { 'aria-describedby'?: string | undefined ref?: Ref<HTMLElement> | undefined onMouseEnter?: MouseEventHandler | undefined onMouseLeave?: MouseEventHandler | undefined onClick?: MouseEventHandler | undefined onFocus?: FocusEventHandler | undefined onBlur?: FocusEventHandler | undefined }
+    新: interface AnchorProps { 'aria-describedby'?: string | undefined ref?: Ref<HTMLElement> | undefined onPointerEnter?: PointerEventHandler | undefined onPointerLeave?: PointerEventHandler | undefined onPointerDown?: PointerEventHandler | undefined onClick?: MouseEventHandler | undefined onFocus?: FocusEventHandler | undefined onBlur?: FocusEventHandler | undefined }
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/Tooltip.tsx` — 签名变化: Tooltip
+    旧: function({ label, shortcutKeys, side = 'right', align = 'center', delayMs = 0, focusDelayMs = 0, gap = 8, disabled = false, portal = false, maxWidth, openOnClick = false, children }:{ label: TooltipLabel; shortcutKeys?: readonly string[] | undefined; side?: TooltipSide; align?: 'center' | 'end'; delayMs?: number; focusDelayMs?: number; gap?: number; disabled?: boolean; portal?: boolean; maxWidth?: number; openOnClick?: boolean; children: ReactElement<AnchorProps> })
+    新: function({ label, shortcutKeys, side = 'right', align = 'center', delayMs = 0, focusDelayMs = 0, gap = 8, disabled = false, portal = false, maxWidth, openOnClick = false, onlyWhenClipped = false, children }:{ label: TooltipLabel; shortcutKeys?: readonly string[] | undefined; side?: TooltipSide; align?: 'center' | 'end'; delayMs?: number; focusDelayMs?: number; gap?: number; disabled?: boolean; portal?: boolean; maxWidth?: number; openOnClick?: boolean; onlyWhenClipped?: boolean; children: ReactElement<AnchorProps> })
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx` — 签名变化: MarkdownDelegate
+    旧: export interface MarkdownDelegate { /** Image previews for decoded local paths in this owner's workspace. */ readonly fileImages?: { resolve: (path: string) => string | undefined labels: ImageLightboxLabels & { open: string; loading: string; failed: string } } | undefined /** Ordinary HTTP(S) activation; absent handlers retain native anchor behavior. */ readonly openExternalLink?: MarkdownExternalLinkHandler | undefined /** * Open a decoded local destination from settled Markdown; absent handlers leave plain text. * @param path - Absolute or workspace-relative file path. * @param options - First line to reveal when the destination specifies a line or range. */ readonly openFile?: ((path: string, options?: { line?: number }) => void) | undefined }
+    新: export interface MarkdownDelegate { /** Open an object menu without executing its normal activation. */ readonly getTriggerProps?: ((target: MarkdownMenuTarget) => Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'>) | undefined /** * Image previews for decoded local paths in this owner's workspace. The renderer * appends a per-mount `load` query parameter to `api/file` route URLs. */ readonly fileImages?: { fileDrag: FileDragActions resolve: (path: string) => string | undefined resourceAddress?: ((path: string) => string) | undefined labels: ImageLightboxLabels & { open: string; loading: string; failed: string } } | undefined /** Ordinary HTTP(S) activation; absent handlers retain native anchor behavior. */ readonly openExternalLink?: MarkdownExternalLinkHandler | undefined /** * Open a decoded local destination from settled Markdown; absent handlers leave plain text. * @param path - Absolute or workspace-relative file path. * @param options - First line to reveal when the destination specifies a line or range. */ readonly openFile?: ((path: string, options?: { line?: number }) => void) | undefined }
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx` — 签名变化: MarkdownDelegateProvider
+    旧: function({
+  children,
+  openExternalLink,
+  openFile,
+  fileImages,
+}:MarkdownDelegateProviderProps)
+    新: function({
+  children,
+  openExternalLink,
+  openFile,
+  fileImages,
+  getTriggerProps,
+}:MarkdownDelegateProviderProps)
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownText.tsx` — 签名变化: renderSettled
+    旧: function(text:string,labels:MarkdownLabels,fileMentions:MarkdownFileMentions | undefined,pathImages:MarkdownPathImages | undefined)
+    新: function(text:string,labels:MarkdownLabels,fileMentions:MarkdownFileMentions | undefined,pathImages:MarkdownPathImages | undefined,omitHtml:boolean)
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownText.tsx` — 签名变化: StreamingRenderer
+    旧: class(labels:MarkdownLabels)
+    新: class(labels:MarkdownLabels,omitHtml:boolean)
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: WeightedIconProps（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSearchOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSettingsOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPanelLeftOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconEllipsisOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPlusOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCheckOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconBranchOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronDownOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronLeftOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronRightOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconTriangleRightFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronUpOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCloseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCloseFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCloseCircleFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCopyOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconRefreshOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLikeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLikeFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDislikeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDislikeFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconShareOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDeliverDocArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconEditOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconThinkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconAgentPresetOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconContextInjectionOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLinkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconRightUpOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconEnhanceOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconTrashOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWarningOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCheckCircleFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWarningTriangleOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconUserOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconUsersOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPaperPlaneOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconStopFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPaperclipOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLoadingOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDownloadOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPlayOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPauseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFullscreenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCodeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCordisPluginOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconApiOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPersonalizationOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconProjectAddOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFolderOpenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFolderOpenArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconTreeCornerArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLightOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDarkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFollowsystemOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDataOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDatabaseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconClockOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconGaugeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSendOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconQueueOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChecklistOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconListPenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconGoalOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSparkleArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSkillOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconQuestionOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconInfoOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPluginPinwheelOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconAlarmClockOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconArchiveOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWrapLinesOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconNowrapFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWrapFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCompareSplitOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPlanOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCompactOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconShieldOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCheckCircleOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconUnarchiveOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPinOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPinFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFlatListOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWorkspaceTreeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronsUpDownOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconArchiveOffOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: maskId（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconArchiveCheckOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSlidersTwoOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconMicrophoneOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconAppsAddOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: near（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: far（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: plusX（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: plusY（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/ImageLightbox.tsx` — 签名变化: ImageLightbox
+    旧: function({ src, alt, labels, onClose }:{ src: string alt: string labels: ImageLightboxLabels onClose: () => void })
+    新: function({ src, alt, labels, onClose, contextMenuProps }:{ src: string alt: string labels: ImageLightboxLabels onClose: () => void contextMenuProps?: Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'> | undefined })
+- **[ast-signature-changed]** `packages/context/agent-instructions/src/render.ts` — 签名变化: RenderedInstructionContext
+    旧: interface RenderedInstructionContext extends RenderedAgentInstructions { /** * Original files semantically represented by rendered section text. This is * not the complement of `omitted`: a truncated file may be represented here * and in `truncated`, while a notice-only file appears in neither. A genuinely * empty file counts when its heading survives because that heading conveys * that the instruction exists and has no content. */ represented: LoadedInstructionFile[] }
+    新: interface RenderedInstructionContext extends RenderedAgentInstructions { /** * Original files semantically represented by rendered section text. This is * not the complement of `omitted`: a truncated file may be represented here * and in `truncated`, while a notice-only file appears in neither. A genuinely * empty file counts when its heading survives because that heading conveys * that the instruction exists and has no content. */ represented: LoadedInstructionFile[] /** Files whose sections the text holds, in text order, each with the content the text holds. */ sections: LoadedInstructionFile[] /** * Intro block of the `<system-reminder>` frame: undefined when the text is * empty or a notice without a frame, and the empty string when the frame has * no intro, as in a change batch or a merged frame whose chains both rendered * without a frame. */ intro: string | undefined }
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 签名变化: overlay
+    旧: var:Record<string, string | undefined>
+    新: var
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: imageSource
+    旧: function(url:string,pathImages:MarkdownPathImages | undefined)
+    新: function(url:string,pathImages:MarkdownPathImages | undefined,load:number)
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: MarkdownPathImages
+    旧: export interface MarkdownPathImages { /** * Resolve one authored image destination. * @param value - The destination exactly as the markdown author wrote it. * @returns A displayable absolute URL, or undefined when the destination * names no displayable image — it then stays inert alt text. */ resolve(value: string): string | undefined }
+    新: export interface MarkdownPathImages { /** * Resolve one authored image destination. * @param value - The destination exactly as the markdown author wrote it. * @returns A displayable absolute URL, or undefined when the destination * names no displayable image — it then stays inert alt text. The renderer * appends a per-mount `load` query parameter to `api/file` route results. */ resolve(value: string): string | undefined }
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: MarkdownFileMentions
+    旧: export interface MarkdownFileMentions { /** * Resolve one inline-code token. * @param value - The authored token, exactly as written. * @returns The opener with its accessible label and full-path title, or * undefined when the token names no known file — it then stays inert code. */ resolve(value: string): { open: () => void; label: string; title: string } | undefined }
+    新: export interface MarkdownFileMentions { /** * Resolve one inline-code token. * @param value - The authored token, exactly as written. * @returns The opener with its accessible label and full-path title, or * undefined when the token names no known file — it then stays inert code. */ resolve(value: string): { open: () => void contextMenuProps?: Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'> label: string title: string } | undefined }
+- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: MarkdownRenderContext
+    旧: export interface MarkdownRenderContext { /** Streaming arm: fences highlight incrementally as they grow; TeX (including ```math fences) stays literal until the settled pass. */ readonly streaming: boolean /** Localized fence copy-button labels. */ readonly labels: MarkdownLabels /** Inside a blockquote's children: tables there always fill the quote's width. */ readonly inBlockquote?: boolean /** Inline-code file mentions; absent wherever no opener vocabulary exists. */ readonly fileMentions: MarkdownFileMentions | undefined /** Local-path image vocabulary; absent wherever no rewriting owner exists. */ readonly pathImages: MarkdownPathImages | undefined /** Inside an anchor's children: interactive mentions must not nest there. */ readonly inLink?: boolean /** Reference targets visible to this pass. */ readonly targets: ReferenceTargets /** Footnote identifiers in first-reference order; a footnote's number is its 1-based index here. */ readonly footnoteOrder: string[] /** References rendered per identifier; drives the section's back-reference count. */ readonly footnoteCounts: Map<string, number> }
+    新: export interface MarkdownRenderContext { /** Streaming arm: fences highlight incrementally as they grow; TeX (including ```math fences) stays literal until the settled pass. */ readonly streaming: boolean /** Localized fence copy-button labels. */ readonly labels: MarkdownLabels /** Inside a blockquote's children: tables there always fill the quote's width. */ readonly inBlockquote?: boolean /** Inline-code file mentions; absent wherever no opener vocabulary exists. */ readonly fileMentions: MarkdownFileMentions | undefined /** Local-path image vocabulary; absent wherever no rewriting owner exists. */ readonly pathImages: MarkdownPathImages | undefined /** Raw HTML renders nothing instead of literal text. */ readonly omitHtml: boolean /** Inside an anchor's children: interactive mentions must not nest there. */ readonly inLink?: boolean /** Reference targets visible to this pass. */ readonly targets: ReferenceTargets /** Footnote identifiers in first-reference order; a footnote's number is its 1-based index here. */ readonly footnoteOrder: string[] /** References rendered per identifier; drives the section's back-reference count. */ readonly footnoteCounts: Map<string, number> }
+- **[config-field-removed]** `config:@deepseek-ai/dsh-tool-subagent` — 配置字段被删除: modelSelectionSettings（cordis.yml 里写这些字段将失效）
 
 ## breaking
 
@@ -64,7 +275,7 @@
 - **[ast-export-removed]** `packages/api/session-controller` — 导出（含 re-export）删除: addressedSession（原声明于 packages/api/session-controller/src/index.ts）
 - **[ast-export-removed]** `packages/boot/plugin-manager` — 导出（含 re-export）删除: protectedModules（原声明于 packages/boot/plugin-manager/src/index.ts）
 - **[ast-export-removed]** `packages/boot/plugin-manager` — 导出（含 re-export）删除: refusedBy（原声明于 packages/boot/plugin-manager/src/index.ts）
-- **[ast-export-removed]** `packages/client/modules` — 导出（含 re-export）删除: sourceKey（原声明于 packages/client/modules/src/index.ts）
+- ★ **[ast-export-removed]** `packages/client/modules` — 导出（含 re-export）删除: sourceKey（原声明于 packages/client/modules/src/index.ts）
 - **[ast-export-removed]** `packages/session/working-directory` — 导出（含 re-export）删除: SessionProjectionStateMap（原声明于 packages/session/working-directory/src/index.ts）
 - **[ast-export-removed]** `packages/context/time-context` — 导出（含 re-export）删除: TimeContextProjection（原声明于 packages/context/time-context/src/index.ts）
 - **[ast-export-removed]** `packages/context/tmux-context` — 导出（含 re-export）删除: TmuxContextState（原声明于 packages/context/tmux-context/src/index.ts）
@@ -172,18 +383,18 @@
 - **[ast-export-removed]** `packages/schedule/tool-schedule` — 导出（含 re-export）删除: validateUpdateArgs（原声明于 packages/schedule/tool-schedule/src/index.ts）
 - **[ast-export-removed]** `packages/schedule/tool-schedule` — 导出（含 re-export）删除: timingChangeFrom（原声明于 packages/schedule/tool-schedule/src/index.ts）
 - **[ast-export-removed]** `packages/schedule/tool-schedule` — 导出（含 re-export）删除: SELECTOR_PARAMETERS（原声明于 packages/schedule/tool-schedule/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: modelSelectionCapable（原声明于 packages/subagent/tool-subagent/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: choiceDescription（原声明于 packages/subagent/tool-subagent/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: compositionScope（原声明于 packages/subagent/tool-subagent/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: selectForSession（原声明于 packages/subagent/tool-subagent/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: freshSession（原声明于 packages/subagent/tool-subagent/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: allowedModels（原声明于 packages/subagent/tool-subagent/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: scopedInstalls（原声明于 packages/subagent/tool-subagent/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: installing（原声明于 packages/subagent/tool-subagent/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: belongsToComposition（原声明于 packages/subagent/tool-subagent/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: installScoped（原声明于 packages/subagent/tool-subagent/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: removeScoped（原声明于 packages/subagent/tool-subagent/src/index.ts）
-- **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: reconcileComposedAgents（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: modelSelectionCapable（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: choiceDescription（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: compositionScope（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: selectForSession（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: freshSession（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: allowedModels（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: scopedInstalls（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: installing（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: belongsToComposition（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: installScoped（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: removeScoped（原声明于 packages/subagent/tool-subagent/src/index.ts）
+- ★ **[ast-export-removed]** `packages/subagent/tool-subagent` — 导出（含 re-export）删除: reconcileComposedAgents（原声明于 packages/subagent/tool-subagent/src/index.ts）
 - **[ast-export-removed]** `packages/util/values` — 导出（含 re-export）删除: SnapshotDestination（原声明于 packages/util/values/src/index.ts）
 - **[ast-export-removed]** `packages/util/values` — 导出（含 re-export）删除: JsonWalkTask（原声明于 packages/util/values/src/index.ts）
 - **[ast-export-removed]** `packages/api/session-controller/src/agent.ts` — 导出（含 re-export）删除: InstalledSelection（原声明于 packages/api/session-controller/src/agent.ts）
@@ -191,107 +402,107 @@
 - **[ast-export-removed]** `packages/api/session-controller/src/agent.ts` — 导出（含 re-export）删除: projectionState（原声明于 packages/api/session-controller/src/agent.ts）
 - **[ast-export-removed]** `packages/api/session-controller/src/agent.ts` — 导出（含 re-export）删除: loggedHeader（原声明于 packages/api/session-controller/src/agent.ts）
 - **[ast-export-removed]** `packages/api/session-controller/src/agent.ts` — 导出（含 re-export）删除: agentModelSelection（原声明于 packages/api/session-controller/src/agent.ts）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: vw（原声明于 packages/client/ui-primitives/src/Menu.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: vh（原声明于 packages/client/ui-primitives/src/Menu.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: listEl（原声明于 packages/client/ui-primitives/src/Menu.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: lw（原声明于 packages/client/ui-primitives/src/Menu.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: lh（原声明于 packages/client/ui-primitives/src/Menu.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: WeightedIconProps（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSearchOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSettingsOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPanelLeftOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconEllipsisOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPlusOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCheckOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconBranchOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronDownOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronLeftOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronRightOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconTriangleRightFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronUpOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCloseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCloseFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCloseCircleFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCopyOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconRefreshOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLikeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLikeFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDislikeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDislikeFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconShareOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDeliverDocArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconEditOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconThinkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconAgentPresetOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconContextInjectionOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLinkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconRightUpOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconEnhanceOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconTrashOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWarningOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCheckCircleFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWarningTriangleOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconUserOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconUsersOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPaperPlaneOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconStopFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPaperclipOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLoadingOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDownloadOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPlayOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPauseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFullscreenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCodeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCordisPluginOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconApiOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPersonalizationOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconProjectAddOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFolderOpenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFolderOpenArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconTreeCornerArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLightOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDarkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFollowsystemOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDataOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDatabaseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconClockOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconGaugeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSendOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconQueueOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChecklistOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconListPenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconGoalOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSparkleArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSkillOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconQuestionOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconInfoOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPluginPinwheelOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconAlarmClockOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconArchiveOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWrapLinesOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconNowrapFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWrapFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCompareSplitOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPlanOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCompactOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconShieldOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCheckCircleOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconUnarchiveOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPinOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPinFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFlatListOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWorkspaceTreeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronsUpDownOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconArchiveOffOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: maskId（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconArchiveCheckOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSlidersTwoOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconMicrophoneOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconAppsAddOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: near（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: far（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: plusX（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
-- **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: plusY（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: vw（原声明于 packages/client/ui-primitives/src/Menu.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: vh（原声明于 packages/client/ui-primitives/src/Menu.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: listEl（原声明于 packages/client/ui-primitives/src/Menu.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: lw（原声明于 packages/client/ui-primitives/src/Menu.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/Menu.tsx` — 导出（含 re-export）删除: lh（原声明于 packages/client/ui-primitives/src/Menu.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: WeightedIconProps（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSearchOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSettingsOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPanelLeftOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconEllipsisOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPlusOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCheckOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconBranchOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronDownOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronLeftOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronRightOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconTriangleRightFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronUpOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCloseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCloseFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCloseCircleFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCopyOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconRefreshOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLikeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLikeFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDislikeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDislikeFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconShareOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDeliverDocArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconEditOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconThinkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconAgentPresetOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconContextInjectionOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLinkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconRightUpOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconEnhanceOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconTrashOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWarningOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCheckCircleFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWarningTriangleOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconUserOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconUsersOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPaperPlaneOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconStopFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPaperclipOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLoadingOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDownloadOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPlayOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPauseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFullscreenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCodeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCordisPluginOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconApiOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPersonalizationOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconProjectAddOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFolderOpenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFolderOpenArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconTreeCornerArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconLightOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDarkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFollowsystemOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDataOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconDatabaseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconClockOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconGaugeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSendOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconQueueOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChecklistOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconListPenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconGoalOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSparkleArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSkillOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconQuestionOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconInfoOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPluginPinwheelOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconAlarmClockOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconArchiveOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWrapLinesOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconNowrapFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWrapFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCompareSplitOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPlanOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCompactOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconShieldOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconCheckCircleOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconUnarchiveOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPinOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconPinFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconFlatListOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconWorkspaceTreeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconChevronsUpDownOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconArchiveOffOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: maskId（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconArchiveCheckOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconSlidersTwoOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconMicrophoneOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: IconAppsAddOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: near（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: far（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: plusX（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
+- ★ **[ast-export-removed]** `packages/client/ui-primitives/src/icons/index.tsx` — 导出（含 re-export）删除: plusY（原声明于 packages/client/ui-primitives/src/icons/index.tsx）
 - **[ast-export-removed]** `packages/core/agent/src/model-selection.ts` — 导出（含 re-export）删除: ModelSelectionRef（原声明于 packages/core/agent/src/model-selection.ts）
 - **[ast-export-removed]** `packages/core/agent/src/model-selection.ts` — 导出（含 re-export）删除: disposeAssembly（原声明于 packages/core/agent/src/model-selection.ts）
 - **[ast-export-removed]** `packages/core/agent/src/model-selection.ts` — 导出（含 re-export）删除: disposeRequest（原声明于 packages/core/agent/src/model-selection.ts）
@@ -417,12 +628,12 @@
 - **[ast-export-removed]** `packages/schedule/schedule/src/domain.ts` — 导出（含 re-export）删除: allocateScheduleId（原声明于 packages/schedule/schedule/src/domain.ts）
 - **[ast-export-removed]** `packages/schedule/schedule/src/domain.ts` — 导出（含 re-export）删除: ParsedCronExpression（原声明于 packages/schedule/schedule/src/domain.ts）
 - **[ast-export-removed]** `packages/schedule/schedule/src/domain.ts` — 导出（含 re-export）删除: scheduleView（原声明于 packages/schedule/schedule/src/domain.ts）
-- ★ **[ast-export-removed]** `packages/sdk/client/src/api.ts` — 导出（含 re-export）删除: contentBlocks（原声明于 packages/sdk/client/src/api.ts）
-- ★ **[ast-export-removed]** `packages/sdk/client/src/api.ts` — 导出（含 re-export）删除: notifications（原声明于 packages/sdk/client/src/api.ts）
+- **[ast-export-removed]** `packages/sdk/client/src/api.ts` — 导出（含 re-export）删除: contentBlocks（原声明于 packages/sdk/client/src/api.ts）
+- **[ast-export-removed]** `packages/sdk/client/src/api.ts` — 导出（含 re-export）删除: notifications（原声明于 packages/sdk/client/src/api.ts）
 - **[ast-export-removed]** `packages/test-support/client-runtime/src/access.ts` — 导出（含 re-export）删除: allowAllRemoteAccess（原声明于 packages/test-support/client-runtime/src/access.ts）
 - **[ast-export-removed]** `packages/web/web-fetch-http/src/provider.ts` — 导出（含 re-export）删除: HttpFetchResolver（原声明于 packages/web/web-fetch-http/src/provider.ts）
 - **[ast-export-removed]** `packages/web/web-fetch-http/src/provider.ts` — 导出（含 re-export）删除: addresses（原声明于 packages/web/web-fetch-http/src/provider.ts）
-- **[config-field-removed]** `config:@deepseek-ai/dsh-tool-subagent` — 配置字段被删除: modelSelectionSettings（cordis.yml 里写这些字段将失效）
+- ★ **[config-field-removed]** `config:@deepseek-ai/dsh-tool-subagent` — 配置字段被删除: modelSelectionSettings（cordis.yml 里写这些字段将失效）
 - **[config-field-removed]** `config:@deepseek-ai/dsh-tools` — 配置字段被删除: mode（cordis.yml 里写这些字段将失效）
 - **[config-field-removed]** `config:@deepseek-ai/dsh-tools` — 配置字段被删除: maxParallelSubCalls（cordis.yml 里写这些字段将失效）
 
@@ -469,13 +680,13 @@
 - **[exports-map-changed]** `packages/mcp/mcp-client/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/ptc-runtime/ptc-runtime-node/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/schedule/tool-schedule/package.json` — package.json exports 字段变化，请人工确认入口路径
-- ★ **[exports-map-changed]** `packages/sdk/server/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/sdk/server/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/session/tool-working-directory/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/session/working-directory/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/shell/bash-local/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/shell/pwsh-local/package.json` — package.json exports 字段变化，请人工确认入口路径
-- ★ **[exports-map-changed]** `packages/skill/skill-office/package.json` — package.json exports 字段变化，请人工确认入口路径
-- ★ **[exports-map-changed]** `packages/skill/tool-workspace-dependencies/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/skill/skill-office/package.json` — package.json exports 字段变化，请人工确认入口路径
+- **[exports-map-changed]** `packages/skill/tool-workspace-dependencies/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/ssh/fs-ssh/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/ssh/sandbox-ssh/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/ssh/ssh/package.json` — package.json exports 字段变化，请人工确认入口路径
@@ -483,23 +694,23 @@
 - **[exports-map-changed]** `packages/storage/storage-sqlite/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/subagent/subagent-acp/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/subagent/subagent-dsh-sdk/package.json` — package.json exports 字段变化，请人工确认入口路径
-- **[exports-map-changed]** `packages/subagent/tool-subagent-control/package.json` — package.json exports 字段变化，请人工确认入口路径
+- ★ **[exports-map-changed]** `packages/subagent/tool-subagent-control/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/web/web-search-exa/package.json` — package.json exports 字段变化，请人工确认入口路径
 - **[exports-map-changed]** `packages/web/web-search-perplexity/package.json` — package.json exports 字段变化，请人工确认入口路径
-- **[doc-major-rewrite]** `docs/subsystems/boot.md` — 行数 335 -> 474（41%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/boot.zh.md` — 行数 335 -> 474（41%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/computer-use.md` — 行数 36 -> 99（175%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/computer-use.zh.md` — 行数 36 -> 99（175%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/filesystem.md` — 行数 445 -> 590（33%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/filesystem.zh.md` — 行数 445 -> 590（33%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/schedule.md` — 行数 449 -> 227（49%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/schedule.zh.md` — 行数 449 -> 227（49%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/session-projection.md` — 行数 313 -> 438（40%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/session-projection.zh.md` — 行数 313 -> 438（40%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/token-meter.md` — 行数 86 -> 126（47%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/token-meter.zh.md` — 行数 86 -> 126（47%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/worktrees.md` — 行数 56 -> 103（84%），可能存在行为级变更，建议人工复核
-- **[doc-major-rewrite]** `docs/subsystems/worktrees.zh.md` — 行数 56 -> 103（84%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/boot.md` — 行数 335 -> 474（41%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/boot.zh.md` — 行数 335 -> 474（41%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/computer-use.md` — 行数 36 -> 99（175%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/computer-use.zh.md` — 行数 36 -> 99（175%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/filesystem.md` — 行数 445 -> 590（33%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/filesystem.zh.md` — 行数 445 -> 590（33%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/schedule.md` — 行数 449 -> 227（49%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/schedule.zh.md` — 行数 449 -> 227（49%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/session-projection.md` — 行数 313 -> 438（40%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/session-projection.zh.md` — 行数 313 -> 438（40%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/token-meter.md` — 行数 86 -> 126（47%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/token-meter.zh.md` — 行数 86 -> 126（47%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/worktrees.md` — 行数 56 -> 103（84%），可能存在行为级变更，建议人工复核
+- ★ **[doc-major-rewrite]** `docs/subsystems/worktrees.zh.md` — 行数 56 -> 103（84%），可能存在行为级变更，建议人工复核
 - **[upgrade-guide-added]** `docs/upgrade-guide/v0.2.1-alpha.2/cordis-timer-wrappers/guide.md` — 官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读
 - **[upgrade-guide-added]** `docs/upgrade-guide/v0.2.1-alpha.2/cordis-timer-wrappers/guide.zh.md` — 官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读
 - **[upgrade-guide-added]** `docs/upgrade-guide/v0.2.1-alpha.2/plugin-manager-view-fields/guide.md` — 官方新增升级指南 = 上游承认存在需要迁移的变更，务必人工阅读
@@ -643,10 +854,10 @@
 - **[ast-signature-changed]** `packages/client/file-upload` — 签名变化: file
     旧: var:FileAttachmentRef
     新: var
-- **[ast-signature-changed]** `packages/client/modules` — 签名变化: PkgMeta
+- ★ **[ast-signature-changed]** `packages/client/modules` — 签名变化: PkgMeta
     旧: interface PkgMeta extends WebBootRowFields { clientPath: string }
     新: interface PkgMeta extends WebBootRowFields { clientPath: string /** The package's own manifest; package-asset requests resolve against it as a self-reference. */ manifestPath: string }
-- **[ast-signature-changed]** `packages/client/modules` — 签名变化: ClientPackageSource
+- ★ **[ast-signature-changed]** `packages/client/modules` — 签名变化: ClientPackageSource
     旧: interface ClientPackageSource extends ResolvedPkgMeta { /** Loader specifier from the active row. */ loaderName: string /** Resolution base of the config tree that owns the row. */ baseUrl: string /** Stable cache and contribution key for this source. */ sourceKey: string }
     新: interface ClientPackageSource extends ResolvedPkgMeta { /** Loader specifier from the active row. */ loaderName: string /** Resolution base of the config tree that owns the row. */ baseUrl: string /** Stable source identity and contribution key. */ sourceKey: string }
 - **[ast-signature-changed]** `packages/boot/plugin-market` — 签名变化: sources
@@ -715,7 +926,7 @@
 - **[ast-signature-changed]** `packages/experimental/tool-terminal` — 签名变化: finalizeContent
     旧: var
     新: var:NonNullable<ToolDefinition['finalizeContent']>
-- **[ast-signature-changed]** `packages/client/modules` — 签名变化: headers
+- ★ **[ast-signature-changed]** `packages/client/modules` — 签名变化: headers
     旧: var
     新: var:Record<string, string>
 - **[ast-signature-changed]** `packages/experimental/auto-review` — 签名变化: ReviewSourceRole
@@ -793,16 +1004,16 @@
 - **[ast-signature-changed]** `packages/experimental/action-cards` — 签名变化: skills
     旧: var:SkillCandidate[]
     新: var
-- ★ **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: SkillCatalogSource
+- **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: SkillCatalogSource
     旧: export interface SkillCatalogSource { readonly kind: 'skill-catalog' readonly form: 'catalog' /** Marks a replacement catalog rather than this session's first publication. */ readonly update?: true /** Exactly the entries this message published, in catalog order. */ readonly entries: readonly { readonly name: string; readonly description: string }[] }
     新: export interface SkillCatalogSource { readonly kind: 'skill-catalog' readonly form: 'catalog' /** Marks a replacement catalog rather than this session's first publication. */ readonly update?: true /** Some discovery failed; entries contain only skills found in this observation. Absence means complete. */ readonly incomplete?: true /** Exactly the entries this message published, in catalog order. */ readonly entries: readonly { readonly name: string; readonly description: string }[] }
-- ★ **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: renderCatalogMessage
+- **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: renderCatalogMessage
     旧: function(entries:SkillCatalogSource['entries'])
     新: function(entries:SkillCatalogSource['entries'],incomplete:boolean)
-- ★ **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: renderCatalogUpdate
+- **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: renderCatalogUpdate
     旧: function(entries:SkillCatalogSource['entries'])
     新: function(entries:SkillCatalogSource['entries'],incomplete:boolean)
-- ★ **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: digestCatalogEntries
+- **[ast-signature-changed]** `packages/skill/tool-skill` — 签名变化: digestCatalogEntries
     旧: function(entries:SkillCatalogSource['entries'])
     新: function(entries:SkillCatalogSource['entries'],incomplete:any)
 - **[ast-signature-changed]** `packages/ssh/fs-ssh` — 签名变化: errorCodes
@@ -889,13 +1100,13 @@
 - **[ast-signature-changed]** `packages/boot/plugin-manager/src/types.ts` — 签名变化: PluginInstallLogChunk
     旧: export interface PluginInstallLogChunk { /** The installation the run belongs to, when its caller supplied a request id. */ readonly requestId?: PluginInstallRequestId /** The run the chunk belongs to. */ readonly jobId: string /** The command line the run executes: pnpm's command name, then its arguments. */ readonly argv: readonly string[] /** The directory the run executes in: the profile directory. */ readonly cwd: string readonly stream: 'stdout' | 'stderr' readonly text: string /** Present on the run's last chunk: pnpm's exit code, null when it ended without one. */ readonly exitCode?: number | null }
     新: export interface PluginInstallLogChunk { /** The installation the run belongs to, when its caller supplied a request id. */ readonly requestId?: PluginInstallRequestId /** The run the chunk belongs to. */ readonly jobId: string /** The command line the run executes: its command name, then its arguments. */ readonly argv: readonly string[] /** The directory the run executes in: the profile directory. */ readonly cwd: string readonly stream: 'stdout' | 'stderr' readonly text: string /** Present on the chunk that ends a run: its exit code, null when the run ended without one. */ readonly exitCode?: number | null }
-- **[ast-signature-changed]** `packages/client/modules/src/client/manifest.ts` — 签名变化: ClientBundleRequire
+- ★ **[ast-signature-changed]** `packages/client/modules/src/client/manifest.ts` — 签名变化: ClientBundleRequire
     旧: export interface ClientBundleRequire { /** Resolve a module-table dependency synchronously. */ (specifier: string): unknown /** Load and resolve a package-local dynamic chunk asynchronously. */ async(specifier: string): Promise<unknown> }
     新: export interface ClientBundleRequire { /** Resolve a module-table dependency synchronously. */ (specifier: string): unknown /** Load and resolve a package-local dynamic chunk asynchronously. */ async(specifier: string): Promise<unknown> /** * Resolve a package-asset reference (`plugins/<package>/assets/<path>`) the * build compiled from an asset import or stylesheet `url()` to the URL the * page loads; the reference itself unless the carrier maps it. */ asset(reference: string): string }
-- **[ast-signature-changed]** `packages/client/modules/src/client/manifest.ts` — 签名变化: ClientModuleCreateOptions
+- ★ **[ast-signature-changed]** `packages/client/modules/src/client/manifest.ts` — 签名变化: ClientModuleCreateOptions
     旧: export interface ClientModuleCreateOptions { /** Raw Host-injected boot graph; the modules bundle owns validation and projection. */ boot: unknown /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> }
     新: export interface ClientModuleCreateOptions { /** Raw Host-injected boot graph; the modules bundle owns validation and projection. */ boot: unknown /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> /** Package-asset reference hook behind {@link ClientBundleRequire.asset}. Defaults to returning the reference. */ resolveAsset?: (reference: string) => string }
-- **[ast-signature-changed]** `packages/client/modules/src/client/manifest.ts` — 签名变化: ClientModuleSystemOptions
+- ★ **[ast-signature-changed]** `packages/client/modules/src/client/manifest.ts` — 签名变化: ClientModuleSystemOptions
     旧: export interface ClientModuleSystemOptions { /** Boot graph validated by {@link parseBootManifest}, owned by the resulting module system. */ manifest: BootManifest /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Stable HTML-installed registration facade to switch from queue to live mode. */ registrationTarget: ClientModuleLoaderTarget /** Already-materialized modules bundle consumed while creating the system. */ bootstrapModule: ClientBootstrapModule /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> }
     新: export interface ClientModuleSystemOptions { /** Boot graph validated by {@link parseBootManifest}, owned by the resulting module system. */ manifest: BootManifest /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Stable HTML-installed registration facade to switch from queue to live mode. */ registrationTarget: ClientModuleLoaderTarget /** Already-materialized modules bundle consumed while creating the system. */ bootstrapModule: ClientBootstrapModule /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> /** Package-asset reference hook behind {@link ClientBundleRequire.asset}. Defaults to returning the reference. */ resolveAsset?: (reference: string) => string }
 - **[ast-signature-changed]** `packages/client/ui-chat/src/chat-settings.ts` — 签名变化: ChatSettings
@@ -919,44 +1130,44 @@
   draw,
   dropZones = 'edges', minPaneFraction = MIN_PANE_FRACTION, hideSplitWhenBlocked = false,
 }:DockSurfaceProps & { readonly draw: (callbacks: PaneCallbacks, preview: SizePreview | undefined) => ReactNode })
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/SegmentedTabs.tsx` — 签名变化: SegmentedTabs
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/SegmentedTabs.tsx` — 签名变化: SegmentedTabs
     旧: function({ items, value, onChange, label, className }:{ items: readonly [SegmentedTab<Value>, ...SegmentedTab<Value>[]] value: Value onChange: (value: Value) => void label: string className?: string | undefined })
     新: function({ items, value, onChange, label, className, size = 'md' }:{ items: readonly [SegmentedTab<Value>, ...SegmentedTab<Value>[]] value: Value onChange: (value: Value) => void label: string className?: string | undefined size?: 'sm' | 'md' | undefined })
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: MenuItem
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: MenuItem
     旧: export interface MenuItem { id: string label: ReactNode disabled?: boolean /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: { keys: readonly string[]; aria?: string | undefined } /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** Nested card opened to the right on hover/focus. */ submenu?: readonly MenuItem[] }
     新: export interface MenuItem { id: string label: ReactNode disabled?: boolean /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: { keys: readonly string[]; aria?: string | undefined } /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** Nested card opened to the right on hover/focus. */ submenu?: readonly MenuEntry[] }
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: MenuItemButtonProps
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: MenuItemButtonProps
     旧: export interface MenuItemButtonProps { /** Visible row label. */ children: ReactNode /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: MenuItem['shortcut'] /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Whether this row identifies the currently displayed page or view. */ current?: boolean /** Whether the row cannot be activated. */ disabled?: boolean /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** * Start a new group: a hairline above this row, the same one a * `{ type: 'separator' }` data entry draws. It comes and goes with the row, * so a row that renders nothing leaves no stray line; a data separator * directly before it draws no second line, and the list's first row draws none. */ separatorBefore?: boolean /** Row activation (click, Enter, or Tab on the focused row). */ onSelect: () => void }
     新: export interface MenuItemButtonProps { /** Visible row label. */ children: ReactNode /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: MenuItem['shortcut'] /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Whether this row identifies the currently displayed page or view. */ current?: boolean /** Whether the row cannot be activated. */ disabled?: boolean /** * Why the disabled row cannot be activated. The row then stays hoverable and * focusable, shows the reason in a tooltip, and exposes it as the row's * description; an enabled row ignores it. */ disabledReason?: string | undefined /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** * Start a new group: a hairline above this row, the same one a * `{ type: 'separator' }` data entry draws. It comes and goes with the row, * so a row that renders nothing leaves no stray line; a data separator * directly before it draws no second line, and the list's first row draws none. */ separatorBefore?: boolean /** Row activation (click, Enter, or Tab on the focused row). */ onSelect: () => void }
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: MenuItemButton
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: MenuItemButton
     旧: function({
   children, shortcut, icon, current, disabled = false, danger = false, separatorBefore = false, onSelect,
 }:MenuItemButtonProps)
     新: function({
   children, shortcut, icon, current, disabled = false, disabledReason, danger = false, separatorBefore = false, onSelect,
 }:MenuItemButtonProps)
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: Menu
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/Menu.tsx` — 签名变化: Menu
     旧: function({ open, anchor, items = [], children, selectedId, selectedIds, onSelect, onClose, align = 'start', side = 'bottom', portal = false, closeOnPointerLeave = false, dense = false, compact = false, autoFocus = false, selection = 'check', getAnchorRect, minWidthFromAnchor = false, footer, className, listClassName }:{ open: boolean autoFocus?: boolean anchor: ReactNode items?: readonly MenuEntry[] children?: ReactNode footer?: readonly MenuEntry[] selectedId?: string | undefined selectedIds?: readonly string[] | undefined onSelect?: (id: string) => void onClose: () => void align?: 'start' | 'end' side?: 'bottom' | 'top' | 'right' portal?: boolean closeOnPointerLeave?: boolean dense?: boolean compact?: boolean selection?: 'check' | 'fill' getAnchorRect?: () => DOMRect | null minWidthFromAnchor?: boolean className?: string | undefined listClassName?: string | undefined })
     新: function({ open, anchor, items = [], children, selectedId, selectedIds, onSelect, onClose, align = 'start', side = 'bottom', portal = false, closeOnPointerLeave = false, dense = false, compact = false, autoFocus = false, selection = 'check', getAnchorRect, minWidthFromAnchor = false, footer, className, listClassName, contextual = false, exiting, returnFocus }:{ open: boolean /** Pointer-positioned popup: cursor clearance, grouped icons, and context gestures. */ contextual?: boolean /** Resolve the original control for focus restoration and inert/hidden dismissal. */ returnFocus?: (() => HTMLElement | null) | undefined /** Retain a dismissed context popup during its short fade. */ exiting?: 'dismiss' | 'replace' | undefined autoFocus?: boolean anchor: ReactNode items?: readonly MenuEntry[] children?: ReactNode footer?: readonly MenuEntry[] selectedId?: string | undefined selectedIds?: readonly string[] | undefined onSelect?: (id: string) => void onClose: () => void align?: 'start' | 'end' side?: 'bottom' | 'top' | 'right' portal?: boolean closeOnPointerLeave?: boolean dense?: boolean compact?: boolean selection?: 'check' | 'fill' getAnchorRect?: () => DOMRect | null minWidthFromAnchor?: boolean className?: string | undefined listClassName?: string | undefined })
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/HoverCard.tsx` — 签名变化: r
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/HoverCard.tsx` — 签名变化: r
     旧: var:DOMRect | null
     新: var
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 签名变化: x
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 签名变化: x
     旧: var:number
     新: var
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 签名变化: y
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 签名变化: y
     旧: var:number
     新: var
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/MenuSurface.tsx` — 签名变化: MenuSurfaceProps
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/MenuSurface.tsx` — 签名变化: MenuSurfaceProps
     旧: export interface MenuSurfaceProps extends ComponentPropsWithoutRef<'div'> { /** Match the shared compact menu's smaller outer radius. */ compact?: boolean }
     新: export interface MenuSurfaceProps extends ComponentPropsWithoutRef<'div'> { /** Match the shared compact menu's smaller outer radius. */ compact?: boolean /** Fade direct content, material, and native backing without isolating the material's backdrop. */ phase?: 'enter' | 'dismiss' | 'replace' | undefined }
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/MenuSurface.tsx` — 签名变化: anchorStyle
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/MenuSurface.tsx` — 签名变化: anchorStyle
     旧: var:CSSProperties & { '--dsh-menu-anchor': string }
     新: var:CSSProperties & Record<`--dsh-menu-${string}`, string>
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 签名变化: AnchoredPositionOptions
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 签名变化: AnchoredPositionOptions
     旧: export interface AnchoredPositionOptions { /** Whether the floating element is mounted and should track its anchor. */ open: boolean /** The element the panel is placed from. */ anchorRef: RefObject<HTMLElement | null> /** The floating element, measured so the clamp uses real dimensions. */ panelRef: RefObject<HTMLElement | null> /** Which anchor edge the panel hangs from: below it (`bottom`, the default) or above it (`top`). */ side?: 'top' | 'bottom' /** Which anchor edge the panel lines up with: its left edge (`start`, the default) or its right edge (`end`). */ align?: 'start' | 'end' /** Distance kept between the anchor edge named by `side` and the panel. */ gap: number /** Distance kept between the panel and each viewport edge; the frame's overlay inset widens the top margin. */ margin: number }
     新: export interface AnchoredPositionOptions { /** Whether the panel is mounted and should track its anchor. */ open: boolean /** Element whose viewport rect anchors the panel. */ anchorRef: RefObject<HTMLElement | null> /** Body-portaled, fixed-position panel; its ancestors must not establish a containing block. */ panelRef: RefObject<HTMLElement | null> /** Preferred anchor edge; right-side panels align their top edges. */ side?: 'top' | 'bottom' | 'right' /** Horizontal alignment for panels above or below the anchor. */ align?: 'start' | 'end' /** Distance from the preferred anchor edge, in CSS pixels. */ gap: number /** Minimum viewport inset; desktop frame clearance can increase the top inset. */ margin: number /** Reserve desktop frame clearance in addition to the margin; false keeps only the viewport margin. Defaults to true. */ frameClearance?: boolean /** Host-supplied client rect; null hides the panel until the anchor is available. */ getAnchorRect?: () => DOMRect | null /** Re-measure a committed content change before paint. */ layoutKey?: string | number /** Minimum panel width follows the anchor, bounded by the visible viewport. */ minWidthFromAnchor?: boolean }
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/HoverCard.tsx` — 签名变化: HoverCard
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/HoverCard.tsx` — 签名变化: HoverCard
     旧: function({
   anchor, content, openDelayMs = 500, disabled = false, grouped = false,
   copyText, copyLabel, copiedLabel, variant = 'compact', widthAnchorRef, inline = false,
@@ -965,27 +1176,27 @@
   anchor, content, openDelayMs = 500, disabled = false, grouped = false,
   copyText, copyLabel, copiedLabel, variant = 'compact', widthAnchorRef, inline = false, fitContent = false,
 }:{ anchor: ReactNode /** Inline media preview using the shared menu material and keyboard focus. */ inline?: boolean fitContent?: boolean content: ReactNode openDelayMs?: number disabled?: boolean grouped?: boolean variant?: 'compact' | 'preview' widthAnchorRef?: RefObject<HTMLElement | null> } & ({ copyText?: string | undefined; copyLabel: string; copiedLabel: string } | { copyText?: undefined copyLabel?: string copiedLabel?: string }))
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/HoverCardGroup.tsx` — 签名变化: HoverCardGroup
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/HoverCardGroup.tsx` — 签名变化: HoverCardGroup
     旧: function({ children, className }:{ children: ReactNode; className?: string })
     新: function({ children, className, as: Container = 'div' }:{ children: ReactNode className?: string | undefined as?: 'div' | 'span' })
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/user-text.tsx` — 签名变化: ReferenceChipProps
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/user-text.tsx` — 签名变化: ReferenceChipProps
     旧: export interface ReferenceChipProps { readonly appearance: ReferenceIconKind | 'skill' | 'command' readonly label: string readonly title: string /** Absent for display-only references and previews. */ readonly onActivate?: () => void }
     新: export interface ReferenceChipProps { readonly appearance: ReferenceIconKind | 'skill' | 'command' /** Explicit object-menu gesture bindings; absent for display-only references. */ readonly contextMenuProps?: Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'> readonly label: string readonly title: string /** Absent for display-only references and previews. */ readonly onActivate?: () => void }
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/user-text.tsx` — 签名变化: ReferenceChip
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/user-text.tsx` — 签名变化: ReferenceChip
     旧: function({ appearance, label, title, onActivate }:ReferenceChipProps)
     新: function({
   appearance, label, title, onActivate, contextMenuProps,
 }:ReferenceChipProps)
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/Tooltip.tsx` — 签名变化: AnchorProps
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/Tooltip.tsx` — 签名变化: AnchorProps
     旧: interface AnchorProps { 'aria-describedby'?: string | undefined ref?: Ref<HTMLElement> | undefined onMouseEnter?: MouseEventHandler | undefined onMouseLeave?: MouseEventHandler | undefined onClick?: MouseEventHandler | undefined onFocus?: FocusEventHandler | undefined onBlur?: FocusEventHandler | undefined }
     新: interface AnchorProps { 'aria-describedby'?: string | undefined ref?: Ref<HTMLElement> | undefined onPointerEnter?: PointerEventHandler | undefined onPointerLeave?: PointerEventHandler | undefined onPointerDown?: PointerEventHandler | undefined onClick?: MouseEventHandler | undefined onFocus?: FocusEventHandler | undefined onBlur?: FocusEventHandler | undefined }
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/Tooltip.tsx` — 签名变化: Tooltip
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/Tooltip.tsx` — 签名变化: Tooltip
     旧: function({ label, shortcutKeys, side = 'right', align = 'center', delayMs = 0, focusDelayMs = 0, gap = 8, disabled = false, portal = false, maxWidth, openOnClick = false, children }:{ label: TooltipLabel; shortcutKeys?: readonly string[] | undefined; side?: TooltipSide; align?: 'center' | 'end'; delayMs?: number; focusDelayMs?: number; gap?: number; disabled?: boolean; portal?: boolean; maxWidth?: number; openOnClick?: boolean; children: ReactElement<AnchorProps> })
     新: function({ label, shortcutKeys, side = 'right', align = 'center', delayMs = 0, focusDelayMs = 0, gap = 8, disabled = false, portal = false, maxWidth, openOnClick = false, onlyWhenClipped = false, children }:{ label: TooltipLabel; shortcutKeys?: readonly string[] | undefined; side?: TooltipSide; align?: 'center' | 'end'; delayMs?: number; focusDelayMs?: number; gap?: number; disabled?: boolean; portal?: boolean; maxWidth?: number; openOnClick?: boolean; onlyWhenClipped?: boolean; children: ReactElement<AnchorProps> })
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx` — 签名变化: MarkdownDelegate
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx` — 签名变化: MarkdownDelegate
     旧: export interface MarkdownDelegate { /** Image previews for decoded local paths in this owner's workspace. */ readonly fileImages?: { resolve: (path: string) => string | undefined labels: ImageLightboxLabels & { open: string; loading: string; failed: string } } | undefined /** Ordinary HTTP(S) activation; absent handlers retain native anchor behavior. */ readonly openExternalLink?: MarkdownExternalLinkHandler | undefined /** * Open a decoded local destination from settled Markdown; absent handlers leave plain text. * @param path - Absolute or workspace-relative file path. * @param options - First line to reveal when the destination specifies a line or range. */ readonly openFile?: ((path: string, options?: { line?: number }) => void) | undefined }
     新: export interface MarkdownDelegate { /** Open an object menu without executing its normal activation. */ readonly getTriggerProps?: ((target: MarkdownMenuTarget) => Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'>) | undefined /** * Image previews for decoded local paths in this owner's workspace. The renderer * appends a per-mount `load` query parameter to `api/file` route URLs. */ readonly fileImages?: { fileDrag: FileDragActions resolve: (path: string) => string | undefined resourceAddress?: ((path: string) => string) | undefined labels: ImageLightboxLabels & { open: string; loading: string; failed: string } } | undefined /** Ordinary HTTP(S) activation; absent handlers retain native anchor behavior. */ readonly openExternalLink?: MarkdownExternalLinkHandler | undefined /** * Open a decoded local destination from settled Markdown; absent handlers leave plain text. * @param path - Absolute or workspace-relative file path. * @param options - First line to reveal when the destination specifies a line or range. */ readonly openFile?: ((path: string, options?: { line?: number }) => void) | undefined }
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx` — 签名变化: MarkdownDelegateProvider
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx` — 签名变化: MarkdownDelegateProvider
     旧: function({
   children,
   openExternalLink,
@@ -999,19 +1210,19 @@
   fileImages,
   getTriggerProps,
 }:MarkdownDelegateProviderProps)
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownText.tsx` — 签名变化: renderSettled
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownText.tsx` — 签名变化: renderSettled
     旧: function(text:string,labels:MarkdownLabels,fileMentions:MarkdownFileMentions | undefined,pathImages:MarkdownPathImages | undefined)
     新: function(text:string,labels:MarkdownLabels,fileMentions:MarkdownFileMentions | undefined,pathImages:MarkdownPathImages | undefined,omitHtml:boolean)
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownText.tsx` — 签名变化: StreamingRenderer
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/MarkdownText.tsx` — 签名变化: StreamingRenderer
     旧: class(labels:MarkdownLabels)
     新: class(labels:MarkdownLabels,omitHtml:boolean)
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/ImageLightbox.tsx` — 签名变化: ImageLightbox
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/ImageLightbox.tsx` — 签名变化: ImageLightbox
     旧: function({ src, alt, labels, onClose }:{ src: string alt: string labels: ImageLightboxLabels onClose: () => void })
     新: function({ src, alt, labels, onClose, contextMenuProps }:{ src: string alt: string labels: ImageLightboxLabels onClose: () => void contextMenuProps?: Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'> | undefined })
 - **[ast-signature-changed]** `packages/client/web/src/boot.ts` — 签名变化: BootSeams
     旧: export type BootSeams = Pick<ClientModuleCreateOptions, 'loadBundle'>
     新: export type BootSeams = Pick<ClientModuleCreateOptions, 'loadBundle' | 'resolveAsset'>
-- **[ast-signature-changed]** `packages/context/agent-instructions/src/render.ts` — 签名变化: RenderedInstructionContext
+- ★ **[ast-signature-changed]** `packages/context/agent-instructions/src/render.ts` — 签名变化: RenderedInstructionContext
     旧: interface RenderedInstructionContext extends RenderedAgentInstructions { /** * Original files semantically represented by rendered section text. This is * not the complement of `omitted`: a truncated file may be represented here * and in `truncated`, while a notice-only file appears in neither. A genuinely * empty file counts when its heading survives because that heading conveys * that the instruction exists and has no content. */ represented: LoadedInstructionFile[] }
     新: interface RenderedInstructionContext extends RenderedAgentInstructions { /** * Original files semantically represented by rendered section text. This is * not the complement of `omitted`: a truncated file may be represented here * and in `truncated`, while a notice-only file appears in neither. A genuinely * empty file counts when its heading survives because that heading conveys * that the instruction exists and has no content. */ represented: LoadedInstructionFile[] /** Files whose sections the text holds, in text order, each with the content the text holds. */ sections: LoadedInstructionFile[] /** * Intro block of the `<system-reminder>` frame: undefined when the text is * empty or a notice without a frame, and the empty string when the frame has * no intro, as in a change batch or a merged frame whose chains both rendered * without a frame. */ intro: string | undefined }
 - **[ast-signature-changed]** `packages/core/agent/src/runtime-types.ts` — 签名变化: AgentOptions
@@ -1197,31 +1408,31 @@
 - **[ast-signature-changed]** `packages/schedule/schedule/src/domain.ts` — 签名变化: renderRecurringReminderBatchFraming
     旧: function(reminders:readonly { readonly record: RecurringScheduleRecord; readonly occurrenceAt: string }[])
     新: function(reminders:readonly { readonly record: { readonly id: ScheduleIdType; readonly prompt: string } readonly occurrenceAt: string }[])
-- ★ **[ast-signature-changed]** `packages/sdk/client/src/api.ts` — 签名变化: RunOptions
+- **[ast-signature-changed]** `packages/sdk/client/src/api.ts` — 签名变化: RunOptions
     旧: export interface RunOptions { /** Session id to run on; omitted mints a fresh session per call. */ sessionId?: string /** Observer invoked with every notification for this session tree, in wire order. */ onNotification?: (notification: HarnessNotification) => void }
     新: export interface RunOptions { /** Session id to run on; omitted mints a fresh session per call. */ sessionId?: string /** * Observe the input's Session-tree activity in wire order until completion. * The interval can include overlapping work from other inputs. */ onNotification?: (notification: HarnessNotification) => void }
-- ★ **[ast-signature-changed]** `packages/sdk/client/src/types.ts` — 签名变化: HarnessClientOptions
+- **[ast-signature-changed]** `packages/sdk/client/src/types.ts` — 签名变化: HarnessClientOptions
     旧: export interface HarnessClientOptions { /** Absolute or caller-relative dsh CLI module; omitted resolves this package's same-version dependency. */ dshBin?: string /** Named profile serving the SDK protocol (default `sdk`). */ profile?: string /** Ordered per-launch profile patches; relative paths resolve before spawn. */ patches?: string[] /** Explicit Harness home for this child; relative paths resolve before spawn. */ dshHome?: string /** Working directory for the dsh process itself. */ processCwd?: string /** * The complete child environment, read when {@link HarnessClient.start} * spawns. `undefined` reads the parent env at that time; passing an object * reads that object at spawn and replaces the parent environment entirely, so callers own * credential policy (see `scrubbedParentEnv` in `@deepseek-ai/dsh-subprocess` * for the shared scrub-then-merge base). */ env?: NodeJS.ProcessEnv /** Bound (ms) on the initial profile handshake (default 10000). */ initializeTimeoutMs?: number /** Per-request timeout (ms); `undefined` waits indefinitely (a turn can legitimately run long). */ requestTimeoutMs?: number /** Bound (ms) on the protocol `shutdown` exchange inside `close()` (default 1000). */ shutdownTimeoutMs?: number /** Grace (ms) for the runtime's stdin-EOF quiesce during `close()` (default 6000). */ disposeEofGraceMs?: number /** Termination confirmation window (ms) after SIGTERM/SIGKILL during `close()` (default 3000). */ disposeGraceMs?: number }
     新: export interface HarnessClientOptions { /** Answer or dismiss runtime questions; observe the signal to release host work on runtime cancellation. */ onUserQuestion?: (request: SdkUserQuestionRequest, context: { signal: AbortSignal }) => Promise<SdkUserQuestionResult> /** Absolute or caller-relative dsh CLI module; omitted resolves this package's same-version dependency. */ dshBin?: string /** Named profile serving the SDK protocol (default `sdk`). */ profile?: string /** Ordered per-launch profile patches; relative paths resolve before spawn. */ patches?: string[] /** Explicit Harness home for this child; relative paths resolve before spawn. */ dshHome?: string /** Working directory for the dsh process itself. */ processCwd?: string /** * The complete child environment, read when {@link HarnessClient.start} * spawns. `undefined` reads the parent env at that time; passing an object * reads that object at spawn and replaces the parent environment entirely, so callers own * credential policy (see `scrubbedParentEnv` in `@deepseek-ai/dsh-subprocess` * for the shared scrub-then-merge base). */ env?: NodeJS.ProcessEnv /** Bound (ms) on the initial profile handshake (default 10000). */ initializeTimeoutMs?: number /** Per-request timeout (ms); `undefined` waits indefinitely (a turn can legitimately run long). */ requestTimeoutMs?: number /** Bound (ms) on the protocol `shutdown` exchange inside `close()` (default 1000). */ shutdownTimeoutMs?: number /** Grace (ms) for the runtime's stdin-EOF quiesce during `close()` (default 6000). */ disposeEofGraceMs?: number /** Termination confirmation window (ms) after SIGTERM/SIGKILL during `close()` (default 3000). */ disposeGraceMs?: number }
-- ★ **[ast-signature-changed]** `packages/sdk/client/src/types.ts` — 签名变化: DeepSeekHarnessOptions
+- **[ast-signature-changed]** `packages/sdk/client/src/types.ts` — 签名变化: DeepSeekHarnessOptions
     旧: export interface DeepSeekHarnessOptions extends HarnessClientOptions { /** Workspace cwd recorded on every SDK-created session (default: the process cwd, else `process.cwd()`). */ cwd?: string /** Provider route for SDK-created agents (default `deepseek-official`). */ provider?: string /** Model for SDK-created agents (default `deepseek-v4-flash`). */ model?: string /** Adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Maximum output tokens for each conversation-model request. */ maxTokens?: number }
     新: export interface DeepSeekHarnessOptions extends HarnessClientOptions { /** Workspace cwd recorded on every SDK-created session (default: the process cwd, else `process.cwd()`). */ cwd?: string /** Provider route for SDK-created agents (default `deepseek-official`). */ provider?: string /** Model for SDK-created agents (default `deepseek-v4-flash`). */ model?: string /** Adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Maximum output tokens for each conversation-model request. */ maxTokens?: number /** Enable server approval requests; install client.onRequest() after client.start() and before harness.start(). */ approvalRequests?: boolean }
-- ★ **[ast-signature-changed]** `packages/sdk/client/src/types.ts` — 签名变化: RunResult
+- **[ast-signature-changed]** `packages/sdk/client/src/types.ts` — 签名变化: RunResult
     旧: export interface RunResult { /** The session the activity ran on. */ sessionId: string /** Concatenated text of the interval's last assistant message (empty when none). */ finalResponse: string /** Every `session.event` payload for the root session, in wire order. */ events: SessionEvent[] /** Every notification for the root session and discovered descendants, in wire order. */ notifications: HarnessNotification[] }
     新: export interface RunResult { /** The session the activity ran on. */ sessionId: string /** Final assistant text (empty when absent), native state-only result text, or a failure diagnostic. */ finalResponse: string /** Model turn ending or native operation outcome; null when no terminal reason was recorded. */ finishReason: string | null /** Every `session.event` payload for the root session, in wire order. */ events: SessionEvent[] /** Every notification for the root session and discovered descendants, in wire order. */ notifications: HarnessNotification[] }
-- ★ **[ast-signature-changed]** `packages/sdk/protocol/src/transport.ts` — 签名变化: JsonRpcTransportPeer
+- **[ast-signature-changed]** `packages/sdk/protocol/src/transport.ts` — 签名变化: JsonRpcTransportPeer
     旧: export interface JsonRpcTransportPeer { /** * Send a request and await its response. * @param method - the JSON-RPC method name. * @param params - the request parameters object. * @returns the result; rejects with {@link JsonRpcResponseError} on an error * response, and with a plain `Error` on a write failure or closure. */ request(method: string, params: object): Promise<unknown> /** * Send a notification; omitted params produce no `params` member. * @param method - the JSON-RPC method name. * @param params - the optional notification parameters object. */ notify(method: string, params?: object): void }
     新: export interface JsonRpcTransportPeer { /** * Send a request and await its response. * @param method - the JSON-RPC method name. * @param params - the request parameters object. * @param signal - optional cancellation; removes the pending waiter, rejects on abort, and ignores late responses. * @returns the result; rejects with {@link JsonRpcResponseError} on an error * response, and with a plain `Error` on a write failure or closure. */ request(method: string, params: object, signal?: AbortSignal): Promise<unknown> /** * Send a notification; omitted params produce no `params` member. * @param method - the JSON-RPC method name. * @param params - the optional notification parameters object. */ notify(method: string, params?: object): void }
-- ★ **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: InitializeParams
+- **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: InitializeParams
     旧: export interface InitializeParams { /** Working directory recorded on every SDK-created session's header. */ cwd: string /** Provider route every SDK-created agent runs on. */ provider: string /** Model name every SDK-created agent runs on (the server may mount a fallback adapter; see `HarnessSdkJsonRpcServer.initialize`). */ model: string /** Optional adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Optional positive output-token cap inherited by SDK-created agents and their in-process descendants. */ maxTokens?: number }
     新: export interface InitializeParams { /** Working directory recorded on every SDK-created session's header. */ cwd: string /** Enable server-to-client approval/request calls; omission leaves existing answerers in control. */ approvalRequests?: boolean /** Provider route every SDK-created agent runs on. */ provider: string /** Model name every SDK-created agent runs on (the server may mount a fallback adapter; see `HarnessSdkJsonRpcServer.initialize`). */ model: string /** Optional adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Optional positive output-token cap inherited by SDK-created agents and their in-process descendants. */ maxTokens?: number /** Host-provided capabilities; omission retains native in-process answerers. */ capabilities?: { userQuestions?: boolean } }
-- ★ **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: SdkEncodedImageBlock
+- **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: SdkEncodedImageBlock
     旧: export interface SdkEncodedImageBlock { type: 'image' /** Canonical base64-encoded raster bytes. */ data: string /** Declared raster MIME type, verified during admission. */ mimeType: 'image/png' | 'image/jpeg' | 'image/webp' | 'image/gif' }
     新: export interface SdkEncodedImageBlock { type: 'image' /** Canonical base64-encoded raster bytes. */ data: string /** Declared raster MIME type, verified during admission. */ mimeType: 'image/png' | 'image/jpeg' | 'image/webp' | 'image/gif' /** Optional display name; never interpreted as a filesystem path. */ name?: string }
-- ★ **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: HarnessSdkNotificationMap
+- **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: HarnessSdkNotificationMap
     旧: export interface HarnessSdkNotificationMap { 'session.event': SessionEventNotification 'session.status': SessionStatusNotification 'subagent.started': SubagentStartedNotification 'subagent.finished': SubagentFinishedNotification }
     新: export interface HarnessSdkNotificationMap { 'user-question.cancelled': SdkUserQuestionCancelled 'session.event': SessionEventNotification 'session.status': SessionStatusNotification /** Completion of a command query, including model activity and automatic goal rounds it starts. */ 'session.query.completed': { sessionId: SessionId commandId: CommandExecution['commandId'] finalResponse: string finishReason: string } 'subagent.started': SubagentStartedNotification 'subagent.finished': SubagentFinishedNotification }
-- ★ **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: HarnessSdkRequestMap
+- **[ast-signature-changed]** `packages/sdk/protocol/src/types.ts` — 签名变化: HarnessSdkRequestMap
     旧: export interface HarnessSdkRequestMap { 'initialize': { params: InitializeParams; result: InitializeResult } 'session/prompt': { params: SessionPromptParams; result: SessionPromptResult } 'session/resume': { params: SessionResumeParams; result: Record<string, never> } 'session/wait': { params: SessionWaitParams; result: Record<string, never> } 'session/working-directory/get': { params: SessionWorkingDirectoryParams; result: SessionWorkingDirectoryResult } 'session/working-directory/set': { params: SessionWorkingDirectorySetParams; result: SessionWorkingDirectoryResult } 'shutdown': { params: undefined; result: Record<string, never> } }
     新: export interface HarnessSdkRequestMap { 'initialize': { params: InitializeParams; result: InitializeResult } 'session/prompt': { params: SessionPromptParams; result: SessionPromptResult } 'session/query': { params: SessionQueryParams; result: SessionQueryResult } 'session/resume': { params: SessionResumeParams; result: Record<string, never> } 'session/wait': { params: SessionWaitParams; result: Record<string, never> } 'session/working-directory/get': { params: SessionWorkingDirectoryParams; result: SessionWorkingDirectoryResult } 'session/working-directory/set': { params: SessionWorkingDirectorySetParams; result: SessionWorkingDirectoryResult } 'shutdown': { params: undefined; result: Record<string, never> } }
 - **[ast-signature-changed]** `packages/sandbox/sandbox/src/roots.ts` — 签名变化: physical
@@ -1278,7 +1489,7 @@
 - **[ast-signature-changed]** `packages/typert/protocol/src/types.ts` — 签名变化: TypertResourceRegistry
     旧: export interface TypertResourceRegistry { /** * Register one kind's default wire field for the calling fiber. Only the * domain that owns the kind registers it. * @param kind - merge-declared resource kind. * @param declaration - the kind's default wire field. * @returns disposer withdrawing the exact registration. * @throws Error when the kind is already registered or is `global`, the built-in resource kind. */ register(kind: TypertResourceKind, declaration: TypertResourceDeclaration): TypertDisposer /** * Look up one kind's declaration. * @param kind - resource kind. * @returns the live declaration, or `undefined` when unregistered. */ get(kind: string): TypertResourceDeclaration | undefined /** @returns a registration-order snapshot of registered kinds with their fields. */ entries(): readonly TypertResourceEntry[] /** * Observe later resource-kind changes. * @param listener - synchronous contained observer. * @returns disposer for this subscription. */ subscribe(listener: TypertRegistryListener): TypertDisposer }
     新: export interface TypertResourceRegistry { /** * Register one kind's default identity extraction for the calling fiber. Only the * domain that owns the kind registers it. * @param kind - merge-declared resource kind. * @param declaration - either a default wire field or a resolver, never both. * @returns disposer withdrawing the exact registration. * @throws Error when the kind is already registered or is `global`, the built-in resource kind. */ register(kind: TypertResourceKind, declaration: TypertResourceDeclaration): TypertDisposer /** * Look up one kind's declaration. * @param kind - resource kind. * @returns the live declaration, or `undefined` when unregistered. */ get(kind: string): TypertResourceDeclaration | undefined /** @returns a registration-order snapshot of registered kinds with their extraction declarations. */ entries(): readonly TypertResourceEntry[] /** * Observe later resource-kind changes. * @param listener - synchronous contained observer. * @returns disposer for this subscription. */ subscribe(listener: TypertRegistryListener): TypertDisposer }
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 签名变化: overlay
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 签名变化: overlay
     旧: var:Record<string, string | undefined>
     新: var
 - **[ast-signature-changed]** `packages/util/package-manifest/src/types.ts` — 签名变化: DshPackageManifest
@@ -1302,16 +1513,16 @@
 - **[ast-signature-changed]** `packages/web/web/src/types.ts` — 签名变化: WebFetchProvider
     旧: export interface WebFetchProvider { readonly id: string /** Cheap local usability check; must not make network calls. */ available(): boolean /** Retrieve one URL; honor `signal` for cancellation. */ fetch(request: WebFetchRequest, signal?: AbortSignal): Promise<WebFetchResult> }
     新: export interface WebFetchProvider { readonly id: string /** Cheap local usability check; must not make network calls. */ available(): boolean /** * Whether a fetch made for a model request on the `llmProvider` chat route has a * credential to send. Checks configuration only and must not make network calls. * Omitted = ready. * @param llmProvider - the provider route id of the model request, when known. * @returns false when that request's fetches could not authenticate. */ ready?(llmProvider: string | undefined): Promise<boolean> /** Retrieve one URL; honor `signal` for cancellation. */ fetch(request: WebFetchRequest, signal?: AbortSignal): Promise<WebFetchResult> }
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: imageSource
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: imageSource
     旧: function(url:string,pathImages:MarkdownPathImages | undefined)
     新: function(url:string,pathImages:MarkdownPathImages | undefined,load:number)
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: MarkdownPathImages
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: MarkdownPathImages
     旧: export interface MarkdownPathImages { /** * Resolve one authored image destination. * @param value - The destination exactly as the markdown author wrote it. * @returns A displayable absolute URL, or undefined when the destination * names no displayable image — it then stays inert alt text. */ resolve(value: string): string | undefined }
     新: export interface MarkdownPathImages { /** * Resolve one authored image destination. * @param value - The destination exactly as the markdown author wrote it. * @returns A displayable absolute URL, or undefined when the destination * names no displayable image — it then stays inert alt text. The renderer * appends a per-mount `load` query parameter to `api/file` route results. */ resolve(value: string): string | undefined }
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: MarkdownFileMentions
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: MarkdownFileMentions
     旧: export interface MarkdownFileMentions { /** * Resolve one inline-code token. * @param value - The authored token, exactly as written. * @returns The opener with its accessible label and full-path title, or * undefined when the token names no known file — it then stays inert code. */ resolve(value: string): { open: () => void; label: string; title: string } | undefined }
     新: export interface MarkdownFileMentions { /** * Resolve one inline-code token. * @param value - The authored token, exactly as written. * @returns The opener with its accessible label and full-path title, or * undefined when the token names no known file — it then stays inert code. */ resolve(value: string): { open: () => void contextMenuProps?: Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'> label: string title: string } | undefined }
-- **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: MarkdownRenderContext
+- ★ **[ast-signature-changed]** `packages/client/ui-primitives/src/markdown/render.tsx` — 签名变化: MarkdownRenderContext
     旧: export interface MarkdownRenderContext { /** Streaming arm: fences highlight incrementally as they grow; TeX (including ```math fences) stays literal until the settled pass. */ readonly streaming: boolean /** Localized fence copy-button labels. */ readonly labels: MarkdownLabels /** Inside a blockquote's children: tables there always fill the quote's width. */ readonly inBlockquote?: boolean /** Inline-code file mentions; absent wherever no opener vocabulary exists. */ readonly fileMentions: MarkdownFileMentions | undefined /** Local-path image vocabulary; absent wherever no rewriting owner exists. */ readonly pathImages: MarkdownPathImages | undefined /** Inside an anchor's children: interactive mentions must not nest there. */ readonly inLink?: boolean /** Reference targets visible to this pass. */ readonly targets: ReferenceTargets /** Footnote identifiers in first-reference order; a footnote's number is its 1-based index here. */ readonly footnoteOrder: string[] /** References rendered per identifier; drives the section's back-reference count. */ readonly footnoteCounts: Map<string, number> }
     新: export interface MarkdownRenderContext { /** Streaming arm: fences highlight incrementally as they grow; TeX (including ```math fences) stays literal until the settled pass. */ readonly streaming: boolean /** Localized fence copy-button labels. */ readonly labels: MarkdownLabels /** Inside a blockquote's children: tables there always fill the quote's width. */ readonly inBlockquote?: boolean /** Inline-code file mentions; absent wherever no opener vocabulary exists. */ readonly fileMentions: MarkdownFileMentions | undefined /** Local-path image vocabulary; absent wherever no rewriting owner exists. */ readonly pathImages: MarkdownPathImages | undefined /** Raw HTML renders nothing instead of literal text. */ readonly omitHtml: boolean /** Inside an anchor's children: interactive mentions must not nest there. */ readonly inLink?: boolean /** Reference targets visible to this pass. */ readonly targets: ReferenceTargets /** Footnote identifiers in first-reference order; a footnote's number is its 1-based index here. */ readonly footnoteOrder: string[] /** References rendered per identifier; drives the section's back-reference count. */ readonly footnoteCounts: Map<string, number> }
 - **[config-field-type-changed]** `config:@deepseek-ai/dsh-agent-tool-presentation` — 配置字段类型变化: mode: ToolPresentationMode -> 'native' | 'ptc'
@@ -1355,10 +1566,10 @@
 - **[doc-added]** `docs/persistence-changes/2026-10-22-action-card-status.zh.md` — 新增文档
 - **[doc-added]** `docs/persistence-changes/2026-10-25-skill-catalog-incomplete.md` — 新增文档
 - **[doc-added]** `docs/persistence-changes/2026-10-25-skill-catalog-incomplete.zh.md` — 新增文档
-- **[doc-added]** `docs/subsystems/forge.md` — 新增文档
-- **[doc-added]** `docs/subsystems/forge.zh.md` — 新增文档
-- **[doc-added]** `docs/subsystems/liveshare.md` — 新增文档
-- **[doc-added]** `docs/subsystems/liveshare.zh.md` — 新增文档
+- ★ **[doc-added]** `docs/subsystems/forge.md` — 新增文档
+- ★ **[doc-added]** `docs/subsystems/forge.zh.md` — 新增文档
+- ★ **[doc-added]** `docs/subsystems/liveshare.md` — 新增文档
+- ★ **[doc-added]** `docs/subsystems/liveshare.zh.md` — 新增文档
 - **[config-scope-added]** `config:@deepseek-ai/dsh-action-cards` — 新增可配置包
 - **[config-scope-added]** `config:@deepseek-ai/dsh-client-ui-trajectory` — 新增可配置包
 - **[config-scope-added]** `config:@deepseek-ai/dsh-experimental-client-ui-forge` — 新增可配置包
@@ -1402,11 +1613,11 @@
 - **[ast-export-added]** `packages/bundle/headless` — 新增导出: approvalPolicy
 - **[ast-export-added]** `packages/bundle/headless` — 新增导出: requestedRoots
 - **[ast-export-added]** `packages/client/file-upload` — 新增导出: readAtMost
-- **[ast-export-added]** `packages/client/modules` — 新增导出: PACKAGE_ASSET_PATH
-- **[ast-export-added]** `packages/client/modules` — 新增导出: transforStreamBody
-- **[ast-export-added]** `packages/client/modules` — 新增导出: heldBody
-- **[ast-export-added]** `packages/client/modules` — 新增导出: entriesByName
-- **[ast-export-added]** `packages/client/modules` — 新增导出: asset
+- ★ **[ast-export-added]** `packages/client/modules` — 新增导出: PACKAGE_ASSET_PATH
+- ★ **[ast-export-added]** `packages/client/modules` — 新增导出: transforStreamBody
+- ★ **[ast-export-added]** `packages/client/modules` — 新增导出: heldBody
+- ★ **[ast-export-added]** `packages/client/modules` — 新增导出: entriesByName
+- ★ **[ast-export-added]** `packages/client/modules` — 新增导出: asset
 - **[ast-export-added]** `packages/client/ui-trajectory` — 新增导出: LiveResults
 - **[ast-export-added]** `packages/client/ui-trajectory` — 新增导出: emptyResults
 - **[ast-export-added]** `packages/client/ui-trajectory` — 新增导出: SessionToolResults
@@ -1610,10 +1821,10 @@
 - **[ast-export-added]** `packages/session/session-projection` — 新增导出: ProjectionEventChangeListener
 - **[ast-export-added]** `packages/session/session-projection` — 新增导出: ProjectionKeySelection
 - **[ast-export-added]** `packages/session/session-projection` — 新增导出: selectedKeys
-- ★ **[ast-export-added]** `packages/skill/tool-skill` — 新增导出: incomplete
-- ★ **[ast-export-added]** `packages/skill/tool-skill` — 新增导出: incompleteCatalogNotice
-- **[ast-export-added]** `packages/subagent/tool-subagent` — 新增导出: subagentModelSelectionProjectionHandle
-- **[ast-export-added]** `packages/subagent/tool-subagent` — 新增导出: modelSelectionPolicy
+- **[ast-export-added]** `packages/skill/tool-skill` — 新增导出: incomplete
+- **[ast-export-added]** `packages/skill/tool-skill` — 新增导出: incompleteCatalogNotice
+- ★ **[ast-export-added]** `packages/subagent/tool-subagent` — 新增导出: subagentModelSelectionProjectionHandle
+- ★ **[ast-export-added]** `packages/subagent/tool-subagent` — 新增导出: modelSelectionPolicy
 - **[ast-export-added]** `packages/test-support/llm-replay` — 新增导出: BADGE_TONES
 - **[ast-export-added]** `packages/test-support/llm-replay` — 新增导出: displayableBadge
 - **[ast-export-added]** `packages/test-support/tool-testkit` — 新增导出: JsonFields
@@ -1711,98 +1922,98 @@
 - **[ast-export-added]** `packages/client/ui-dockkit/src/components/FloatLayer.tsx` — 新增导出: reduce
 - **[ast-export-added]** `packages/client/ui-dockkit/src/components/FloatLayer.tsx` — 新增导出: pressed
 - **[ast-export-added]** `packages/client/ui-dockkit/src/components/FloatLayer.tsx` — 新增导出: samples
-- **[ast-export-added]** `packages/client/ui-primitives/src/UserMessageBubble.tsx` — 新增导出: UserMessageBubbleProps
-- **[ast-export-added]** `packages/client/ui-primitives/src/UserMessageBubble.tsx` — 新增导出: UserMessageBubble
-- **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: ROW_FADE_MS
-- **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: ROW_GLIDE_MS
-- **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: AnimatedRowsProps
-- **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: RowPosition
-- **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: RowSnapshot
-- **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: sameRows
-- **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: intersects
-- **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: AnimatedRows
-- **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: nextKeys
-- **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: previousRow
-- **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: animation
-- **[ast-export-added]** `packages/client/ui-primitives/src/useRowDragPreview.ts` — 新增导出: useRowDragPreview
-- **[ast-export-added]** `packages/client/ui-primitives/src/useRowDragPreview.ts` — 新增导出: clear
-- **[ast-export-added]** `packages/client/ui-primitives/src/useRowDragPreview.ts` — 新增导出: wasDragging
-- **[ast-export-added]** `packages/client/ui-primitives/src/ZoomControls.tsx` — 新增导出: steppedZoom
-- **[ast-export-added]** `packages/client/ui-primitives/src/ZoomControls.tsx` — 新增导出: ZoomControlsHandle
-- **[ast-export-added]** `packages/client/ui-primitives/src/ZoomControls.tsx` — 新增导出: ZoomControls
-- **[ast-export-added]** `packages/client/ui-primitives/src/ZoomControls.tsx` — 新增导出: displayZoom
-- **[ast-export-added]** `packages/client/ui-primitives/src/ZoomControls.tsx` — 新增导出: selectedId
-- **[ast-export-added]** `packages/client/ui-primitives/src/document-zoom.ts` — 新增导出: DOCUMENT_ZOOM
-- **[ast-export-added]** `packages/client/ui-primitives/src/document-zoom.ts` — 新增导出: DocumentZoomLabels
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: reasonId
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: explained
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: iconColumns
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: aligned
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: menuId
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: exitingRef
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: lastAnchorRect
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: readAnchor
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: anchorElement
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: fixedPos
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: itemColumns
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: footerColumns
-- **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: subColumns
-- **[ast-export-added]** `packages/client/ui-primitives/src/MenuSurface.tsx` — 新增导出: MENU_TRANSITION_MS
-- **[ast-export-added]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 新增导出: visualOrigin
-- **[ast-export-added]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 新增导出: lastRect
-- **[ast-export-added]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 新增导出: readRect
-- **[ast-export-added]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 新增导出: panelWidth
-- **[ast-export-added]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 新增导出: panelHeight
-- **[ast-export-added]** `packages/client/ui-primitives/src/HoverCard.tsx` — 新增导出: CardPosition
-- **[ast-export-added]** `packages/client/ui-primitives/src/HoverCard.tsx` — 新增导出: portalRef
-- **[ast-export-added]** `packages/client/ui-primitives/src/HoverCard.tsx` — 新增导出: bridgeTop
-- **[ast-export-added]** `packages/client/ui-primitives/src/HoverCard.tsx` — 新增导出: bridgeLeft
-- **[ast-export-added]** `packages/client/ui-primitives/src/focus.ts` — 新增导出: mobileDevice
-- **[ast-export-added]** `packages/client/ui-primitives/src/focus.ts` — 新增导出: isMobileDevice
-- **[ast-export-added]** `packages/client/ui-primitives/src/useModalLayer.ts` — 新增导出: pendingRestore
-- **[ast-export-added]** `packages/client/ui-primitives/src/file-drag-actions.ts` — 新增导出: FileDragSource
-- **[ast-export-added]** `packages/client/ui-primitives/src/file-drag-actions.ts` — 新增导出: PreparedFileDrag
-- **[ast-export-added]** `packages/client/ui-primitives/src/file-drag-actions.ts` — 新增导出: FileDragActions
-- **[ast-export-added]** `packages/client/ui-primitives/src/DraggableImage.tsx` — 新增导出: DraggableImageProps
-- **[ast-export-added]** `packages/client/ui-primitives/src/DraggableImage.tsx` — 新增导出: DraggableImage
-- **[ast-export-added]** `packages/client/ui-primitives/src/use-clipboard-copy.ts` — 新增导出: ClipboardCopyState
-- **[ast-export-added]** `packages/client/ui-primitives/src/use-clipboard-copy.ts` — 新增导出: useClipboardCopy
-- **[ast-export-added]** `packages/client/ui-primitives/src/use-clipboard-copy.ts` — 新增导出: copyPending
-- **[ast-export-added]** `packages/client/ui-primitives/src/use-clipboard-copy.ts` — 新增导出: copyTimer
-- **[ast-export-added]** `packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx` — 新增导出: MarkdownMenuTarget
-- **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: DetailDocumentState
-- **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: DetailDocumentRead
-- **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: detailDocumentState
-- **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: DetailDocumentCopy
-- **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: useDetailDocumentLabels
-- **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: markdown
-- **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: DetailDocumentLabels
-- **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: DetailDocument
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: productIcon
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: IconDragHandleOutlineRegular
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: IconDragHandleOutlineMedium
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: appsAddIcon
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: Wide
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: Compact
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: IconSaveOutlineRegular
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: IconSaveOutlineMedium
-- **[ast-export-added]** `packages/client/ui-primitives/src/QuotePreview.tsx` — 新增导出: QuoteMarkIcon
-- **[ast-export-added]** `packages/client/ui-primitives/src/QuotePreview.tsx` — 新增导出: QuotePreviewRemoval
-- **[ast-export-added]** `packages/client/ui-primitives/src/QuotePreview.tsx` — 新增导出: QuotePreviewProps
-- **[ast-export-added]** `packages/client/ui-primitives/src/QuotePreview.tsx` — 新增导出: QuotePreview
-- **[ast-export-added]** `packages/client/ui-primitives/src/QuotePreview.tsx` — 新增导出: sourceRef
-- **[ast-export-added]** `packages/client/ui-primitives/src/markdown/quote-text.ts` — 新增导出: formatQuoteText
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/UserMessageBubble.tsx` — 新增导出: UserMessageBubbleProps
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/UserMessageBubble.tsx` — 新增导出: UserMessageBubble
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: ROW_FADE_MS
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: ROW_GLIDE_MS
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: AnimatedRowsProps
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: RowPosition
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: RowSnapshot
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: sameRows
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: intersects
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: AnimatedRows
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: nextKeys
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: previousRow
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/AnimatedRows.tsx` — 新增导出: animation
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/useRowDragPreview.ts` — 新增导出: useRowDragPreview
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/useRowDragPreview.ts` — 新增导出: clear
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/useRowDragPreview.ts` — 新增导出: wasDragging
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/ZoomControls.tsx` — 新增导出: steppedZoom
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/ZoomControls.tsx` — 新增导出: ZoomControlsHandle
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/ZoomControls.tsx` — 新增导出: ZoomControls
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/ZoomControls.tsx` — 新增导出: displayZoom
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/ZoomControls.tsx` — 新增导出: selectedId
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/document-zoom.ts` — 新增导出: DOCUMENT_ZOOM
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/document-zoom.ts` — 新增导出: DocumentZoomLabels
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: reasonId
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: explained
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: iconColumns
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: aligned
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: menuId
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: exitingRef
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: lastAnchorRect
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: readAnchor
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: anchorElement
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: fixedPos
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: itemColumns
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: footerColumns
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/Menu.tsx` — 新增导出: subColumns
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/MenuSurface.tsx` — 新增导出: MENU_TRANSITION_MS
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 新增导出: visualOrigin
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 新增导出: lastRect
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 新增导出: readRect
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 新增导出: panelWidth
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/useAnchoredPosition.ts` — 新增导出: panelHeight
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/HoverCard.tsx` — 新增导出: CardPosition
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/HoverCard.tsx` — 新增导出: portalRef
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/HoverCard.tsx` — 新增导出: bridgeTop
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/HoverCard.tsx` — 新增导出: bridgeLeft
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/focus.ts` — 新增导出: mobileDevice
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/focus.ts` — 新增导出: isMobileDevice
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/useModalLayer.ts` — 新增导出: pendingRestore
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/file-drag-actions.ts` — 新增导出: FileDragSource
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/file-drag-actions.ts` — 新增导出: PreparedFileDrag
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/file-drag-actions.ts` — 新增导出: FileDragActions
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/DraggableImage.tsx` — 新增导出: DraggableImageProps
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/DraggableImage.tsx` — 新增导出: DraggableImage
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/use-clipboard-copy.ts` — 新增导出: ClipboardCopyState
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/use-clipboard-copy.ts` — 新增导出: useClipboardCopy
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/use-clipboard-copy.ts` — 新增导出: copyPending
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/use-clipboard-copy.ts` — 新增导出: copyTimer
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx` — 新增导出: MarkdownMenuTarget
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: DetailDocumentState
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: DetailDocumentRead
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: detailDocumentState
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: DetailDocumentCopy
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: useDetailDocumentLabels
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: markdown
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: DetailDocumentLabels
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/DetailDocument.tsx` — 新增导出: DetailDocument
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: productIcon
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: IconDragHandleOutlineRegular
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: IconDragHandleOutlineMedium
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: appsAddIcon
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: Wide
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: Compact
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: IconSaveOutlineRegular
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/index.tsx` — 新增导出: IconSaveOutlineMedium
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/QuotePreview.tsx` — 新增导出: QuoteMarkIcon
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/QuotePreview.tsx` — 新增导出: QuotePreviewRemoval
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/QuotePreview.tsx` — 新增导出: QuotePreviewProps
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/QuotePreview.tsx` — 新增导出: QuotePreview
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/QuotePreview.tsx` — 新增导出: sourceRef
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/markdown/quote-text.ts` — 新增导出: formatQuoteText
 - **[ast-export-added]** `packages/client/ui-trajectory/src/types.ts` — 新增导出: SessionToolResultRequest
 - **[ast-export-added]** `packages/client/ui-trajectory/src/types.ts` — 新增导出: SessionToolResultValue
-- **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: isDisabledBudget
-- **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: isUserGlobalInstruction
-- **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: renderInstructionChains
-- **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: userGlobal
-- **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: inLoadedOrder
-- **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: userGlobalLast
-- **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: projectLast
-- **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: intros
-- **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: intro
+- ★ **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: isDisabledBudget
+- ★ **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: isUserGlobalInstruction
+- ★ **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: renderInstructionChains
+- ★ **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: userGlobal
+- ★ **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: inLoadedOrder
+- ★ **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: userGlobalLast
+- ★ **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: projectLast
+- ★ **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: intros
+- ★ **[ast-export-added]** `packages/context/agent-instructions/src/render.ts` — 新增导出: intro
 - **[ast-export-added]** `packages/core/agent/src/runtime-types.ts` — 新增导出: Model
 - **[ast-export-added]** `packages/core/agent/src/model-selection.ts` — 新增导出: toSelection
 - **[ast-export-added]** `packages/core/agent/src/model-selection.ts` — 新增导出: sameModelSelection
@@ -2136,23 +2347,23 @@
 - **[ast-export-added]** `packages/schedule/schedule/src/domain.ts` — 新增导出: decodeRRuleScheduleRecord
 - **[ast-export-added]** `packages/schedule/schedule/src/domain.ts` — 新增导出: rrule
 - **[ast-export-added]** `packages/schedule/schedule/src/domain.ts` — 新增导出: formatScheduleLocalTime
-- ★ **[ast-export-added]** `packages/sdk/client/src/api.ts` — 新增导出: RunActivity
-- ★ **[ast-export-added]** `packages/sdk/client/src/client.ts` — 新增导出: queryInput
-- ★ **[ast-export-added]** `packages/sdk/client/src/client.ts` — 新增导出: commandExecution
-- ★ **[ast-export-added]** `packages/sdk/client/src/client.ts` — 新增导出: isUserQuestionRequest
-- ★ **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SdkUserQuestionRequest
-- ★ **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SdkUserQuestionAnswer
-- ★ **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SdkUserQuestionResult
-- ★ **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SdkUserQuestionCancelled
-- ★ **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: HarnessSdkHostRequestMap
-- ★ **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SessionQueryParams
-- ★ **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SessionQueryResult
-- ★ **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: ApprovalRequestParams
-- ★ **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: ApprovalRequestResult
-- ★ **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: HarnessSdkClientRequestMap
-- ★ **[ast-export-added]** `packages/sdk/server/src/server.ts` — 新增导出: restoration
-- ★ **[ast-export-added]** `packages/sdk/server/src/server.ts` — 新增导出: commands
-- ★ **[ast-export-added]** `packages/sdk/server/src/server.ts` — 新增导出: liveAgents
+- **[ast-export-added]** `packages/sdk/client/src/api.ts` — 新增导出: RunActivity
+- **[ast-export-added]** `packages/sdk/client/src/client.ts` — 新增导出: queryInput
+- **[ast-export-added]** `packages/sdk/client/src/client.ts` — 新增导出: commandExecution
+- **[ast-export-added]** `packages/sdk/client/src/client.ts` — 新增导出: isUserQuestionRequest
+- **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SdkUserQuestionRequest
+- **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SdkUserQuestionAnswer
+- **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SdkUserQuestionResult
+- **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SdkUserQuestionCancelled
+- **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: HarnessSdkHostRequestMap
+- **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SessionQueryParams
+- **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: SessionQueryResult
+- **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: ApprovalRequestParams
+- **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: ApprovalRequestResult
+- **[ast-export-added]** `packages/sdk/protocol/src/types.ts` — 新增导出: HarnessSdkClientRequestMap
+- **[ast-export-added]** `packages/sdk/server/src/server.ts` — 新增导出: restoration
+- **[ast-export-added]** `packages/sdk/server/src/server.ts` — 新增导出: commands
+- **[ast-export-added]** `packages/sdk/server/src/server.ts` — 新增导出: liveAgents
 - **[ast-export-added]** `packages/session-query/session-log-export/src/markdown.ts` — 新增导出: UNTITLED_SESSION_MARKDOWN_TITLE
 - **[ast-export-added]** `packages/session-query/session-log-export/src/markdown.ts` — 新增导出: AssistantEntry
 - **[ast-export-added]** `packages/session-query/session-log-export/src/markdown.ts` — 新增导出: ToolEntry
@@ -2368,22 +2579,22 @@
 - **[ast-export-added]** `packages/web/tool-web/src/search.ts` — 新增导出: SUMMARY_ELLIPSIS
 - **[ast-export-added]** `packages/web/tool-web/src/search.ts` — 新增导出: excerpt
 - **[ast-export-added]** `packages/web/tool-web/src/search.ts` — 新增导出: modelSource
-- **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: DESKTOP_MEDIA_ROUTES
-- **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: imageLoads
-- **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: nextImageLoad
-- **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: freshImageUrl
-- **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: contextMenuProps
-- **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: imageProps
-- **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: localFileName
-- **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: urlFileName
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: IconArtwork
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: ICON_ARTWORK
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: IconGlyph
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: IconWeight
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: STROKES
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: iconSymbolId
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: IconSymbolId
-- **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: ICON_SYMBOLS
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: DESKTOP_MEDIA_ROUTES
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: imageLoads
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: nextImageLoad
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: freshImageUrl
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: contextMenuProps
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: imageProps
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: localFileName
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/markdown/render.tsx` — 新增导出: urlFileName
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: IconArtwork
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: ICON_ARTWORK
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: IconGlyph
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: IconWeight
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: STROKES
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: iconSymbolId
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: IconSymbolId
+- ★ **[ast-export-added]** `packages/client/ui-primitives/src/icons/artwork.ts` — 新增导出: ICON_SYMBOLS
 - **[ast-export-added]** `packages/experimental/cua/src/application-access.ts` — 新增导出: ApplicationAuthorizationResult
 - **[ast-export-added]** `packages/experimental/cua/src/application-access.ts` — 新增导出: AccessOptions
 - **[ast-export-added]** `packages/experimental/cua/src/application-access.ts` — 新增导出: ClientSelections
@@ -2606,6 +2817,6 @@
 - **[config-field-added]** `config:@deepseek-ai/dsh-tool-executor-ptc` — 新增配置字段: maxParallelSubCalls
 - **[config-field-added]** `config:@deepseek-ai/dsh-tool-fs` — 新增配置字段: applyPatch
 - **[config-field-added]** `config:@deepseek-ai/dsh-tool-jobs` — 新增配置字段: inlineOutputBytes
-- **[config-field-added]** `config:@deepseek-ai/dsh-tool-subagent` — 新增配置字段: modelSelection
-- **[config-field-added]** `config:@deepseek-ai/dsh-tool-subagent` — 新增配置字段: modelDiscovery
+- ★ **[config-field-added]** `config:@deepseek-ai/dsh-tool-subagent` — 新增配置字段: modelSelection
+- ★ **[config-field-added]** `config:@deepseek-ai/dsh-tool-subagent` — 新增配置字段: modelDiscovery
 - **[config-field-added]** `config:@deepseek-ai/dsh-tool-web` — 新增配置字段: searchSummaryMaxChars

@@ -3,12 +3,12 @@
   "repo": "_dsh",
   "from": "dsh-v0.2.1-rc.4",
   "to": "dsh-v0.2.2-rc.1",
-  "generated": "2026-11-05T10:48:58.2201655Z",
+  "generated": "2026-11-05T15:58:00.3750250Z",
   "counts": {
-    "breaking": 363,
     "info": 1290,
-    "relevant": 37,
-    "warning": 408
+    "relevant": 283,
+    "warning": 408,
+    "breaking": 363
   },
   "findings": [
     {
@@ -485,7 +485,7 @@
       "kind": "exports-map-changed",
       "path": "packages/sdk/server/package.json",
       "detail": "package.json exports 字段变化，请人工确认入口路径",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
@@ -527,14 +527,14 @@
       "kind": "exports-map-changed",
       "path": "packages/skill/skill-office/package.json",
       "detail": "package.json exports 字段变化，请人工确认入口路径",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "exports-map-changed",
       "path": "packages/skill/tool-workspace-dependencies/package.json",
       "detail": "package.json exports 字段变化，请人工确认入口路径",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
@@ -590,7 +590,7 @@
       "kind": "exports-map-changed",
       "path": "packages/subagent/tool-subagent-control/package.json",
       "detail": "package.json exports 字段变化，请人工确认入口路径",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
@@ -681,126 +681,126 @@
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/boot.md",
       "detail": "行数 335 -> 474（41%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/boot.zh.md",
       "detail": "行数 335 -> 474（41%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/computer-use.md",
       "detail": "行数 36 -> 99（175%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/computer-use.zh.md",
       "detail": "行数 36 -> 99（175%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/filesystem.md",
       "detail": "行数 445 -> 590（33%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/filesystem.zh.md",
       "detail": "行数 445 -> 590（33%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "doc-added",
       "path": "docs/subsystems/forge.md",
       "detail": "新增文档",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "doc-added",
       "path": "docs/subsystems/forge.zh.md",
       "detail": "新增文档",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "doc-added",
       "path": "docs/subsystems/liveshare.md",
       "detail": "新增文档",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "doc-added",
       "path": "docs/subsystems/liveshare.zh.md",
       "detail": "新增文档",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/schedule.md",
       "detail": "行数 449 -> 227（49%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/schedule.zh.md",
       "detail": "行数 449 -> 227（49%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/session-projection.md",
       "detail": "行数 313 -> 438（40%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/session-projection.zh.md",
       "detail": "行数 313 -> 438（40%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/token-meter.md",
       "detail": "行数 86 -> 126（47%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/token-meter.zh.md",
       "detail": "行数 86 -> 126（47%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/worktrees.md",
       "detail": "行数 56 -> 103（84%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "doc-major-rewrite",
       "path": "docs/subsystems/worktrees.zh.md",
       "detail": "行数 56 -> 103（84%），可能存在行为级变更，建议人工复核",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
@@ -1752,21 +1752,21 @@
       "kind": "ast-signature-changed",
       "path": "packages/client/modules",
       "detail": "签名变化: PkgMeta\n    旧: interface PkgMeta extends WebBootRowFields { clientPath: string }\n    新: interface PkgMeta extends WebBootRowFields { clientPath: string /** The package's own manifest; package-asset requests resolve against it as a self-reference. */ manifestPath: string }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/modules",
       "detail": "签名变化: ClientPackageSource\n    旧: interface ClientPackageSource extends ResolvedPkgMeta { /** Loader specifier from the active row. */ loaderName: string /** Resolution base of the config tree that owns the row. */ baseUrl: string /** Stable cache and contribution key for this source. */ sourceKey: string }\n    新: interface ClientPackageSource extends ResolvedPkgMeta { /** Loader specifier from the active row. */ loaderName: string /** Resolution base of the config tree that owns the row. */ baseUrl: string /** Stable source identity and contribution key. */ sourceKey: string }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/modules",
       "detail": "导出（含 re-export）删除: sourceKey（原声明于 packages/client/modules/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
@@ -2305,7 +2305,7 @@
       "kind": "ast-signature-changed",
       "path": "packages/client/modules",
       "detail": "签名变化: headers\n    旧: var\n    新: var:Record<string, string>",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
@@ -2858,28 +2858,28 @@
       "kind": "ast-signature-changed",
       "path": "packages/skill/tool-skill",
       "detail": "签名变化: SkillCatalogSource\n    旧: export interface SkillCatalogSource { readonly kind: 'skill-catalog' readonly form: 'catalog' /** Marks a replacement catalog rather than this session's first publication. */ readonly update?: true /** Exactly the entries this message published, in catalog order. */ readonly entries: readonly { readonly name: string; readonly description: string }[] }\n    新: export interface SkillCatalogSource { readonly kind: 'skill-catalog' readonly form: 'catalog' /** Marks a replacement catalog rather than this session's first publication. */ readonly update?: true /** Some discovery failed; entries contain only skills found in this observation. Absence means complete. */ readonly incomplete?: true /** Exactly the entries this message published, in catalog order. */ readonly entries: readonly { readonly name: string; readonly description: string }[] }",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/skill/tool-skill",
       "detail": "签名变化: renderCatalogMessage\n    旧: function(entries:SkillCatalogSource['entries'])\n    新: function(entries:SkillCatalogSource['entries'],incomplete:boolean)",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/skill/tool-skill",
       "detail": "签名变化: renderCatalogUpdate\n    旧: function(entries:SkillCatalogSource['entries'])\n    新: function(entries:SkillCatalogSource['entries'],incomplete:boolean)",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/skill/tool-skill",
       "detail": "签名变化: digestCatalogEntries\n    旧: function(entries:SkillCatalogSource['entries'])\n    新: function(entries:SkillCatalogSource['entries'],incomplete:any)",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
@@ -2893,84 +2893,84 @@
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: modelSelectionCapable（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: choiceDescription（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: compositionScope（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: selectForSession（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: freshSession（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: allowedModels（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: scopedInstalls（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: installing（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: belongsToComposition（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: installScoped（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: removeScoped（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/subagent/tool-subagent",
       "detail": "导出（含 re-export）删除: reconcileComposedAgents（原声明于 packages/subagent/tool-subagent/src/index.ts）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
@@ -3215,21 +3215,21 @@
       "kind": "ast-signature-changed",
       "path": "packages/client/modules/src/client/manifest.ts",
       "detail": "签名变化: ClientBundleRequire\n    旧: export interface ClientBundleRequire { /** Resolve a module-table dependency synchronously. */ (specifier: string): unknown /** Load and resolve a package-local dynamic chunk asynchronously. */ async(specifier: string): Promise<unknown> }\n    新: export interface ClientBundleRequire { /** Resolve a module-table dependency synchronously. */ (specifier: string): unknown /** Load and resolve a package-local dynamic chunk asynchronously. */ async(specifier: string): Promise<unknown> /** * Resolve a package-asset reference (`plugins/<package>/assets/<path>`) the * build compiled from an asset import or stylesheet `url()` to the URL the * page loads; the reference itself unless the carrier maps it. */ asset(reference: string): string }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/modules/src/client/manifest.ts",
       "detail": "签名变化: ClientModuleCreateOptions\n    旧: export interface ClientModuleCreateOptions { /** Raw Host-injected boot graph; the modules bundle owns validation and projection. */ boot: unknown /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> }\n    新: export interface ClientModuleCreateOptions { /** Raw Host-injected boot graph; the modules bundle owns validation and projection. */ boot: unknown /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> /** Package-asset reference hook behind {@link ClientBundleRequire.asset}. Defaults to returning the reference. */ resolveAsset?: (reference: string) => string }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/modules/src/client/manifest.ts",
       "detail": "签名变化: ClientModuleSystemOptions\n    旧: export interface ClientModuleSystemOptions { /** Boot graph validated by {@link parseBootManifest}, owned by the resulting module system. */ manifest: BootManifest /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Stable HTML-installed registration facade to switch from queue to live mode. */ registrationTarget: ClientModuleLoaderTarget /** Already-materialized modules bundle consumed while creating the system. */ bootstrapModule: ClientBootstrapModule /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> }\n    新: export interface ClientModuleSystemOptions { /** Boot graph validated by {@link parseBootManifest}, owned by the resulting module system. */ manifest: BootManifest /** Module-table seed: platform-singleton specifier → shell instance. */ staticModules: Record<string, unknown> /** Stable HTML-installed registration facade to switch from queue to live mode. */ registrationTarget: ClientModuleLoaderTarget /** Already-materialized modules bundle consumed while creating the system. */ bootstrapModule: ClientBootstrapModule /** Bundle-load hook. Defaults to a same-origin classic `<script src>` element. */ loadBundle?: (url: string) => Promise<void> /** Package-asset reference hook behind {@link ClientBundleRequire.asset}. Defaults to returning the reference. */ resolveAsset?: (reference: string) => string }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
@@ -3264,861 +3264,861 @@
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/SegmentedTabs.tsx",
       "detail": "签名变化: SegmentedTabs\n    旧: function({ items, value, onChange, label, className }:{ items: readonly [SegmentedTab<Value>, ...SegmentedTab<Value>[]] value: Value onChange: (value: Value) => void label: string className?: string | undefined })\n    新: function({ items, value, onChange, label, className, size = 'md' }:{ items: readonly [SegmentedTab<Value>, ...SegmentedTab<Value>[]] value: Value onChange: (value: Value) => void label: string className?: string | undefined size?: 'sm' | 'md' | undefined })",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "签名变化: MenuItem\n    旧: export interface MenuItem { id: string label: ReactNode disabled?: boolean /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: { keys: readonly string[]; aria?: string | undefined } /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** Nested card opened to the right on hover/focus. */ submenu?: readonly MenuItem[] }\n    新: export interface MenuItem { id: string label: ReactNode disabled?: boolean /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: { keys: readonly string[]; aria?: string | undefined } /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** Nested card opened to the right on hover/focus. */ submenu?: readonly MenuEntry[] }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "签名变化: MenuItemButtonProps\n    旧: export interface MenuItemButtonProps { /** Visible row label. */ children: ReactNode /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: MenuItem['shortcut'] /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Whether this row identifies the currently displayed page or view. */ current?: boolean /** Whether the row cannot be activated. */ disabled?: boolean /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** * Start a new group: a hairline above this row, the same one a * `{ type: 'separator' }` data entry draws. It comes and goes with the row, * so a row that renders nothing leaves no stray line; a data separator * directly before it draws no second line, and the list's first row draws none. */ separatorBefore?: boolean /** Row activation (click, Enter, or Tab on the focused row). */ onSelect: () => void }\n    新: export interface MenuItemButtonProps { /** Visible row label. */ children: ReactNode /** Effective binding supplied by the command owner; omitted for unbound actions. */ shortcut?: MenuItem['shortcut'] /** Leading icon (figma .Menu_cell gap 8). */ icon?: ReactNode /** Whether this row identifies the currently displayed page or view. */ current?: boolean /** Whether the row cannot be activated. */ disabled?: boolean /** * Why the disabled row cannot be activated. The row then stays hoverable and * focusable, shows the reason in a tooltip, and exposes it as the row's * description; an enabled row ignores it. */ disabledReason?: string | undefined /** Destructive row: error-colored text/icon and danger hover fill. */ danger?: boolean /** * Start a new group: a hairline above this row, the same one a * `{ type: 'separator' }` data entry draws. It comes and goes with the row, * so a row that renders nothing leaves no stray line; a data separator * directly before it draws no second line, and the list's first row draws none. */ separatorBefore?: boolean /** Row activation (click, Enter, or Tab on the focused row). */ onSelect: () => void }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "签名变化: MenuItemButton\n    旧: function({\n  children, shortcut, icon, current, disabled = false, danger = false, separatorBefore = false, onSelect,\n}:MenuItemButtonProps)\n    新: function({\n  children, shortcut, icon, current, disabled = false, disabledReason, danger = false, separatorBefore = false, onSelect,\n}:MenuItemButtonProps)",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "签名变化: Menu\n    旧: function({ open, anchor, items = [], children, selectedId, selectedIds, onSelect, onClose, align = 'start', side = 'bottom', portal = false, closeOnPointerLeave = false, dense = false, compact = false, autoFocus = false, selection = 'check', getAnchorRect, minWidthFromAnchor = false, footer, className, listClassName }:{ open: boolean autoFocus?: boolean anchor: ReactNode items?: readonly MenuEntry[] children?: ReactNode footer?: readonly MenuEntry[] selectedId?: string | undefined selectedIds?: readonly string[] | undefined onSelect?: (id: string) => void onClose: () => void align?: 'start' | 'end' side?: 'bottom' | 'top' | 'right' portal?: boolean closeOnPointerLeave?: boolean dense?: boolean compact?: boolean selection?: 'check' | 'fill' getAnchorRect?: () => DOMRect | null minWidthFromAnchor?: boolean className?: string | undefined listClassName?: string | undefined })\n    新: function({ open, anchor, items = [], children, selectedId, selectedIds, onSelect, onClose, align = 'start', side = 'bottom', portal = false, closeOnPointerLeave = false, dense = false, compact = false, autoFocus = false, selection = 'check', getAnchorRect, minWidthFromAnchor = false, footer, className, listClassName, contextual = false, exiting, returnFocus }:{ open: boolean /** Pointer-positioned popup: cursor clearance, grouped icons, and context gestures. */ contextual?: boolean /** Resolve the original control for focus restoration and inert/hidden dismissal. */ returnFocus?: (() => HTMLElement | null) | undefined /** Retain a dismissed context popup during its short fade. */ exiting?: 'dismiss' | 'replace' | undefined autoFocus?: boolean anchor: ReactNode items?: readonly MenuEntry[] children?: ReactNode footer?: readonly MenuEntry[] selectedId?: string | undefined selectedIds?: readonly string[] | undefined onSelect?: (id: string) => void onClose: () => void align?: 'start' | 'end' side?: 'bottom' | 'top' | 'right' portal?: boolean closeOnPointerLeave?: boolean dense?: boolean compact?: boolean selection?: 'check' | 'fill' getAnchorRect?: () => DOMRect | null minWidthFromAnchor?: boolean className?: string | undefined listClassName?: string | undefined })",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/HoverCard.tsx",
       "detail": "签名变化: r\n    旧: var:DOMRect | null\n    新: var",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "导出（含 re-export）删除: vw（原声明于 packages/client/ui-primitives/src/Menu.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "导出（含 re-export）删除: vh（原声明于 packages/client/ui-primitives/src/Menu.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "导出（含 re-export）删除: listEl（原声明于 packages/client/ui-primitives/src/Menu.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "导出（含 re-export）删除: lw（原声明于 packages/client/ui-primitives/src/Menu.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "导出（含 re-export）删除: lh（原声明于 packages/client/ui-primitives/src/Menu.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/useAnchoredPosition.ts",
       "detail": "签名变化: x\n    旧: var:number\n    新: var",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/useAnchoredPosition.ts",
       "detail": "签名变化: y\n    旧: var:number\n    新: var",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/MenuSurface.tsx",
       "detail": "签名变化: MenuSurfaceProps\n    旧: export interface MenuSurfaceProps extends ComponentPropsWithoutRef<'div'> { /** Match the shared compact menu's smaller outer radius. */ compact?: boolean }\n    新: export interface MenuSurfaceProps extends ComponentPropsWithoutRef<'div'> { /** Match the shared compact menu's smaller outer radius. */ compact?: boolean /** Fade direct content, material, and native backing without isolating the material's backdrop. */ phase?: 'enter' | 'dismiss' | 'replace' | undefined }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/MenuSurface.tsx",
       "detail": "签名变化: anchorStyle\n    旧: var:CSSProperties & { '--dsh-menu-anchor': string }\n    新: var:CSSProperties & Record<`--dsh-menu-${string}`, string>",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/useAnchoredPosition.ts",
       "detail": "签名变化: AnchoredPositionOptions\n    旧: export interface AnchoredPositionOptions { /** Whether the floating element is mounted and should track its anchor. */ open: boolean /** The element the panel is placed from. */ anchorRef: RefObject<HTMLElement | null> /** The floating element, measured so the clamp uses real dimensions. */ panelRef: RefObject<HTMLElement | null> /** Which anchor edge the panel hangs from: below it (`bottom`, the default) or above it (`top`). */ side?: 'top' | 'bottom' /** Which anchor edge the panel lines up with: its left edge (`start`, the default) or its right edge (`end`). */ align?: 'start' | 'end' /** Distance kept between the anchor edge named by `side` and the panel. */ gap: number /** Distance kept between the panel and each viewport edge; the frame's overlay inset widens the top margin. */ margin: number }\n    新: export interface AnchoredPositionOptions { /** Whether the panel is mounted and should track its anchor. */ open: boolean /** Element whose viewport rect anchors the panel. */ anchorRef: RefObject<HTMLElement | null> /** Body-portaled, fixed-position panel; its ancestors must not establish a containing block. */ panelRef: RefObject<HTMLElement | null> /** Preferred anchor edge; right-side panels align their top edges. */ side?: 'top' | 'bottom' | 'right' /** Horizontal alignment for panels above or below the anchor. */ align?: 'start' | 'end' /** Distance from the preferred anchor edge, in CSS pixels. */ gap: number /** Minimum viewport inset; desktop frame clearance can increase the top inset. */ margin: number /** Reserve desktop frame clearance in addition to the margin; false keeps only the viewport margin. Defaults to true. */ frameClearance?: boolean /** Host-supplied client rect; null hides the panel until the anchor is available. */ getAnchorRect?: () => DOMRect | null /** Re-measure a committed content change before paint. */ layoutKey?: string | number /** Minimum panel width follows the anchor, bounded by the visible viewport. */ minWidthFromAnchor?: boolean }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/HoverCard.tsx",
       "detail": "签名变化: HoverCard\n    旧: function({\n  anchor, content, openDelayMs = 500, disabled = false, grouped = false,\n  copyText, copyLabel, copiedLabel, variant = 'compact', widthAnchorRef, inline = false,\n}:{ anchor: ReactNode /** Inline media preview using the shared menu material and keyboard focus. */ inline?: boolean content: ReactNode openDelayMs?: number disabled?: boolean grouped?: boolean variant?: 'compact' | 'preview' widthAnchorRef?: RefObject<HTMLElement | null> } & ({ copyText?: string | undefined; copyLabel: string; copiedLabel: string } | { copyText?: undefined copyLabel?: string copiedLabel?: string }))\n    新: function({\n  anchor, content, openDelayMs = 500, disabled = false, grouped = false,\n  copyText, copyLabel, copiedLabel, variant = 'compact', widthAnchorRef, inline = false, fitContent = false,\n}:{ anchor: ReactNode /** Inline media preview using the shared menu material and keyboard focus. */ inline?: boolean fitContent?: boolean content: ReactNode openDelayMs?: number disabled?: boolean grouped?: boolean variant?: 'compact' | 'preview' widthAnchorRef?: RefObject<HTMLElement | null> } & ({ copyText?: string | undefined; copyLabel: string; copiedLabel: string } | { copyText?: undefined copyLabel?: string copiedLabel?: string }))",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/HoverCardGroup.tsx",
       "detail": "签名变化: HoverCardGroup\n    旧: function({ children, className }:{ children: ReactNode; className?: string })\n    新: function({ children, className, as: Container = 'div' }:{ children: ReactNode className?: string | undefined as?: 'div' | 'span' })",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/user-text.tsx",
       "detail": "签名变化: ReferenceChipProps\n    旧: export interface ReferenceChipProps { readonly appearance: ReferenceIconKind | 'skill' | 'command' readonly label: string readonly title: string /** Absent for display-only references and previews. */ readonly onActivate?: () => void }\n    新: export interface ReferenceChipProps { readonly appearance: ReferenceIconKind | 'skill' | 'command' /** Explicit object-menu gesture bindings; absent for display-only references. */ readonly contextMenuProps?: Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'> readonly label: string readonly title: string /** Absent for display-only references and previews. */ readonly onActivate?: () => void }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/user-text.tsx",
       "detail": "签名变化: ReferenceChip\n    旧: function({ appearance, label, title, onActivate }:ReferenceChipProps)\n    新: function({\n  appearance, label, title, onActivate, contextMenuProps,\n}:ReferenceChipProps)",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/Tooltip.tsx",
       "detail": "签名变化: AnchorProps\n    旧: interface AnchorProps { 'aria-describedby'?: string | undefined ref?: Ref<HTMLElement> | undefined onMouseEnter?: MouseEventHandler | undefined onMouseLeave?: MouseEventHandler | undefined onClick?: MouseEventHandler | undefined onFocus?: FocusEventHandler | undefined onBlur?: FocusEventHandler | undefined }\n    新: interface AnchorProps { 'aria-describedby'?: string | undefined ref?: Ref<HTMLElement> | undefined onPointerEnter?: PointerEventHandler | undefined onPointerLeave?: PointerEventHandler | undefined onPointerDown?: PointerEventHandler | undefined onClick?: MouseEventHandler | undefined onFocus?: FocusEventHandler | undefined onBlur?: FocusEventHandler | undefined }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/Tooltip.tsx",
       "detail": "签名变化: Tooltip\n    旧: function({ label, shortcutKeys, side = 'right', align = 'center', delayMs = 0, focusDelayMs = 0, gap = 8, disabled = false, portal = false, maxWidth, openOnClick = false, children }:{ label: TooltipLabel; shortcutKeys?: readonly string[] | undefined; side?: TooltipSide; align?: 'center' | 'end'; delayMs?: number; focusDelayMs?: number; gap?: number; disabled?: boolean; portal?: boolean; maxWidth?: number; openOnClick?: boolean; children: ReactElement<AnchorProps> })\n    新: function({ label, shortcutKeys, side = 'right', align = 'center', delayMs = 0, focusDelayMs = 0, gap = 8, disabled = false, portal = false, maxWidth, openOnClick = false, onlyWhenClipped = false, children }:{ label: TooltipLabel; shortcutKeys?: readonly string[] | undefined; side?: TooltipSide; align?: 'center' | 'end'; delayMs?: number; focusDelayMs?: number; gap?: number; disabled?: boolean; portal?: boolean; maxWidth?: number; openOnClick?: boolean; onlyWhenClipped?: boolean; children: ReactElement<AnchorProps> })",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx",
       "detail": "签名变化: MarkdownDelegate\n    旧: export interface MarkdownDelegate { /** Image previews for decoded local paths in this owner's workspace. */ readonly fileImages?: { resolve: (path: string) => string | undefined labels: ImageLightboxLabels & { open: string; loading: string; failed: string } } | undefined /** Ordinary HTTP(S) activation; absent handlers retain native anchor behavior. */ readonly openExternalLink?: MarkdownExternalLinkHandler | undefined /** * Open a decoded local destination from settled Markdown; absent handlers leave plain text. * @param path - Absolute or workspace-relative file path. * @param options - First line to reveal when the destination specifies a line or range. */ readonly openFile?: ((path: string, options?: { line?: number }) => void) | undefined }\n    新: export interface MarkdownDelegate { /** Open an object menu without executing its normal activation. */ readonly getTriggerProps?: ((target: MarkdownMenuTarget) => Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'>) | undefined /** * Image previews for decoded local paths in this owner's workspace. The renderer * appends a per-mount `load` query parameter to `api/file` route URLs. */ readonly fileImages?: { fileDrag: FileDragActions resolve: (path: string) => string | undefined resourceAddress?: ((path: string) => string) | undefined labels: ImageLightboxLabels & { open: string; loading: string; failed: string } } | undefined /** Ordinary HTTP(S) activation; absent handlers retain native anchor behavior. */ readonly openExternalLink?: MarkdownExternalLinkHandler | undefined /** * Open a decoded local destination from settled Markdown; absent handlers leave plain text. * @param path - Absolute or workspace-relative file path. * @param options - First line to reveal when the destination specifies a line or range. */ readonly openFile?: ((path: string, options?: { line?: number }) => void) | undefined }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx",
       "detail": "签名变化: MarkdownDelegateProvider\n    旧: function({\n  children,\n  openExternalLink,\n  openFile,\n  fileImages,\n}:MarkdownDelegateProviderProps)\n    新: function({\n  children,\n  openExternalLink,\n  openFile,\n  fileImages,\n  getTriggerProps,\n}:MarkdownDelegateProviderProps)",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/markdown/MarkdownText.tsx",
       "detail": "签名变化: renderSettled\n    旧: function(text:string,labels:MarkdownLabels,fileMentions:MarkdownFileMentions | undefined,pathImages:MarkdownPathImages | undefined)\n    新: function(text:string,labels:MarkdownLabels,fileMentions:MarkdownFileMentions | undefined,pathImages:MarkdownPathImages | undefined,omitHtml:boolean)",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/markdown/MarkdownText.tsx",
       "detail": "签名变化: StreamingRenderer\n    旧: class(labels:MarkdownLabels)\n    新: class(labels:MarkdownLabels,omitHtml:boolean)",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: WeightedIconProps（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconSearchOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconSettingsOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconPanelLeftOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconEllipsisOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconPlusOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconCheckOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconBranchOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconChevronDownOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconChevronLeftOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconChevronRightOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconTriangleRightFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconChevronUpOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconCloseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconCloseFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconCloseCircleFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconCopyOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconRefreshOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconLikeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconLikeFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconDislikeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconDislikeFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconShareOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconDeliverDocArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconEditOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconThinkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconAgentPresetOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconContextInjectionOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconLinkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconRightUpOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconEnhanceOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconTrashOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconWarningOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconCheckCircleFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconWarningTriangleOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconUserOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconUsersOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconPaperPlaneOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconStopFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconPaperclipOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconLoadingOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconDownloadOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconPlayOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconPauseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconFullscreenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconCodeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconCordisPluginOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconApiOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconPersonalizationOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconProjectAddOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconFolderOpenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconFolderOpenArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconTreeCornerArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconLightOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconDarkOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconFollowsystemOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconDataOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconDatabaseOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconClockOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconGaugeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconSendOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconQueueOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconChecklistOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconListPenOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconGoalOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconSparkleArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconSkillOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconQuestionOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconInfoOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconPluginPinwheelOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconAlarmClockOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconArchiveOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconWrapLinesOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconNowrapFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconWrapFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconCompareSplitOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconPlanOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconCompactOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconShieldOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconCheckCircleOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconUnarchiveOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconPinOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconPinFillArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconFlatListOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconWorkspaceTreeOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconChevronsUpDownOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconArchiveOffOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: maskId（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconArchiveCheckOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconSlidersTwoOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconMicrophoneOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: IconAppsAddOutlineArtwork（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: near（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: far（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: plusX（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "导出（含 re-export）删除: plusY（原声明于 packages/client/ui-primitives/src/icons/index.tsx）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/ImageLightbox.tsx",
       "detail": "签名变化: ImageLightbox\n    旧: function({ src, alt, labels, onClose }:{ src: string alt: string labels: ImageLightboxLabels onClose: () => void })\n    新: function({ src, alt, labels, onClose, contextMenuProps }:{ src: string alt: string labels: ImageLightboxLabels onClose: () => void contextMenuProps?: Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'> | undefined })",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
@@ -4132,7 +4132,7 @@
       "kind": "ast-signature-changed",
       "path": "packages/context/agent-instructions/src/render.ts",
       "detail": "签名变化: RenderedInstructionContext\n    旧: interface RenderedInstructionContext extends RenderedAgentInstructions { /** * Original files semantically represented by rendered section text. This is * not the complement of `omitted`: a truncated file may be represented here * and in `truncated`, while a notice-only file appears in neither. A genuinely * empty file counts when its heading survives because that heading conveys * that the instruction exists and has no content. */ represented: LoadedInstructionFile[] }\n    新: interface RenderedInstructionContext extends RenderedAgentInstructions { /** * Original files semantically represented by rendered section text. This is * not the complement of `omitted`: a truncated file may be represented here * and in `truncated`, while a notice-only file appears in neither. A genuinely * empty file counts when its heading survives because that heading conveys * that the instruction exists and has no content. */ represented: LoadedInstructionFile[] /** Files whose sections the text holds, in text order, each with the content the text holds. */ sections: LoadedInstructionFile[] /** * Intro block of the `<system-reminder>` frame: undefined when the text is * empty or a notice without a frame, and the empty string when the frame has * no intro, as in a change batch or a merged frame whose chains both rendered * without a frame. */ intro: string | undefined }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
@@ -5413,77 +5413,77 @@
       "kind": "ast-signature-changed",
       "path": "packages/sdk/client/src/api.ts",
       "detail": "签名变化: RunOptions\n    旧: export interface RunOptions { /** Session id to run on; omitted mints a fresh session per call. */ sessionId?: string /** Observer invoked with every notification for this session tree, in wire order. */ onNotification?: (notification: HarnessNotification) => void }\n    新: export interface RunOptions { /** Session id to run on; omitted mints a fresh session per call. */ sessionId?: string /** * Observe the input's Session-tree activity in wire order until completion. * The interval can include overlapping work from other inputs. */ onNotification?: (notification: HarnessNotification) => void }",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/sdk/client/src/api.ts",
       "detail": "导出（含 re-export）删除: contentBlocks（原声明于 packages/sdk/client/src/api.ts）",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "breaking",
       "kind": "ast-export-removed",
       "path": "packages/sdk/client/src/api.ts",
       "detail": "导出（含 re-export）删除: notifications（原声明于 packages/sdk/client/src/api.ts）",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/sdk/client/src/types.ts",
       "detail": "签名变化: HarnessClientOptions\n    旧: export interface HarnessClientOptions { /** Absolute or caller-relative dsh CLI module; omitted resolves this package's same-version dependency. */ dshBin?: string /** Named profile serving the SDK protocol (default `sdk`). */ profile?: string /** Ordered per-launch profile patches; relative paths resolve before spawn. */ patches?: string[] /** Explicit Harness home for this child; relative paths resolve before spawn. */ dshHome?: string /** Working directory for the dsh process itself. */ processCwd?: string /** * The complete child environment, read when {@link HarnessClient.start} * spawns. `undefined` reads the parent env at that time; passing an object * reads that object at spawn and replaces the parent environment entirely, so callers own * credential policy (see `scrubbedParentEnv` in `@deepseek-ai/dsh-subprocess` * for the shared scrub-then-merge base). */ env?: NodeJS.ProcessEnv /** Bound (ms) on the initial profile handshake (default 10000). */ initializeTimeoutMs?: number /** Per-request timeout (ms); `undefined` waits indefinitely (a turn can legitimately run long). */ requestTimeoutMs?: number /** Bound (ms) on the protocol `shutdown` exchange inside `close()` (default 1000). */ shutdownTimeoutMs?: number /** Grace (ms) for the runtime's stdin-EOF quiesce during `close()` (default 6000). */ disposeEofGraceMs?: number /** Termination confirmation window (ms) after SIGTERM/SIGKILL during `close()` (default 3000). */ disposeGraceMs?: number }\n    新: export interface HarnessClientOptions { /** Answer or dismiss runtime questions; observe the signal to release host work on runtime cancellation. */ onUserQuestion?: (request: SdkUserQuestionRequest, context: { signal: AbortSignal }) => Promise<SdkUserQuestionResult> /** Absolute or caller-relative dsh CLI module; omitted resolves this package's same-version dependency. */ dshBin?: string /** Named profile serving the SDK protocol (default `sdk`). */ profile?: string /** Ordered per-launch profile patches; relative paths resolve before spawn. */ patches?: string[] /** Explicit Harness home for this child; relative paths resolve before spawn. */ dshHome?: string /** Working directory for the dsh process itself. */ processCwd?: string /** * The complete child environment, read when {@link HarnessClient.start} * spawns. `undefined` reads the parent env at that time; passing an object * reads that object at spawn and replaces the parent environment entirely, so callers own * credential policy (see `scrubbedParentEnv` in `@deepseek-ai/dsh-subprocess` * for the shared scrub-then-merge base). */ env?: NodeJS.ProcessEnv /** Bound (ms) on the initial profile handshake (default 10000). */ initializeTimeoutMs?: number /** Per-request timeout (ms); `undefined` waits indefinitely (a turn can legitimately run long). */ requestTimeoutMs?: number /** Bound (ms) on the protocol `shutdown` exchange inside `close()` (default 1000). */ shutdownTimeoutMs?: number /** Grace (ms) for the runtime's stdin-EOF quiesce during `close()` (default 6000). */ disposeEofGraceMs?: number /** Termination confirmation window (ms) after SIGTERM/SIGKILL during `close()` (default 3000). */ disposeGraceMs?: number }",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/sdk/client/src/types.ts",
       "detail": "签名变化: DeepSeekHarnessOptions\n    旧: export interface DeepSeekHarnessOptions extends HarnessClientOptions { /** Workspace cwd recorded on every SDK-created session (default: the process cwd, else `process.cwd()`). */ cwd?: string /** Provider route for SDK-created agents (default `deepseek-official`). */ provider?: string /** Model for SDK-created agents (default `deepseek-v4-flash`). */ model?: string /** Adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Maximum output tokens for each conversation-model request. */ maxTokens?: number }\n    新: export interface DeepSeekHarnessOptions extends HarnessClientOptions { /** Workspace cwd recorded on every SDK-created session (default: the process cwd, else `process.cwd()`). */ cwd?: string /** Provider route for SDK-created agents (default `deepseek-official`). */ provider?: string /** Model for SDK-created agents (default `deepseek-v4-flash`). */ model?: string /** Adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Maximum output tokens for each conversation-model request. */ maxTokens?: number /** Enable server approval requests; install client.onRequest() after client.start() and before harness.start(). */ approvalRequests?: boolean }",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/sdk/client/src/types.ts",
       "detail": "签名变化: RunResult\n    旧: export interface RunResult { /** The session the activity ran on. */ sessionId: string /** Concatenated text of the interval's last assistant message (empty when none). */ finalResponse: string /** Every `session.event` payload for the root session, in wire order. */ events: SessionEvent[] /** Every notification for the root session and discovered descendants, in wire order. */ notifications: HarnessNotification[] }\n    新: export interface RunResult { /** The session the activity ran on. */ sessionId: string /** Final assistant text (empty when absent), native state-only result text, or a failure diagnostic. */ finalResponse: string /** Model turn ending or native operation outcome; null when no terminal reason was recorded. */ finishReason: string | null /** Every `session.event` payload for the root session, in wire order. */ events: SessionEvent[] /** Every notification for the root session and discovered descendants, in wire order. */ notifications: HarnessNotification[] }",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/sdk/protocol/src/transport.ts",
       "detail": "签名变化: JsonRpcTransportPeer\n    旧: export interface JsonRpcTransportPeer { /** * Send a request and await its response. * @param method - the JSON-RPC method name. * @param params - the request parameters object. * @returns the result; rejects with {@link JsonRpcResponseError} on an error * response, and with a plain `Error` on a write failure or closure. */ request(method: string, params: object): Promise<unknown> /** * Send a notification; omitted params produce no `params` member. * @param method - the JSON-RPC method name. * @param params - the optional notification parameters object. */ notify(method: string, params?: object): void }\n    新: export interface JsonRpcTransportPeer { /** * Send a request and await its response. * @param method - the JSON-RPC method name. * @param params - the request parameters object. * @param signal - optional cancellation; removes the pending waiter, rejects on abort, and ignores late responses. * @returns the result; rejects with {@link JsonRpcResponseError} on an error * response, and with a plain `Error` on a write failure or closure. */ request(method: string, params: object, signal?: AbortSignal): Promise<unknown> /** * Send a notification; omitted params produce no `params` member. * @param method - the JSON-RPC method name. * @param params - the optional notification parameters object. */ notify(method: string, params?: object): void }",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "签名变化: InitializeParams\n    旧: export interface InitializeParams { /** Working directory recorded on every SDK-created session's header. */ cwd: string /** Provider route every SDK-created agent runs on. */ provider: string /** Model name every SDK-created agent runs on (the server may mount a fallback adapter; see `HarnessSdkJsonRpcServer.initialize`). */ model: string /** Optional adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Optional positive output-token cap inherited by SDK-created agents and their in-process descendants. */ maxTokens?: number }\n    新: export interface InitializeParams { /** Working directory recorded on every SDK-created session's header. */ cwd: string /** Enable server-to-client approval/request calls; omission leaves existing answerers in control. */ approvalRequests?: boolean /** Provider route every SDK-created agent runs on. */ provider: string /** Model name every SDK-created agent runs on (the server may mount a fallback adapter; see `HarnessSdkJsonRpcServer.initialize`). */ model: string /** Optional adapter-owned reasoning effort for the selected provider/model route. */ reasoningEffort?: ReasoningEffortId /** Optional positive output-token cap inherited by SDK-created agents and their in-process descendants. */ maxTokens?: number /** Host-provided capabilities; omission retains native in-process answerers. */ capabilities?: { userQuestions?: boolean } }",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "签名变化: SdkEncodedImageBlock\n    旧: export interface SdkEncodedImageBlock { type: 'image' /** Canonical base64-encoded raster bytes. */ data: string /** Declared raster MIME type, verified during admission. */ mimeType: 'image/png' | 'image/jpeg' | 'image/webp' | 'image/gif' }\n    新: export interface SdkEncodedImageBlock { type: 'image' /** Canonical base64-encoded raster bytes. */ data: string /** Declared raster MIME type, verified during admission. */ mimeType: 'image/png' | 'image/jpeg' | 'image/webp' | 'image/gif' /** Optional display name; never interpreted as a filesystem path. */ name?: string }",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "签名变化: HarnessSdkNotificationMap\n    旧: export interface HarnessSdkNotificationMap { 'session.event': SessionEventNotification 'session.status': SessionStatusNotification 'subagent.started': SubagentStartedNotification 'subagent.finished': SubagentFinishedNotification }\n    新: export interface HarnessSdkNotificationMap { 'user-question.cancelled': SdkUserQuestionCancelled 'session.event': SessionEventNotification 'session.status': SessionStatusNotification /** Completion of a command query, including model activity and automatic goal rounds it starts. */ 'session.query.completed': { sessionId: SessionId commandId: CommandExecution['commandId'] finalResponse: string finishReason: string } 'subagent.started': SubagentStartedNotification 'subagent.finished': SubagentFinishedNotification }",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "签名变化: HarnessSdkRequestMap\n    旧: export interface HarnessSdkRequestMap { 'initialize': { params: InitializeParams; result: InitializeResult } 'session/prompt': { params: SessionPromptParams; result: SessionPromptResult } 'session/resume': { params: SessionResumeParams; result: Record<string, never> } 'session/wait': { params: SessionWaitParams; result: Record<string, never> } 'session/working-directory/get': { params: SessionWorkingDirectoryParams; result: SessionWorkingDirectoryResult } 'session/working-directory/set': { params: SessionWorkingDirectorySetParams; result: SessionWorkingDirectoryResult } 'shutdown': { params: undefined; result: Record<string, never> } }\n    新: export interface HarnessSdkRequestMap { 'initialize': { params: InitializeParams; result: InitializeResult } 'session/prompt': { params: SessionPromptParams; result: SessionPromptResult } 'session/query': { params: SessionQueryParams; result: SessionQueryResult } 'session/resume': { params: SessionResumeParams; result: Record<string, never> } 'session/wait': { params: SessionWaitParams; result: Record<string, never> } 'session/working-directory/get': { params: SessionWorkingDirectoryParams; result: SessionWorkingDirectoryResult } 'session/working-directory/set': { params: SessionWorkingDirectorySetParams; result: SessionWorkingDirectoryResult } 'shutdown': { params: undefined; result: Record<string, never> } }",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "warning",
@@ -5623,7 +5623,7 @@
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "签名变化: overlay\n    旧: var:Record<string, string | undefined>\n    新: var",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
@@ -5693,28 +5693,28 @@
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "签名变化: imageSource\n    旧: function(url:string,pathImages:MarkdownPathImages | undefined)\n    新: function(url:string,pathImages:MarkdownPathImages | undefined,load:number)",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "签名变化: MarkdownPathImages\n    旧: export interface MarkdownPathImages { /** * Resolve one authored image destination. * @param value - The destination exactly as the markdown author wrote it. * @returns A displayable absolute URL, or undefined when the destination * names no displayable image — it then stays inert alt text. */ resolve(value: string): string | undefined }\n    新: export interface MarkdownPathImages { /** * Resolve one authored image destination. * @param value - The destination exactly as the markdown author wrote it. * @returns A displayable absolute URL, or undefined when the destination * names no displayable image — it then stays inert alt text. The renderer * appends a per-mount `load` query parameter to `api/file` route results. */ resolve(value: string): string | undefined }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "签名变化: MarkdownFileMentions\n    旧: export interface MarkdownFileMentions { /** * Resolve one inline-code token. * @param value - The authored token, exactly as written. * @returns The opener with its accessible label and full-path title, or * undefined when the token names no known file — it then stays inert code. */ resolve(value: string): { open: () => void; label: string; title: string } | undefined }\n    新: export interface MarkdownFileMentions { /** * Resolve one inline-code token. * @param value - The authored token, exactly as written. * @returns The opener with its accessible label and full-path title, or * undefined when the token names no known file — it then stays inert code. */ resolve(value: string): { open: () => void contextMenuProps?: Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'> label: string title: string } | undefined }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "warning",
       "kind": "ast-signature-changed",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "签名变化: MarkdownRenderContext\n    旧: export interface MarkdownRenderContext { /** Streaming arm: fences highlight incrementally as they grow; TeX (including ```math fences) stays literal until the settled pass. */ readonly streaming: boolean /** Localized fence copy-button labels. */ readonly labels: MarkdownLabels /** Inside a blockquote's children: tables there always fill the quote's width. */ readonly inBlockquote?: boolean /** Inline-code file mentions; absent wherever no opener vocabulary exists. */ readonly fileMentions: MarkdownFileMentions | undefined /** Local-path image vocabulary; absent wherever no rewriting owner exists. */ readonly pathImages: MarkdownPathImages | undefined /** Inside an anchor's children: interactive mentions must not nest there. */ readonly inLink?: boolean /** Reference targets visible to this pass. */ readonly targets: ReferenceTargets /** Footnote identifiers in first-reference order; a footnote's number is its 1-based index here. */ readonly footnoteOrder: string[] /** References rendered per identifier; drives the section's back-reference count. */ readonly footnoteCounts: Map<string, number> }\n    新: export interface MarkdownRenderContext { /** Streaming arm: fences highlight incrementally as they grow; TeX (including ```math fences) stays literal until the settled pass. */ readonly streaming: boolean /** Localized fence copy-button labels. */ readonly labels: MarkdownLabels /** Inside a blockquote's children: tables there always fill the quote's width. */ readonly inBlockquote?: boolean /** Inline-code file mentions; absent wherever no opener vocabulary exists. */ readonly fileMentions: MarkdownFileMentions | undefined /** Local-path image vocabulary; absent wherever no rewriting owner exists. */ readonly pathImages: MarkdownPathImages | undefined /** Raw HTML renders nothing instead of literal text. */ readonly omitHtml: boolean /** Inside an anchor's children: interactive mentions must not nest there. */ readonly inLink?: boolean /** Reference targets visible to this pass. */ readonly targets: ReferenceTargets /** Footnote identifiers in first-reference order; a footnote's number is its 1-based index here. */ readonly footnoteOrder: string[] /** References rendered per identifier; drives the section's back-reference count. */ readonly footnoteCounts: Map<string, number> }",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
@@ -5959,35 +5959,35 @@
       "kind": "ast-export-added",
       "path": "packages/client/modules",
       "detail": "新增导出: PACKAGE_ASSET_PATH",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/modules",
       "detail": "新增导出: transforStreamBody",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/modules",
       "detail": "新增导出: heldBody",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/modules",
       "detail": "新增导出: entriesByName",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/modules",
       "detail": "新增导出: asset",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
@@ -7415,28 +7415,28 @@
       "kind": "ast-export-added",
       "path": "packages/skill/tool-skill",
       "detail": "新增导出: incomplete",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/skill/tool-skill",
       "detail": "新增导出: incompleteCatalogNotice",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/subagent/tool-subagent",
       "detail": "新增导出: subagentModelSelectionProjectionHandle",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/subagent/tool-subagent",
       "detail": "新增导出: modelSelectionPolicy",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
@@ -8122,567 +8122,567 @@
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/UserMessageBubble.tsx",
       "detail": "新增导出: UserMessageBubbleProps",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/UserMessageBubble.tsx",
       "detail": "新增导出: UserMessageBubble",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "新增导出: ROW_FADE_MS",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "新增导出: ROW_GLIDE_MS",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "新增导出: AnimatedRowsProps",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "新增导出: RowPosition",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "新增导出: RowSnapshot",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "新增导出: sameRows",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "新增导出: intersects",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "新增导出: AnimatedRows",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "新增导出: nextKeys",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "新增导出: previousRow",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/AnimatedRows.tsx",
       "detail": "新增导出: animation",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/useRowDragPreview.ts",
       "detail": "新增导出: useRowDragPreview",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/useRowDragPreview.ts",
       "detail": "新增导出: clear",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/useRowDragPreview.ts",
       "detail": "新增导出: wasDragging",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/ZoomControls.tsx",
       "detail": "新增导出: steppedZoom",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/ZoomControls.tsx",
       "detail": "新增导出: ZoomControlsHandle",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/ZoomControls.tsx",
       "detail": "新增导出: ZoomControls",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/ZoomControls.tsx",
       "detail": "新增导出: displayZoom",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/ZoomControls.tsx",
       "detail": "新增导出: selectedId",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/document-zoom.ts",
       "detail": "新增导出: DOCUMENT_ZOOM",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/document-zoom.ts",
       "detail": "新增导出: DocumentZoomLabels",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: reasonId",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: explained",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: iconColumns",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: aligned",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: menuId",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: exitingRef",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: lastAnchorRect",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: readAnchor",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: anchorElement",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: fixedPos",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: itemColumns",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: footerColumns",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/Menu.tsx",
       "detail": "新增导出: subColumns",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/MenuSurface.tsx",
       "detail": "新增导出: MENU_TRANSITION_MS",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/useAnchoredPosition.ts",
       "detail": "新增导出: visualOrigin",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/useAnchoredPosition.ts",
       "detail": "新增导出: lastRect",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/useAnchoredPosition.ts",
       "detail": "新增导出: readRect",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/useAnchoredPosition.ts",
       "detail": "新增导出: panelWidth",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/useAnchoredPosition.ts",
       "detail": "新增导出: panelHeight",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/HoverCard.tsx",
       "detail": "新增导出: CardPosition",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/HoverCard.tsx",
       "detail": "新增导出: portalRef",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/HoverCard.tsx",
       "detail": "新增导出: bridgeTop",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/HoverCard.tsx",
       "detail": "新增导出: bridgeLeft",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/focus.ts",
       "detail": "新增导出: mobileDevice",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/focus.ts",
       "detail": "新增导出: isMobileDevice",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/useModalLayer.ts",
       "detail": "新增导出: pendingRestore",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/file-drag-actions.ts",
       "detail": "新增导出: FileDragSource",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/file-drag-actions.ts",
       "detail": "新增导出: PreparedFileDrag",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/file-drag-actions.ts",
       "detail": "新增导出: FileDragActions",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/DraggableImage.tsx",
       "detail": "新增导出: DraggableImageProps",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/DraggableImage.tsx",
       "detail": "新增导出: DraggableImage",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/use-clipboard-copy.ts",
       "detail": "新增导出: ClipboardCopyState",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/use-clipboard-copy.ts",
       "detail": "新增导出: useClipboardCopy",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/use-clipboard-copy.ts",
       "detail": "新增导出: copyPending",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/use-clipboard-copy.ts",
       "detail": "新增导出: copyTimer",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/markdown/MarkdownDelegate.tsx",
       "detail": "新增导出: MarkdownMenuTarget",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/DetailDocument.tsx",
       "detail": "新增导出: DetailDocumentState",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/DetailDocument.tsx",
       "detail": "新增导出: DetailDocumentRead",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/DetailDocument.tsx",
       "detail": "新增导出: detailDocumentState",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/DetailDocument.tsx",
       "detail": "新增导出: DetailDocumentCopy",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/DetailDocument.tsx",
       "detail": "新增导出: useDetailDocumentLabels",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/DetailDocument.tsx",
       "detail": "新增导出: markdown",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/DetailDocument.tsx",
       "detail": "新增导出: DetailDocumentLabels",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/DetailDocument.tsx",
       "detail": "新增导出: DetailDocument",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "新增导出: productIcon",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "新增导出: IconDragHandleOutlineRegular",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "新增导出: IconDragHandleOutlineMedium",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "新增导出: appsAddIcon",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "新增导出: Wide",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "新增导出: Compact",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "新增导出: IconSaveOutlineRegular",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/index.tsx",
       "detail": "新增导出: IconSaveOutlineMedium",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/QuotePreview.tsx",
       "detail": "新增导出: QuoteMarkIcon",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/QuotePreview.tsx",
       "detail": "新增导出: QuotePreviewRemoval",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/QuotePreview.tsx",
       "detail": "新增导出: QuotePreviewProps",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/QuotePreview.tsx",
       "detail": "新增导出: QuotePreview",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/QuotePreview.tsx",
       "detail": "新增导出: sourceRef",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/markdown/quote-text.ts",
       "detail": "新增导出: formatQuoteText",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
@@ -8703,63 +8703,63 @@
       "kind": "ast-export-added",
       "path": "packages/context/agent-instructions/src/render.ts",
       "detail": "新增导出: isDisabledBudget",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/context/agent-instructions/src/render.ts",
       "detail": "新增导出: isUserGlobalInstruction",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/context/agent-instructions/src/render.ts",
       "detail": "新增导出: renderInstructionChains",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/context/agent-instructions/src/render.ts",
       "detail": "新增导出: userGlobal",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/context/agent-instructions/src/render.ts",
       "detail": "新增导出: inLoadedOrder",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/context/agent-instructions/src/render.ts",
       "detail": "新增导出: userGlobalLast",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/context/agent-instructions/src/render.ts",
       "detail": "新增导出: projectLast",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/context/agent-instructions/src/render.ts",
       "detail": "新增导出: intros",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/context/agent-instructions/src/render.ts",
       "detail": "新增导出: intro",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
@@ -11097,119 +11097,119 @@
       "kind": "ast-export-added",
       "path": "packages/sdk/client/src/api.ts",
       "detail": "新增导出: RunActivity",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/client/src/client.ts",
       "detail": "新增导出: queryInput",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/client/src/client.ts",
       "detail": "新增导出: commandExecution",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/client/src/client.ts",
       "detail": "新增导出: isUserQuestionRequest",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "新增导出: SdkUserQuestionRequest",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "新增导出: SdkUserQuestionAnswer",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "新增导出: SdkUserQuestionResult",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "新增导出: SdkUserQuestionCancelled",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "新增导出: HarnessSdkHostRequestMap",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "新增导出: SessionQueryParams",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "新增导出: SessionQueryResult",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "新增导出: ApprovalRequestParams",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "新增导出: ApprovalRequestResult",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/protocol/src/types.ts",
       "detail": "新增导出: HarnessSdkClientRequestMap",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/server/src/server.ts",
       "detail": "新增导出: restoration",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/server/src/server.ts",
       "detail": "新增导出: commands",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/sdk/server/src/server.ts",
       "detail": "新增导出: liveAgents",
-      "relevant": true
+      "relevant": false
     },
     {
       "severity": "info",
@@ -12721,112 +12721,112 @@
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "新增导出: DESKTOP_MEDIA_ROUTES",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "新增导出: imageLoads",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "新增导出: nextImageLoad",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "新增导出: freshImageUrl",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "新增导出: contextMenuProps",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "新增导出: imageProps",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "新增导出: localFileName",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/markdown/render.tsx",
       "detail": "新增导出: urlFileName",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/artwork.ts",
       "detail": "新增导出: IconArtwork",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/artwork.ts",
       "detail": "新增导出: ICON_ARTWORK",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/artwork.ts",
       "detail": "新增导出: IconGlyph",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/artwork.ts",
       "detail": "新增导出: IconWeight",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/artwork.ts",
       "detail": "新增导出: STROKES",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/artwork.ts",
       "detail": "新增导出: iconSymbolId",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/artwork.ts",
       "detail": "新增导出: IconSymbolId",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "ast-export-added",
       "path": "packages/client/ui-primitives/src/icons/artwork.ts",
       "detail": "新增导出: ICON_SYMBOLS",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
@@ -14009,7 +14009,7 @@
       "kind": "config-field-removed",
       "path": "config:@deepseek-ai/dsh-tool-subagent",
       "detail": "配置字段被删除: modelSelectionSettings（cordis.yml 里写这些字段将失效）",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "breaking",
@@ -14422,14 +14422,14 @@
       "kind": "config-field-added",
       "path": "config:@deepseek-ai/dsh-tool-subagent",
       "detail": "新增配置字段: modelSelection",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
       "kind": "config-field-added",
       "path": "config:@deepseek-ai/dsh-tool-subagent",
       "detail": "新增配置字段: modelDiscovery",
-      "relevant": false
+      "relevant": true
     },
     {
       "severity": "info",
