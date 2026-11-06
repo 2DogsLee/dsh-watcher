@@ -3,7 +3,7 @@
   "repo": "_dsh",
   "from": "dsh-v0.2.1-rc.4",
   "to": "dsh-v0.2.2-rc.1",
-  "generated": "2026-11-05T23:46:32.9002154Z",
+  "generated": "2026-11-06T06:05:09.5765895Z",
   "counts": {
     "breaking": 363,
     "warning": 408,
