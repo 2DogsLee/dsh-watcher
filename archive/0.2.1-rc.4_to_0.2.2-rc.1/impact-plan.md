@@ -1,6 +1,6 @@
 # DSH 升级预告：dsh-v0.2.1-rc.4 → dsh-v0.2.2-rc.1
 
-生成时间：2026-11-11T05:42:07.541Z
+生成时间：2026-11-11T10:56:50.726Z
 
 - 报告：`archive/0.2.1-rc.4_to_0.2.2-rc.1/report.json`
 - registry: 2 个插件
@@ -9,7 +9,7 @@
 
 **有 2 处必须处理**（相关命中 348 条；另有 346 条低优先/待复核）。
 
-报告总计数：info=1290，warning=408，breaking=363，relevant=283
+报告总计数：info=1290，relevant=283，breaking=363，warning=408
 
 ## 必须处理（相关 breaking 与应对）
 
