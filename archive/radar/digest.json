@@ -1,6 +1,6 @@
 {
   "tool": "dsh-api-watch radar v0",
-  "generated": "2026-11-10T11:56:08.7935081Z",
+  "generated": "2026-11-11T11:32:45.6654671Z",
   "upstream": "deepseek-ai/deepseek-harness",
   "counts": {
     "discussion": 89,
@@ -14,8 +14,8 @@
       "title": "[Bug] 0.1.0-rc.7 → 0.2.2-rc.1 upgrade: seeded sessions show \"Untitled\" — projection-cache identity migration drops isSeeded",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12810",
       "upvotes": 1,
-      "comments": 0,
-      "updated": "2026-11-10T04:11:34Z",
+      "comments": 1,
+      "updated": "2026-11-10T18:09:17Z",
       "relevant": false
     },
     {
@@ -81,21 +81,21 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "DSH | dsh-tool-index | Cut MCP token cost 15–56% without breaking the prompt cache",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12768",
-      "upvotes": 1,
-      "comments": 1,
-      "updated": "2026-11-09T15:21:20Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
       "title": "Poll: when a new DSH release ships, what is your install/upgrade strategy? (0.1.5 → 0.1.7 context)",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7810",
       "upvotes": 2,
       "comments": 4,
       "updated": "2026-10-08T09:19:36Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "DSH | dsh-tool-index | Cut MCP token cost 15–56% without breaking the prompt cache",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12768",
+      "upvotes": 1,
+      "comments": 1,
+      "updated": "2026-11-09T15:21:20Z",
       "relevant": false
     },
     {
@@ -143,7 +143,7 @@
       "repo": "deepseek-ai/deepseek-harness",
       "title": "【BUG】开启Auto Review之后重启deepseek harness客户端，权限会自动变为完全访问，且无任何提示。",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8578",
-      "upvotes": 2,
+      "upvotes": 3,
       "comments": 6,
       "updated": "2026-11-01T16:09:36Z",
       "relevant": false
@@ -181,22 +181,22 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "[Plugin] dsh-session-migrate — drag-and-drop session migration between workspaces",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/4845",
-      "upvotes": 1,
-      "comments": 4,
-      "updated": "2026-08-28T08:31:26Z",
-      "relevant": true
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
       "title": "什么时候官方会出一个稳定版本？目前想接入DSH，但是又担心后续有破坏性更新",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/9137",
       "upvotes": 2,
       "comments": 1,
       "updated": "2026-10-08T09:07:47Z",
       "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "[Plugin] dsh-session-migrate — drag-and-drop session migration between workspaces",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/4845",
+      "upvotes": 1,
+      "comments": 4,
+      "updated": "2026-08-28T08:31:26Z",
+      "relevant": true
     },
     {
       "source": "discussion",
@@ -211,22 +211,22 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "Bug report: 0.2.1-rc.2 silently breaks deployments : webRuntime -webStartup",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/10062",
-      "upvotes": 2,
-      "comments": 0,
-      "updated": "2026-10-17T19:14:46Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
       "title": "[Bug] Session history fails to load after upgrading: the v0 migration inventory refuses released payload members (permission/preset origin, flat pi-ai replayState)",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5818",
       "upvotes": 2,
       "comments": 7,
       "updated": "2026-10-31T11:11:14Z",
       "relevant": true
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "Bug report: 0.2.1-rc.2 silently breaks deployments : webRuntime -webStartup",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/10062",
+      "upvotes": 2,
+      "comments": 0,
+      "updated": "2026-10-17T19:14:46Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -381,6 +381,16 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
+      "title": "Official opt-in OpenAI-compatible chat endpoint so existing frontends can drive DSH",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12894",
+      "upvotes": 1,
+      "comments": 0,
+      "updated": "2026-11-10T22:06:08Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
       "title": "DSH | dsh-response-annotations | Codex 式回复批注插件（select reply text → comment → send）",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/11459",
       "upvotes": 1,
@@ -451,6 +461,16 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
+      "title": "桌面端望适配mac lntel",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7953",
+      "upvotes": 4,
+      "comments": 0,
+      "updated": "2026-09-26T11:29:45Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
       "title": "[Index] Mobile UI adaptation for plugin panels: hit targets, narrow layouts, and how to measure them",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/11627",
       "upvotes": 1,
@@ -461,11 +481,21 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "桌面端望适配mac lntel",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/7953",
-      "upvotes": 4,
+      "title": "DSH｜命名空间插件｜插件同名工具与技能隔离，独立 Skill 按来源调用",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12844",
+      "upvotes": 1,
       "comments": 0,
-      "updated": "2026-09-26T11:29:45Z",
+      "updated": "2026-11-10T12:19:31Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "DeepSeek Harness 插件适配与源码0.2.1 踩坑：构建链重构与副本验证的成果",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/10125",
+      "upvotes": 1,
+      "comments": 1,
+      "updated": "2026-10-18T14:13:22Z",
       "relevant": false
     },
     {
@@ -501,16 +531,6 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "DeepSeek Harness 插件适配与源码0.2.1 踩坑：构建链重构与副本验证的成果",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/10125",
-      "upvotes": 1,
-      "comments": 1,
-      "updated": "2026-10-18T14:13:22Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
       "title": "「代码优先、插件原生编码定义」vs 「声明式、自然语言优先、工具以描述为主」大家更看好哪个呢",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12099",
       "upvotes": 1,
@@ -523,9 +543,9 @@
       "repo": "deepseek-ai/deepseek-harness",
       "title": "dsh-plugin-wsl-env — run a DSH session against a WSL distro, with the sandbox moved inside the distro",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/11251",
-      "upvotes": 1,
-      "comments": 3,
-      "updated": "2026-11-07T01:35:08Z",
+      "upvotes": 2,
+      "comments": 4,
+      "updated": "2026-11-10T14:45:03Z",
       "relevant": true
     },
     {
@@ -536,6 +556,16 @@
       "upvotes": 1,
       "comments": 1,
       "updated": "2026-10-17T04:06:01Z",
+      "relevant": true
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "[Proposal] Make mobile a first-class target: one canonical thread + the smallest set of core changes that unblock every plugin",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/10402",
+      "upvotes": 2,
+      "comments": 4,
+      "updated": "2026-10-31T10:39:05Z",
       "relevant": true
     },
     {
@@ -561,12 +591,12 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "[Proposal] Make mobile a first-class target: one canonical thread + the smallest set of core changes that unblock every plugin",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/10402",
-      "upvotes": 1,
-      "comments": 4,
-      "updated": "2026-10-31T10:39:05Z",
-      "relevant": true
+      "title": "dsh-compaction-basic 的默认 headroomTokens/maxTokens=65536 应 clamp 到模型声明的 maxTokens / 网关最大生成长度",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/11944",
+      "upvotes": 2,
+      "comments": 1,
+      "updated": "2026-11-10T18:50:34Z",
+      "relevant": false
     },
     {
       "source": "discussion",
@@ -577,36 +607,6 @@
       "comments": 0,
       "updated": "2026-11-06T00:52:17Z",
       "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
-      "title": "DSH | dsh-plugin-console | (superseded — see #3921)",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5564",
-      "upvotes": 1,
-      "comments": 1,
-      "updated": "2026-10-01T05:20:18Z",
-      "relevant": true
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
-      "title": "DSH｜DualTransfer｜让 Windows 和 Mac 上的 Agent 交接任务",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12691",
-      "upvotes": 1,
-      "comments": 0,
-      "updated": "2026-11-08T22:21:57Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
-      "title": "[API question] Read-only recovery of actual human waits and execution state in desktop plugins",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/11053",
-      "upvotes": 1,
-      "comments": 1,
-      "updated": "2026-10-29T12:32:30Z",
-      "relevant": true
     },
     {
       "source": "discussion",
@@ -661,6 +661,16 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
+      "title": "【插件作者必读】2026-09-29 Desktop 升级：带设置 UI 的插件会静默失效（迁移指南）",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8438",
+      "upvotes": 1,
+      "comments": 1,
+      "updated": "2026-10-03T04:06:57Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
       "title": "`0.2.1-alpha.2` 删除了公开服务 `webRuntime`，但迁移指南挂在了 `v0.2.1-alpha.1` 目录下，release notes 也无提示｜breaking change without an entry of its own",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/9598",
       "upvotes": 1,
@@ -677,16 +687,6 @@
       "comments": 3,
       "updated": "2026-10-28T12:07:48Z",
       "relevant": true
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
-      "title": "【插件作者必读】2026-09-29 Desktop 升级：带设置 UI 的插件会静默失效（迁移指南）",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8438",
-      "upvotes": 1,
-      "comments": 1,
-      "updated": "2026-10-03T04:06:57Z",
-      "relevant": false
     },
     {
       "source": "discussion",
@@ -711,21 +711,21 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "[Desktop 0.2.0-rc.1] v3 to v4 session migration refuses legacy title rows without messageSeqs, hiding TUI sessions",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8251",
-      "upvotes": 1,
-      "comments": 2,
-      "updated": "2026-09-29T10:43:23Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
       "title": "飞书/Lark 通道的跨代际兼容缺口：0.1.5+ 回复丢失/正文为空，第三方桥接无法跟进（求 SDK 事件契约与迁移指引）",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/10074",
       "upvotes": 1,
       "comments": 5,
       "updated": "2026-10-29T04:02:02Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "[Desktop 0.2.0-rc.1] v3 to v4 session migration refuses legacy title rows without messageSeqs, hiding TUI sessions",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8251",
+      "upvotes": 1,
+      "comments": 2,
+      "updated": "2026-09-29T10:43:23Z",
       "relevant": false
     },
     {
@@ -761,21 +761,21 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "插件分享：7 个 DSH 插件（技能移植 / 仓库体检 / 多智能体防御）",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8353",
-      "upvotes": 1,
-      "comments": 0,
-      "updated": "2026-09-30T14:47:49Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
       "title": "dsh 0.1.2-rc.1 → 0.1.5-rc.2 官方改动与第三方插件影响",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/6390",
       "upvotes": 2,
       "comments": 1,
       "updated": "2026-09-12T14:44:50Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "插件分享：7 个 DSH 插件（技能移植 / 仓库体检 / 多智能体防御）",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/8353",
+      "upvotes": 1,
+      "comments": 0,
+      "updated": "2026-09-30T14:47:49Z",
       "relevant": false
     },
     {
@@ -801,6 +801,16 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
+      "title": "关于更新功能的一些建议。",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/11112",
+      "upvotes": 1,
+      "comments": 1,
+      "updated": "2026-10-28T01:47:17Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
       "title": "[Bug] 0.2.1-rc.3 静默升级删除安装目录内的用户工作区（~835 MB 数据丢失，不进回收站，无任何提示）",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/10949",
       "upvotes": 3,
@@ -821,51 +831,11 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "关于更新功能的一些建议。",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/11112",
-      "upvotes": 1,
-      "comments": 1,
-      "updated": "2026-10-28T01:47:17Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
       "title": "建议升级内嵌 Node：24.21.0 受 CVE-2026-111497（Brotli 越界写）等影响，修复版 24.22.1",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/10625",
       "upvotes": 2,
       "comments": 1,
       "updated": "2026-11-04T04:51:59Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
-      "title": "[Bug] session-search：一个无法迁移的旧会话日志会让整个索引失效（core 0.2.1-rc.2）",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12340",
-      "upvotes": 1,
-      "comments": 0,
-      "updated": "2026-11-05T18:23:58Z",
-      "relevant": false
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
-      "title": "0.2.2-rc.1 更新导致自定义 Agent Preset 整体失效，建议为预设声明与包导出建立向后兼容与迁移机制",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12393",
-      "upvotes": 1,
-      "comments": 1,
-      "updated": "2026-11-06T07:03:25Z",
-      "relevant": true
-    },
-    {
-      "source": "discussion",
-      "repo": "deepseek-ai/deepseek-harness",
-      "title": "建议：工作区支持「迁移 / 合并」，而不是只能新建会话重选目录",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/10644",
-      "upvotes": 6,
-      "comments": 1,
-      "updated": "2026-11-02T02:57:12Z",
       "relevant": false
     },
     {
@@ -881,6 +851,16 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
+      "title": "DSH｜dsh-snap｜装插件前自动快照，装崩了用外部 CLI 一键回到装前（还原可撤销）",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12847",
+      "upvotes": 1,
+      "comments": 0,
+      "updated": "2026-11-10T12:43:11Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
       "title": "有没有人搞过升级 dsh 插件代码来支持新 dsh 版本的 skill？",
       "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5120",
       "upvotes": 13,
@@ -891,31 +871,31 @@
     {
       "source": "discussion",
       "repo": "deepseek-ai/deepseek-harness",
-      "title": "dsh 0.1.2 alpha 阶段（alpha.1 → alpha.4）官方改动与第三方插件影响",
-      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/5397",
-      "upvotes": 3,
-      "comments": 5,
-      "updated": "2026-09-04T02:57:55Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "polang233/dsh-plugin-index",
-      "title": "[plugin-add] dsh-friends-wine",
-      "url": "https://github.com/polang233/dsh-plugin-index/issues/408",
-      "upvotes": 0,
+      "title": "0.2.2-rc.1 更新导致自定义 Agent Preset 整体失效，建议为预设声明与包导出建立向后兼容与迁移机制",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12393",
+      "upvotes": 1,
       "comments": 1,
-      "updated": "2026-11-10T11:54:42Z",
+      "updated": "2026-11-06T07:03:25Z",
       "relevant": true
     },
     {
-      "source": "issue",
-      "repo": "AI-Scarlett/DSH-Store",
-      "title": "DSH STORE 自动更新报告（每 3 小时）",
-      "url": "https://github.com/AI-Scarlett/DSH-Store/issues/148",
-      "upvotes": 0,
-      "comments": 517,
-      "updated": "2026-11-10T11:54:12Z",
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "[Bug] session-search：一个无法迁移的旧会话日志会让整个索引失效（core 0.2.1-rc.2）",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12340",
+      "upvotes": 1,
+      "comments": 0,
+      "updated": "2026-11-05T18:23:58Z",
+      "relevant": false
+    },
+    {
+      "source": "discussion",
+      "repo": "deepseek-ai/deepseek-harness",
+      "title": "建议：工作区支持「迁移 / 合并」，而不是只能新建会话重选目录",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/10644",
+      "upvotes": 6,
+      "comments": 1,
+      "updated": "2026-11-02T02:57:12Z",
       "relevant": false
     },
     {
@@ -924,188 +904,88 @@
       "title": "[ROOM] HumanVibe Team Room",
       "url": "https://github.com/the1mburke-blip/Teamchat/issues/6",
       "upvotes": 0,
-      "comments": 1255,
-      "updated": "2026-11-10T11:52:19Z",
+      "comments": 1553,
+      "updated": "2026-11-11T11:32:24Z",
       "relevant": false
     },
     {
       "source": "issue",
-      "repo": "Zoverions/AXIOM-MESH",
-      "title": "Watch findings integration backlog — architecture/security conformance",
-      "url": "https://github.com/Zoverions/AXIOM-MESH/issues/1575",
-      "upvotes": 1,
-      "comments": 581,
-      "updated": "2026-11-10T11:50:16Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "GUYI-AI/gugu",
-      "title": "[Feature] CLI/Harness 安装入口统一提供确认后升级现有版本并使用的选项",
-      "url": "https://github.com/GUYI-AI/gugu/issues/2398",
+      "repo": "triagmas/dsh-wsl",
+      "title": "R26C — Windows Setup + one shared DSH CLI update (OWNER GO)",
+      "url": "https://github.com/triagmas/dsh-wsl/issues/30",
       "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-11-10T11:48:12Z",
+      "comments": 11,
+      "updated": "2026-11-11T11:31:08Z",
       "relevant": false
     },
     {
       "source": "issue",
-      "repo": "yetone/magpie",
-      "title": "gateway: Antigravity rejects tool schemas with union type + items: {} (HTTP 400 field predicate failed: $type == Type.ARRAY)",
-      "url": "https://github.com/yetone/magpie/issues/3481",
+      "repo": "PawarisMopha/gh-aw",
+      "title": "[aw] Daily failure issue cap exceeded",
+      "url": "https://github.com/PawarisMopha/gh-aw/issues/126",
       "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-11-10T11:45:24Z",
+      "comments": 283,
+      "updated": "2026-11-11T11:30:51Z",
       "relevant": false
     },
     {
       "source": "issue",
-      "repo": "autonomous-ai/lampOS",
-      "title": "lampOS: the project lead's channel to the first builder",
-      "url": "https://github.com/autonomous-ai/lampOS/issues/1711",
+      "repo": "PawarisMopha/gh-aw",
+      "title": "[aw] Detection Runs",
+      "url": "https://github.com/PawarisMopha/gh-aw/issues/8",
       "upvotes": 0,
-      "comments": 1373,
-      "updated": "2026-11-10T11:45:17Z",
+      "comments": 327,
+      "updated": "2026-11-11T11:30:47Z",
       "relevant": false
     },
     {
       "source": "issue",
       "repo": "AI-Scarlett/DSH-Store",
-      "title": "[Plugin] szhuangzan/rofilter-mcp",
-      "url": "https://github.com/AI-Scarlett/DSH-Store/issues/1845",
+      "title": "DSH STORE 自动更新报告（每 3 小时）",
+      "url": "https://github.com/AI-Scarlett/DSH-Store/issues/148",
       "upvotes": 0,
-      "comments": 2,
-      "updated": "2026-11-10T11:45:14Z",
-      "relevant": true
-    },
-    {
-      "source": "issue",
-      "repo": "Juliusolsson05/model-field-guide",
-      "title": "New coding-agent setup on the leaderboard",
-      "url": "https://github.com/Juliusolsson05/model-field-guide/issues/1",
-      "upvotes": 0,
-      "comments": 13,
-      "updated": "2026-11-10T11:45:11Z",
+      "comments": 521,
+      "updated": "2026-11-11T11:30:03Z",
       "relevant": false
     },
     {
       "source": "issue",
-      "repo": "HackSing/dsh-plugins",
-      "title": "[Plugin]: DSH Sessivra — session messaging and managed task coordination",
-      "url": "https://github.com/HackSing/dsh-plugins/issues/353",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-11-10T11:42:59Z",
-      "relevant": true
-    },
-    {
-      "source": "issue",
-      "repo": "HackSing/dsh-plugins",
-      "title": "[Plugin]: 2D Model Picker — select a model and reasoning effort in one drag",
-      "url": "https://github.com/HackSing/dsh-plugins/issues/355",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-11-10T11:42:57Z",
-      "relevant": true
-    },
-    {
-      "source": "issue",
-      "repo": "HackSing/dsh-plugins",
-      "title": "[Plugin]: dsh-phone",
-      "url": "https://github.com/HackSing/dsh-plugins/issues/358",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-11-10T11:42:55Z",
-      "relevant": true
-    },
-    {
-      "source": "issue",
-      "repo": "HackSing/dsh-plugins",
-      "title": "[Plugin]: better-ego-browser",
-      "url": "https://github.com/HackSing/dsh-plugins/issues/359",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-11-10T11:42:53Z",
-      "relevant": true
-    },
-    {
-      "source": "issue",
-      "repo": "HackSing/dsh-plugins",
-      "title": "[Plugin]:  healer-DeepSeek-plugin",
-      "url": "https://github.com/HackSing/dsh-plugins/issues/360",
-      "upvotes": 0,
-      "comments": 1,
-      "updated": "2026-11-10T11:42:51Z",
-      "relevant": true
-    },
-    {
-      "source": "issue",
-      "repo": "HackSing/dsh-plugins",
-      "title": "[Plugin]: DeepSeek Harness Connector",
-      "url": "https://github.com/HackSing/dsh-plugins/issues/356",
-      "upvotes": 0,
-      "comments": 3,
-      "updated": "2026-11-10T11:42:44Z",
-      "relevant": true
-    },
-    {
-      "source": "issue",
-      "repo": "watchthelight-labs/WTLMtkWireless",
-      "title": "MT7925 (103c:8f06) on macOS 26.0 (25A354): Ethernet front end works (en1), no native Wi-Fi UI — is 26.0 supported?",
-      "url": "https://github.com/watchthelight-labs/WTLMtkWireless/issues/6",
-      "upvotes": 0,
-      "comments": 4,
-      "updated": "2026-11-10T11:41:39Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "Qihoo360/harness-bench",
-      "title": "add deepseek harness?",
-      "url": "https://github.com/Qihoo360/harness-bench/issues/20",
+      "repo": "makecindy/cindy",
+      "title": "启动后伙伴列表为空并提示添加伙伴，对话两轮后伙伴才出现",
+      "url": "https://github.com/makecindy/cindy/issues/9978",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-11-10T11:41:37Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "xingxingbk-git/dsh-deepseek-chat",
-      "title": "[建议] 侧栏不兼容提示（Brand Notice）无法关闭，希望增加关闭按钮并持久化",
-      "url": "https://github.com/xingxingbk-git/dsh-deepseek-chat/issues/17",
-      "upvotes": 0,
-      "comments": 3,
-      "updated": "2026-11-10T11:41:33Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "TongAITech/opencode-test-digital-employee",
-      "title": "[RC7.2][C12 P1 BLOCKER] 独立 QA 证实 Windows 离线包缺少已核准 DSH 主程序与校验",
-      "url": "https://github.com/TongAITech/opencode-test-digital-employee/issues/79",
-      "upvotes": 0,
-      "comments": 3,
-      "updated": "2026-11-10T11:38:20Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "autonomous-ai/lampOS",
-      "title": "lampOS Queue (2): the builders' coordination, after #4710 filled up",
-      "url": "https://github.com/autonomous-ai/lampOS/issues/5385",
-      "upvotes": 0,
-      "comments": 2500,
-      "updated": "2026-11-10T11:38:18Z",
+      "updated": "2026-11-11T11:29:45Z",
       "relevant": false
     },
     {
       "source": "issue",
       "repo": "tommy2scripts/sandbox",
-      "title": "Mission Control v2: data-driven board + activity feed (iteration 1)",
-      "url": "https://github.com/tommy2scripts/sandbox/issues/3",
+      "title": "Build the dsh transcript source for SkillOpt-Sleep (work in ~/src/SkillOpt, PR to the fork)",
+      "url": "https://github.com/tommy2scripts/sandbox/issues/8",
       "upvotes": 0,
-      "comments": 2,
-      "updated": "2026-11-10T11:36:48Z",
+      "comments": 1,
+      "updated": "2026-11-11T11:29:31Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "teramoby/speedle-plus",
+      "title": "Improve engine.speedle.io homepage with performance messaging and an AI-assisted benchmark guide",
+      "url": "https://github.com/teramoby/speedle-plus/issues/342",
+      "upvotes": 0,
+      "comments": 4,
+      "updated": "2026-11-11T11:29:02Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "moretea-labs/forge",
+      "title": "P0: eliminate timeout and streaming-interruption outcome ambiguity across durable Forge operations",
+      "url": "https://github.com/moretea-labs/forge/issues/235",
+      "upvotes": 0,
+      "comments": 88,
+      "updated": "2026-11-11T11:29:00Z",
       "relevant": false
     },
     {
@@ -1114,388 +994,508 @@
       "title": "[ PARENT THREAD ] Toolkit — Delivery and Operational Assurance",
       "url": "https://github.com/weijunswj/ai-agent-toolkit/issues/421",
       "upvotes": 0,
-      "comments": 732,
-      "updated": "2026-11-10T11:34:34Z",
+      "comments": 812,
+      "updated": "2026-11-11T11:25:49Z",
       "relevant": false
     },
     {
       "source": "issue",
-      "repo": "yetone/magpie",
-      "title": "gateway: keep a waiting Chat client alive with a chunk it parses (llm-pi-ai/pi-ai drops the : keepalive comment)",
-      "url": "https://github.com/yetone/magpie/issues/5933",
+      "repo": "wheelry/deep-skill-finder",
+      "title": "Skill indexing request: industry quote-precheck suite (22 skills, github.com/toss6969/dsh-quote-precheck-suite)",
+      "url": "https://github.com/wheelry/deep-skill-finder/issues/47",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-11-10T11:33:04Z",
-      "relevant": true
+      "updated": "2026-11-11T11:24:44Z",
+      "relevant": false
     },
     {
       "source": "issue",
-      "repo": "Xircth/vibex-remote-android",
-      "title": "refactor(ui): 精简看板与会话中心视图层级，修复协作空间标题居中及 Agent 图标/名称映射问题",
-      "url": "https://github.com/Xircth/vibex-remote-android/issues/2",
+      "repo": "zts212653/clowder-ai",
+      "title": "Feature: DSH 原生 turn steer 接入与输入消费回执（附真实模型实验）",
+      "url": "https://github.com/zts212653/clowder-ai/issues/1947",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-11-11T11:23:42Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "shaobeichen/dsh-pocket",
+      "title": "这里创建了1个分支呀",
+      "url": "https://github.com/shaobeichen/dsh-pocket/issues/220",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-11-10T11:32:10Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "mastermindx-market-intelligence/Mastermind",
-      "title": "[FABRIC CONVERGENCE] Grok orchestration + VPS/website migration to canonical Agent Fabric",
-      "url": "https://github.com/mastermindx-market-intelligence/Mastermind/issues/983",
-      "upvotes": 0,
-      "comments": 705,
-      "updated": "2026-11-10T11:28:57Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "tompassarelli/north",
-      "title": "Enforce every guarantee in a layer every model provider passes through, not in Claude and Codex hooks alone",
-      "url": "https://github.com/tompassarelli/north/issues/1041",
-      "upvotes": 0,
-      "comments": 4,
-      "updated": "2026-11-10T11:27:02Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "Lepinoid/infra",
-      "title": "dsh-agent: dev 限定 MCP（lepinoid）への接続を有効にし、dsh の会話から tools/call を確認する（段階 2 の D9 / infra 側）",
-      "url": "https://github.com/Lepinoid/infra/issues/83",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-11-10T11:26:53Z",
-      "relevant": false
-    },
-    {
-      "source": "issue",
-      "repo": "liuqin164/Cogmem",
-      "title": "5.0 前置 F11：陪伴尖兵原型：最短常驻链路验证与缺口清单",
-      "url": "https://github.com/liuqin164/Cogmem/issues/165",
-      "upvotes": 0,
-      "comments": 16,
-      "updated": "2026-11-10T11:25:08Z",
+      "updated": "2026-11-11T11:18:47Z",
       "relevant": false
     },
     {
       "source": "issue",
       "repo": "2BingLing/dsh-market",
-      "title": "[提交插件] 产物架 dsh-artifacts",
-      "url": "https://github.com/2BingLing/dsh-market/issues/364",
+      "title": "[提交插件] 码章鲸：无人值守小说写作与番茄发布",
+      "url": "https://github.com/2BingLing/dsh-market/issues/373",
       "upvotes": 0,
       "comments": 1,
-      "updated": "2026-11-10T11:21:09Z",
+      "updated": "2026-11-11T11:18:18Z",
       "relevant": false
     },
     {
       "source": "issue",
-      "repo": "polang233/dsh-plugin-index",
-      "title": "[plugin-add] dsh-artifacts 产物架",
-      "url": "https://github.com/polang233/dsh-plugin-index/issues/405",
+      "repo": "swc-project/swc-next-issues",
+      "title": "formatter: keep a type member separator before a prettier-ignore member",
+      "url": "https://github.com/swc-project/swc-next-issues/issues/242",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-11-10T11:21:00Z",
-      "relevant": true
-    },
-    {
-      "source": "pr",
-      "repo": "tangyixiao/dsh-workbuddy-connect-community",
-      "title": "build(deps): bump the compatible-packages group across 1 directory with 7 updates",
-      "url": "https://github.com/tangyixiao/dsh-workbuddy-connect-community/pull/22",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-11-10T11:56:01Z",
+      "updated": "2026-11-11T11:16:31Z",
       "relevant": false
     },
     {
-      "source": "pr",
-      "repo": "kirodotdev/KiroCrew",
-      "title": "fix: keep ssh host keys readable for every masked agent harness",
-      "url": "https://github.com/kirodotdev/KiroCrew/pull/34328",
+      "source": "issue",
+      "repo": "autonomous-ai/lampOS",
+      "title": "lampOS: the project lead's channel to the first builder",
+      "url": "https://github.com/autonomous-ai/lampOS/issues/1711",
       "upvotes": 0,
-      "comments": 4,
-      "updated": "2026-11-10T11:55:59Z",
+      "comments": 1435,
+      "updated": "2026-11-11T11:16:16Z",
       "relevant": false
     },
     {
-      "source": "pr",
-      "repo": "fongap-labs/dsh-plugin",
-      "title": "feat: integrate DSH Code Worker planning and P0 safeguards",
-      "url": "https://github.com/fongap-labs/dsh-plugin/pull/211",
+      "source": "issue",
+      "repo": "Project-N-E-K-O/N.E.K.O",
+      "title": "[RFC] 猫爪（NekoClaw / agent 模块）重写：将进入 main 的破坏性变更，请插件作者留意",
+      "url": "https://github.com/Project-N-E-K-O/N.E.K.O/issues/3683",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-11-11T11:15:45Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "delinoio/apps",
+      "title": "mcpa: keep console storage helpers working when the storage accessor throws",
+      "url": "https://github.com/delinoio/apps/issues/1012",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-11-11T11:15:39Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "delinoio/apps",
+      "title": "anydash: discard in-flight resident widget refresh writes when a window opens",
+      "url": "https://github.com/delinoio/apps/issues/1011",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-11-11T11:15:38Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "delinoio/apps",
+      "title": "anydash: keep stored widget snapshots when a multi-batch replacement write fails",
+      "url": "https://github.com/delinoio/apps/issues/1010",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-11-11T11:15:38Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "geekjourneyx/agendum",
+      "title": "[READ] 2026-10-20 · 精读子 agent 并发对照论文：短任务更慢更贵，长任务才赚，定一条默认规则",
+      "url": "https://github.com/geekjourneyx/agendum/issues/34",
+      "upvotes": 0,
+      "comments": 8,
+      "updated": "2026-11-11T11:15:35Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "delinoio/apps",
+      "title": "perfine: reject the default Docker network for headless agent runs",
+      "url": "https://github.com/delinoio/apps/issues/1009",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-11-11T11:15:32Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "ekinciomer-ai/aesun",
+      "title": "Keşif bülteni",
+      "url": "https://github.com/ekinciomer-ai/aesun/issues/2",
+      "upvotes": 0,
+      "comments": 16,
+      "updated": "2026-11-11T11:14:37Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "iprus2026-tech/taxi-dashboard",
+      "title": "[TAXI-GPS-TRACE-01] HiPad Max: совместная трассировка Chrome и Flask без правок кода",
+      "url": "https://github.com/iprus2026-tech/taxi-dashboard/issues/14",
+      "upvotes": 0,
+      "comments": 6,
+      "updated": "2026-11-11T11:13:41Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "omdsh-dev/DSH-better-sidebar",
+      "title": "建议：增加「不接管文件页 (files tab)」开关，以兼容 multi-root 工作区插件",
+      "url": "https://github.com/omdsh-dev/DSH-better-sidebar/issues/1160",
       "upvotes": 0,
       "comments": 1,
-      "updated": "2026-11-10T11:55:55Z",
+      "updated": "2026-11-11T11:13:39Z",
       "relevant": false
     },
     {
-      "source": "pr",
-      "repo": "Choaterboater/casper",
-      "title": "Pictures an MCP server returns reach a model that can see images, shrunk and capped like pasted ones, and old ones are hidden from later requests",
-      "url": "https://github.com/Choaterboater/casper/pull/624",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-11-10T11:55:53Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "txehq/bifrost",
-      "title": "TXE-6548: DeepSeek messages pass through to its Anthropic endpoint",
-      "url": "https://github.com/txehq/bifrost/pull/122",
-      "upvotes": 1,
-      "comments": 1,
-      "updated": "2026-11-10T11:55:46Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "slow-stack/mneme",
-      "title": "docs(readme): lead with the current release and hand history to the changelog",
-      "url": "https://github.com/slow-stack/mneme/pull/635",
-      "upvotes": 0,
-      "comments": 2,
-      "updated": "2026-11-10T11:54:56Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "kirodotdev/KiroCrew",
-      "title": "feat: add Google Antigravity ACP harness",
-      "url": "https://github.com/kirodotdev/KiroCrew/pull/26171",
-      "upvotes": 0,
-      "comments": 18,
-      "updated": "2026-11-10T11:52:08Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "21gifts/api",
-      "title": "7764da32 - Report overdue Fond payouts for the status page",
-      "url": "https://github.com/21gifts/api/pull/565",
+      "source": "issue",
+      "repo": "InferMatrixLab/InferRSI",
+      "title": "[Status 04] InferRSI evolution: 68108700 → 1246348f (2026-11-06)",
+      "url": "https://github.com/InferMatrixLab/InferRSI/issues/366",
       "upvotes": 0,
       "comments": 5,
-      "updated": "2026-11-10T11:51:31Z",
+      "updated": "2026-11-11T11:13:29Z",
       "relevant": false
     },
     {
-      "source": "pr",
-      "repo": "goat-si/goat",
-      "title": "fix(server,web,mobile): cleanup keeps unshipped work, and lost worktrees recover with clear states and notices",
-      "url": "https://github.com/goat-si/goat/pull/2812",
+      "source": "issue",
+      "repo": "swc-project/swc-next-issues",
+      "title": "formatter: parenthesize an assignment expression in export default",
+      "url": "https://github.com/swc-project/swc-next-issues/issues/241",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-11-10T11:51:00Z",
+      "updated": "2026-11-11T11:10:50Z",
       "relevant": false
     },
     {
-      "source": "pr",
-      "repo": "PiwiTests/piwi",
-      "title": "fix(ai)!: follow Anthropic's terms for the Claude Code CLI provider",
-      "url": "https://github.com/PiwiTests/piwi/pull/1218",
+      "source": "issue",
+      "repo": "kvcache-ai/Mooncake",
+      "title": "[RFC]: Mooncake Store on NV Supernodes (MNNVL EGM)",
+      "url": "https://github.com/kvcache-ai/Mooncake/issues/5419",
       "upvotes": 0,
       "comments": 1,
-      "updated": "2026-11-10T11:50:54Z",
+      "updated": "2026-11-11T11:09:10Z",
       "relevant": false
     },
     {
-      "source": "pr",
-      "repo": "lalalune/hyperliquid-source",
-      "title": "RE-002: reconstruct node #115 rocksdb GetVarint32PtrFallback 0x61bd4f0 (75 B; three nullptr causes, 149 callers)",
-      "url": "https://github.com/lalalune/hyperliquid-source/pull/6340",
+      "source": "issue",
+      "repo": "AcornFZA/word",
+      "title": "本机 DSH imapp 插件：连接101、本人授权与开发验收",
+      "url": "https://github.com/AcornFZA/word/issues/17",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-11-10T11:49:52Z",
+      "updated": "2026-11-11T11:07:33Z",
+      "relevant": false
+    },
+    {
+      "source": "issue",
+      "repo": "AcornFZA/word",
+      "title": "未解决问题与验证缺口",
+      "url": "https://github.com/AcornFZA/word/issues/10",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-11-11T11:07:25Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "Fei2411/DS-Bot",
-      "title": "Let a Bot and a group chat work in several folders at once",
-      "url": "https://github.com/Fei2411/DS-Bot/pull/1298",
+      "repo": "NixOS/nixpkgs",
+      "title": "nixos/polkit: open helper sandbox for per-service u2f and yubico",
+      "url": "https://github.com/NixOS/nixpkgs/pull/585509",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-11-11T11:32:29Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "un-ts/sh-syntax",
+      "title": "feat: add cached WASM init",
+      "url": "https://github.com/un-ts/sh-syntax/pull/163",
+      "upvotes": 0,
+      "comments": 10,
+      "updated": "2026-11-11T11:32:22Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "pytorch/pytorch",
+      "title": "[xpu][fix] Use torch device index in DLPack",
+      "url": "https://github.com/pytorch/pytorch/pull/203552",
       "upvotes": 1,
-      "comments": 2,
-      "updated": "2026-11-10T11:49:27Z",
+      "comments": 3,
+      "updated": "2026-11-11T11:32:09Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "awesome-deepseekharness/deepseek-official-tracker",
-      "title": "chore(discover): AI draft — 111",
-      "url": "https://github.com/awesome-deepseekharness/deepseek-official-tracker/pull/57",
+      "repo": "guccang/deepseek-harness",
+      "title": "Merge From deepseek-harness",
+      "url": "https://github.com/guccang/deepseek-harness/pull/1",
       "upvotes": 0,
-      "comments": 2,
-      "updated": "2026-11-10T11:46:38Z",
+      "comments": 0,
+      "updated": "2026-11-11T11:32:00Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "Fei2411/DS-Bot",
-      "title": "Carry a quoted WeChat message into the Bot",
-      "url": "https://github.com/Fei2411/DS-Bot/pull/1306",
+      "repo": "effiy/deepseek-harness",
+      "title": "Sync: upstream deepseek-ai/master → fork effiy/master",
+      "url": "https://github.com/effiy/deepseek-harness/pull/2",
       "upvotes": 0,
-      "comments": 2,
-      "updated": "2026-11-10T11:45:17Z",
+      "comments": 0,
+      "updated": "2026-11-11T11:32:00Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "serpapi/serpapi-search-tools-python",
-      "title": "Add web fetch, map, and crawl tools and upgrade dependencies",
-      "url": "https://github.com/serpapi/serpapi-search-tools-python/pull/22",
+      "repo": "vvb-1/deepseek-harness",
+      "title": "[pull] master from deepseek-ai:master",
+      "url": "https://github.com/vvb-1/deepseek-harness/pull/25",
+      "upvotes": 2,
+      "comments": 0,
+      "updated": "2026-11-11T11:32:00Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "un-ts/sh-syntax",
+      "title": "feat: add workerd exports and module init",
+      "url": "https://github.com/un-ts/sh-syntax/pull/164",
       "upvotes": 0,
-      "comments": 2,
-      "updated": "2026-11-10T11:44:40Z",
+      "comments": 10,
+      "updated": "2026-11-11T11:31:50Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "ZhimingYe/filebox",
+      "title": "fwd: present loopback Host/Origin/Referer to the forwarded service",
+      "url": "https://github.com/ZhimingYe/filebox/pull/146",
+      "upvotes": 0,
+      "comments": 1,
+      "updated": "2026-11-11T11:30:59Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "OpenHUTB/ros2",
+      "title": "新增：ROS2 A*+DWA 的 Gazebo 11 + TurtleBot3 三维验证",
+      "url": "https://github.com/OpenHUTB/ros2/pull/1134",
+      "upvotes": 0,
+      "comments": 4,
+      "updated": "2026-11-11T11:30:10Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "CNSeniorious000/deepseek-harness",
+      "title": "fix(conversation): retain tool children before root calls",
+      "url": "https://github.com/CNSeniorious000/deepseek-harness/pull/2",
+      "upvotes": 0,
+      "comments": 5,
+      "updated": "2026-11-11T11:30:07Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "OpenHUTB/ros2",
+      "title": "新增：ROS2 DWA 局部规划器随机场景压力测试与舒适性评价",
+      "url": "https://github.com/OpenHUTB/ros2/pull/1079",
+      "upvotes": 0,
+      "comments": 9,
+      "updated": "2026-11-11T11:29:28Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "c0wb0yp0tat0/hermes-agent",
+      "title": "test(memory): RFC #143379 rig study — the verification leg, the falsifier battery, the envelope receipts (downstream-only)",
+      "url": "https://github.com/c0wb0yp0tat0/hermes-agent/pull/1",
+      "upvotes": 0,
+      "comments": 453,
+      "updated": "2026-11-11T11:29:21Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "HuangPuStar/MetaInfer",
+      "title": "fix(dsh-metainfer-research-lab): give the project Copilot compaction",
+      "url": "https://github.com/HuangPuStar/MetaInfer/pull/79",
+      "upvotes": 0,
+      "comments": 9,
+      "updated": "2026-11-11T11:29:07Z",
       "relevant": false
     },
     {
       "source": "pr",
       "repo": "QwenLM/qwen-code",
-      "title": "feat(managed-agent): enable external workspace execution",
-      "url": "https://github.com/QwenLM/qwen-code/pull/15684",
+      "title": "feat(managed-agent): register client filesystems into managed sessions",
+      "url": "https://github.com/QwenLM/qwen-code/pull/16844",
       "upvotes": 0,
-      "comments": 124,
-      "updated": "2026-11-10T11:43:29Z",
-      "relevant": false
+      "comments": 27,
+      "updated": "2026-11-11T11:28:59Z",
+      "relevant": true
     },
     {
       "source": "pr",
-      "repo": "hakkisabah/yourkiosk",
-      "title": "feat(otomasyon): DSH headless ajan aracı — nöbetçi + systemd",
-      "url": "https://github.com/hakkisabah/yourkiosk/pull/97",
-      "upvotes": 0,
-      "comments": 5,
-      "updated": "2026-11-10T11:42:43Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "phase-rs/phase",
-      "title": "fix(engine): preserve a staged payment's accepted prefix across a concession",
-      "url": "https://github.com/phase-rs/phase/pull/10742",
-      "upvotes": 0,
-      "comments": 12,
-      "updated": "2026-11-10T11:42:33Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "team-Nter/back-end",
-      "title": "[김하경] 구글 소셜 로그인/회원가입",
-      "url": "https://github.com/team-Nter/back-end/pull/33",
-      "upvotes": 0,
-      "comments": 3,
-      "updated": "2026-11-10T11:42:30Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "usermbzlj/API_Playground",
-      "title": "fixtures: permission_quantized v0.1 — chmod rc=0 is not enforcement (13 rows)",
-      "url": "https://github.com/usermbzlj/API_Playground/pull/5",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-11-10T11:40:29Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "ashneil12/hivra-hub",
-      "title": "WP-143: A cheap Explore agent for Claude Code crews, passed as a flag",
-      "url": "https://github.com/ashneil12/hivra-hub/pull/126",
+      "repo": "storytold/craft-anything",
+      "title": "Run the Windows-only tests on a Windows runner",
+      "url": "https://github.com/storytold/craft-anything/pull/1450",
       "upvotes": 0,
       "comments": 2,
-      "updated": "2026-11-10T11:39:02Z",
+      "updated": "2026-11-11T11:28:42Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "agentscope-ai/AgentTeams",
-      "title": "fix(manager): restore safe Worker Skill distribution in shared Harnesses",
-      "url": "https://github.com/agentscope-ai/AgentTeams/pull/1592",
+      "repo": "aimpact-inc/repo-harness",
+      "title": "ci(selection): a documentation-only diff runs only selection and Required / CI (#2363)",
+      "url": "https://github.com/aimpact-inc/repo-harness/pull/2372",
       "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-11-10T11:37:52Z",
+      "comments": 23,
+      "updated": "2026-11-11T11:28:13Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "xupeng211/FootballPrediction",
-      "title": "fix(tests): 为备份 CLI 子进程提供隔离临时 HOME",
-      "url": "https://github.com/xupeng211/FootballPrediction/pull/1955",
-      "upvotes": 1,
+      "repo": "open-pencil/open-pencil",
+      "title": "feat: design on a project's running pages, compare them, and open pull requests",
+      "url": "https://github.com/open-pencil/open-pencil/pull/1934",
+      "upvotes": 0,
+      "comments": 8,
+      "updated": "2026-11-11T11:28:10Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "nrslib/takt",
+      "title": "cloneで動くタスクにGitHub/GitLabのリポジトリを渡す",
+      "url": "https://github.com/nrslib/takt/pull/2029",
+      "upvotes": 0,
       "comments": 1,
-      "updated": "2026-11-10T11:36:36Z",
+      "updated": "2026-11-11T11:28:02Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "apache/doris",
-      "title": "[improvement](variant) Assert Variant sparse byte order in debug builds",
-      "url": "https://github.com/apache/doris/pull/70416",
-      "upvotes": 0,
-      "comments": 12,
-      "updated": "2026-11-10T11:36:08Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "agentscope-ai/AgentTeams",
-      "title": "chore(release): pin Dashboard v1.4.1 and DeepSeek Harness v0.1.2",
-      "url": "https://github.com/agentscope-ai/AgentTeams/pull/1593",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-11-10T11:35:47Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "nisconder/npm-safe-forDSH",
-      "title": "chore(dsh): upgrade the adapter to DeepSeek Harness 0.2.2-rc.1",
-      "url": "https://github.com/nisconder/npm-safe-forDSH/pull/9",
-      "upvotes": 0,
-      "comments": 0,
-      "updated": "2026-11-10T11:35:43Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "woocommerce/woocommerce-gateway-stripe",
-      "title": "Make the E2E suite theme-agnostic and add a block theme (Twenty Twenty-Five) run to CI",
-      "url": "https://github.com/woocommerce/woocommerce-gateway-stripe/pull/5905",
-      "upvotes": 0,
-      "comments": 5,
-      "updated": "2026-11-10T11:35:10Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "sessionbus/pi-omp",
-      "title": "Release v0.5.13: Pi and OMP delivery, lane lifecycle and OMP 18.18 fixes",
-      "url": "https://github.com/sessionbus/pi-omp/pull/9",
-      "upvotes": 0,
-      "comments": 41,
-      "updated": "2026-11-10T11:35:09Z",
-      "relevant": false
-    },
-    {
-      "source": "pr",
-      "repo": "heraisys-sas/reprise-harness",
-      "title": "Fusion dev→main : Quick Apply CDP, restructuration de l'arborescence, relance goal-mode, charte USAGE",
-      "url": "https://github.com/heraisys-sas/reprise-harness/pull/103",
+      "repo": "zts212653/clowder-ai",
+      "title": "fix(dsh): automate Desktop setup and validate real sessions",
+      "url": "https://github.com/zts212653/clowder-ai/pull/1928",
       "upvotes": 0,
       "comments": 3,
-      "updated": "2026-11-10T11:34:58Z",
+      "updated": "2026-11-11T11:27:38Z",
       "relevant": false
     },
     {
       "source": "pr",
-      "repo": "matrixorigin/Astra",
-      "title": "feat(observability): identify tools and diagnose LLM failures",
-      "url": "https://github.com/matrixorigin/Astra/pull/1255",
+      "repo": "dsh-tauri/deepseek-harness-pkg",
+      "title": "fix(linux): 校验打包产物带 sharp wasm 回退，并在打包内容变化时重新出包",
+      "url": "https://github.com/dsh-tauri/deepseek-harness-pkg/pull/25",
+      "upvotes": 0,
+      "comments": 3,
+      "updated": "2026-11-11T11:27:23Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "awesome-deepseekharness/deepseek-official-tracker",
+      "title": "chore(discover): AI draft — 112",
+      "url": "https://github.com/awesome-deepseekharness/deepseek-official-tracker/pull/58",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-11-11T11:30:57Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "rohitg00/agentmemory",
+      "title": "fix(cli): say when an agent is connected with MCP only",
+      "url": "https://github.com/rohitg00/agentmemory/pull/1756",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-11-11T11:25:29Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "dalaofei1154/rotating-flower",
+      "title": "Add Windows support for the bridge",
+      "url": "https://github.com/dalaofei1154/rotating-flower/pull/5",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-11-11T11:25:23Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "fliggy-travel-ai/dsh-superagent-prototype",
+      "title": "兼容 Paseo 0.16 并加入代理心跳",
+      "url": "https://github.com/fliggy-travel-ai/dsh-superagent-prototype/pull/46",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-11-11T11:24:38Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "TONiiV/Codi",
+      "title": "feat(provider): add DeepSeek Harness as a built-in provider",
+      "url": "https://github.com/TONiiV/Codi/pull/181",
+      "upvotes": 0,
+      "comments": 2,
+      "updated": "2026-11-11T11:23:22Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "OpenHUTB/ros2",
+      "title": "feat(humanoid): 新增关节 Stribeck 摩擦辨识与前馈补偿",
+      "url": "https://github.com/OpenHUTB/ros2/pull/1205",
+      "upvotes": 0,
+      "comments": 3,
+      "updated": "2026-11-11T11:22:49Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "OpenHUTB/ros2",
+      "title": "feat(ground): 新增磁力计硬磁/软磁标定与倾角补偿航向",
+      "url": "https://github.com/OpenHUTB/ros2/pull/1200",
+      "upvotes": 0,
+      "comments": 3,
+      "updated": "2026-11-11T11:22:26Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "kirodotdev/KiroCrew",
+      "title": "feat(secrets): typed vault items and a list-detail Secrets panel behind a preview flag",
+      "url": "https://github.com/kirodotdev/KiroCrew/pull/34874",
+      "upvotes": 0,
+      "comments": 43,
+      "updated": "2026-11-11T11:22:05Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "opengwas/opengwasdb",
+      "title": "Cut Store Release Build, validation and Reference Completion wall time (#307)",
+      "url": "https://github.com/opengwas/opengwasdb/pull/411",
       "upvotes": 0,
       "comments": 0,
-      "updated": "2026-11-10T11:34:24Z",
+      "updated": "2026-11-11T11:19:16Z",
+      "relevant": false
+    },
+    {
+      "source": "pr",
+      "repo": "guolong123/vteam",
+      "title": "fix(web): 补齐 DSH primitives 设计令牌，修复 DSH 流式样式无字体/行距/代码块样式",
+      "url": "https://github.com/guolong123/vteam/pull/99",
+      "upvotes": 0,
+      "comments": 0,
+      "updated": "2026-11-11T11:18:48Z",
       "relevant": false
     }
   ]
