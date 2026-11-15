@@ -331,8 +331,10 @@ function checkReportAgainstRegistry(referenced) {
   if (!existsSync(cfg.report)) return
   let report
   try { report = JSON.parse(readFileSync(cfg.report, 'utf8')) } catch { return }
+  // 只看"包级/作用域级"的结构性删除：文件级导出删除属于符号级变更，
+  // 不构成"你依赖的包被移除"，否则 ui-primitives 内部文件改动会刷屏。
   const removedPkgs = (report.findings ?? [])
-    .filter((f) => f.kind === 'package-removed' || f.kind === 'export-removed' || f.severity === 'breaking')
+    .filter((f) => f.kind === 'package-removed' || f.kind === 'config-scope-removed')
     .map((f) => f.path ?? '')
     .filter(Boolean)
   if (removedPkgs.length === 0) return
