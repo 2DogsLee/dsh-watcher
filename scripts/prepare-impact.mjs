@@ -12,6 +12,7 @@
  * 退出码: 0 = 有输出（无论是否相关）；1 = 参数/读取错误
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
 import { resolve, dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -112,9 +113,44 @@ const STRUCTURAL_KINDS = new Set([
   'config-scope-removed', 'exports-map-changed', 'doc-removed', 'upgrade-guide-added',
 ])
 
+// 配置字段类：官方删了字段 ≠ 你要改。只有本地声明里真的写了这个字段才算必须处理。
+// --declarations 可重复传入本地声明目录（bundle/组合文件所在），用于 grep 字段名。
+const CONFIG_FIELD_KINDS = new Set(['config-field-removed', 'config-field-type-changed'])
+const declarations = argv.reduce((acc, cur, i) => {
+  if (cur === '--declarations' && argv[i + 1]) acc.push(resolve(argv[i + 1]))
+  return acc
+}, [])
+
+function localUsesConfigField(field) {
+  if (!field || declarations.length === 0) return null // 未知：目录未提供
+  for (const dir of declarations) {
+    try {
+      const out = execFileSync('git', ['grep', '-l', '-F', field, '--', '.', ':!*.md'], { cwd: dir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
+      if (out.trim()) return true
+    } catch { /* git grep 无命中时退出码 1，也可能不是 git 仓库 */ }
+  }
+  return false
+}
+
 const relevant = (report.findings ?? []).filter((f) => isRelevant(f))
-const mustFix = relevant.filter((f) => STRUCTURAL_KINDS.has(f.kind))
-const lowPriority = relevant.filter((f) => !STRUCTURAL_KINDS.has(f.kind))
+const mustFix = []
+const lowPriority = []
+for (const f of relevant) {
+  if (CONFIG_FIELD_KINDS.has(f.kind)) {
+    // 从 detail 里提取字段名，例如 "配置字段被删除: maxImageResolution（...）"
+    const field = /字段被删除:\s*([A-Za-z_$][\w$]*)/.exec(f.detail ?? '')?.[1]
+      ?? /字段类型变化:\s*([A-Za-z_$][\w$]*)/.exec(f.detail ?? '')?.[1]
+    const used = localUsesConfigField(field)
+    if (used === false) {
+      lowPriority.push({ ...f, detail: `${f.detail}（本地声明未使用该字段，无需改）` })
+    } else {
+      mustFix.push(f)
+    }
+    continue
+  }
+  if (STRUCTURAL_KINDS.has(f.kind)) mustFix.push(f)
+  else lowPriority.push(f)
+}
 const relBreaking = relevant.filter((f) => f.severity === 'breaking')
 
 const md = []

@@ -16,7 +16,7 @@
 ```powershell
 node scripts/prepare-impact.mjs `
   --report archive/0.2.1-rc.4_to_0.2.2-rc.1/report.json `
-  --registry registry.json `
+  --registry registry.json `n  --declarations "D:\path\to\my-bundles" `
   --out archive/0.2.1-rc.4_to_0.2.2-rc.1/impact-plan.md
 ```
 
