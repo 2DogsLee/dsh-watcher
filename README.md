@@ -185,3 +185,10 @@ pwsh -File scripts/audit-local.ps1
 ## License
 
 MIT
+
+## 升级前备份（backup-before-upgrade）
+
+```powershell
+pwsh -File scripts/backup-before-upgrade.ps1 -OutDir "D:\dsh-backups\20261115-103147-pre-upgrade" -BundleRoot "<你的 bundle 目录>" -Runtime "<DSH 安装目录>\resources\dsh-runtime"
+```n
+产物：补丁层文件、profile manifest、bundle 源副本、audit-local 基线、MANIFEST.md（SHA256 + 回滚步骤）。升级后异常时按 MANIFEST.md 回滚。
