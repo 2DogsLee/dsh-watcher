@@ -3,11 +3,11 @@
   "repo": "_dsh",
   "from": "dsh-v0.2.1-rc.4",
   "to": "dsh-v0.2.3-alpha.2",
-  "generated": "2026-11-23T06:55:14.3643379Z",
+  "generated": "2026-11-23T12:21:46.2774380Z",
   "counts": {
     "relevant": 397,
-    "warning": 869,
     "breaking": 841,
+    "warning": 869,
     "info": 2710
   },
   "findings": [
