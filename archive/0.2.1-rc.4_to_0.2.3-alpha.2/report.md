@@ -1,6 +1,6 @@
 # DSH 插件 API 面比对：`dsh-v0.2.1-rc.4` → `dsh-v0.2.3-alpha.2`
 
-> 生成于 2026-11-23T12:21:46.2774380Z · 工具 dsh-api-watch v1（启发式， breaking 结论建议复核 diff）
+> 生成于 2026-11-23T23:58:19.5075516Z · 工具 dsh-api-watch v1（启发式， breaking 结论建议复核 diff）
 
 | 级别 | 数量 |
 |---|---|
